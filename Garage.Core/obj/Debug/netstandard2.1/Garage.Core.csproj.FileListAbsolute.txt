@@ -1,0 +1,8 @@
+C:\Users\ykatambo\source\repos\IISC\Garage.Core\bin\Debug\netstandard2.1\Garage.Core.deps.json
+C:\Users\ykatambo\source\repos\IISC\Garage.Core\bin\Debug\netstandard2.1\Garage.Core.dll
+C:\Users\ykatambo\source\repos\IISC\Garage.Core\bin\Debug\netstandard2.1\Garage.Core.pdb
+C:\Users\ykatambo\source\repos\IISC\Garage.Core\obj\Debug\netstandard2.1\Garage.Core.AssemblyInfoInputs.cache
+C:\Users\ykatambo\source\repos\IISC\Garage.Core\obj\Debug\netstandard2.1\Garage.Core.AssemblyInfo.cs
+C:\Users\ykatambo\source\repos\IISC\Garage.Core\obj\Debug\netstandard2.1\Garage.Core.csproj.CoreCompileInputs.cache
+C:\Users\ykatambo\source\repos\IISC\Garage.Core\obj\Debug\netstandard2.1\Garage.Core.dll
+C:\Users\ykatambo\source\repos\IISC\Garage.Core\obj\Debug\netstandard2.1\Garage.Core.pdb

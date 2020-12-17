@@ -1,5 +1,5 @@
 ﻿{
-   "ContextClassName": "GaragedbContext",
+   "ContextClassName": "GarageDbContext",
    "ContextNamespace": "",
    "DefaultDacpacSchema": null,
    "FilterSchemas": false,

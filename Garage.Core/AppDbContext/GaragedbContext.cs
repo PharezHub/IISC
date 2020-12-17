@@ -8,13 +8,13 @@ using Garage.Core.Models;
 
 namespace Garage.Core.AppDbContext
 {
-    public partial class GaragedbContext : DbContext
+    public partial class GarageDbContext : DbContext
     {
-        public GaragedbContext()
+        public GarageDbContext()
         {
         }
 
-        public GaragedbContext(DbContextOptions<GaragedbContext> options)
+        public GarageDbContext(DbContextOptions<GarageDbContext> options)
             : base(options)
         {
         }

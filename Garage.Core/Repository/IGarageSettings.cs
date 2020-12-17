@@ -13,6 +13,14 @@ namespace Garage.Core.Repository
         void DeleteCategory(Adm_AssetCategory category);
         List<Adm_AssetCategory> GetAllCategory();
         Adm_AssetCategory GetCategoryById(int id);
+        #endregion
+
+        #region // Manage Statutory Requirements
+        void AddStatutory(Adm_Statutory statutory);
+        void UpdateStatutory(Adm_Statutory statutory);
+        void DeleteStatutory(Adm_Statutory statutory);
+        List<Adm_Statutory> GetAllStatutory();
+        Adm_Statutory GetStatutoryById(int id);
 
         #endregion
     }
