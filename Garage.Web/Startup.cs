@@ -1,6 +1,10 @@
+using Garage.Core.AppDbContext;
+using Garage.Core.Repository;
+using Garage.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +27,12 @@ namespace Garage.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Database connection
+            services.AddDbContextPool<GarageDbContext>(options 
+                => options.UseSqlServer(Environment.GetEnvironmentVariable("GarageDbConn")));
+
             services.AddRazorPages();
+            services.AddScoped<ICategoryRepository, CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

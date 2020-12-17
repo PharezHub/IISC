@@ -9,11 +9,11 @@ using System.Text;
 
 namespace Garage.Core.Services
 {
-    public class GarageSettingsService : IGarageSettings
+    public class CategoryService : ICategoryRepository
     {
         private readonly GarageDbContext _context;
 
-        public GarageSettingsService(GarageDbContext context)
+        public CategoryService(GarageDbContext context)
         {
             _context = context;
         }

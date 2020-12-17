@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage.Web", "Garage.Web\Garage.Web.csproj", "{42BAEBBA-3E30-4FCD-B43E-AFCB79A30003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garage.Web", "Garage.Web\Garage.Web.csproj", "{42BAEBBA-3E30-4FCD-B43E-AFCB79A30003}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage.Core", "Garage.Core\Garage.Core.csproj", "{FF2639E8-0A78-4EC0-AEDE-1E4F25F3363A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garage.Core", "Garage.Core\Garage.Core.csproj", "{FF2639E8-0A78-4EC0-AEDE-1E4F25F3363A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

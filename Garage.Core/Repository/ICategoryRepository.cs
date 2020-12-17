@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Garage.Core.Repository
 {
-    public interface IGarageSettings
+    public interface ICategoryRepository
     {
         #region // Manage asset category
         void AddCategory(Adm_AssetCategory category);

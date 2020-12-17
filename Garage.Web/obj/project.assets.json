@@ -6295,7 +6295,8 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "Garage.Core >= 1.0.0",
-      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 5.0.1"
+      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 5.0.1",
+      "Microsoft.EntityFrameworkCore >= 5.0.1"
     ]
   },
   "packageFolders": {
@@ -6342,6 +6343,10 @@
         "targetAlias": "net5.0",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+            "target": "Package",
+            "version": "[5.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.1, )"
           }
