@@ -1,0 +1,84 @@
+﻿{
+   "ContextClassName": "GaragedbContext",
+   "ContextNamespace": "",
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "AppDbContext",
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "Garage.Core",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Adm_AssetCategory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_AssetType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_CategoryStatutoryLink]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_Frequency]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_FuelType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_InsuranceType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_LogSheetType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_MaintenanceType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_ManageLogSheet]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_ManageTrigger]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_Statutory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Adm_TriggerType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Hdr_Asset]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Hdr_StatutoryRequirement]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Trn_LogSheet]",
+         "ObjectType": 0
+      }
+   ],
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNodaTime": false,
+   "UseSpatial": false
+}
