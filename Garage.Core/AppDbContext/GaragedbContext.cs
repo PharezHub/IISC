@@ -10,10 +10,6 @@ namespace Garage.Core.AppDbContext
 {
     public partial class GarageDbContext : DbContext
     {
-        public GarageDbContext()
-        {
-        }
-
         public GarageDbContext(DbContextOptions<GarageDbContext> options)
             : base(options)
         {

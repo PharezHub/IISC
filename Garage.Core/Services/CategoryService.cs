@@ -81,5 +81,17 @@ namespace Garage.Core.Services
             statutoryData.State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+        public bool ValidateCategory(Adm_AssetCategory category)
+        {
+            bool result = false;
+            Adm_AssetCategory assetCategory = _context.Adm_AssetCategory.
+                FirstOrDefault(x => x.CategoryName.ToUpper() == category.CategoryName.ToUpper());
+            if (assetCategory != null)
+            {
+                result = true;
+            }
+            return result;
+        }
     }
 }
