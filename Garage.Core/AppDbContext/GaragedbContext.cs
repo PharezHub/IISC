@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Garage.Core.Models;
+using Garage.Core.ViewModel;
 
 #nullable disable
 
@@ -31,6 +32,8 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<Hdr_StatutoryRequirement> Hdr_StatutoryRequirement { get; set; }
         public virtual DbSet<Trn_LogSheet> Trn_LogSheet { get; set; }
 
+        public DbSet<StatutoryCategoryViewModel> StatutoryCategoryViewModel { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
@@ -47,8 +50,6 @@ namespace Garage.Core.AppDbContext
 
             modelBuilder.Entity<Adm_CategoryStatutoryLink>(entity =>
             {
-                entity.Property(e => e.ID).ValueGeneratedNever();
-
                 entity.Property(e => e.CreatedBy).IsUnicode(false);
 
                 entity.Property(e => e.ModifiedBy).IsUnicode(false);

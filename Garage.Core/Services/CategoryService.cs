@@ -1,6 +1,7 @@
 ﻿using Garage.Core.AppDbContext;
 using Garage.Core.Models;
 using Garage.Core.Repository;
+using Garage.Core.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,12 @@ namespace Garage.Core.Services
         public void AddCategory(Adm_AssetCategory category)
         {
             _context.Adm_AssetCategory.Add(category);
+            _context.SaveChanges();
+        }
+
+        public void AddLink(Adm_CategoryStatutoryLink statutoryLink)
+        {
+            _context.Adm_CategoryStatutoryLink.Add(statutoryLink);
             _context.SaveChanges();
         }
 
@@ -61,6 +68,13 @@ namespace Garage.Core.Services
         public Adm_AssetCategory GetCategoryById(int id)
         {
             return _context.Adm_AssetCategory.Find(id);
+        }
+
+        public IEnumerable<StatutoryCategoryViewModel> GetStatutoryByCategoryId(int id)
+        {
+            return _context.StatutoryCategoryViewModel
+                .FromSqlRaw("spGetStatutoryByCategoryId {0}", id)
+                .ToList();
         }
 
         public Adm_Statutory GetStatutoryById(int id)

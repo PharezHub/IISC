@@ -1,4 +1,5 @@
 ﻿using Garage.Core.Models;
+using Garage.Core.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,5 +25,9 @@ namespace Garage.Core.Repository
         Adm_Statutory GetStatutoryById(int id);
 
         #endregion
+
+        // Link Statutory Requirements to Category
+        void AddLink(Adm_CategoryStatutoryLink statutoryLink);
+        IEnumerable<StatutoryCategoryViewModel> GetStatutoryByCategoryId(int id);
     }
 }
