@@ -13,6 +13,8 @@ namespace Garage.Core.Models
     {
         [Key]
         public int ID { get; set; }
+       
+        public int? CategoryID { get; set; }
         public int? TriggerID { get; set; }
         public int? TriggerValue { get; set; }
         public int? Threshold { get; set; }

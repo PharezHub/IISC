@@ -389,3 +389,5 @@ C:\Users\ykatambo\source\repos\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Cate
 C:\Users\ykatambo\source\repos\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Category\Edit.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\Garage.Web\bin\Debug\net5.0\libman.json
 C:\Users\ykatambo\source\repos\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Category\LinkStatutory.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Routines\Triggers.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Routines\TriggerSetup.cshtml.g.cs

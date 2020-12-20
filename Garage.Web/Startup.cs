@@ -30,9 +30,9 @@ namespace Garage.Web
             //Database connection
             services.AddDbContextPool<GarageDbContext>(options 
                 => options.UseSqlServer(Environment.GetEnvironmentVariable("GarageDbConn")));
-
             services.AddRazorPages();
             services.AddScoped<ICategoryRepository, CategoryService>();
+            services.AddScoped<IRoutineRepository, RoutineService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
