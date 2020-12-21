@@ -14,10 +14,21 @@ namespace Garage.Core.Models
         [Key]
         public int ID { get; set; }
        
+        [Required(ErrorMessage = "Category is a required field")]
+        [Display(Name = "Category")]
         public int? CategoryID { get; set; }
+
+        [Required(ErrorMessage = "Trigger name is a required field")]
+        [Display(Name = "Trigger")]
         public int? TriggerID { get; set; }
+
+        [Required(ErrorMessage = "Trigger value is a required field")]
+        [Display(Name = "Trigger Value")]
         public int? TriggerValue { get; set; }
+
+        [Required(ErrorMessage = "Threshold is a required field")]
         public int? Threshold { get; set; }
+
         public bool? IsActive { get; set; }
         [StringLength(50)]
         public string CreatedBy { get; set; }

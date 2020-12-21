@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Garage.Core.Models;
 using Garage.Core.Repository;
+using Garage.Core.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,6 +21,7 @@ namespace Garage.Web.Pages.Routines
 
         public SelectList CategoryList { get; set; }
         public SelectList TriggerList { get; set; }
+        public IEnumerable<MaintenanceTriggerListViewModel> MaintenanceTriggerList { get; set; }
 
         public TriggerSetupModel(IRoutineRepository routineRepository, ICategoryRepository categoryRepository)
         {
@@ -29,8 +31,36 @@ namespace Garage.Web.Pages.Routines
 
         public void OnGet()
         {
+            InitialLoad();
+        }
+
+        private void InitialLoad()
+        {
             CategoryList = new SelectList(categoryRepository.GetAllCategory(), nameof(Adm_AssetCategory.ID), nameof(Adm_AssetCategory.CategoryName));
             TriggerList = new SelectList(routineRepository.GetAllTriggerTypes(), nameof(Adm_TriggerType.ID), nameof(Adm_TriggerType.TriggerName));
+            MaintenanceTriggerList = routineRepository.GetMaintenanceTriggerList();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                ManageTrigger.IsActive = true;
+                ManageTrigger.CreatedOn = DateTime.Now;
+                ManageTrigger.CreatedBy = User.Identity.Name;
+                ManageTrigger.ModifiedBy = User.Identity.Name;
+                ManageTrigger.ModifiedOn = DateTime.Now;
+
+                routineRepository.AddManageTrigger(ManageTrigger);
+
+                // Rebind
+                InitialLoad();
+
+                ManageTrigger.TriggerValue = 0;
+                ManageTrigger.Threshold = 0;
+            }
+
+            return RedirectToPage("/Routines/TriggerSetup");
         }
     }
 }

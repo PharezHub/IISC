@@ -33,6 +33,7 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<Trn_LogSheet> Trn_LogSheet { get; set; }
 
         public DbSet<StatutoryCategoryViewModel> StatutoryCategoryViewModel { get; set; }
+        public DbSet<MaintenanceTriggerListViewModel> MaintenanceTriggerListViewModels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
