@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Garage.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css"  />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -13,7 +13,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Garage.Web</a>
+                @*<a class="navbar-brand" asp-area="" asp-page="/Index">Garage.Web</a>*@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,30 +21,59 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">
+                                <i class="fa fa-home text-primary">&nbsp; </i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">
+                                <i class="fa fa-plus-square text-primary">&nbsp; </i>New Asset
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">
+                                <i class="fa fa-wrench text-primary">&nbsp; </i>Maintenance
+                            </a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Admin
+                                <i class="fa fa-cogs text-primary">&nbsp; </i> Settings
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-page="/Category/Index">Category Setup</a>
+                                <a class="dropdown-item" asp-page="/Category/Index">
+                                    <i class="fa fa-th text-primary">&nbsp; </i>Category Setup
+                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-page="/Routines/Triggers">Triggers</a>
+                                <a class="dropdown-item" asp-page="/Routines/Triggers">
+                                    <i class="fa fa-random text-primary">&nbsp; </i>Trigger Setup
+                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-page="/Routines/TriggerSetup">Manage Trigger</a>
+                                <a class="dropdown-item" asp-page="/Routines/TriggerSetup">
+                                    <i class="fa fa-hourglass-end text-primary">&nbsp; </i>Manage Trigger
+                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" asp-page="/Routines/TriggerSetup">
+                                    <i class="fa fa-calendar-check text-primary">&nbsp; </i>Log Sheet Setup
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-page="/Routines/TriggerSetup">
+                                    <i class="fa fa-folder-open text-primary">&nbsp; </i>Statutory Setup
+                                </a>
                             </div>
                         </li>
-                        @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Category/Index">Settings</a>
-                        </li>*@
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">
+                                <i class="fa fa-sitemap text-primary">&nbsp; </i>Reports
+                            </a>
                         </li>
+
                     </ul>
-                    <p class="nav navbar-text">Hello, @User.Identity.Name!</p>
+                    @*<p class="nav navbar-text">Hello, @User.Identity.Name!</p>*@
+                    <p class="nav navbar-text">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">
+                            <i class="fa fa-question-circle text-warning">&nbsp; </i>
+                        </a>
+                    </p>
                 </div>
             </div>
         </nav>
