@@ -66,5 +66,12 @@ namespace Garage.Core.Services
                 _context.SaveChanges();
             }
         }
+
+        public void UpdateTrigger(Adm_TriggerType triggerType)
+        {
+            var trigger = _context.Adm_TriggerType.Attach(triggerType);
+            trigger.State = EntityState.Modified;
+            _context.SaveChanges();
+        }
     }
 }

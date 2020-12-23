@@ -16,6 +16,7 @@ namespace Garage.Core.Repository
 
         IEnumerable<Adm_TriggerType> GetAllTriggerTypes();
         Adm_TriggerType GetTriggerById(int id);
+        void UpdateTrigger(Adm_TriggerType triggerType);
         IEnumerable<MaintenanceTriggerListViewModel> GetMaintenanceTriggerList();
     }
 }

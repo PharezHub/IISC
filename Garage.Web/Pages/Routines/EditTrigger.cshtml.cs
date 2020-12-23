@@ -36,9 +36,9 @@ namespace Garage.Web.Pages.Routines
         {
             if (ModelState.IsValid)
             {
-
+                routineRepository.UpdateTrigger(TriggerType);
             }
-            return Page();
+            return RedirectToPage("/Routines/Triggers");
         }
     }
 }
