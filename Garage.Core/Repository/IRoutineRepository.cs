@@ -11,6 +11,8 @@ namespace Garage.Core.Repository
         // Manage add trigger
         void AddTrigger(Adm_TriggerType triggerType);
         void AddManageTrigger(Adm_ManageTrigger trigger);
+        void UpdateManageTrigger(Adm_ManageTrigger trigger);
+        public Adm_ManageTrigger GetManageTriggerById(int id);
 
         IEnumerable<Adm_TriggerType> GetAllTriggerTypes();
         Adm_TriggerType GetTriggerById(int id);

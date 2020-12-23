@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ykatambo\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj": {}
+    "C:\\Yann\\Learning\\CSharp\\IISC\\Garage.Core\\Garage.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ykatambo\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj": {
+    "C:\\Yann\\Learning\\CSharp\\IISC\\Garage.Core\\Garage.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ykatambo\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj",
+        "projectUniqueName": "C:\\Yann\\Learning\\CSharp\\IISC\\Garage.Core\\Garage.Core.csproj",
         "projectName": "Garage.Core",
-        "projectPath": "C:\\Users\\ykatambo\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj",
+        "projectPath": "C:\\Yann\\Learning\\CSharp\\IISC\\Garage.Core\\Garage.Core.csproj",
         "packagesPath": "C:\\Users\\ykatambo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ykatambo\\source\\repos\\IISC\\Garage.Core\\obj\\",
+        "outputPath": "C:\\Yann\\Learning\\CSharp\\IISC\\Garage.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ykatambo\\AppData\\Roaming\\NuGet\\NuGet.Config",
