@@ -15,8 +15,19 @@ namespace Garage.Core.Repository
         public Adm_ManageTrigger GetManageTriggerById(int id);
 
         IEnumerable<Adm_TriggerType> GetAllTriggerTypes();
+
         Adm_TriggerType GetTriggerById(int id);
+
         void UpdateTrigger(Adm_TriggerType triggerType);
+
         IEnumerable<MaintenanceTriggerListViewModel> GetMaintenanceTriggerList();
+
+        IEnumerable<Adm_Frequency> GetFrequency();
+
+        void AddLogSheetTrigger(Adm_ManageLogSheet logSheet);
+
+        IEnumerable<Adm_ManageLogSheet> GetAllLogSheetTrigger();
+
+        Adm_ManageLogSheet GetLogSheetTriggerById(int id);
     }
 }

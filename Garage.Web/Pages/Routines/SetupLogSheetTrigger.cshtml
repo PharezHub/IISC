@@ -1,0 +1,60 @@
+﻿@page
+@model Garage.Web.Pages.Routines.SetupLogSheetTriggerModel
+@{
+    ViewData["Title"] = "Setup LogSheet";
+}
+
+<div class="container container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-page="/Index">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Setting</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card bg-light mb-3">
+                <div class="card-header">New Trigger</div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group row">
+                            <label asp-for="ManageLogSheet.CategoryID" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <select asp-for="ManageLogSheet.CategoryID" class="form-control" asp-items="@Model.CategoryList">
+                                    <option value="">Choose One</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="ManageLogSheet.LogSheetTypeID" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <select asp-for="ManageLogSheet.LogSheetTypeID" class="form-control" asp-items="@Model.TriggerList">
+                                    <option value="">Choose One</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="ManageLogSheet.TriggerFrequency" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <select asp-for="ManageLogSheet.TriggerFrequency" class="form-control" asp-items="@Model.FrequencyList">
+                                    <option value="">Choose One</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-2 float-right">
+                            <button type="submit" class="btn btn-primary">Add Trigger</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+</div>

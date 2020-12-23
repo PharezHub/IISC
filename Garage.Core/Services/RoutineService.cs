@@ -19,6 +19,12 @@ namespace Garage.Core.Services
             _context = context;
         }
 
+        public void AddLogSheetTrigger(Adm_ManageLogSheet logSheet)
+        {
+            _context.Adm_ManageLogSheet.Add(logSheet);
+            _context.SaveChanges();
+        }
+
         public void AddManageTrigger(Adm_ManageTrigger trigger)
         {
             _context.Adm_ManageTrigger.Add(trigger);
@@ -31,9 +37,24 @@ namespace Garage.Core.Services
             _context.SaveChanges();
         }
 
+        public IEnumerable<Adm_ManageLogSheet> GetAllLogSheetTrigger()
+        {
+            return _context.Adm_ManageLogSheet.ToList();
+        }
+
         public IEnumerable<Adm_TriggerType> GetAllTriggerTypes()
         {
             return _context.Adm_TriggerType;
+        }
+
+        public IEnumerable<Adm_Frequency> GetFrequency()
+        {
+            return _context.Adm_Frequency.ToList();
+        }
+
+        public Adm_ManageLogSheet GetLogSheetTriggerById(int id)
+        {
+            return _context.Adm_ManageLogSheet.FirstOrDefault(x => x.ID == id);
         }
 
         public IEnumerable<MaintenanceTriggerListViewModel> GetMaintenanceTriggerList()

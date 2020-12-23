@@ -788,3 +788,5 @@ C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Garage.Web.genruntimeco
 C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Shared\NotFound.cshtml.g.cs
 C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Routines\SetupTrigger.cshtml.g.cs
 C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Routines\EditTrigger.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Routines\EditLogSheetTrigger.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Routines\SetupLogSheetTrigger.cshtml.g.cs
