@@ -1,5 +1,39 @@
-﻿@page
+﻿@page "{id:min(1)}"
 @model Garage.Web.Pages.Routines.EditTriggerModel
 @{
     ViewData["Title"] = "Edit Trigger";
 }
+
+<div class="container container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-page="/Index">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Setting</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card bg-light mb-3">
+                <div class="card-header">@ViewData["Title"]</div>
+                <div class="card-body">
+                    <form method="post">
+                        <input hidden asp-for="TriggerType.ID" />
+                        <div class="row">
+                            <input asp-for="TriggerType.TriggerName" class="form-control" placeholder="Enter trigger name" />
+                            <span asp-validation-for="TriggerType.TriggerName" class="text-danger"></span>
+                        </div>
+                        <div class="row mt-2 float-right">
+                            <button type="submit" class="btn btn-primary">Update Trigger</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+</div>
