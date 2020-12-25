@@ -12,6 +12,7 @@ namespace Garage.Core.Models
     public partial class Adm_ManageLogSheet
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public int? CategoryID { get; set; }
         public int? LogSheetTypeID { get; set; }

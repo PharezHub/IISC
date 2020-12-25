@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Garage.Core.Models;
 using Garage.Core.Repository;
+using Garage.Core.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -19,15 +20,18 @@ namespace Garage.Web.Pages.Routines
         {
             this.routineRepository = routineRepository;
             this.categoryRepository = categoryRepository;
+            ManageLogSheet = new Adm_ManageLogSheet();
         }
 
         [BindProperty]
         public Adm_ManageLogSheet ManageLogSheet { get; set; }
+        
+        public Adm_ManageTrigger ManageTrigger { get; set; }
         public SelectList CategoryList { get; set; }
         public SelectList TriggerList { get; set; }
         public SelectList FrequencyList { get; set; }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int id)
         {
             CategoryList = new SelectList(categoryRepository.GetAllCategory(), 
                 nameof(Adm_AssetCategory.ID), nameof(Adm_AssetCategory.CategoryName));
@@ -38,6 +42,29 @@ namespace Garage.Web.Pages.Routines
             FrequencyList = new SelectList(routineRepository.GetFrequency(), 
                 nameof(Adm_Frequency.ID), nameof(Adm_Frequency.FrequencyName));
 
+            ManageTrigger = routineRepository.GetManageTriggerById(id);
+            if (ManageTrigger != null)
+            {
+                ManageLogSheet.CategoryID = ManageTrigger.CategoryID.Value;
+                ManageLogSheet.LogSheetTypeID = ManageTrigger.TriggerID.Value;
+            }
+            return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                ManageLogSheet.ID = 0;
+                ManageLogSheet.TriggerTime = TimeSpan.Parse("06:00:00");
+                ManageLogSheet.IsActive = true;
+                ManageLogSheet.CreatedOn = DateTime.Now;
+                ManageLogSheet.CreatedBy = User.Identity.Name;
+                ManageLogSheet.ModifiedBy = User.Identity.Name;
+                ManageLogSheet.ModifiedOn = DateTime.Now;
+
+                routineRepository.AddLogSheetTrigger(ManageLogSheet);
+            }
             return Page();
         }
     }
