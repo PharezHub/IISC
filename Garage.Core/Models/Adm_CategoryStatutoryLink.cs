@@ -12,7 +12,6 @@ namespace Garage.Core.Models
     public partial class Adm_CategoryStatutoryLink
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public int? CategoryID { get; set; }
         public int? StatutoryID { get; set; }

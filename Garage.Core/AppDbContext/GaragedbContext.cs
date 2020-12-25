@@ -33,7 +33,8 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<Trn_LogSheet> Trn_LogSheet { get; set; }
 
         public DbSet<StatutoryCategoryViewModel> StatutoryCategoryViewModel { get; set; }
-        public DbSet<MaintenanceTriggerListViewModel> MaintenanceTriggerListViewModels { get; set; }
+
+        public DbSet<MaintenanceTriggerListViewModel> MaintenanceTriggerListViewModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -83,8 +84,6 @@ namespace Garage.Core.AppDbContext
 
             modelBuilder.Entity<Adm_ManageLogSheet>(entity =>
             {
-                entity.Property(e => e.ID).ValueGeneratedNever();
-
                 entity.Property(e => e.CreatedBy).IsUnicode(false);
 
                 entity.Property(e => e.ModifiedBy).IsUnicode(false);

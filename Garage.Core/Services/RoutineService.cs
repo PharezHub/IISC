@@ -59,7 +59,7 @@ namespace Garage.Core.Services
 
         public IEnumerable<MaintenanceTriggerListViewModel> GetMaintenanceTriggerList()
         {
-            return _context.MaintenanceTriggerListViewModels.FromSqlRaw("spGetMaintenanceTriggerList").ToList();
+            return _context.MaintenanceTriggerListViewModel.FromSqlRaw("spGetMaintenanceTriggerList").ToList();
         }
 
         public Adm_ManageTrigger GetManageTriggerById(int id)

@@ -55,7 +55,7 @@ namespace Garage.Web.Pages.Routines
         {
             if (ModelState.IsValid)
             {
-                ManageLogSheet.ID = 0;
+                //ManageLogSheet.ID = 1;
                 ManageLogSheet.TriggerTime = TimeSpan.Parse("06:00:00");
                 ManageLogSheet.IsActive = true;
                 ManageLogSheet.CreatedOn = DateTime.Now;

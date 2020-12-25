@@ -71,6 +71,14 @@
       {
          "Name": "[dbo].[Trn_LogSheet]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[spGetMaintenanceTriggerList]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[spGetStatutoryByCategoryId]",
+         "ObjectType": 1
       }
    ],
    "UseDatabaseNames": true,
