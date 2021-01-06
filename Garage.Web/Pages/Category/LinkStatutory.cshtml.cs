@@ -48,6 +48,7 @@ namespace Garage.Web.Pages.Category
             return Page();
         }
 
+        #region
         public IActionResult OnPost()
         {
             foreach (var itemId in SelectedTypes)
@@ -66,5 +67,6 @@ namespace Garage.Web.Pages.Category
 
             return RedirectToPage("/Category/Index");
         }
+        #endregion
     }
 }

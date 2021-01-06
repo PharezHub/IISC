@@ -52,6 +52,11 @@ namespace Garage.Core.Services
             return _context.Adm_Frequency.ToList();
         }
 
+        public IEnumerable<LogSheetSetupViewModel> GetLogSheetSetup()
+        {
+            return _context.LogSheetSetupViewModel.FromSqlRaw("spGetLogSheetSetup").ToList();
+        }
+
         public Adm_ManageLogSheet GetLogSheetTriggerById(int id)
         {
             return _context.Adm_ManageLogSheet.FirstOrDefault(x => x.ID == id);

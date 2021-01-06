@@ -29,5 +29,7 @@ namespace Garage.Core.Repository
         IEnumerable<Adm_ManageLogSheet> GetAllLogSheetTrigger();
 
         Adm_ManageLogSheet GetLogSheetTriggerById(int id);
+
+        IEnumerable<LogSheetSetupViewModel> GetLogSheetSetup();
     }
 }
