@@ -25,11 +25,11 @@ namespace Garage.Web.Pages.Routines
 
         [BindProperty]
         public Adm_ManageLogSheet ManageLogSheet { get; set; }
-        
         public Adm_ManageTrigger ManageTrigger { get; set; }
         public SelectList CategoryList { get; set; }
         public SelectList TriggerList { get; set; }
         public SelectList FrequencyList { get; set; }
+        public IEnumerable<LogSheetSetupViewModel> LogSheetSetupList { get; set; }
 
         public IActionResult OnGet(int id)
         {
@@ -43,6 +43,8 @@ namespace Garage.Web.Pages.Routines
                 nameof(Adm_Frequency.ID), nameof(Adm_Frequency.FrequencyName));
 
             ManageTrigger = routineRepository.GetManageTriggerById(id);
+            LogSheetSetupList = routineRepository.GetLogSheetSetup();
+
             if (ManageTrigger != null)
             {
                 ManageLogSheet.CategoryID = ManageTrigger.CategoryID.Value;

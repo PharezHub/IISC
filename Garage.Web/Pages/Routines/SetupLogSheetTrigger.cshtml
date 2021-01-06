@@ -59,7 +59,7 @@
                                 <a asp-page="/Routines/SetupTrigger" class="btn btn-outline-dark">Back</a>
                             </div>
                             <div class="row mt-2 float-right">
-                                <button type="submit" class="btn btn-primary">Add Trigger</button>
+                                <button type="submit" class="btn btn-outline-primary">Add Trigger</button>
                             </div>
                         </form>
                     </div>
@@ -70,6 +70,59 @@
             </div>
             <div class="col-sm-6">
 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header bg-light">Maintenance Trigger List</div>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Trigger</th>
+                                    <th scope="col">Frequency</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Created On</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.LogSheetSetupList != null)
+                                {
+                                    foreach (var item in Model.LogSheetSetupList)
+                                    {
+                                        <tr>
+                                            <th scope="row">@item.ID</th>
+                                            <td>@item.CategoryName</td>
+                                            <td>@item.TriggerName</td>
+                                            <td>@item.FrequencyName</td>
+                                            <td>@item.TriggerTime</td>
+                                            <td>@item.CreatedOn</td>
+                                            <td>
+                                                <a title="Edit Logsheet" asp-page="/Routines/EditMaintenanceTrigger" asp-route-ID="@item.ID"
+                                                   class="btn btn-sm btn-outline-primary m-1">
+                                                    <i class="far fa-edit"></i>
+                                                </a>
+                                                |
+                                                <a title="Schedule Logsheet" asp-page="/Routines/SetupLogSheetTrigger" asp-route-ID="@item.ID"
+                                                   class="btn btn-sm btn-outline-danger m-1">
+                                                    <i class="fa fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-page="/Index" class="btn btn-outline-dark float-right">Cancel</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
