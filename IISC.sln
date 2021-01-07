@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garage.Web", "Garage.Web\Ga
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garage.Core", "Garage.Core\Garage.Core.csproj", "{FF2639E8-0A78-4EC0-AEDE-1E4F25F3363A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IISC.Web", "IISC.Web\IISC.Web.csproj", "{1DB6BD55-CBB4-4F97-A7C8-3DB254565CA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FF2639E8-0A78-4EC0-AEDE-1E4F25F3363A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF2639E8-0A78-4EC0-AEDE-1E4F25F3363A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF2639E8-0A78-4EC0-AEDE-1E4F25F3363A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB6BD55-CBB4-4F97-A7C8-3DB254565CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB6BD55-CBB4-4F97-A7C8-3DB254565CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB6BD55-CBB4-4F97-A7C8-3DB254565CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB6BD55-CBB4-4F97-A7C8-3DB254565CA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

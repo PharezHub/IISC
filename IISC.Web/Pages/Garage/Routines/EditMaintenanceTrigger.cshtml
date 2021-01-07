@@ -1,0 +1,89 @@
+﻿@page "{id:min(1)}"
+@model IISC.Web.Pages.Garage.Routines.EditMaintenanceTriggerModel
+@{
+    ViewData["Title"] = "Edit Maintenance Trigger";
+}
+
+<div class="row">
+    <div class="col-xl-10">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h2 class="pageheader-title">@ViewData["Title"] </h2>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Settings</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card bg-light mb-3">
+                    <div class="card-header">New Trigger</div>
+                    <div class="card-body">
+                        <form method="post">
+                            <input hidden asp-for="ManageTrigger.ID" />
+                            <input hidden asp-for="ManageTrigger.CreatedOn" />
+                            <div class="form-group row">
+                                <label asp-for="ManageTrigger.CategoryID" class="col-sm-3 col-form-label"></label>
+                                <div class="col-sm-9">
+                                    <select asp-for="ManageTrigger.CategoryID" class="form-control" asp-items="@Model.CategoryList">
+                                        <option value="">Choose One</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="ManageTrigger.TriggerID" class="col-sm-3 col-form-label"></label>
+                                <div class="col-sm-9">
+                                    <select asp-for="ManageTrigger.TriggerID" class="form-control" asp-items="@Model.TriggerList">
+                                        <option value="">Choose One</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="ManageTrigger.TriggerValue" class="col-sm-3 col-form-label"></label>
+                                <div class="col-sm-9">
+                                    <input asp-for="ManageTrigger.TriggerValue" class="form-control" placeholder="Enter trigger value" />
+                                    <span asp-validation-for="ManageTrigger.TriggerValue" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="ManageTrigger.Threshold" class="col-sm-3 col-form-label"></label>
+                                <div class="col-sm-9">
+                                    <input asp-for="ManageTrigger.Threshold" class="form-control" placeholder="Enter trigger threshold" />
+                                    <span asp-validation-for="ManageTrigger.Threshold" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mt-2 float-left">
+                                <a asp-page="/Routines/SetupTrigger" class="btn btn-outline-dark">Back</a>
+                            </div>
+                            <div class="row mt-2 float-right">
+                                <button type="submit" class="btn btn-primary">Update Trigger</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+            </div>
+        </div>
+    </div>
+    <!-- sidenavbar -->
+    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
+        <div class="sidebar-nav-fixed">
+            <ul class="list-unstyled">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#top">Back to Top</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end sidenavbar -->
+</div>

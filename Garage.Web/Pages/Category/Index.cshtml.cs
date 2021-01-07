@@ -7,7 +7,7 @@ using Garage.Core.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Garage.Web.Pages.Category
+namespace Garage.Web.Pages.Garage.Category
 {
     public class IndexModel : PageModel
     {

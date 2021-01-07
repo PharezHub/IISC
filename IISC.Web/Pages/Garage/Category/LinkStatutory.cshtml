@@ -1,0 +1,134 @@
+﻿@page
+@model IISC.Web.Pages.Garage.Category.LinkStatutoryModel
+@{
+    ViewData["Title"] = "Link Statutory Requirement";
+}
+
+<div class="row">
+    <div class="col-xl-10">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h2 class="pageheader-title">@ViewData["Title"] </h2>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Settings</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card bg-light mb-3">
+                    <div class="card-header">Category - Statutory Requirement Link</div>
+                    <div class="card-body">
+                        <form method="post">
+                            <input hidden asp-for="Category.ID" />
+                            <div class="row">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Asset Category</span>
+                                    </div>
+                                    <input asp-for="Category.CategoryName" class="form-control" placeholder="Asset category name here" disabled />
+                                    <span asp-validation-for="Category.CategoryName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="form-group form-check">
+                                    <label asp-for="Statutory.StatutoryName" class="control-label">Statutory</label>
+                                    <div class="form-check-inline">
+                                        @for (var i = 0; i < Model.StatutoryTypes.Count(); i++)
+                                        {
+                                            <div class="form-check">
+                                                <input type="checkbox" value="@Model.StatutoryTypes[i].ID" name="SelectedTypes" />
+                                                <label>@Model.StatutoryTypes[i].StatutoryName</label>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary float-right">Add Link</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-page="/Category/Index" class="btn btn-outline-dark">Back</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header bg-light">Asset Category List</div>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Statutory</th>
+                                    <th scope="col">Created On</th>
+                                    <th scope="col">Modified On</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.CategoryStatutoryList)
+                                {
+                                    <tr>
+                                        <th scope="row">@item.Id.ToString()</th>
+                                        <td>@item.CategoryName</td>
+                                        <td>@item.StatutoryName</td>
+                                        <td>@item.CreatedOn</td>
+                                        <td>@item.ModifiedOn</td>
+                                        <td>
+                                            <a title="Edit asset category" asp-page="/Category/Edit" asp-route-ID="@item.Id"
+                                               class="btn btn-sm btn-outline-primary m-1">
+                                                <i class="far fa-edit"></i>
+                                            </a>
+                                            |
+                                            <a title="Link asset category to statutory requirement" asp-page="/Category/LinkStatutory"
+                                               asp-route-ID="@item.Id"
+                                               class="btn btn-outline-danger m-1">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-page="/Index" class="btn btn-outline-dark float-right">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sidenavbar -->
+    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
+        <div class="sidebar-nav-fixed">
+            <ul class="list-unstyled">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#top">Back to Top</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end sidenavbar -->
+</div>

@@ -14,4 +14,10 @@
     <ProjectReference Include="..\Garage.Core\Garage.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\HR\" />
+    <Folder Include="Pages\Cylinder\" />
+    <Folder Include="Pages\Visitor\" />
+  </ItemGroup>
+
 </Project>

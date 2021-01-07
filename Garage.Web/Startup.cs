@@ -33,6 +33,7 @@ namespace Garage.Web
             services.AddRazorPages();
             services.AddScoped<ICategoryRepository, CategoryService>();
             services.AddScoped<IRoutineRepository, RoutineService>();
+            services.AddScoped<INavigationRepository, NavigationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

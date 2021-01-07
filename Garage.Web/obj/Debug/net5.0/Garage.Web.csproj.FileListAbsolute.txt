@@ -790,3 +790,12 @@ C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Routines\Se
 C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Routines\EditTrigger.cshtml.g.cs
 C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Routines\EditLogSheetTrigger.cshtml.g.cs
 C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Routines\SetupLogSheetTrigger.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Garage\Category\Edit.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Garage\Category\Index.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Garage\Category\LinkStatutory.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\EditLogSheetTrigger.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\EditMaintenanceTrigger.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\EditTrigger.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\SetupLogSheetTrigger.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\SetupTrigger.cshtml.g.cs
+C:\Yann\Learning\CSharp\IISC\Garage.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\Triggers.cshtml.g.cs
