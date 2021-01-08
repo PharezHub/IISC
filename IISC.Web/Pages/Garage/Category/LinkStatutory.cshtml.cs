@@ -63,7 +63,7 @@ namespace IISC.Web.Pages.Garage.Category
                 categoryRepository.AddLink(CategoryStatutoryLink);
             }
 
-            return RedirectToPage("/Category/Index");
+            return RedirectToPage("/Garage/Category/Index");
         }
     }
 }

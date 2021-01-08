@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="row mt-2 float-right">
-                                <button type="submit" class="btn btn-primary">Add Trigger</button>
+                                <button type="submit" class="btn btn-outline-success">Add Trigger</button>
                             </div>
                         </form>
                     </div>
@@ -101,12 +101,12 @@
                                             <td>@item.Threshold</td>
                                             <td>@item.CreatedOn</td>
                                             <td>
-                                                <a title="Edit maintenance trigger" asp-page="/Routines/EditMaintenanceTrigger" asp-route-ID="@item.ID"
+                                                <a title="Edit maintenance trigger" asp-page="/Garage/Routines/EditMaintenanceTrigger" asp-route-ID="@item.ID"
                                                    class="btn btn-sm btn-outline-primary m-1">
                                                     <i class="far fa-edit"></i>
                                                 </a>
                                                 |
-                                                <a title="Schedule Logsheet" asp-page="/Routines/SetupLogSheetTrigger" asp-route-ID="@item.ID"
+                                                <a title="Schedule Logsheet" asp-page="/Garage/Routines/SetupLogSheetTrigger" asp-route-ID="@item.ID"
                                                    class="btn btn-sm btn-outline-warning m-1">
                                                     <i class="fa fa-recycle"></i>
                                                 </a>

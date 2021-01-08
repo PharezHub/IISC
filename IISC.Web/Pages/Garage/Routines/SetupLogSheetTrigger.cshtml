@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="row mt-2 float-left">
-                                <a asp-page="/Routines/SetupTrigger" class="btn btn-outline-dark">Back</a>
+                                <a asp-page="/Garage/Routines/SetupTrigger" class="btn btn-outline-dark">Back</a>
                             </div>
                             <div class="row mt-2 float-right">
                                 <button type="submit" class="btn btn-outline-primary">Add Trigger</button>
@@ -102,12 +102,12 @@
                                             <td>@item.TriggerTime</td>
                                             <td>@item.CreatedOn</td>
                                             <td>
-                                                <a title="Edit Logsheet" asp-page="/Routines/EditMaintenanceTrigger" asp-route-ID="@item.ID"
+                                                <a title="Edit Logsheet" asp-page="/Garage/Routines/EditMaintenanceTrigger" asp-route-ID="@item.ID"
                                                    class="btn btn-sm btn-outline-primary m-1">
                                                     <i class="far fa-edit"></i>
                                                 </a>
                                                 |
-                                                <a title="Schedule Logsheet" asp-page="/Routines/SetupLogSheetTrigger" asp-route-ID="@item.ID"
+                                                <a title="Schedule Logsheet" asp-page="/Garage/Routines/SetupLogSheetTrigger" asp-route-ID="@item.ID"
                                                    class="btn btn-sm btn-outline-danger m-1">
                                                     <i class="fa fa-trash-alt"></i>
                                                 </a>

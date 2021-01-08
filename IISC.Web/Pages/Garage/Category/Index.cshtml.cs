@@ -41,7 +41,7 @@ namespace IISC.Web.Pages.Garage.Category
                     Category.IsActive = true;
                     categoryRepository.AddCategory(Category);
 
-                    return RedirectToPage("/Category/Index");
+                    return RedirectToPage("/Garage/Category/Index");
                 }
             }
 

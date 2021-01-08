@@ -61,7 +61,7 @@
                         </form>
                     </div>
                     <div class="card-footer">
-                        <a asp-page="/Category/Index" class="btn btn-outline-dark">Back</a>
+                        <a asp-page="/Garage/Category/Index" class="btn btn-outline-dark">Back</a>
                     </div>
                 </div>
             </div>
@@ -97,12 +97,12 @@
                                         <td>@item.CreatedOn</td>
                                         <td>@item.ModifiedOn</td>
                                         <td>
-                                            <a title="Edit asset category" asp-page="/Category/Edit" asp-route-ID="@item.Id"
+                                            <a title="Edit asset category" asp-page="/Garage/Category/Edit" asp-route-ID="@item.Id"
                                                class="btn btn-sm btn-outline-primary m-1">
                                                 <i class="far fa-edit"></i>
                                             </a>
                                             |
-                                            <a title="Link asset category to statutory requirement" asp-page="/Category/LinkStatutory"
+                                            <a title="Link asset category to statutory requirement" asp-page="/Garage/Category/LinkStatutory"
                                                asp-route-ID="@item.Id"
                                                class="btn btn-outline-danger m-1">
                                                 <i class="fa fa-trash"></i>

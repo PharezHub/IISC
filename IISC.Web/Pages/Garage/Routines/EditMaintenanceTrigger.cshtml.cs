@@ -50,7 +50,7 @@ namespace IISC.Web.Pages.Garage.Routines
                 ManageTrigger.ModifiedBy = User.Identity.Name;
                 routineRepository.UpdateManageTrigger(ManageTrigger);
             }
-            return RedirectToPage("/Garage/Routines/TriggerSetup");
+            return RedirectToPage("/Garage/Routines/SetupTrigger");
         }
     }
 }

@@ -80,12 +80,12 @@
                                         <td>@item.CategoryName</td>
                                         <td>@item.IsActive</td>
                                         <td>
-                                            <a title="Edit asset category" asp-page="/Category/Edit" asp-route-ID="@item.ID"
+                                            <a title="Edit asset category" asp-page="/Garage/Category/Edit" asp-route-ID="@item.ID"
                                                class="btn btn-sm btn-outline-primary m-1">
                                                 <i class="far fa-edit"></i>
                                             </a>
                                             |
-                                            <a title="Link asset category to statutory requirement" asp-page="/Category/LinkStatutory" asp-route-ID="@item.ID"
+                                            <a title="Link asset category to statutory requirement" asp-page="/Garage/Category/LinkStatutory" asp-route-ID="@item.ID"
                                                class="btn btn-outline-warning m-1">
                                                 <i class="fa fa-link"></i>
                                             </a>
@@ -96,7 +96,7 @@
                         </table>
                     </div>
                     <div class="card-footer">
-                        <a asp-page="/Index" class="btn btn-outline-dark float-right">Cancel</a>
+                        <a asp-page="/Garage/Index" class="btn btn-outline-dark float-right">Cancel</a>
                     </div>
                 </div>
             </div>
