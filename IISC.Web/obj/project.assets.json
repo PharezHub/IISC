@@ -5726,11 +5726,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Yann\\Learning\\CSharp\\IISC\\IISC.Web\\IISC.Web.csproj",
+      "projectUniqueName": "C:\\Program Files\\LearningYear\\IISC\\IISC.Web\\IISC.Web.csproj",
       "projectName": "IISC.Web",
-      "projectPath": "C:\\Yann\\Learning\\CSharp\\IISC\\IISC.Web\\IISC.Web.csproj",
+      "projectPath": "C:\\Program Files\\LearningYear\\IISC\\IISC.Web\\IISC.Web.csproj",
       "packagesPath": "C:\\Users\\ykatambo\\.nuget\\packages\\",
-      "outputPath": "C:\\Yann\\Learning\\CSharp\\IISC\\IISC.Web\\obj\\",
+      "outputPath": "C:\\Program Files\\LearningYear\\IISC\\IISC.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ykatambo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5748,8 +5748,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Yann\\Learning\\CSharp\\IISC\\Garage.Core\\Garage.Core.csproj": {
-              "projectPath": "C:\\Yann\\Learning\\CSharp\\IISC\\Garage.Core\\Garage.Core.csproj"
+            "C:\\Program Files\\LearningYear\\IISC\\Garage.Core\\Garage.Core.csproj": {
+              "projectPath": "C:\\Program Files\\LearningYear\\IISC\\Garage.Core\\Garage.Core.csproj"
             }
           }
         }

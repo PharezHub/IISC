@@ -5,7 +5,7 @@
 }
 
 <div class="row">
-    <div class="col-xl-10">
+    <div class="col-xl-12 col-md-12 col-sm-12">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header" id="top">
@@ -23,23 +23,26 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12">
-                
-            </div>
+                @foreach (var item in Model.SystemAreaList)
+                {
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white text-center">@item.Title</div>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <img src=@item.ImagePath alt=@item.Title class="rounded-circle bg-light" />
+                                </div>
+                                <p class="card-text text-center">@item.Description.</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="@($"DataCapture/{item.ID.ToString()}")" class="btn btn-outline-dark">@item.Title</a>
+                            </div>
+                        </div>
+
+                        <br />
+
+                    </div>
+                }
         </div>
-
-        
     </div>
-
-    <!-- sidenavbar -->
-    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
-        <div class="sidebar-nav-fixed">
-            <ul class="list-unstyled">
-                <li><a href="#overview" class="active">Overview</a></li>
-                <li><a href="#top">Back to Top</a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- end sidenavbar -->
-
 </div>

@@ -7159,11 +7159,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Yann\\Learning\\CSharp\\IISC\\Garage.Core\\Garage.Core.csproj",
+      "projectUniqueName": "C:\\Program Files\\LearningYear\\IISC\\Garage.Core\\Garage.Core.csproj",
       "projectName": "Garage.Core",
-      "projectPath": "C:\\Yann\\Learning\\CSharp\\IISC\\Garage.Core\\Garage.Core.csproj",
+      "projectPath": "C:\\Program Files\\LearningYear\\IISC\\Garage.Core\\Garage.Core.csproj",
       "packagesPath": "C:\\Users\\ykatambo\\.nuget\\packages\\",
-      "outputPath": "C:\\Yann\\Learning\\CSharp\\IISC\\Garage.Core\\obj\\",
+      "outputPath": "C:\\Program Files\\LearningYear\\IISC\\Garage.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ykatambo\\AppData\\Roaming\\NuGet\\NuGet.Config",

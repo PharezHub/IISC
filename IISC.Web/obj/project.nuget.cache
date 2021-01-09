@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QA0pr8qve1glvDnYvoIt6msiUt9fE+zXeN6ElhWYttLBhAuTpQJQimyEgM6yg1uGwYby6Q2rZXz+EvFGSy+wLQ==",
+  "dgSpecHash": "Sw3EwvlnIP5TcgzsvRkEe5Rv2cKBCF9X8yb7Ik3NIuxGBITh96OiEXA0afnDW5Vd3y3QiDWdxL9onJu/se6cIg==",
   "success": true,
-  "projectFilePath": "C:\\Yann\\Learning\\CSharp\\IISC\\IISC.Web\\IISC.Web.csproj",
+  "projectFilePath": "C:\\Program Files\\LearningYear\\IISC\\IISC.Web\\IISC.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ykatambo\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\ykatambo\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
