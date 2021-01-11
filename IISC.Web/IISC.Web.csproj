@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Garage\Logsheet\" />
     <Folder Include="Pages\HR\" />
     <Folder Include="Pages\Cylinder\" />
     <Folder Include="Pages\Visitor\" />
