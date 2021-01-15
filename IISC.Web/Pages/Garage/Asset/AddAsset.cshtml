@@ -1,7 +1,7 @@
 ﻿@page
 @model IISC.Web.Pages.Garage.Asset.AddAssetModel
 @{
-    ViewData["Title"] = "New Asset";
+    ViewData["Title"] = "Add New Asset";
 }
 
 <div class="row">
@@ -14,7 +14,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Settings</a></li>
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Garage Management System</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
                             </ol>
                         </nav>
@@ -23,6 +23,112 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card bg-light mb-3">
+                    <div class="card-header">@ViewData["Title"]</div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="form-group row">
+                                <label asp-for="AssetHeader.AssetTypeID" class="col-sm-3 col-form-label"> Type </label>
+                                <div class="col-sm-9">
+                                    <select asp-for="AssetHeader.AssetTypeID" class="form-control" asp-items="Model.AssetDisplay()">
+                                    </select>
+                                    <input asp-for="AssetHeader.AssetTypeID" class="form-control" style="display:none" />
+                                    <span asp-validation-for="AssetHeader.AssetTypeID" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="AssetHeader.CategoryID" class="col-sm-3 col-form-label"> Category</label>
+                                <div class="col-sm-9">
+                                    <select asp-for="AssetHeader.CategoryID" class="form-control" asp-items="Model.CategoryDisplay()"></select>
+                                    <span asp-validation-for="AssetHeader.CategoryID" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="AssetHeader.EngineNo" class="col-sm-3 col-form-label">Engine No</label>
+                                <div class="col-sm-9">
+                                    <input asp-for="AssetHeader.EngineNo" class="form-control" placeholder="Enter Engine number" />
+                                    <span asp-validation-for="AssetHeader.EngineNo" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="AssetHeader.ChassisNo" class="col-sm-3 col-form-label">Chassis No</label>
+                                <div class="col-sm-9">
+                                    <input asp-for="AssetHeader.ChassisNo" class="form-control" placeholder="Enter Chassis number" />
+                                    <span asp-validation-for="AssetHeader.ChassisNo" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="AssetHeader.RegNo" class="col-sm-3 col-form-label"> Reg No</label>
+                                <div class="col-sm-9">
+                                    <input asp-for="AssetHeader.RegNo" class="form-control" placeholder="Enter vehicle registration number" />
+                                    <span asp-validation-for="AssetHeader.RegNo" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="AssetHeader.Make" class="col-sm-3 col-form-label"> Make</label>
+                                <div class="col-sm-9">
+                                    <select asp-for="AssetHeader.Make" class="form-control" asp-items="Model.MakeDisplay()"></select>
+                                    <span asp-validation-for="AssetHeader.Make" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="AssetHeader.ModelName" class="col-sm-3 col-form-label"> Model</label>
+                                <div class="col-sm-9">
+                                    <select asp-for="AssetHeader.ModelName" class="form-control" asp-items="Model.ModelDisplay()"></select>
+                                    <span asp-validation-for="AssetHeader.ModelName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="AssetHeader.InitialMileage" class="col-sm-3 col-form-label"> Initial Mileage</label>
+                                <div class="col-sm-9">
+                                    <input asp-for="AssetHeader.InitialMileage" class="form-control" placeholder="Enter vehicle initial mileage" />
+                                    <span asp-validation-for="AssetHeader.InitialMileage" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="AssetHeader.Year" class="col-sm-3 col-form-label"> Year</label>
+                                <div class="col-sm-9">
+                                    <input asp-for="AssetHeader.Year" class="form-control" placeholder="Enter vehicle year" />
+                                    <span asp-validation-for="AssetHeader.Year" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="AssetHeader.EngineCapacity" class="col-sm-3 col-form-label"> Engine Capacity</label>
+                                <div class="col-sm-9">
+                                    <input asp-for="AssetHeader.EngineCapacity" class="form-control" placeholder="Enter engine capacity" />
+                                    <span asp-validation-for="AssetHeader.EngineCapacity" class="text-danger"></span>
+                                </div>
+                            </div>
 
+                            <div class="row mt-2 float-left">
+                                <a asp-page="/Garage/Routines/SetupTrigger" class="btn btn-outline-dark">Back</a>
+                            </div>
+                            <div class="row mt-2 float-right">
+                                <button type="submit" class="btn btn-outline-primary">Add Asset</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
     </div>
+
+    <!-- sidenavbar -->
+    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
+        <div class="sidebar-nav-fixed">
+            <ul class="list-unstyled">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#top">Back to Top</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end sidenavbar -->
 </div>

@@ -125,7 +125,7 @@ namespace Garage.Core.AppDbContext
 
                 entity.Property(e => e.Make).IsUnicode(false);
 
-                entity.Property(e => e.Model).IsUnicode(false);
+                entity.Property(e => e.ModelName).IsUnicode(false);
 
                 entity.Property(e => e.RegNo).IsUnicode(false);
 
