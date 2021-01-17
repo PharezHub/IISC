@@ -276,7 +276,7 @@ namespace IISC.Web.Pages.Garage.Asset
         public SelectList ColorDisplay()
         {
             ColorTypeList = PopulateColor();
-            SelectList colorList = new SelectList(ColorTypeList, "ID", "color");
+            SelectList colorList = new SelectList(ColorTypeList, "ID", "Color");
             return colorList;
         }
 
