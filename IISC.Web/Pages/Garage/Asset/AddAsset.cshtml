@@ -186,7 +186,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <label asp-for="InsuranceVM.TypeId">Insurance Type</label>
-                                                    <select asp-for="InsuranceVM.TypeId" class="form-control" asp-items="Model.ModelDisplay()"></select>
+                                                    <select asp-for="InsuranceVM.TypeId" class="form-control" asp-items="Model.ModelInsuranceType()"></select>
                                                     <span asp-validation-for="InsuranceVM.TypeId" class="text-danger"></span>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -212,16 +212,32 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="card-pill-2" role="tabpanel" aria-labelledby="card-tab-2">
-                                            <p>Etiam libero metus, dapibus vel sollicitudin vel, cursus sit amet urna. Nam imperdiet sem et purus varius aliquam. </p>
-                                            <p>
-                                                Proin pulvinar diam tempor auctor egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec consectetur, leo vel tincidunt imperdiet, nibh nisl consectetur orci, ut porttitor purus dui vitae nibh. Donec ut rhoncus elit, eget aliquam enim.
-                                            </p>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <label asp-for="RoadTaxVM.DateRenewed">Renewed Date</label>
+                                                    <input asp-for="RoadTaxVM.DateRenewed" class="form-control" placeholder="Select date renewed" />
+                                                    <span asp-validation-for="RoadTaxVM.DateRenewed" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <label asp-for="RoadTaxVM.ExpiryDate">Expiry Date</label>
+                                                    <input asp-for="RoadTaxVM.ExpiryDate" class="form-control" placeholder="Select expiry date" />
+                                                    <span asp-validation-for="RoadTaxVM.ExpiryDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="tab-pane fade" id="card-pill-3" role="tabpanel" aria-labelledby="card-tab-3">
-                                            <p>Donec vitae tellus sapietiam odio erat, egestas sit amet risus euabitur scelerisque leo at lectus mollis, ac dictum lectus fermentum. interdum sodales metus. </p>
-                                            <p>
-                                                Cras risus nisi, sollicitudin eget dui eu porta tincidunt sem. Donec consectetur, leo vel tincidunt imperdiet, nibh nisl consectetur orci, ut porttitor purus dui vitae nibh. Donec ut rhoncus elit, eget aliquam enim.
-                                            </p>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <label asp-for="FitnessVM.DateRenewed">Renewed Date</label>
+                                                    <input asp-for="FitnessVM.DateRenewed" class="form-control" placeholder="Select date renewed" />
+                                                    <span asp-validation-for="FitnessVM.DateRenewed" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <label asp-for="FitnessVM.ExpiryDate">ExpiryDate</label>
+                                                    <input asp-for="FitnessVM.ExpiryDate" class="form-control" placeholder="Select expiry date" />
+                                                    <span asp-validation-for="FitnessVM.ExpiryDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Garage.Core.AppDbContext;
 using Garage.Core.Models;
+using Garage.Core.Repository;
 using Garage.Core.ViewModel;
 using IISC.Web.Pages.Garage.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +18,12 @@ namespace IISC.Web.Pages.Garage.Asset
     {
         public static string constr = Environment.GetEnvironmentVariable("GarageDbConn");
         private readonly GarageDbContext _context;
+        private readonly IAssetRepository assetRepository;
 
-        public AddAssetModel(GarageDbContext context)
+        public AddAssetModel(GarageDbContext context, IAssetRepository assetRepository)
         {
             this._context = context;
+            this.assetRepository = assetRepository;
         }
 
         [BindProperty]
@@ -28,11 +31,18 @@ namespace IISC.Web.Pages.Garage.Asset
 
         [BindProperty]
         public InsuranceViewModel InsuranceVM { get; set; }
+        
+        [BindProperty]
+        public FitnessViewModel FitnessVM { get; set; }
+
+        [BindProperty]
+        public RoadTaxViewModel RoadTaxVM { get; set; }
         public List<AssetTypeViewModel> AssetDisplayList { get; set; }
         public List<FuelTypeViewModel> FueltypeList { get; set; }
         public List<CategoryViewModel> CategoryDisplayList { get; set; }
         public List<MakeViewModel> MakeTypeList { get; set; }
         public List<CarModelViewModel> ModelTypeList { get; set; }
+        public List<Adm_InsuranceType> InsuranceTypeList { get; set; }
         public List<ColorViewModel> ColorTypeList { get; set; }
 
         public SelectList AssetDisplay()
@@ -282,6 +292,13 @@ namespace IISC.Web.Pages.Garage.Asset
             ModelTypeList = PopulateModel();
             SelectList modelList = new SelectList(ModelTypeList, "ID", "ModelName");
             return modelList;
+        }
+
+        public SelectList ModelInsuranceType()
+        {
+            InsuranceTypeList = assetRepository.GetInsuranceType();
+            SelectList InsuranceList = new SelectList(InsuranceTypeList, nameof(Adm_InsuranceType.ID), nameof(Adm_InsuranceType.InsuranceName));
+            return InsuranceList;
         }
 
         public SelectList ColorDisplay()

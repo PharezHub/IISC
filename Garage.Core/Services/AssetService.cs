@@ -1,4 +1,5 @@
 ﻿using Garage.Core.AppDbContext;
+using Garage.Core.Models;
 using Garage.Core.Repository;
 using Garage.Core.ViewModel;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,11 @@ namespace Garage.Core.Services
             return _context.AssetCatalogueViewModel
                 .FromSqlRaw("spGetAssetCatelogue")
                 .ToList();
+        }
+
+        public List<Adm_InsuranceType> GetInsuranceType()
+        {
+            return _context.Adm_InsuranceType.ToList();
         }
     }
 }
