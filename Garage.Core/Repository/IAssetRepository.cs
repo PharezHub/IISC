@@ -10,5 +10,7 @@ namespace Garage.Core.Repository
     {
         IEnumerable<AssetCatalogueViewModel> GetAssetCatelogueList();
         List<Adm_InsuranceType> GetInsuranceType();
+
+        void AddStatutory(Hdr_StatutoryRequirement statutoryRequirement);
     }
 }

@@ -19,6 +19,19 @@ namespace Garage.Core.Services
             this._context = context;
         }
 
+        public void AddStatutory(Hdr_StatutoryRequirement statutoryRequirement)
+        {
+            try
+            {
+                _context.Hdr_StatutoryRequirement.Add(statutoryRequirement);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IEnumerable<AssetCatalogueViewModel> GetAssetCatelogueList()
         {
             return _context.AssetCatalogueViewModel
