@@ -248,3 +248,4 @@ C:\Program Files\LearningYear\IISC\IISC.Web\obj\Debug\net5.0\ref\IISC.Web.dll
 C:\Program Files\LearningYear\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.pdb
 C:\Program Files\LearningYear\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.genruntimeconfig.cache
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Asset\AddAsset.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Asset\Index.cshtml.g.cs

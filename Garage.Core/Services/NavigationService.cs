@@ -7,11 +7,11 @@ using System.Text;
 
 namespace Garage.Core.Services
 {
-    public class NavigationRepository : INavigationRepository
+    public class NavigationService : INavigationRepository
     {
         private readonly GarageDbContext context;
 
-        public NavigationRepository(GarageDbContext context)
+        public NavigationService(GarageDbContext context)
         {
             this.context = context;
         }

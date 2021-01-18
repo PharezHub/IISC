@@ -35,7 +35,7 @@
                                 <p class="card-text text-center">@item.Description.</p>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="@($"/{item.ModuleName}/{item.PageUrl}")" class="btn btn-outline-dark">@item.Title</a>
+                                <a asp-page="@($"/{item.ModuleName}/{item.PageUrl}")" class="btn btn-outline-dark">@item.Title</a>
                             </div>
                         </div>
 

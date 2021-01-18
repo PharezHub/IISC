@@ -34,6 +34,7 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<Gen_SystemArea> Gen_SystemArea { get; set; }
 
         public DbSet<StatutoryCategoryViewModel> StatutoryCategoryViewModel { get; set; }
+        public DbSet<AssetCatalogueViewModel> AssetCatalogueViewModel { get; set; }
 
         public DbSet<MaintenanceTriggerListViewModel> MaintenanceTriggerListViewModel { get; set; }
 
@@ -125,7 +126,7 @@ namespace Garage.Core.AppDbContext
 
                 entity.Property(e => e.Make).IsUnicode(false);
 
-                entity.Property(e => e.ModelName).IsUnicode(false);
+                entity.Property(e => e.ModelID).IsUnicode(false);
 
                 entity.Property(e => e.RegNo).IsUnicode(false);
 

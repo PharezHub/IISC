@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Garage.Core.AppDbContext;
 using Garage.Core.Models;
 using Garage.Core.ViewModel;
+using IISC.Web.Pages.Garage.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,9 +16,18 @@ namespace IISC.Web.Pages.Garage.Asset
     public class AddAssetModel : PageModel
     {
         public static string constr = Environment.GetEnvironmentVariable("GarageDbConn");
+        private readonly GarageDbContext _context;
+
+        public AddAssetModel(GarageDbContext context)
+        {
+            this._context = context;
+        }
 
         [BindProperty]
         public Hdr_Asset AssetHeader { get; set; }
+
+        [BindProperty]
+        public InsuranceViewModel InsuranceVM { get; set; }
         public List<AssetTypeViewModel> AssetDisplayList { get; set; }
         public List<FuelTypeViewModel> FueltypeList { get; set; }
         public List<CategoryViewModel> CategoryDisplayList { get; set; }
@@ -322,8 +333,27 @@ namespace IISC.Web.Pages.Garage.Asset
             return statusList;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            // Initialize and Post data
+            AssetHeader.AssetStatus = 1;
+            AssetHeader.CreatedBy = User.Identity.Name;
+            AssetHeader.CreatedOn = DateTime.Now;
+            AssetHeader.CurrentMileage = AssetHeader.InitialMileage;
+
+            _context.Hdr_Asset.Add(AssetHeader);
+            await _context.SaveChangesAsync();
+            return RedirectToPage("/Garage/Asset/Index");
         }
     }
 }

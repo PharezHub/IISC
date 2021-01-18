@@ -1,0 +1,98 @@
+﻿@page
+@model IISC.Web.Pages.Garage.Asset.IndexModel
+@{
+    ViewData["Title"] = "Asset Catalogue";
+}
+
+<div class="row">
+    <div class="col-xl-10">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h2 class="pageheader-title">@ViewData["Title"] </h2>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item"><a asp-page="/Garage/Index" class="breadcrumb-link">Garage Management System</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header">Asset List</h5>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="bg-light">
+                                    <tr class="border-0">
+                                        <th class="border-0">#</th>
+                                        <th class="border-0">Type</th>
+                                        <th class="border-0">Category</th>
+                                        <th class="border-0">Reg No</th>
+                                        <th class="border-0">Make</th>
+                                        <th class="border-0">Model</th>
+                                        <th class="border-0">Fuel</th>
+                                        <th class="border-0">Year</th>
+                                        <th class="border-0">Status</th>
+                                        <th class="border-0"> </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.AssetCatalogueList)
+                                    {
+                                    <tr>
+                                        <td>@item.ID</td>
+                                        <td>@item.AssetType</td>
+                                        <td>@item.CategoryName</td>
+                                        <td>@item.RegNo</td>
+                                        <td>@item.MakeName</td>
+                                        <td>@item.ModelName</td>
+                                        <td>@item.FuelName</td>
+                                        <td>@item.Year</td>
+                                        <td>
+                                            @if (@item.StatusID == 1)
+                                            {
+                                                <span class="badge-dot badge-success mr-1"></span>@item.Status
+                                            }
+                                            else if (@item.StatusID == 2)
+                                            {
+                                                <span class="badge-dot badge-brand mr-1"></span>@item.Status
+                                            }
+                                            else
+                                            {
+                                                <span class="badge-dot badge-danger mr-1"></span>@item.Status
+                                            }
+                                        </td>
+                                        <td>
+                                            <a asp-page="Garage/Asset/EditAsset/@item.ID" alt="View asset details" >View</a>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer p-0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sidenavbar -->
+    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
+        <div class="sidebar-nav-fixed">
+            <ul class="list-unstyled">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#top">Back to Top</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end sidenavbar -->
+</div>

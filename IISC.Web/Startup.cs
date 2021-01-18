@@ -34,7 +34,8 @@ namespace IISC.Web
                 => options.UseSqlServer(Environment.GetEnvironmentVariable("GarageDbConn")));
             services.AddScoped<ICategoryRepository, CategoryService>();
             services.AddScoped<IRoutineRepository, RoutineService>();
-            services.AddScoped<INavigationRepository, NavigationRepository>();
+            services.AddScoped<INavigationRepository, NavigationService>();
+            services.AddScoped<IAssetRepository, AssetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

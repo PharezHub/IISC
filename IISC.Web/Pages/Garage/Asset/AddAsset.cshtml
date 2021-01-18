@@ -22,13 +22,12 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card bg-light mb-3">
-                    <div class="card-header">@ViewData["Title"]</div>
-                    <div class="card-body">
-                        <form method="post">
+        <form method="post">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">@ViewData["Title"]</div>
+                        <div class="card-body">
                             <div class="form-group row">
                                 <label asp-for="AssetHeader.AssetTypeID" class="col-sm-3 col-form-label">Asset Type </label>
                                 <div class="col-sm-9">
@@ -74,10 +73,10 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label asp-for="AssetHeader.ModelName" class="col-sm-3 col-form-label">Model</label>
+                                <label asp-for="AssetHeader.ModelID" class="col-sm-3 col-form-label">Model</label>
                                 <div class="col-sm-9">
-                                    <select asp-for="AssetHeader.ModelName" class="form-control" asp-items="Model.ModelDisplay()"></select>
-                                    <span asp-validation-for="AssetHeader.ModelName" class="text-danger"></span>
+                                    <select asp-for="AssetHeader.ModelID" class="form-control" asp-items="Model.ModelDisplay()"></select>
+                                    <span asp-validation-for="AssetHeader.ModelID" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -95,31 +94,25 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label asp-for="AssetHeader.ModelName" class="col-sm-3 col-form-label">Fuel Type</label>
+                                <label asp-for="AssetHeader.FuelTypeID" class="col-sm-3 col-form-label">Fuel Type</label>
                                 <div class="col-sm-9">
                                     <select asp-for="AssetHeader.FuelTypeID" class="form-control" asp-items="Model.FuelDisplay()"></select>
                                     <span asp-validation-for="AssetHeader.FuelTypeID" class="text-danger"></span>
                                 </div>
                             </div>
-
-                            <div class="row mt-2 float-left">
-                                <a asp-page="/Garage/Routines/SetupTrigger" class="btn btn-outline-dark">Back</a>
-                            </div>
+                        </div>
+                        <div class="card-footer">
                             <div class="row mt-2 float-right">
                                 <button type="submit" class="btn btn-outline-primary">Add Asset</button>
                             </div>
-                        </form>
-                    </div>
-                    <div class="card-footer">
-
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card bg-light mb-3">
-                    <div class="card-header">Optional Details</div>
-                    <div class="card-body">
-                        <form method="post">
+
+                <div class="col-sm-4">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">Optional Details</div>
+                        <div class="card-body">
                             <div class="form-group row">
                                 <label asp-for="AssetHeader.Color" class="col-sm-3 col-form-label">Color </label>
                                 <div class="col-sm-9">
@@ -132,8 +125,8 @@
                             <div class="form-group row">
                                 <label asp-for="AssetHeader.YearOfPurchase" class="col-sm-3 col-form-label">Purchase Year</label>
                                 <div class="col-sm-9">
-                                    <input asp-for="AssetHeader.InitialMileage" class="form-control" value="0" placeholder="Enter vehicle purchase year" />
-                                    <span asp-validation-for="AssetHeader.CategoryID" class="text-danger"></span>
+                                    <input asp-for="AssetHeader.YearOfPurchase" class="form-control" value="0" placeholder="Enter vehicle purchase year" />
+                                    <span asp-validation-for="AssetHeader.YearOfPurchase" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -163,17 +156,81 @@
                                     <textarea asp-for="AssetHeader.Comment" rows="4" class="form-control" text-wrap:normal" type="text" placeholder="Comment"></textarea>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="card-footer">
+                        </div>
+                        <div class="card-footer">
 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="row">                    
+                        <div class="col-md-12 col-sm-12 col-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-header pills-regular">
+                                    <ul class="nav nav-pills card-header-pills" id="myTab2" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="card-pills-1" data-toggle="tab" href="#card-pill-1" role="tab" aria-controls="card-1" aria-selected="true">Insurance</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="card-pills-2" data-toggle="tab" href="#card-pill-2" role="tab" aria-controls="card-2" aria-selected="false">Road Tax</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="card-pills-3" data-toggle="tab" href="#card-pill-3" role="tab" aria-controls="card-3" aria-selected="false">Fitness</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-body">
+                                    <div class="tab-content" id="myTabContent2">
+                                        <div class="tab-pane fade show active" id="card-pill-1" role="tabpanel" aria-labelledby="card-tab-1">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <label asp-for="InsuranceVM.TypeId">Insurance Type</label>
+                                                    <select asp-for="InsuranceVM.TypeId" class="form-control" asp-items="Model.ModelDisplay()"></select>
+                                                    <span asp-validation-for="InsuranceVM.TypeId" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <label asp-for="InsuranceVM.CompanyName">Insurance Company</label>
+                                                    <input asp-for="InsuranceVM.CompanyName" class="form-control" placeholder="Enter insurance company" />
+                                                    <span asp-validation-for="InsuranceVM.CompanyName" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <label asp-for="InsuranceVM.InsuranceValue">Insurance Value(K)</label>
+                                                    <input asp-for="InsuranceVM.InsuranceValue" class="form-control" placeholder="Enter insurance value" />
+                                                    <span asp-validation-for="InsuranceVM.InsuranceValue" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <label asp-for="InsuranceVM.DateFrom">Date From</label>
+                                                    <input asp-for="InsuranceVM.DateFrom" class="form-control" placeholder="Enter insurance date from" />
+                                                    <span asp-validation-for="InsuranceVM.DateFrom" class="text-danger"></span>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <label asp-for="InsuranceVM.DateTo">Date To</label>
+                                                    <input asp-for="InsuranceVM.DateTo" class="form-control" placeholder="Enter insurance date to" />
+                                                    <span asp-validation-for="InsuranceVM.DateTo" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="card-pill-2" role="tabpanel" aria-labelledby="card-tab-2">
+                                            <p>Etiam libero metus, dapibus vel sollicitudin vel, cursus sit amet urna. Nam imperdiet sem et purus varius aliquam. </p>
+                                            <p>
+                                                Proin pulvinar diam tempor auctor egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec consectetur, leo vel tincidunt imperdiet, nibh nisl consectetur orci, ut porttitor purus dui vitae nibh. Donec ut rhoncus elit, eget aliquam enim.
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane fade" id="card-pill-3" role="tabpanel" aria-labelledby="card-tab-3">
+                                            <p>Donec vitae tellus sapietiam odio erat, egestas sit amet risus euabitur scelerisque leo at lectus mollis, ac dictum lectus fermentum. interdum sodales metus. </p>
+                                            <p>
+                                                Cras risus nisi, sollicitudin eget dui eu porta tincidunt sem. Donec consectetur, leo vel tincidunt imperdiet, nibh nisl consectetur orci, ut porttitor purus dui vitae nibh. Donec ut rhoncus elit, eget aliquam enim.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                Right Column
-            </div>
-        </div>
+        </form>
     </div>
 
     <!-- sidenavbar -->

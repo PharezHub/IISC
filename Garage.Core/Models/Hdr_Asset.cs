@@ -24,7 +24,7 @@ namespace Garage.Core.Models
         [StringLength(30)]
         public string Make { get; set; }
         [StringLength(30)]
-        public string ModelName { get; set; }
+        public string ModelID { get; set; }
         public int? Year { get; set; }
         [StringLength(10)]
         public string EngineCapacity { get; set; }
