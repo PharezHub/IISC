@@ -65,5 +65,11 @@ namespace IISC.Web.Pages.Garage.Category
 
             return RedirectToPage("/Garage/Category/Index");
         }
+
+        public IActionResult DeleteStatutory(int Id)
+        {
+            categoryRepository.DeleteLink(Id);
+            return RedirectToPage("/Garage/Category/Index");
+        }
     }
 }

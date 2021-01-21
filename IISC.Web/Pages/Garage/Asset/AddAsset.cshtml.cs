@@ -369,6 +369,9 @@ namespace IISC.Web.Pages.Garage.Asset
             AssetHeader.CreatedBy = User.Identity.Name;
             AssetHeader.CreatedOn = DateTime.Now;
             AssetHeader.CurrentMileage = AssetHeader.InitialMileage;
+            AssetHeader.EngineNo = AssetHeader.EngineNo.ToUpper();
+            AssetHeader.ChassisNo = AssetHeader.ChassisNo.ToUpper();
+            AssetHeader.RegNo = AssetHeader.RegNo.ToUpper();
             AssetHeader.FitnessExpiryDate = FitnessVM.ExpiryDate;
             AssetHeader.RoadTaxExpiryDate = RoadTaxVM.ExpiryDate;
             AssetHeader.InsuranceExpiryDate = InsuranceVM.DateTo;
@@ -378,8 +381,8 @@ namespace IISC.Web.Pages.Garage.Asset
 
             //Post Insurance statutory requirements
             StatutoryRequirement.AssetID = 0;
-            StatutoryRequirement.RegNo = AssetHeader.RegNo;
-            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo;
+            StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
+            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
             StatutoryRequirement.StatutoryID = 1;
             StatutoryRequirement.StatutoryAvailable = true;
             StatutoryRequirement.InsuranceTypeID = InsuranceVM.TypeId;
@@ -395,8 +398,8 @@ namespace IISC.Web.Pages.Garage.Asset
             //post RoadTax statutory requirements
             StatutoryRequirement.ID = 0;
             StatutoryRequirement.AssetID = 0;
-            StatutoryRequirement.RegNo = AssetHeader.RegNo;
-            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo;
+            StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
+            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
             StatutoryRequirement.StatutoryID = 2;
             StatutoryRequirement.StatutoryAvailable = true;
             StatutoryRequirement.InsuranceTypeID = 0;
@@ -412,8 +415,8 @@ namespace IISC.Web.Pages.Garage.Asset
             //post Fitness statutory requirements
             StatutoryRequirement.ID = 0;
             StatutoryRequirement.AssetID = 0;
-            StatutoryRequirement.RegNo = AssetHeader.RegNo;
-            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo;
+            StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
+            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
             StatutoryRequirement.StatutoryID = 3;
             StatutoryRequirement.StatutoryAvailable = true;
             StatutoryRequirement.InsuranceTypeID = 0;

@@ -44,6 +44,17 @@ namespace Garage.Core.Services
             _context.SaveChanges();
         }
 
+        public void DeleteLink(int Id)
+        {
+            var LinkToDelete = _context.Adm_CategoryStatutoryLink.Find(Id);
+            if (LinkToDelete != null)
+            {
+                _context.Remove(LinkToDelete);
+                _context.SaveChanges();
+            }
+            throw new InvalidOperationException("Statutory link to delete not found!!!");
+        }
+
         public void DeleteStatutory(Adm_Statutory statutory)
         {
             var statutoryData = _context.Adm_Statutory.Attach(statutory);

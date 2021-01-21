@@ -28,6 +28,7 @@ namespace Garage.Core.Repository
 
         // Link Statutory Requirements to Category
         void AddLink(Adm_CategoryStatutoryLink statutoryLink);
-        IEnumerable<StatutoryCategoryViewModel> GetStatutoryByCategoryId(int id);
+        IEnumerable<StatutoryCategoryViewModel> GetStatutoryByCategoryId(int Id);
+        void DeleteLink(int Id);
     }
 }

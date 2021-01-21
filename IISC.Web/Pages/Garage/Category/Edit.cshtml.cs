@@ -4,13 +4,42 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Garage.Core.Models;
+using Garage.Core.Repository;
 
 namespace IISC.Web.Pages.Garage.Category
 {
     public class EditModel : PageModel
     {
-        public void OnGet()
+        private readonly ICategoryRepository categoryRepository;
+
+        [BindProperty]
+        public Adm_AssetCategory AssetCategory { get; set; }
+
+        public EditModel(ICategoryRepository categoryRepository)
         {
+            this.categoryRepository = categoryRepository;
+        }
+
+        public IActionResult OnGet(int id)
+        {
+            AssetCategory = categoryRepository.GetCategoryById(id);
+
+            if (AssetCategory == null)
+            {
+                return RedirectToPage("NotFound");
+            }
+            return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                AssetCategory.IsActive = true;
+                categoryRepository.UpdateCategory(AssetCategory);
+            }
+            return RedirectToPage("/Garage/Category/Index");
         }
     }
 }
