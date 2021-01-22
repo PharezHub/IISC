@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
     <link rel="stylesheet" href="~/assets/datepicker/tempusdominus-bootstrap-4.css" />
     <link rel="stylesheet" href="~/assets/inputmask/css/inputmask.css" />
+    <link rel="stylesheet" href="~/assets/datatables/css/dataTables.bootstrap4.css" />
+    <link rel="stylesheet" href="~/assets/datatables/css/select.bootstrap4.css"  />
+    <link rel="stylesheet" href="~/assets/datatables/css/fixedHeader.bootstrap4.css"  />
+    <link rel="stylesheet" href="~/assets/datatables/css/buttons.bootstrap4.css"  />
 
 </head>
 <body>
@@ -245,10 +249,18 @@
         <!-- end body wrapper  -->
     </div>
 
+    <script src="~/assets/jquery/jquery-3.3.1.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/slimscroll/jquery.slimscroll.js"></script>
     <script src="~/lib/font-awesome/js/fontawesome.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/assets/multi-select/js/jquery.multi-select.js"></script>
+    <script src="~/assets/libs/js/main-js.js"></script>
+    <script src="~/assets/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/assets/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/assets/datatables/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/assets/datatables/js/data-table.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

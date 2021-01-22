@@ -370,8 +370,8 @@ namespace IISC.Web.Pages.Garage.Asset
             AssetHeader.CreatedOn = DateTime.Now;
             AssetHeader.CurrentMileage = AssetHeader.InitialMileage;
             AssetHeader.EngineNo = AssetHeader.EngineNo.ToUpper();
-            AssetHeader.ChassisNo = AssetHeader.ChassisNo.ToUpper();
-            AssetHeader.RegNo = AssetHeader.RegNo.ToUpper();
+            AssetHeader.ChassisNo = AssetHeader.ChassisNo.ToUpper().Trim();
+            AssetHeader.RegNo = AssetHeader.RegNo.ToUpper().Trim();
             AssetHeader.FitnessExpiryDate = FitnessVM.ExpiryDate;
             AssetHeader.RoadTaxExpiryDate = RoadTaxVM.ExpiryDate;
             AssetHeader.InsuranceExpiryDate = InsuranceVM.DateTo;

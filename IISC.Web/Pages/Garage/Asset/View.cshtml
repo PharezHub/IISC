@@ -1,0 +1,37 @@
+﻿@page "{id:min(1)}"
+@model IISC.Web.Pages.Garage.Asset.ViewModel
+@{
+    ViewData["Title"] = "Asset Detail";
+}
+
+<div class="row">
+    <div class="col-xl-10">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h2 class="pageheader-title">@ViewData["Title"] </h2>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Garage Management System</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sidenavbar -->
+    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
+        <div class="sidebar-nav-fixed">
+            <ul class="list-unstyled">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#top">Back to Top</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end sidenavbar -->
+</div>
