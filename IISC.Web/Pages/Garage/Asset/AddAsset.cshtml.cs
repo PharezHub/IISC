@@ -359,6 +359,15 @@ namespace IISC.Web.Pages.Garage.Asset
 
         public async Task<IActionResult> OnPostAsync()
         {
+            if (assetRepository.ValidateEngineNumber(AssetHeader.EngineNo.ToUpper().Trim()))
+            {
+                ModelState.AddModelError("Error", $"Engine number: {AssetHeader.EngineNo.ToUpper().Trim()} already exists!!!");
+            }
+            if (assetRepository.ValidateRegNumber(AssetHeader.RegNo.ToUpper().Trim()))
+            {
+                ModelState.AddModelError("Error", $"Asset Registration number: {AssetHeader.RegNo.ToUpper().Trim()} already exists!!!");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -369,7 +378,7 @@ namespace IISC.Web.Pages.Garage.Asset
             AssetHeader.CreatedBy = User.Identity.Name;
             AssetHeader.CreatedOn = DateTime.Now;
             AssetHeader.CurrentMileage = AssetHeader.InitialMileage;
-            AssetHeader.EngineNo = AssetHeader.EngineNo.ToUpper();
+            AssetHeader.EngineNo = AssetHeader.EngineNo.ToUpper().Trim();
             AssetHeader.ChassisNo = AssetHeader.ChassisNo.ToUpper().Trim();
             AssetHeader.RegNo = AssetHeader.RegNo.ToUpper().Trim();
             AssetHeader.FitnessExpiryDate = FitnessVM.ExpiryDate;

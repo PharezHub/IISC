@@ -39,6 +39,7 @@ namespace Garage.Core.AppDbContext
         public DbSet<MaintenanceTriggerListViewModel> MaintenanceTriggerListViewModel { get; set; }
 
         public DbSet<LogSheetSetupViewModel> LogSheetSetupViewModel { get; set; }
+        public DbSet<LogSheetListViewModel> LogSheetListViewModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

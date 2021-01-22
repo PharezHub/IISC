@@ -43,5 +43,25 @@ namespace Garage.Core.Services
         {
             return _context.Adm_InsuranceType.ToList();
         }
+
+        public bool ValidateEngineNumber(string engineNo)
+        {
+            bool exists = false;
+            var query = _context.Hdr_Asset.FirstOrDefault(x => x.EngineNo.Trim().ToUpper() == engineNo.Trim().ToUpper());
+            if (query != null)
+                exists = true;
+
+            return exists;
+        }
+
+        public bool ValidateRegNumber(string regNo)
+        {
+            bool exists = false;
+            var query = _context.Hdr_Asset.FirstOrDefault(x => x.RegNo.Trim().ToUpper() == regNo.Trim().ToUpper());
+            if (query != null)
+                exists = true;
+
+            return exists;
+        }
     }
 }

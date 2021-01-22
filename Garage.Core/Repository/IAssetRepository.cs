@@ -12,5 +12,7 @@ namespace Garage.Core.Repository
         List<Adm_InsuranceType> GetInsuranceType();
 
         void AddStatutory(Hdr_StatutoryRequirement statutoryRequirement);
+        bool ValidateRegNumber(string regNo);
+        bool ValidateEngineNumber(string engineNo);
     }
 }

@@ -36,6 +36,7 @@ namespace IISC.Web
             services.AddScoped<IRoutineRepository, RoutineService>();
             services.AddScoped<INavigationRepository, NavigationService>();
             services.AddScoped<IAssetRepository, AssetService>();
+            services.AddScoped<ILogSheetRepository, LogSheetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
