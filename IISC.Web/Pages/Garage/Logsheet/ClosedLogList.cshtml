@@ -1,7 +1,7 @@
 ﻿@page
-@model IISC.Web.Pages.Garage.Logsheet.LogListModel
+@model IISC.Web.Pages.Garage.Logsheet.ClosedLogListModel
 @{
-    ViewData["Title"] = "Pending Logsheet";
+    ViewData["Title"] = "Approved Logsheet";
 }
 
 <div class="row">
@@ -41,46 +41,40 @@
                                 <th>Current Value</th>
                                 <th>Created On</th>
                                 <th>Status</th>
-                                <th> </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model.LogSheetList)
                             {
-                            <tr>
-                                <td>@item.ID</td>
-                                <td>@item.LogType</td>
-                                <td>@item.CategoryName</td>
-                                <td>@item.RegNo</td>
-                                <td>@item.Make</td>
-                                <td>@item.ModelName</td>
-                                <td>@item.FrequencyName</td>
-                                <td>@item.PreviousValue</td>
-                                <td>@item.CurrentValue</td>
-                                <td>@item.CreatedOn</td>
-                                <td>
-                                    @if (@item.LogStatus == 1)
-                                    {
-                                        <span class="badge-dot badge-success mr-1"></span>@item.TransStatus
-                                    }
-                                    else if (@item.LogStatus == 0)
-                                    {
-                                        <span class="badge-dot badge-brand mr-1"></span>@item.TransStatus
-                                    }
-                                    else
-                                    {
-                                        <span class="badge-dot badge-danger mr-1"></span>@item.TransStatus
-                                    }
-                                </td>
-                                <td>
-                                    <a title="View Details" asp-page="/Garage/Logsheet/LogView" asp-route-ID="@item.ID">
-                                        Update
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.LogType</td>
+                                    <td>@item.CategoryName</td>
+                                    <td>@item.RegNo</td>
+                                    <td>@item.Make</td>
+                                    <td>@item.ModelName</td>
+                                    <td>@item.FrequencyName</td>
+                                    <td>@item.PreviousValue</td>
+                                    <td>@item.CurrentValue</td>
+                                    <td>@item.CreatedOn</td>
+                                    <td>
+                                        @if (@item.LogStatus == 1)
+                                        {
+                                            <span class="badge-dot badge-success mr-1"></span>@item.TransStatus
+                                        }
+                                        else if (@item.LogStatus == 0)
+                                        {
+                                            <span class="badge-dot badge-brand mr-1"></span>@item.TransStatus
+                                        }
+                                        else
+                                        {
+                                            <span class="badge-dot badge-danger mr-1"></span>@item.TransStatus
+                                        }
+                                    </td>
+                                </tr>
                             }
                         </tbody>
-                        
+
                     </table>
                 </div>
             </div>

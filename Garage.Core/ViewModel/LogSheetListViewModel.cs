@@ -21,6 +21,7 @@ namespace Garage.Core.ViewModel
         public double PreviousValue { get; set; }
         public double CurrentValue { get; set; }
         public int LogStatus { get; set; }
+        public string TransStatus { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
         public string ModifiedBy { get; set; }

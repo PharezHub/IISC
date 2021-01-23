@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Logsheet
 {
-    public class LogListModel : PageModel
+    public class ClosedLogListModel : PageModel
     {
         private readonly ILogSheetRepository logSheetRepository;
 
-        public LogListModel(ILogSheetRepository logSheetRepository)
+        public ClosedLogListModel(ILogSheetRepository logSheetRepository)
         {
             this.logSheetRepository = logSheetRepository;
         }
@@ -22,7 +22,7 @@ namespace IISC.Web.Pages.Garage.Logsheet
 
         public IActionResult OnGet()
         {
-            LogSheetList = logSheetRepository.GetLogSheetList(0);
+            LogSheetList = logSheetRepository.GetLogSheetList(1);
             return Page();
         }
     }

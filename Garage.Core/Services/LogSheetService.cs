@@ -29,9 +29,9 @@ namespace Garage.Core.Services
             return _context.LogSheetListViewModel.FromSqlRaw("spGetLogSheetById {0}", id).ToList();
         }
 
-        public IEnumerable<LogSheetListViewModel> GetLogSheetList()
+        public IEnumerable<LogSheetListViewModel> GetLogSheetList(int statusId)
         {
-            return _context.LogSheetListViewModel.FromSqlRaw("spGetLogSheetList").ToList();
+            return _context.LogSheetListViewModel.FromSqlRaw("spGetLogSheetList {0}", statusId).ToList();
         }
 
         public void UpdateLogSheet(LogSheetListViewModel logSheet)
@@ -39,12 +39,14 @@ namespace Garage.Core.Services
             var query = _context.Trn_LogSheet.FirstOrDefault(x => x.ID == logSheet.ID);
             if (query != null)
             {
-                query.LogStatus = 1;
-                query.CurrentValue = logSheet.CurrentValue;
-                query.ModifiedOn = DateTime.Now;
-                query.ModifiedBy = logSheet.ModifiedBy;
+                _context.Database.ExecuteSqlRaw("spUpdateLogSheet {0},{1},{2},{3},{4},{5}", logSheet.ID, logSheet.CurrentValue, 1, DateTime.Now,
+                    logSheet.ModifiedBy, logSheet.LogTypeID);
+                //query.LogStatus = 1;
+                //query.CurrentValue = logSheet.CurrentValue;
+                //query.ModifiedOn = DateTime.Now;
+                //query.ModifiedBy = logSheet.ModifiedBy;
 
-                _context.SaveChanges();
+                //_context.SaveChanges();
             }
         }
     }

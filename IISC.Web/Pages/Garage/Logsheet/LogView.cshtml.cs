@@ -40,7 +40,7 @@ namespace IISC.Web.Pages.Garage.Logsheet
             }
         }
 
-        public IActionResult OnPost(LogSheetListViewModel data)
+        public IActionResult OnPost()
         {
             double currentValue = 0;
             currentValue = LogsheetData.CurrentValue;
