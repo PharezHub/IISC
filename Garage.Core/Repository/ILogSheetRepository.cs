@@ -8,5 +8,6 @@ namespace Garage.Core.Repository
     public interface ILogSheetRepository
     {
         IEnumerable<LogSheetListViewModel> GetLogSheetList();
+        IEnumerable<LogSheetListViewModel> GetLogSheetById(int id);
     }
 }

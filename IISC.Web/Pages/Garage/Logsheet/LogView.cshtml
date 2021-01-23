@@ -5,18 +5,109 @@
 }
 
 <div class="row">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-        <div class="page-header" id="top">
-            <h2 class="pageheader-title">@ViewData["Title"] </h2>
-            <div class="page-breadcrumb">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
-                        <li class="breadcrumb-item"><a asp-page="/Garage/Index" class="breadcrumb-link">Garage Management System</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
-                    </ol>
-                </nav>
+    <div class="col-md-8 col-lg-8">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h2 class="pageheader-title">@ViewData["Title"] </h2>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Garage Management System</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <form method="post">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0">@ViewData["Title"]</h4>
+                        </div>
+                        @if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+                        {
+                            <div class="card-body">
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.LogType">Type</label>
+                                    <input asp-for="LogsheetData.LogType" class="form-control" placeholder="LogType" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.CategoryName">Category</label>
+                                    <input asp-for="LogsheetData.CategoryName" class="form-control" placeholder="CategoryName" disabled="disabled" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.RegNo">Reg No</label>
+                                    <input asp-for="LogsheetData.RegNo" class="form-control" placeholder="Reg No" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.ModelName">Model</label>
+                                    <input asp-for="LogsheetData.ModelName" class="form-control" placeholder="Model" disabled="disabled" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.FrequencyName">Trigged</label>
+                                    <input asp-for="LogsheetData.FrequencyName" class="form-control" placeholder="Trigged" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.CreatedOn">Created On</label>
+                                    <input asp-for="LogsheetData.CreatedOn" class="form-control" placeholder="Created On" disabled="disabled" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.PreviousValue">Previous Value</label>
+                                    <input asp-for="LogsheetData.PreviousValue" class="form-control" placeholder="Previous Value" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.CurrentValue">Current</label>
+                                    <input asp-for="LogsheetData.CurrentValue" class="form-control" placeholder="Current value" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row mt-2 float-left">
+                                <a asp-page="/Garage/Logsheet/LogList" class="btn btn-outline-dark">Cancel</a>
+                            </div>
+                            <div class="row mt-2 float-right">
+                                <button type="submit" class="btn btn-outline-primary">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
+
+    <!-- sidenavbar -->
+    <div class="col-lg-4 col-md-4">
+        <div class="sidebar-nav-fixed">
+            <ul class="list-unstyled">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#top">Back to Top</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end sidenavbar -->
 </div>

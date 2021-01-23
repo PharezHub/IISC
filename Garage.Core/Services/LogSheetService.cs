@@ -17,6 +17,12 @@ namespace Garage.Core.Services
         {
             this._context = context;
         }
+
+        public IEnumerable<LogSheetListViewModel> GetLogSheetById(int id)
+        {
+            return _context.LogSheetListViewModel.FromSqlRaw("spGetLogSheetById {0}", id).ToList();
+        }
+
         public IEnumerable<LogSheetListViewModel> GetLogSheetList()
         {
             return _context.LogSheetListViewModel.FromSqlRaw("spGetLogSheetList").ToList();
