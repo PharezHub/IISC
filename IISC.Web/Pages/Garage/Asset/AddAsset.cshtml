@@ -33,7 +33,7 @@
                         @if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
                         {
                             <div class="card-body">
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
                                     <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>

@@ -16,10 +16,13 @@ namespace Garage.Core.Models
         public int? AssetTypeID { get; set; }
         public int? CategoryID { get; set; }
         [StringLength(30)]
+        [Required]
         public string EngineNo { get; set; }
         [StringLength(30)]
+        [Required]
         public string ChassisNo { get; set; }
         [StringLength(10)]
+        [Required]
         public string RegNo { get; set; }
         [StringLength(30)]
         public string Make { get; set; }
