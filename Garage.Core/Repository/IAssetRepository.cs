@@ -14,5 +14,8 @@ namespace Garage.Core.Repository
         void AddStatutory(Hdr_StatutoryRequirement statutoryRequirement);
         bool ValidateRegNumber(string regNo);
         bool ValidateEngineNumber(string engineNo);
+
+        IEnumerable<AssetCatalogueViewModel> OnSiteUtilization();
+        IEnumerable<AssetCatalogueViewModel> OffSiteUtilization();
     }
 }

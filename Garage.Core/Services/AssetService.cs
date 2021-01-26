@@ -44,6 +44,20 @@ namespace Garage.Core.Services
             return _context.Adm_InsuranceType.ToList();
         }
 
+        public IEnumerable<AssetCatalogueViewModel> OffSiteUtilization()
+        {
+            return _context.AssetCatalogueViewModel
+                .FromSqlRaw("spOffSiteUtilization")
+                .ToList();
+        }
+
+        public IEnumerable<AssetCatalogueViewModel> OnSiteUtilization()
+        {
+            return _context.AssetCatalogueViewModel
+                .FromSqlRaw("spOnSiteUtilization")
+                .ToList();
+        }
+
         public bool ValidateEngineNumber(string engineNo)
         {
             bool exists = false;

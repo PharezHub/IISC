@@ -7,22 +7,24 @@ using Garage.Core.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace IISC.Web.Pages.Garage.Asset
+namespace IISC.Web.Pages.Garage.Logsheet
 {
-    public class IndexModel : PageModel
+    public class UtilizationModel : PageModel
     {
         private readonly IAssetRepository assetRepository;
 
-        public IndexModel(IAssetRepository assetRepository)
+        public UtilizationModel(IAssetRepository assetRepository)
         {
             this.assetRepository = assetRepository;
         }
 
-        public IEnumerable<AssetCatalogueViewModel> AssetCatalogueList { get; set; }
+        public IEnumerable<AssetCatalogueViewModel> OnSiteList { get; set; }
+        public IEnumerable<AssetCatalogueViewModel> OffSiteList { get; set; }
 
         public IActionResult OnGet()
         {
-            AssetCatalogueList = assetRepository.GetAssetCatelogueList();
+            OnSiteList = assetRepository.OnSiteUtilization();
+            OffSiteList = assetRepository.OffSiteUtilization();
             return Page();
         }
     }

@@ -10,6 +10,7 @@ namespace Garage.Core.ViewModel
         public string AssetType { get; set; }
         public string CategoryName { get; set; }
         public string RegNo { get; set; }
+        public double CurrentMileage { get; set; }
         public string MakeName { get; set; }
         public string ModelName { get; set; }
         public int Year { get; set; }
