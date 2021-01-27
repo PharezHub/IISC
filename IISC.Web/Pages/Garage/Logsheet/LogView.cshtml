@@ -76,6 +76,16 @@
                                     <input asp-for="LogsheetData.CurrentValue" class="form-control" placeholder="Current value" />
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.Comment">Comment</label>
+                                    <textarea asp-for="LogsheetData.Comment" rows="4" class="form-control" text-wrap:normal" type="text" disabled="disabled" placeholder="Enter comment or driver details here">
+                                    </textarea>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer">
                             <div class="row mt-2 float-left">
@@ -108,7 +118,6 @@
             <ul class="list-unstyled">
                 <li><a href="#overview" class="active">Log History</a></li>
             </ul>
-
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">

@@ -45,7 +45,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.AssetTypeID">Asset Type</label>
-                                    <select asp-for="AssetHeader.AssetTypeID" class="form-control" asp-items="Model.AssetDisplay()">
+                                    <select asp-for="AssetHeader.AssetTypeID" class="form-control"  asp-items="Model.AssetDisplay()">
                                     </select>
                                     <div class="invalid-feedback">
                                         <span asp-validation-for="AssetHeader.AssetTypeID" class="text-danger"></span>

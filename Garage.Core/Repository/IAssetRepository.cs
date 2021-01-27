@@ -17,5 +17,6 @@ namespace Garage.Core.Repository
 
         IEnumerable<AssetCatalogueViewModel> OnSiteUtilization();
         IEnumerable<AssetCatalogueViewModel> OffSiteUtilization();
+        AssetViewModel GetAssetById(int Id);
     }
 }

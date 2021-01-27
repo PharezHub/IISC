@@ -42,8 +42,7 @@
                                 <th>Reg No</th>
                                 <th>Mileage</th>
                                 <th>Category</th>
-                                <th>Make</th>
-                                <th>Model</th>
+                                <th>Make / Model</th>
                                 <th>Status</th>
                                 <th> </th>
                             </tr>
@@ -55,8 +54,7 @@
                                 <td>@item.RegNo</td>
                                 <td>@item.CurrentMileage.ToString("N1")</td>
                                 <td>@item.CategoryName</td>
-                                <td>@item.MakeName</td>
-                                <td>@item.ModelName</td>
+                                <td>@item.MakeName / @item.ModelName</td>
                                 <td>
                                     @if (@item.StatusID == 1)
                                     {
@@ -72,7 +70,7 @@
                                     }
                                 </td>
                                 <td>
-                                    <a title="View asset details" asp-page="/Garage/Asset/View" asp-route-ID="@item.ID">
+                                    <a title="View asset details" asp-page="/Garage/Logsheet/LoadUtilization" asp-route-ID="@item.ID">
                                         View
                                     </a>
                                 </td>
@@ -96,9 +94,9 @@
                             <tr>
                                 <th>Reg No</th>
                                 <th>Mileage</th>
+                                <th>Logged On</th>
                                 <th>Category</th>
-                                <th>Make</th>
-                                <th>Model</th>
+                                <th>Make/Model</th>
                                 <th>Status</th>
                                 <th> </th>
                             </tr>
@@ -109,9 +107,9 @@
                             <tr>
                                 <td>@item.RegNo</td>
                                 <td>@item.CurrentMileage.ToString("N1")</td>
+                                <td>@item.LoggedOn</td>
                                 <td>@item.CategoryName</td>
-                                <td>@item.MakeName</td>
-                                <td>@item.ModelName</td>
+                                <td>@item.MakeName / @item.ModelName</td>
                                 <td>
                                     @if (@item.StatusID == 1)
                                     {
@@ -127,7 +125,7 @@
                                     }
                                 </td>
                                 <td>
-                                    <a title="View asset details" asp-page="/Garage/Asset/View" asp-route-ID="@item.ID">
+                                    <a title="View asset details" asp-page="/Garage/Logsheet/LogView" asp-route-ID="@item.ID">
                                         View
                                     </a>
                                 </td>

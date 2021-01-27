@@ -66,6 +66,7 @@ namespace IISC.Web.Pages.Garage.Logsheet
 
             // Update Logsheet data
             LogsheetData.ModifiedBy = User.Identity.Name;
+            LogsheetData.CurrentValue = currentValue;
             logSheetRepository.UpdateLogSheet(LogsheetData);
 
             return RedirectToPage("/Garage/Logsheet/LogList");

@@ -166,3 +166,9 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\IISC.Web.pdb
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\IISC.Web.genruntimeconfig.cache
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Asset\AddAsset.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Asset\Index.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Asset\View.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Logsheet\ClosedLogList.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Logsheet\LoadUtilization.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Logsheet\LogList.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Logsheet\LogView.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Logsheet\Utilization.cshtml.g.cs

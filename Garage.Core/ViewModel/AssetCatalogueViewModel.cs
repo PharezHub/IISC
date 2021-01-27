@@ -17,5 +17,6 @@ namespace Garage.Core.ViewModel
         public string Status { get; set; }
         public int StatusID { get; set; }
         public string FuelName { get; set; }
+        public DateTime LoggedOn { get; set; }
     }
 }

@@ -19,6 +19,18 @@ namespace Garage.Core.Services
             this._context = context;
         }
 
+        public void AddLogSheet(int categoryId, double currentValue, string regNo, string comment)
+        {
+            try
+            {
+                _context.Database.ExecuteSqlRaw("spAddLogSheet {0},{1},{2},{3}", categoryId, currentValue, regNo, comment);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IEnumerable<Trn_LogSheet> GetLogHistory(string regNo)
         {
             return _context.Trn_LogSheet.Where(x => x.RegNo == regNo).ToList();
@@ -39,8 +51,8 @@ namespace Garage.Core.Services
             var query = _context.Trn_LogSheet.FirstOrDefault(x => x.ID == logSheet.ID);
             if (query != null)
             {
-                _context.Database.ExecuteSqlRaw("spUpdateLogSheet {0},{1},{2},{3},{4},{5}", logSheet.ID, logSheet.CurrentValue, 1, DateTime.Now,
-                    logSheet.ModifiedBy, logSheet.LogTypeID);
+                _context.Database.ExecuteSqlRaw("spUpdateLogSheet {0},{1},{2},{3},{4},{5},{6}", logSheet.ID, logSheet.CurrentValue, 1, DateTime.Now,
+                    logSheet.ModifiedBy, logSheet.LogTypeID, logSheet.Comment.Trim());
                 //query.LogStatus = 1;
                 //query.CurrentValue = logSheet.CurrentValue;
                 //query.ModifiedOn = DateTime.Now;

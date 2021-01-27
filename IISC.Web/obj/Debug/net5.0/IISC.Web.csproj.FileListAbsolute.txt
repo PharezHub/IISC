@@ -254,3 +254,4 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\LogView.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\ClosedLogList.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\Utilization.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\LoadUtilization.cshtml.g.cs

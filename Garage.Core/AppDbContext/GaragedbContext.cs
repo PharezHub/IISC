@@ -35,6 +35,7 @@ namespace Garage.Core.AppDbContext
 
         public DbSet<StatutoryCategoryViewModel> StatutoryCategoryViewModel { get; set; }
         public DbSet<AssetCatalogueViewModel> AssetCatalogueViewModel { get; set; }
+        public DbSet<AssetViewModel> AssetViewModel { get; set; }
 
         public DbSet<MaintenanceTriggerListViewModel> MaintenanceTriggerListViewModel { get; set; }
 

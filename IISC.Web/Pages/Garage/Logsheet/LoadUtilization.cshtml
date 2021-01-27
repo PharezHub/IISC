@@ -1,0 +1,97 @@
+﻿@page "{id:min(1)}"
+@model IISC.Web.Pages.Garage.Logsheet.LoadUtilizationModel
+@{
+    ViewData["Title"] = "Load Utilization";
+}
+
+<div class="row">
+    <div class="col-xl-10">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h2 class="pageheader-title">@ViewData["Title"] </h2>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item"><a asp-page="/Garage/Index" class="breadcrumb-link">Garage Management System</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0">@ViewData["Title"]</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input hidden asp-for="LogsheetData.CategoryID" />
+                                    <input hidden asp-for="LogsheetData.RegNo" />
+                                    <input hidden asp-for="LogsheetData.PreviousValue" />
+                                    <label asp-for="LogsheetData.RegNo">Reg No</label>
+                                    <input asp-for="LogsheetData.RegNo" class="form-control" placeholder="Reg No" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.PreviousValue">Previous Mileage</label>
+                                    <input asp-for="LogsheetData.PreviousValue" class="form-control" placeholder="Previous Value" disabled="disabled" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.Comment">Comment</label>
+                                    <textarea asp-for="LogsheetData.Comment" rows="4" class="form-control" text-wrap:normal" type="text" placeholder="Enter comment or driver details here">
+                                    </textarea>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.CurrentValue">Current Mileage</label>
+                                    <input asp-for="LogsheetData.CurrentValue" class="form-control" placeholder="Current value" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="row mt-2 float-left">
+                                <a asp-page="/Garage/Logsheet/Utilization" class="btn btn-outline-dark">Cancel</a>
+                            </div>
+                            <div class="row mt-2 float-right">
+                                <button type="submit" class="btn btn-outline-success">Submit</button>
+                            </div>
+                        </div>
+                        @if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+                        {
+                            <div class="card-footer">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- sidenavbar -->
+    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
+        <div class="sidebar-nav-fixed">
+            <ul class="list-unstyled">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#top">Back to Top</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end sidenavbar -->
+</div>

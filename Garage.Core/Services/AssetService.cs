@@ -32,6 +32,24 @@ namespace Garage.Core.Services
             }
         }
 
+        public AssetViewModel GetAssetById(int Id)
+        {
+            try
+            {
+                var query = _context.AssetViewModel.FromSqlRaw("spGetAssetById {0}", Id).ToList();
+                if (query != null)
+                {
+                    return query.FirstOrDefault();
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IEnumerable<AssetCatalogueViewModel> GetAssetCatelogueList()
         {
             return _context.AssetCatalogueViewModel

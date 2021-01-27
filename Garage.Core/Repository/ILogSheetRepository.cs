@@ -12,5 +12,6 @@ namespace Garage.Core.Repository
         IEnumerable<LogSheetListViewModel> GetLogSheetById(int id);
         IEnumerable<Trn_LogSheet> GetLogHistory(string regNo);
         void UpdateLogSheet(LogSheetListViewModel logSheet);
+        void AddLogSheet(int categoryId, double currentValue, string regNo, string comment);
     }
 }
