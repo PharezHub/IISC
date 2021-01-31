@@ -48,6 +48,23 @@ namespace Garage.Core.Services
             }
         }
 
+        public void DeletePartCatalog(int id)
+        {
+            try
+            {
+                var query = _context.AdmPartsCatalog.FirstOrDefault(x => x.ID == id);
+                if (query != null)
+                {
+                    query.IsDeleted = true;
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public AssetViewModel GetAssetById(int Id)
         {
             try
@@ -83,6 +100,11 @@ namespace Garage.Core.Services
             return _context.PartsCatalogViewModel.FromSqlRaw("spGetPartsCatalog").ToList();
         }
 
+        public AdmPartsCatalog GetPartsCatalogById(int Id)
+        {
+            return _context.AdmPartsCatalog.Find(Id);
+        }
+
         public IEnumerable<AssetCatalogueViewModel> OffSiteUtilization()
         {
             return _context.AssetCatalogueViewModel
@@ -95,6 +117,28 @@ namespace Garage.Core.Services
             return _context.AssetCatalogueViewModel
                 .FromSqlRaw("spOnSiteUtilization")
                 .ToList();
+        }
+
+        public void UpdatePartsCatalog(AdmPartsCatalog catalog)
+        {
+            try
+            {
+                var query = _context.AdmPartsCatalog.FirstOrDefault(x => x.ID == catalog.ID);
+                if (query != null)
+                {
+                    query.ItemDescription = catalog.ItemDescription.Trim();
+                    query.CategoryID = catalog.CategoryID;
+                    query.MakeID = catalog.MakeID;
+                    query.ModelID = catalog.ModelID;
+                    query.PartNumber = catalog.PartNumber.Trim();
+                    query.Comment = catalog.Comment.Trim();
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool ValidateEngineNumber(string engineNo)

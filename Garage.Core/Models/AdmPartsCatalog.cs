@@ -16,5 +16,6 @@ namespace Garage.Core.Models
         public int MakeID { get; set; }
         public int ModelID { get; set; }
         public string Comment { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

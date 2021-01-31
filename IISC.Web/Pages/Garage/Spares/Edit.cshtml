@@ -1,0 +1,114 @@
+﻿@page "{id:min(1)}"
+@model IISC.Web.Pages.Garage.Spares.EditModel
+@{
+    ViewData["Title"] = "Edit Spare";
+}
+
+<div class="row">
+    <div class="col-md-8 col-lg-8">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h2 class="pageheader-title">@ViewData["Title"] </h2>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Garage Management System</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0">@ViewData["Title"]</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="PartsCatalog.CategoryID">Category</label>
+                                    <select asp-for="PartsCatalog.CategoryID" class="form-control" asp-items="@Model.CategoryList">
+                                        <option value="0">Choose One</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="PartsCatalog.PartNumber">Part No</label>
+                                    <input asp-for="PartsCatalog.PartNumber" class="form-control" placeholder="Enter Part number" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="PartsCatalog.MakeID">Make</label>
+                                    <select asp-for="PartsCatalog.MakeID" class="form-control" onselect="" asp-items="@Model.MakeList">
+                                        <option value="0">Choose One</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="PartsCatalog.ModelID">Model</label>
+                                    <select asp-for="PartsCatalog.ModelID" class="form-control" asp-items="@Model.ModelList">
+                                        <option value="0">Choose One</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="PartsCatalog.ItemDescription">Item Description</label>
+                                    <textarea asp-for="PartsCatalog.ItemDescription" rows="4" class="form-control" text-wrap:normal" type="text" placeholder="Enter item description here">
+                                    </textarea>
+                                    <div class="invalid-feedback">
+                                        <span asp-validation-for="PartsCatalog.ItemDescription" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="PartsCatalog.Comment">Comment</label>
+                                    <textarea asp-for="PartsCatalog.Comment" rows="4" class="form-control" text-wrap:normal" type="text" placeholder="Enter comment here">
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row mt-2 float-left">
+                                <a asp-page="/Garage/Spares/SparesList" class="btn btn-outline-dark">Cancel</a>
+                            </div>
+                            <div class="row mt-2 float-right">
+                                <button type="submit" class="btn btn-outline-primary">Update Part</button>
+                            </div>
+                        </div>
+                        @if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+                        {
+                            <div class="card-footer">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- sidenavbar -->
+    <div class="col-lg-4 col-md-4">
+        <div class="sidebar-nav-fixed">
+            <ul class="list-unstyled">
+                <li><a href="#overview" class="active">Catalog</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- end sidenavbar -->
+</div>
