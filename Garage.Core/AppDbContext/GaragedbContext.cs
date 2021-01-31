@@ -29,6 +29,9 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<Adm_Statutory> Adm_Statutory { get; set; }
         public virtual DbSet<Adm_TriggerType> Adm_TriggerType { get; set; }
         public virtual DbSet<Hdr_Asset> Hdr_Asset { get; set; }
+        public virtual DbSet<AdmPartsCatalog> AdmPartsCatalog { get; set; }
+        public  virtual DbSet<Adm_Make> Adm_Make { get; set; }
+        public virtual DbSet<Adm_Model> Adm_Model { get; set; }
         public virtual DbSet<Hdr_StatutoryRequirement> Hdr_StatutoryRequirement { get; set; }
         public virtual DbSet<Trn_LogSheet> Trn_LogSheet { get; set; }
         public virtual DbSet<Gen_SystemArea> Gen_SystemArea { get; set; }
@@ -41,6 +44,7 @@ namespace Garage.Core.AppDbContext
 
         public DbSet<LogSheetSetupViewModel> LogSheetSetupViewModel { get; set; }
         public DbSet<LogSheetListViewModel> LogSheetListViewModel { get; set; }
+        public DbSet<PartsCatalogViewModel> PartsCatalogViewModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

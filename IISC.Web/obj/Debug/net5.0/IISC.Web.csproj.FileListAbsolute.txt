@@ -256,3 +256,4 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\Utilization.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\LoadUtilization.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Spares\SparesList.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Spares\Index.cshtml.g.cs

@@ -30,5 +30,9 @@ namespace Garage.Core.Repository
         void AddLink(Adm_CategoryStatutoryLink statutoryLink);
         IEnumerable<StatutoryCategoryViewModel> GetStatutoryByCategoryId(int Id);
         void DeleteLink(int Id);
+
+        // Make and Model 
+        IEnumerable<Adm_Make> GetMake();
+        IEnumerable<Adm_Model> GetModel();
     }
 }

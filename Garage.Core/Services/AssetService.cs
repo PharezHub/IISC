@@ -19,6 +19,22 @@ namespace Garage.Core.Services
             this._context = context;
         }
 
+        public void AddPartsCatalog(AdmPartsCatalog catalog)
+        {
+            try
+            {
+                if (catalog != null)
+                {
+                    _context.AdmPartsCatalog.Add(catalog);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void AddStatutory(Hdr_StatutoryRequirement statutoryRequirement)
         {
             try
@@ -60,6 +76,11 @@ namespace Garage.Core.Services
         public List<Adm_InsuranceType> GetInsuranceType()
         {
             return _context.Adm_InsuranceType.ToList();
+        }
+
+        public IEnumerable<PartsCatalogViewModel> GetPartsCatalog()
+        {
+            return _context.PartsCatalogViewModel.FromSqlRaw("spGetPartsCatalog").ToList();
         }
 
         public IEnumerable<AssetCatalogueViewModel> OffSiteUtilization()

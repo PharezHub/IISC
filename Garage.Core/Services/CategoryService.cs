@@ -81,6 +81,16 @@ namespace Garage.Core.Services
             return _context.Adm_AssetCategory.Find(id);
         }
 
+        public IEnumerable<Adm_Make> GetMake()
+        {
+            return _context.Adm_Make.ToList();
+        }
+
+        public IEnumerable<Adm_Model> GetModel()
+        {
+            return _context.Adm_Model.ToList();
+        }
+
         public IEnumerable<StatutoryCategoryViewModel> GetStatutoryByCategoryId(int id)
         {
             return _context.StatutoryCategoryViewModel
