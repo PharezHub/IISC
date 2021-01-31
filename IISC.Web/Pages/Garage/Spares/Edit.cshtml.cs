@@ -36,5 +36,31 @@ namespace IISC.Web.Pages.Garage.Spares
             PartsCatalog = assetRepository.GetPartsCatalogById(id);
             return Page();
         }
+
+        public IActionResult OnPost()
+        {
+            if (string.IsNullOrEmpty(PartsCatalog.ItemDescription.Trim()))
+            {
+                ModelState.AddModelError("Error", "Item description cannot be empty");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            if (string.IsNullOrEmpty(PartsCatalog.PartNumber))
+            {
+                PartsCatalog.PartNumber = "";
+            }
+            if (string.IsNullOrEmpty(PartsCatalog.Comment))
+            {
+                PartsCatalog.Comment = "";
+            }
+            PartsCatalog.ItemDescription = PartsCatalog.ItemDescription.Trim();
+
+            assetRepository.UpdatePartsCatalog(PartsCatalog);
+            return RedirectToPage("/Garage/Spares/SparesList");
+        }
     }
 }

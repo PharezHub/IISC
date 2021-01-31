@@ -41,8 +41,6 @@
                                 <th>Model</th>
                                 <th>Part No</th>
                                 <th>Category</th>
-
-                                <th>Comment</th>
                                 <th> </th>
                             </tr>
                         </thead>
@@ -58,11 +56,13 @@
                                         <td>@item.ModelName</td>
                                         <td>@item.PartNumber</td>
                                         <td>@item.CategoryName</td>
-
-                                        <td>@item.Comment.Trim()</td>
                                         <td>
                                             <a title="Edit Spare Part" asp-page="/Garage/Spares/Edit" asp-route-ID="@item.ID">
                                                 Edit
+                                            </a>
+                                            |
+                                            <a title="Delete Spare Part" asp-page="/Garage/Spares/Delete" asp-route-ID="@item.ID">
+                                                Delete
                                             </a>
                                         </td>
                                     </tr>
