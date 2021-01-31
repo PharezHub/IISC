@@ -34,7 +34,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label asp-for="PartsCatalog.CategoryID">Type</label>
+                                    <label asp-for="PartsCatalog.CategoryID">Category</label>
                                     <select asp-for="PartsCatalog.CategoryID" class="form-control" asp-items="@Model.CategoryList">
                                         <option value="0">Choose One</option>
                                     </select>
@@ -48,13 +48,13 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="PartsCatalog.MakeID">Make</label>
-                                    <select asp-for="PartsCatalog.CategoryID" class="form-control" onselect="" asp-items="@Model.CategoryList">
+                                    <select asp-for="PartsCatalog.MakeID" class="form-control" onselect="" asp-items="@Model.MakeList">
                                         <option value="0">Choose One</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="PartsCatalog.ModelID">Model</label>
-                                    <select asp-for="PartsCatalog.ModelID" class="form-control" asp-items="@Model.CategoryList">
+                                    <select asp-for="PartsCatalog.ModelID" class="form-control" asp-items="@Model.ModelList">
                                         <option value="0">Choose One</option>
                                     </select>
                                 </div>

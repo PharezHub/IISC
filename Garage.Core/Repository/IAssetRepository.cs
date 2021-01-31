@@ -18,7 +18,9 @@ namespace Garage.Core.Repository
         IEnumerable<AssetCatalogueViewModel> OnSiteUtilization();
         IEnumerable<AssetCatalogueViewModel> OffSiteUtilization();
         AssetViewModel GetAssetById(int Id);
+
         void AddPartsCatalog(AdmPartsCatalog catalog);
         IEnumerable<PartsCatalogViewModel> GetPartsCatalog();
+        bool ValidatePartCatalog(string itemDescription, int categoryId, int modelId, int makeId);
     }
 }

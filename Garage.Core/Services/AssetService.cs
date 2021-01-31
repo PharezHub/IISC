@@ -107,6 +107,11 @@ namespace Garage.Core.Services
             return exists;
         }
 
+        public bool ValidatePartCatalog(string itemDescription, int categoryId, int modelId, int makeId)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool ValidateRegNumber(string regNo)
         {
             bool exists = false;

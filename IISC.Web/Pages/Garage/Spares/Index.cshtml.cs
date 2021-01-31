@@ -13,6 +13,7 @@ namespace IISC.Web.Pages.Garage.Spares
     public class IndexModel : PageModel
     {
         private readonly ICategoryRepository categoryRepository;
+        private readonly IAssetRepository assetRepository;
 
         [BindProperty]
         public AdmPartsCatalog PartsCatalog { get; set; }
@@ -20,9 +21,10 @@ namespace IISC.Web.Pages.Garage.Spares
         public SelectList MakeList { get; set; }
         public SelectList ModelList { get; set; }
 
-        public IndexModel(ICategoryRepository categoryRepository)
+        public IndexModel(ICategoryRepository categoryRepository, IAssetRepository assetRepository)
         {
             this.categoryRepository = categoryRepository;
+            this.assetRepository = assetRepository;
         }
 
         public IActionResult OnGet()
@@ -35,8 +37,27 @@ namespace IISC.Web.Pages.Garage.Spares
 
         public IActionResult OnPost()
         {
-            
+            if (string.IsNullOrEmpty(PartsCatalog.ItemDescription.Trim()))
+            {
+                ModelState.AddModelError("Error", "Item description cannot be empty");
+            }
 
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            if (string.IsNullOrEmpty(PartsCatalog.PartNumber))
+            {
+                PartsCatalog.PartNumber = "";
+            }
+            if (string.IsNullOrEmpty(PartsCatalog.Comment))
+            {
+                PartsCatalog.Comment = "";
+            }
+            PartsCatalog.ItemDescription = PartsCatalog.ItemDescription.Trim();
+
+            assetRepository.AddPartsCatalog(PartsCatalog);
             return RedirectToPage("/Garage/Spares/SparesList");
         }
     }
