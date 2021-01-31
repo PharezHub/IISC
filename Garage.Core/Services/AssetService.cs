@@ -109,7 +109,19 @@ namespace Garage.Core.Services
 
         public bool ValidatePartCatalog(string itemDescription, int categoryId, int modelId, int makeId)
         {
-            throw new NotImplementedException();
+            var query = _context.AdmPartsCatalog.FirstOrDefault(x => x.ItemDescription.Trim().ToUpper() == itemDescription.Trim().ToUpper()
+            && x.CategoryID == categoryId
+            && x.ModelID == modelId
+            && x.MakeID == makeId);
+
+            if (query != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool ValidateRegNumber(string regNo)

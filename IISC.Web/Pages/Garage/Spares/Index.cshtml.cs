@@ -41,6 +41,10 @@ namespace IISC.Web.Pages.Garage.Spares
             {
                 ModelState.AddModelError("Error", "Item description cannot be empty");
             }
+            if (assetRepository.ValidatePartCatalog(PartsCatalog.ItemDescription.Trim(), PartsCatalog.CategoryID, PartsCatalog.ModelID, PartsCatalog.MakeID))
+            {
+                ModelState.AddModelError("Error", $"Item description *{PartsCatalog.ItemDescription.Trim()}* already exists!!!");
+            }
 
             if (!ModelState.IsValid)
             {
