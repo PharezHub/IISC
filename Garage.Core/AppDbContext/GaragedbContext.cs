@@ -35,6 +35,9 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<Hdr_StatutoryRequirement> Hdr_StatutoryRequirement { get; set; }
         public virtual DbSet<Trn_LogSheet> Trn_LogSheet { get; set; }
         public virtual DbSet<Gen_SystemArea> Gen_SystemArea { get; set; }
+        public virtual DbSet<HdrMaintenance> HdrMaintenance { get; set; }
+        public virtual DbSet<TrnMaintenance> TrnMaintenance { get; set; }
+        public virtual DbSet<TrnPartUsed> TrnPartUsed { get; set; }
 
         public DbSet<StatutoryCategoryViewModel> StatutoryCategoryViewModel { get; set; }
         public DbSet<AssetCatalogueViewModel> AssetCatalogueViewModel { get; set; }

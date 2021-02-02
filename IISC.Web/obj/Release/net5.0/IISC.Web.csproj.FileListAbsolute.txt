@@ -173,3 +173,6 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Gara
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Logsheet\LogView.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Logsheet\Utilization.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Spares\SparesList.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Spares\Delete.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Spares\Edit.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Spares\Index.cshtml.g.cs
