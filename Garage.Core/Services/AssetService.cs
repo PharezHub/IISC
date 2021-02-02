@@ -74,7 +74,6 @@ namespace Garage.Core.Services
                 {
                     return query.FirstOrDefault();
                 }
-
                 return null;
             }
             catch (Exception ex)

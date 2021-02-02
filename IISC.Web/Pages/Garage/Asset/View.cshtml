@@ -22,6 +22,78 @@
                 </div>
             </div>
         </div>
+
+        <form method="post">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0">@ViewData["Title"] - #@Model.AssetDetail.ID.ToString()</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input hidden asp-for="AssetDetail.ID" />
+                                    <label asp-for="AssetDetail.AssetTypeID">Asset Type</label>
+                                    <input asp-for="AssetDetail.AssetType" class="form-control" placeholder="Asset Type" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="AssetDetail.CategoryID">Category</label>
+                                    <input asp-for="AssetDetail.CategoryName" class="form-control" placeholder="Category Name" disabled="disabled" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label asp-for="AssetDetail.EngineNo">Engine No</label>
+                                    <input asp-for="AssetDetail.EngineNo" class="form-control" placeholder="Engine Number" disabled="disabled" />
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label asp-for="AssetDetail.ChassisNo">Chassis No</label>
+                                    <input asp-for="AssetDetail.ChassisNo" class="form-control" placeholder="Chassis Number" disabled="disabled" />
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label fasp-for="AssetHeader.RegNo">Reg No</label>
+                                    <input asp-for="AssetDetail.RegNo" class="form-control" placeholder="Reg Number" disabled="disabled" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="AssetDetail.Make">Make</label>
+                                    <input asp-for="AssetDetail.MakeName" class="form-control" placeholder="Make" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="AssetDetail.ModelID">Model</label>
+                                    <input asp-for="AssetDetail.ModelName" class="form-control" placeholder="Model" disabled="disabled" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="AssetDetail.EngineCapacity">Engine Capacity (CC)</label>
+                                    <input asp-for="AssetDetail.EngineCapacity" class="form-control" placeholder="Engine Capacity" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="AssetDetail.FuelTypeID">Fuel Type</label>
+                                    <input asp-for="AssetDetail.FuelName" class="form-control" placeholder="Fuel" disabled="disabled" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    
+                </div>
+            </div>
+        </form>
     </div>
 
     <!-- sidenavbar -->
