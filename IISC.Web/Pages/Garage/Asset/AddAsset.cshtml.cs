@@ -394,7 +394,8 @@ namespace IISC.Web.Pages.Garage.Asset
                 AssetHeader.FitnessExpiryDate = FitnessVM.ExpiryDate;
                 AssetHeader.RoadTaxExpiryDate = RoadTaxVM.ExpiryDate;
                 AssetHeader.InsuranceExpiryDate = InsuranceVM.DateTo;
-
+                AssetHeader.LastServiceDate = DateTime.Now;
+                AssetHeader.MileageLastService = AssetHeader.InitialMileage;
                 _context.Hdr_Asset.Add(AssetHeader);
                 await _context.SaveChangesAsync();
 

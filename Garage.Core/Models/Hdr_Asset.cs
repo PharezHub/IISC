@@ -37,6 +37,9 @@ namespace Garage.Core.Models
         public int? YearOfPurchase { get; set; }
         public double? InitialMileage { get; set; }
         public double? CurrentMileage { get; set; }
+        public double? MileageLastService { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime LastServiceDate { get; set; }
         public double? AssetValue { get; set; }
         [StringLength(30)]
         public string TagNo { get; set; }

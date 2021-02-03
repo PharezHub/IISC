@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Garage.Core.ViewModel
@@ -36,6 +37,10 @@ namespace Garage.Core.ViewModel
         public DateTime? InsuranceExpiryDate { get; set; }
         public DateTime? RoadTaxExpiryDate { get; set; }
         public DateTime? FitnessExpiryDate { get; set; }
+        public double MileageLastService { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime LastServiceDate { get; set; }
 
     }
 }

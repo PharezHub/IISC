@@ -5,7 +5,7 @@
 }
 
 <div class="row">
-    <div class="col-xl-10">
+    <div class="col-sm-10 col-md-10">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header" id="top">
@@ -25,12 +25,26 @@
 
         <form method="post">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="mb-0">@ViewData["Title"] - #@Model.AssetDetail.ID.ToString()</h4>
                         </div>
                         <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label fasp-for="AssetHeader.RegNo">Reg No</label>
+                                    <input asp-for="AssetDetail.RegNo" class="form-control" placeholder="Reg Number" disabled="disabled" />
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label asp-for="AssetDetail.EngineNo">Engine No</label>
+                                    <input asp-for="AssetDetail.EngineNo" class="form-control" placeholder="Engine Number" disabled="disabled" />
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label asp-for="AssetDetail.ChassisNo">Chassis No</label>
+                                    <input asp-for="AssetDetail.ChassisNo" class="form-control" placeholder="Chassis Number" disabled="disabled" />
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <input hidden asp-for="AssetDetail.ID" />
@@ -42,22 +56,6 @@
                                     <input asp-for="AssetDetail.CategoryName" class="form-control" placeholder="Category Name" disabled="disabled" />
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label asp-for="AssetDetail.EngineNo">Engine No</label>
-                                    <input asp-for="AssetDetail.EngineNo" class="form-control" placeholder="Engine Number" disabled="disabled" />
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label asp-for="AssetDetail.ChassisNo">Chassis No</label>
-                                    <input asp-for="AssetDetail.ChassisNo" class="form-control" placeholder="Chassis Number" disabled="disabled" />
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label fasp-for="AssetHeader.RegNo">Reg No</label>
-                                    <input asp-for="AssetDetail.RegNo" class="form-control" placeholder="Reg Number" disabled="disabled" />
-                                </div>
-                            </div>
-
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetDetail.Make">Make</label>
@@ -80,17 +78,65 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <div class="row mt-2 float-left">
+                                <a asp-page="/Garage/Asset/Index" class="btn btn-outline-dark">Cancel</a>
+                            </div>
+                            <div class="row mt-2 float-right">
+                                <a asp-page="/Garage/Maintain/Unplanned"  class="btn btn-outline-primary">Add Unplanned Breakdown</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-sm-4">
-                    
+                <div class="col-sm-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0">Other Details</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label fasp-for="AssetDetail.LastServiceDate">Last Service Date</label>
+                                    <input asp-for="AssetDetail.LastServiceDate" class="form-control" placeholder="Last Service Date</" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="AssetDetail.CurrentMileage">Current Mileage</label>
+                                    <input asp-for="AssetDetail.CurrentMileage" class="form-control" placeholder="Current mileage" disabled="disabled" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="AssetDetail.TagNo">Tag</label>
+                                    <input asp-for="AssetDetail.TagNo" class="form-control" placeholder="Tag  detail" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="AssetDetail.Status">Status</label>
+                                    <input asp-for="AssetDetail.Status" class="form-control" placeholder="Asset Status" disabled="disabled" />
+                                </div>
+                                
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label fasp-for="AssetDetail.Comment">Comment</label>
+                                    <textarea asp-for="AssetDetail.Comment" rows="4" class="form-control" text-wrap:normal" type="text" placeholder="Comment" disabled="disabled">
+                                    </textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-8">
-                    
+
                 </div>
             </div>
         </form>
@@ -100,9 +146,9 @@
     <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
         <div class="sidebar-nav-fixed">
             <ul class="list-unstyled">
-                <li><a href="#overview" class="active">Overview</a></li>
-                <li><a href="#top">Back to Top</a></li>
+                <li><a href="#overview" class="active">History</a></li>
             </ul>
+            
         </div>
     </div>
     <!-- end sidenavbar -->

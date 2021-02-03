@@ -1,0 +1,295 @@
+﻿@page
+@model IISC.Web.Pages.Garage.Maintain.UnplannedModel
+@{
+    ViewData["Title"] = "Unplanned Maintenance";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h2 class="pageheader-title">@ViewData["Title"] </h2>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item"><a asp-page="/Garage/Index" class="breadcrumb-link">Garage Management System</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- ============================================================== -->
+            <!-- profile -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
+                <!-- card profile -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="user-avatar text-center d-block">
+                            <img src="/assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                        </div>
+                        <div class="text-center">
+                            <h2 class="font-24 mb-0">Michael J. Christy</h2>
+                            <p>Project Manager Influnce</p>
+                        </div>
+                    </div>
+                    <div class="card-body border-top">
+                        <h3 class="font-16">Contact Information</h3>
+                        <div class="">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2"><i class="fas fa-fw fa-envelope mr-2"></i>michaelchristy@gmail.com</li>
+                                <li class="mb-0"><i class="fas fa-fw fa-phone mr-2"></i>(900) 123 4567</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body border-top">
+                        <h3 class="font-16">Rating</h3>
+                        <h1 class="mb-0">4.8</h1>
+                        <div class="rating-star">
+                            <i class="fa fa-fw fa-star"></i>
+                            <i class="fa fa-fw fa-star"></i>
+                            <i class="fa fa-fw fa-star"></i>
+                            <i class="fa fa-fw fa-star"></i>
+                            <i class="fa fa-fw fa-star"></i>
+                            <p class="d-inline-block text-dark">14 Reviews </p>
+                        </div>
+                    </div>
+                    <div class="card-body border-top">
+                        <h3 class="font-16">Social Channels</h3>
+                        <div class="">
+                            <ul class="mb-0 list-unstyled">
+                                <li class="mb-1"><a href="#"><i class="fab fa-fw fa-facebook-square mr-1 facebook-color"></i>fb.me/michaelchristy</a></li>
+                                <li class="mb-1"><a href="#"><i class="fab fa-fw fa-twitter-square mr-1 twitter-color"></i>twitter.com/michaelchristy</a></li>
+                                <li class="mb-1"><a href="#"><i class="fab fa-fw fa-instagram mr-1 instagram-color"></i>instagram.com/michaelchristy</a></li>
+                                <li class="mb-1"><a href="#"><i class="fas fa-fw fa-rss-square mr-1 rss-color"></i>michaelchristy.com/blog</a></li>
+                                <li class="mb-1"><a href="#"><i class="fab fa-fw fa-pinterest-square mr-1 pinterest-color"></i>pinterest.com/michaelchristy</a></li>
+                                <li class="mb-1"><a href="#"><i class="fab fa-fw fa-youtube mr-1 youtube-color"></i>youtube/michaelchristy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body border-top">
+                        <h3 class="font-16">Category</h3>
+                        <div>
+                            <a href="#" class="badge badge-light mr-1">Fitness</a><a href="#" class="badge badge-light mr-1">Life Style</a><a href="#" class="badge badge-light mr-1">Gym</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card profile -->
+            </div>
+            <!-- end profile -->
+            <!-- campaign data -->
+            <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
+                <!-- campaign tab one -->
+                <div class="influence-profile-content pills-regular">
+                    <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Summary</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h1 class="mb-1">9</h1>
+                                            <p>Total Breakdowns</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h1 class="mb-1">35</h1>
+                                            <p>Total Planned Service</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h1 class="mb-1">8</h1>
+                                            <p>Active Breakdowns</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h1 class="mb-1">1</h1>
+                                            <p>Active Service</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Add Breakdown</a>
+                                </li>
+                            </ul>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <input hidden asp-for="HdrMaintenance.ID" />
+                                            <label asp-for="HdrMaintenance.MaintenanceType">Maintenance Type</label>
+                                            <select asp-for="HdrMaintenance.MaintenanceType" class="form-control">
+                                                <option value="0">Choose One</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label asp-for="HdrMaintenance.ServiceDate">Breakdown Date</label>
+                                            <input asp-for="HdrMaintenance.ServiceDate" class="form-control" placeholder="Select date" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label asp-for="HdrMaintenance.CurrentMileage">Current Mileage</label>
+                                            <input asp-for="HdrMaintenance.CurrentMileage" class="form-control" placeholder="Enter current mileage" />
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                            <label asp-for="HdrMaintenance.MaintenanceSummary">Breakdown Summary</label>
+                                            <textarea asp-for="HdrMaintenance.MaintenanceSummary" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter breakdown summary">
+                                    </textarea>
+                                            <div class="invalid-feedback">
+                                                <span asp-validation-for="HdrMaintenance.MaintenanceSummary" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row mt-2 float-left">
+                                        <a asp-page="/Garage/Spares/SparesList" class="btn btn-outline-dark">Cancel</a>
+                                    </div>
+                                    <div class="row mt-2 float-right">
+                                        <button type="submit" class="btn btn-outline-primary">Submit</button>
+                                    </div>
+                                </div>
+                                @if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+                                {
+                                    <div class="card-footer">
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                <div class="mr-4">
+                                                    <img src="assets/images/dribbble.png" alt="User Avatar" class="rounded-circle user-avatar-lg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h3 class="m-b-10">Your Campaign Title Here</h3>
+                                                    <p>
+                                                        <span class="m-r-20 d-inline-block">Draft Due Date<span class="m-l-10 d-inline-block text-primary">28 Jan 2018</span></span><span class="m-r-20 d-inline-block"> Publish Date<span class="m-l-10 text-secondary">20 March 2018</span></span><span class="m-r-20">Ends<span class="m-l-10 text-info">10 July, 2018</span></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-top card-footer p-0">
+                                    <div class="campaign-metrics d-xl-inline-block">
+                                        <h4 class="mb-0 ">35k</h4>
+                                        <p>Total Reach</p>
+                                    </div>
+                                    <div class="campaign-metrics d-xl-inline-block">
+                                        <h4 class="mb-0 ">45k</h4>
+                                        <p>Total Views</p>
+                                    </div>
+                                    <div class="campaign-metrics d-xl-inline-block">
+                                        <h4 class="mb-0">8k</h4>
+                                        <p>Total Click</p>
+                                    </div>
+                                    <div class="campaign-metrics d-xl-inline-block">
+                                        <h4 class="mb-0 ">10k</h4>
+                                        <p>Engagement</p>
+                                    </div>
+                                    <div class="campaign-metrics d-xl-inline-block">
+                                        <h4 class="mb-0">3k</h4>
+                                        <p>Conversion</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                <div class="mr-4">
+                                                    <img src="assets/images/dropbox.png" alt="User Avatar" class="user-avatar-lg">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h3 class="m-b-10">Your Campaign Title Here</h3>
+                                                    <p>
+                                                        <span class="m-r-20 d-inline-block">
+                                                            Draft Due Date
+                                                            <span class="m-l-10 text-primary">05 Feb 2018</span>
+                                                        </span>
+                                                        <span class="m-r-20 d-inline-block">
+                                                            Publish Date
+                                                            <span class="m-l-10 text-secondary">14 May 2018</span>
+                                                        </span><span class="m-r-20 d-inline-block">Ends<span class="m-l-10 text-info">16 Aug, 2018</span></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-top card-footer p-0">
+                                    <div class="campaign-metrics d-xl-inline-block">
+                                        <h4 class="mb-0">40k</h4>
+                                        <p>Total Reach</p>
+                                    </div>
+                                    <div class="campaign-metrics d-xl-inline-block">
+                                        <h4 class="mb-0 ">35k</h4>
+                                        <p>Total Views</p>
+                                    </div>
+                                    <div class="campaign-metrics d-xl-inline-block">
+                                        <h4 class="mb-0">5k</h4>
+                                        <p>Total Click</p>
+                                    </div>
+                                    <div class="campaign-metrics d-xl-inline-block">
+                                        <h4 class="mb-0">15k</h4>
+                                        <p>Engagement</p>
+                                    </div>
+                                    <div class="campaign-metrics d-xl-inline-block">
+                                        <h4 class="mb-0">14k</h4>
+                                        <p>Conversion</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end campaign tab one -->
+            </div>
+            <!-- end campaign data -->
+        </div>
+
+    </div>
+</div>
