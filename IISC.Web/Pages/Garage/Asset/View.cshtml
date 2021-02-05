@@ -83,7 +83,7 @@
                                 <a asp-page="/Garage/Asset/Index" class="btn btn-outline-dark">Cancel</a>
                             </div>
                             <div class="row mt-2 float-right">
-                                <a asp-page="/Garage/Maintain/Unplanned"  class="btn btn-outline-primary">Add Unplanned Breakdown</a>
+                                <a asp-page="/Garage/Maintain/Unplanned" asp-route-ID="@Model.AssetDetail.ID"  class="btn btn-outline-primary">Add Unplanned Breakdown</a>
                             </div>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Garage.Core.Services
 {
@@ -92,6 +93,13 @@ namespace Garage.Core.Services
         public List<Adm_InsuranceType> GetInsuranceType()
         {
             return _context.Adm_InsuranceType.ToList();
+        }
+
+        public IEnumerable<AdmPartsCatalog> GetPartByCategory(int categoryId, int modelId, int makeId)
+        {
+           return _context.AdmPartsCatalog.Where(x => x.CategoryID == categoryId
+            && x.ModelID == modelId
+            && x.MakeID == makeId).ToList();
         }
 
         public IEnumerable<PartsCatalogViewModel> GetPartsCatalog()

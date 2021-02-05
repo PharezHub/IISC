@@ -24,9 +24,10 @@ namespace Garage.Core.Models
         [StringLength(50)]
         public string InsuranceCompany { get; set; }
         public double? AmountPaid { get; set; }
-        [Column(TypeName = "date")]
+        [DataType(DataType.Date)]
         public DateTime? DateFrom { get; set; }
-        [Column(TypeName = "date")]
+
+        [DataType(DataType.Date)]
         public DateTime? DateTo { get; set; }
         [StringLength(255)]
         public string FileName { get; set; }

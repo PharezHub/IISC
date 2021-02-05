@@ -50,11 +50,11 @@ namespace Garage.Core.Models
         public DateTime? CreatedOn { get; set; }
         [StringLength(50)]
         public string CreatedBy { get; set; }
-        [Column(TypeName = "date")]
+        [DataType(DataType.Date)]
         public DateTime? InsuranceExpiryDate { get; set; }
-        [Column(TypeName = "date")]
+        [DataType(DataType.Date)]
         public DateTime? RoadTaxExpiryDate { get; set; }
-        [Column(TypeName = "date")]
+        [DataType(DataType.Date)]
         public DateTime? FitnessExpiryDate { get; set; }
     }
 }

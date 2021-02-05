@@ -3,6 +3,7 @@ using Garage.Core.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Garage.Core.Repository
 {
@@ -26,5 +27,6 @@ namespace Garage.Core.Repository
         AdmPartsCatalog GetPartsCatalogById(int Id);
         void UpdatePartsCatalog(AdmPartsCatalog catalog);
         void DeletePartCatalog(int id);
+        IEnumerable<AdmPartsCatalog> GetPartByCategory(int categoryId, int modelId, int makeId);
     }
 }
