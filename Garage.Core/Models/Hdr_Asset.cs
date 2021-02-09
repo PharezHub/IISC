@@ -13,16 +13,18 @@ namespace Garage.Core.Models
     {
         [Key]
         public int ID { get; set; }
+        [Required(ErrorMessage = "Asset type is required")]
         public int? AssetTypeID { get; set; }
+        [Required(ErrorMessage = "Asset category is required")]
         public int? CategoryID { get; set; }
         [StringLength(30)]
-        [Required]
+        [Required(ErrorMessage = "Engine number is required")]
         public string EngineNo { get; set; }
         [StringLength(30)]
-        [Required]
+        [Required(ErrorMessage = "Chassis number is required")]
         public string ChassisNo { get; set; }
         [StringLength(10)]
-        [Required]
+        [Required(ErrorMessage = "Registration/Plate number is required")]
         public string RegNo { get; set; }
         [StringLength(30)]
         public string Make { get; set; }

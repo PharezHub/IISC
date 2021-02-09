@@ -36,7 +36,6 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<Trn_LogSheet> Trn_LogSheet { get; set; }
         public virtual DbSet<Gen_SystemArea> Gen_SystemArea { get; set; }
         public virtual DbSet<HdrMaintenance> HdrMaintenance { get; set; }
-        public virtual DbSet<TrnMaintenance> TrnMaintenance { get; set; }
         public virtual DbSet<TrnPartUsed> TrnPartUsed { get; set; }
 
         public DbSet<StatutoryCategoryViewModel> StatutoryCategoryViewModel { get; set; }
@@ -49,6 +48,7 @@ namespace Garage.Core.AppDbContext
         public DbSet<LogSheetListViewModel> LogSheetListViewModel { get; set; }
         public DbSet<PartsCatalogViewModel> PartsCatalogViewModel { get; set; }
         public DbSet<HdrMaintenanceViewModel> HdrMaintenanceViewModel { get; set; }
+        public DbSet<PartUsedViewModel> PartUsedViewModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

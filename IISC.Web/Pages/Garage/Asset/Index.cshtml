@@ -34,6 +34,7 @@
                                 <th>Type</th>
                                 <th>Category</th>
                                 <th>Reg No</th>
+                                <th>Mileage</th>
                                 <th>Make</th>
                                 <th>Model</th>
                                 <th>Fuel</th>
@@ -45,52 +46,43 @@
                         <tbody>
                             @foreach (var item in Model.AssetCatalogueList)
                             {
-                                <tr>
-                                    <td>@item.ID</td>
-                                    <td>@item.AssetType</td>
-                                    <td>@item.CategoryName</td>
-                                    <td>@item.RegNo</td>
-                                    <td>@item.MakeName</td>
-                                    <td>@item.ModelName</td>
-                                    <td>@item.FuelName</td>
-                                    <td>@item.Year</td>
-                                    <td>
-                                        @if (@item.StatusID == 1)
-                                        {
-                                            <span class="badge-dot badge-success mr-1"></span>@item.Status
-                                        }
-                                        else if (@item.StatusID == 2)
-                                        {
-                                            <span class="badge-dot badge-brand mr-1"></span>@item.Status
-                                        }
-                                        else
-                                        {
-                                            <span class="badge-dot badge-danger mr-1"></span>@item.Status
-                                        }
-                                    </td>
-                                    <td>
-                                        <a title="View asset details" asp-page="/Garage/Asset/View" asp-route-ID="@item.ID">
-                                            View
-                                        </a>
-                                        @*<a asp-page="/Garage/Asset/View/" asp-route-ID="@item.ID" alt="View asset details">View</a>*@
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.AssetType</td>
+                                <td>@item.CategoryName</td>
+                                <td>@item.RegNo</td>
+                                <td>@item.CurrentMileage</td>
+                                <td>@item.MakeName</td>
+                                <td>@item.ModelName</td>
+                                <td>@item.FuelName</td>
+                                <td>@item.Year</td>
+                                <td>
+                                    @if (@item.StatusID == 1)
+                                    {
+                                        <span class="badge-dot badge-success mr-1"></span>@item.Status
+                                    }
+                                    else if (@item.StatusID == 2)
+                                    {
+                                        <span class="badge-dot badge-brand mr-1"></span>@item.Status
+                                    }
+                                    else
+                                    {
+                                        <span class="badge-dot badge-danger mr-1"></span>@item.Status
+                                    }
+                                </td>
+                                <td>
+                                    <a title="View asset details" asp-page="/Garage/Asset/View" asp-route-ID="@item.ID">
+                                        View
+                                    </a>
+                                    |
+                                    <a title="View asset details" asp-page="/Garage/Maintain/Unplanned" asp-route-ID="@item.ID">Breakdown
+                                    </a>
+
+                                    @*<a asp-page="/Garage/Asset/View/" asp-route-ID="@item.ID" alt="View asset details">View</a>*@
+                                </td>
+                            </tr>
                             }
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>Type</th>
-                                <th>Category</th>
-                                <th>Reg No</th>
-                                <th>Make</th>
-                                <th>Model</th>
-                                <th>Fuel</th>
-                                <th>Year</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>

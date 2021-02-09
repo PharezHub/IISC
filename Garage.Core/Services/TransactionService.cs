@@ -35,6 +35,19 @@ namespace Garage.Core.Services
             }
         }
 
+        public void AddPartsUsed(TrnPartUsed partUsed)
+        {
+            try
+            {
+                _context.TrnPartUsed.Add(partUsed);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceByAssetId(int assetId)
         {
             return await _context.HdrMaintenanceViewModel.FromSqlRaw("GetMaintenanceByRegNo {0}", assetId).ToListAsync();
@@ -60,6 +73,26 @@ namespace Garage.Core.Services
         public async Task<List<Adm_MaintenanceType>> GetMaintenanceType()
         {
             return await _context.Adm_MaintenanceType.ToListAsync();
+        }
+
+        public async Task<IEnumerable<PartUsedViewModel>> GetPartsUsed(int maintenanceId)
+        {
+            return await _context.PartUsedViewModel.FromSqlRaw("spGetPartsUsed {0}", maintenanceId).ToListAsync();
+        }
+
+        public async Task UpdateMaintenance(int maintenanceId, string closureComment,DateTime dateClose, string userName)
+        {
+            var query = _context.HdrMaintenance.FirstOrDefault(x => x.ID == maintenanceId);
+            if (query != null)
+            {
+                query.StatusID = 1;
+                query.ModifiedOn = DateTime.Now;
+                query.ClosureComment = closureComment.Trim();
+                query.ModifiedBy = userName;
+                query.DateClosed = dateClose;
+
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

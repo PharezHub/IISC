@@ -20,10 +20,12 @@ namespace IISC.Web.Pages.Garage.Maintain
         {
             this.transaction = transaction;
             this.assetRepository = assetRepository;
+            HdrMaintenance = new HdrMaintenance();
         }
 
         [BindProperty]
         public HdrMaintenance HdrMaintenance { get; set; }
+
         [BindProperty]
         public AssetViewModel AssetDetail { get; set; }
         public SelectList TypeList { get; set; }
@@ -31,12 +33,17 @@ namespace IISC.Web.Pages.Garage.Maintain
 
         public async Task<IActionResult> OnGet(int id)
         {
+            HdrMaintenance.BreakdownDate = DateTime.Now;
+            HdrMaintenance.DateTimeIn = DateTime.Now;
+
             TypeList = new SelectList(await transaction.GetMaintenanceType(), nameof(Adm_MaintenanceType.ID), nameof(Adm_MaintenanceType.MaintenanceName));
 
             if (id > 0)
             {
                 AssetDetail = assetRepository.GetAssetById(id);
                 HdrMaintenanceList = await transaction.GetMaintenanceByAssetId(AssetDetail.ID);
+
+                HdrMaintenance.CurrentMileage = AssetDetail.CurrentMileage;
             }
 
             return Page();
@@ -48,8 +55,9 @@ namespace IISC.Web.Pages.Garage.Maintain
             HdrMaintenance.AssetID = AssetDetail.ID;
             HdrMaintenance.RegNo = AssetDetail.RegNo;
             HdrMaintenance.LoggedBy = User.Identity.Name;
+            HdrMaintenance.CreatedOn = DateTime.Now;
             HdrMaintenance.StatusID = 0;
-            HdrMaintenance.DateIn = DateTime.Now;
+            HdrMaintenance.CreatedOn = DateTime.Now;
 
             if (!ModelState.IsValid)
             {
@@ -57,6 +65,7 @@ namespace IISC.Web.Pages.Garage.Maintain
             }
 
             var query = await transaction.AddMaintenance(HdrMaintenance);
+            assetRepository.UpdateMileage(HdrMaintenance.RegNo, HdrMaintenance.CurrentMileage.Value);
             return RedirectToPage("Unplanned", new { id = assetID });
         }
     }

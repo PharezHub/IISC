@@ -126,6 +126,19 @@ namespace Garage.Core.Services
                 .ToList();
         }
 
+        public void UpdateMileage(string regNo, double newMileage)
+        {
+            var query = _context.Hdr_Asset.FirstOrDefault(x => x.RegNo.Trim().ToUpper() == regNo.Trim().ToUpper());
+            if (query != null)
+            {
+                query.MileageLastService = query.CurrentMileage;
+                query.CurrentMileage = newMileage;
+                query.LastServiceDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+
+                _context.SaveChanges();
+            }
+        }
+
         public void UpdatePartsCatalog(AdmPartsCatalog catalog)
         {
             try

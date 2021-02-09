@@ -14,16 +14,20 @@ namespace Garage.Core.Models
         public string MaintenanceSummary { get; set; }
         [DataType(DataType.Date)]
         [Required]
-        public DateTime ServiceDate { get; set; }
+        public DateTime BreakdownDate { get; set; }
         [Required]
         public double? CurrentMileage { get; set; }
         public string LoggedBy { get; set; }
         public int StatusID { get; set; }
-        public DateTime DateIn { get; set; }
+        public DateTime DateTimeIn { get; set; }
         public string TimeIn { get; set; }
         public DateTime? DateClosed { get; set; }
         public string RegNo { get; set; }
         public int AssetID { get; set; }
+        public string ClosureComment { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public DateTime? ModifiedOn { get; set; }
+        public string? ModifiedBy { get; set; }
 
     }
 }

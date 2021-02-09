@@ -26,17 +26,16 @@ namespace IISC.Web.Pages.Garage.Maintain
         public TrnPartUsed TrnPartUsed { get; set; }
 
         [BindProperty]
-        public HdrMaintenance HdrMaintenance { get; set; }
-
-        [BindProperty]
-        public TrnMaintenance TrnMaintenance { get; set; }
+        public IEnumerable<PartUsedViewModel> PartUsedView { get; set; }
 
         [BindProperty]
         public AssetViewModel AssetDetail { get; set; }
         public SelectList PartsList { get; set; }
+
+        [BindProperty]
         public HdrMaintenanceViewModel HdrMaintenanceDetail { get; set; }
 
-        public IActionResult OnGet(int id)
+        public async Task<IActionResult> OnGet(int id)
         {
             if (id > 0)
             {
@@ -46,14 +45,32 @@ namespace IISC.Web.Pages.Garage.Maintain
 
                 PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID), 
                     int.Parse(AssetDetail.Make)), nameof(AdmPartsCatalog.ID), nameof(AdmPartsCatalog.ItemDescription));
+
+                //Get maintenance parts used
+                PartUsedView = await transaction.GetPartsUsed(HdrMaintenanceDetail.ID);
             }
             return Page();
         }
 
+        //public async Task<IActionResult> OnPost()
         public IActionResult OnPost()
         {
+            int mainId = HdrMaintenanceDetail.ID;
+            int assetId = HdrMaintenanceDetail.AssetID;
 
-            return Page();
+            TrnPartUsed.MainID = mainId;
+            TrnPartUsed.LoggedBy = User.Identity.Name;
+            TrnPartUsed.DateLogged = DateTime.Now;
+            TrnPartUsed.Qty = 1;
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            transaction.AddPartsUsed(TrnPartUsed);
+
+            return RedirectToPage("AddParts", new { id = mainId });
         }
     }
 }

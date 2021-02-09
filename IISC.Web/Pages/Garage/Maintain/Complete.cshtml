@@ -1,7 +1,7 @@
 ﻿@page "{id:min(1)}"
-@model IISC.Web.Pages.Garage.Maintain.AddPartsModel
+@model IISC.Web.Pages.Garage.Maintain.CompleteModel
 @{
-    ViewData["Title"] = "Maintenance - Add Parts";
+    ViewData["Title"] = "Complete Maintenance";
 }
 
 <div class="row">
@@ -73,10 +73,12 @@
                     <div class="influence-profile-content pills-regular">
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
-                                
+
                                 <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Breakdown Detail</a>
+                                        <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">
+                                            @ViewData["Title"] # @Model.HdrMaintenanceDetail.ID
+                                        </a>
                                     </li>
                                 </ul>
                                 <div class="card">
@@ -110,79 +112,27 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label asp-for="TrnPartUsed.PartID">Part</label>
-                                                <select asp-for="TrnPartUsed.PartID" class="form-control" asp-items="@Model.PartsList">
-                                                    <option value="0">Choose One</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label asp-for="TrnPartUsed.DocketNo">Docket No</label>
-                                                <input asp-for="TrnPartUsed.DocketNo" class="form-control" placeholder="Enter docket number" />
+                                            <div class="col-md-12 mb-3">
+                                                <label asp-for="HdrMaintenance.ClosureComment">Closure Comment</label>
+                                                <textarea asp-for="HdrMaintenance.ClosureComment" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter closure comment"></textarea>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-12 mb-3">
-                                                <label asp-for="TrnPartUsed.ProblemDescription">Problem Description</label>
-                                                <textarea asp-for="TrnPartUsed.ProblemDescription" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter problem description"></textarea>
+                                            <div class="col-md-6 mb-3">
+                                                <label asp-for="HdrMaintenance.DateClosed">Breakdown Date</label>
+                                                <input asp-for="HdrMaintenance.DateClosed" class="form-control" placeholder="select the date the work was completed" />
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-footer">
                                         <div class="row mt-2 float-left">
-                                            <a asp-page="/Garage/Maintain/Unplanned" asp-route-ID="@Model.HdrMaintenanceDetail.AssetID" class="btn btn-outline-dark">Back</a>
+                                            <a asp-page="/Garage/Maintain/Unplanned" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-dark">Back</a>
                                         </div>
                                         <div class="row mt-2 float-right">
-                                            <button type="submit" class="btn btn-outline-primary">Save</button>
-                                        </div>
-                                    </div>
-                                    @*@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
-                                        {
-                                            <div class="card-footer">
-                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                    <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
-                                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        }*@
-                                </div>
-
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-bordered first">
-                                                <thead>
-                                                    <tr>
-                                                        <th> </th>
-                                                        <th>#</th>
-                                                        <th>Docket #</th>
-                                                        <th>Part</th>
-                                                        <th>Problem Description</th>
-                                                        <th>Logged Date</th>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach (var item in Model.PartUsedView)
-                                                    {
-                                                        <tr>
-                                                            <td>
-                                                                <a title="View asset details" asp-page="/Garage/Maintain/DeletePart" asp-route-ID="@item.ID">
-                                                                    Delete
-                                                                </a>
-                                                            </td>
-                                                            <td>@item.ID</td>
-                                                            <td>@item.DocketNo</td>
-                                                            <td>@item.PartDescription</td>
-                                                            <td>@item.ProblemDescription</td>
-                                                            <td>@item.DateLogged</td>
-                                                        </tr>
-                                                    }
-                                                </tbody>
-                                            </table>
+                                            <button type="submit" class="btn btn-outline-primary">Submit</button>
                                         </div>
                                     </div>
                                 </div>

@@ -24,6 +24,10 @@ namespace IISC.Web.Pages.Garage.Asset
         {
             this._context = context;
             this.assetRepository = assetRepository;
+
+            FitnessVM = new FitnessViewModel();
+            InsuranceVM = new InsuranceViewModel();
+            RoadTaxVM = new RoadTaxViewModel();
         }
 
         [BindProperty]
@@ -354,103 +358,97 @@ namespace IISC.Web.Pages.Garage.Asset
 
         public IActionResult OnGet()
         {
+            InsuranceVM.DateFrom = DateTime.Now;
+            InsuranceVM.DateTo = DateTime.Now;
+            FitnessVM.DateRenewed = DateTime.Now;
+            RoadTaxVM.DateRenewed = DateTime.Now;
+            RoadTaxVM.ExpiryDate = DateTime.Now;
+
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if (string.IsNullOrEmpty(AssetHeader.EngineNo.Trim()))
-                {
-                    ModelState.AddModelError("Error", $"Engine number is a required exists!!!");
-                }
-                else if (assetRepository.ValidateEngineNumber(AssetHeader.EngineNo.ToUpper().Trim()))
-                {
-                    ModelState.AddModelError("Error", $"Engine number: {AssetHeader.EngineNo.ToUpper().Trim()} already exists!!!");
-                }
-                else if (string.IsNullOrEmpty(AssetHeader.EngineNo.Trim()))
-                {
-                    ModelState.AddModelError("Error", $"Asset Registration number: {AssetHeader.RegNo.ToUpper().Trim()} already exists!!!");
-                }
-                if (assetRepository.ValidateRegNumber(AssetHeader.RegNo.ToUpper().Trim()))
-                {
-                    ModelState.AddModelError("Error", $"Asset Registration number: {AssetHeader.RegNo.ToUpper().Trim()} already exists!!!");
-                }
-
-                if (!ModelState.IsValid)
-                {
-                    return Page();
-                }
-
-                // Initialize and Post data
-                AssetHeader.AssetStatus = 1;
-                AssetHeader.CreatedBy = User.Identity.Name;
-                AssetHeader.CreatedOn = DateTime.Now;
-                AssetHeader.CurrentMileage = AssetHeader.InitialMileage;
-                AssetHeader.EngineNo = AssetHeader.EngineNo.ToUpper().Trim();
-                AssetHeader.ChassisNo = AssetHeader.ChassisNo.ToUpper().Trim();
-                AssetHeader.RegNo = AssetHeader.RegNo.ToUpper().Trim();
-                AssetHeader.FitnessExpiryDate = FitnessVM.ExpiryDate;
-                AssetHeader.RoadTaxExpiryDate = RoadTaxVM.ExpiryDate;
-                AssetHeader.InsuranceExpiryDate = InsuranceVM.DateTo;
-                AssetHeader.LastServiceDate = DateTime.Now;
-                AssetHeader.MileageLastService = AssetHeader.InitialMileage;
-                _context.Hdr_Asset.Add(AssetHeader);
-                await _context.SaveChangesAsync();
-
-                //Post Insurance statutory requirements
-                StatutoryRequirement.AssetID = 0;
-                StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
-                StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
-                StatutoryRequirement.StatutoryID = 1;
-                StatutoryRequirement.StatutoryAvailable = true;
-                StatutoryRequirement.InsuranceTypeID = InsuranceVM.TypeId;
-                StatutoryRequirement.InsuranceCompany = InsuranceVM.CompanyName;
-                StatutoryRequirement.AmountPaid = InsuranceVM.InsuranceValue;
-                StatutoryRequirement.DateFrom = InsuranceVM.DateFrom;
-                StatutoryRequirement.DateTo = InsuranceVM.DateTo;
-                StatutoryRequirement.DateModified = DateTime.Now;
-                StatutoryRequirement.ModifiedBy = User.Identity.Name;
-
-                assetRepository.AddStatutory(StatutoryRequirement);
-
-                //post RoadTax statutory requirements
-                StatutoryRequirement.ID = 0;
-                StatutoryRequirement.AssetID = 0;
-                StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
-                StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
-                StatutoryRequirement.StatutoryID = 2;
-                StatutoryRequirement.StatutoryAvailable = true;
-                StatutoryRequirement.InsuranceTypeID = 0;
-                StatutoryRequirement.InsuranceCompany = "";
-                StatutoryRequirement.AmountPaid = 0;
-                StatutoryRequirement.DateFrom = RoadTaxVM.DateRenewed;
-                StatutoryRequirement.DateTo = RoadTaxVM.ExpiryDate;
-                StatutoryRequirement.DateModified = DateTime.Now;
-                StatutoryRequirement.ModifiedBy = User.Identity.Name;
-
-                assetRepository.AddStatutory(StatutoryRequirement);
-
-                //post Fitness statutory requirements
-                StatutoryRequirement.ID = 0;
-                StatutoryRequirement.AssetID = 0;
-                StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
-                StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
-                StatutoryRequirement.StatutoryID = 3;
-                StatutoryRequirement.StatutoryAvailable = true;
-                StatutoryRequirement.InsuranceTypeID = 0;
-                StatutoryRequirement.InsuranceCompany = "";
-                StatutoryRequirement.AmountPaid = 0;
-                StatutoryRequirement.DateFrom = FitnessVM.DateRenewed;
-                StatutoryRequirement.DateTo = FitnessVM.ExpiryDate;
-                StatutoryRequirement.DateModified = DateTime.Now;
-                StatutoryRequirement.ModifiedBy = User.Identity.Name;
-
-                assetRepository.AddStatutory(StatutoryRequirement);
-                return RedirectToPage("/Garage/Asset/Index");
+                return Page();
             }
-            return Page();   
+
+            if (assetRepository.ValidateEngineNumber(AssetHeader.EngineNo.ToUpper().Trim()))
+            {
+                ModelState.AddModelError("Error", $"Engine number: {AssetHeader.EngineNo.ToUpper().Trim()} already exists!!!");
+            }
+            if (assetRepository.ValidateRegNumber(AssetHeader.RegNo.ToUpper().Trim()))
+            {
+                ModelState.AddModelError("Error", $"Asset Registration number: {AssetHeader.RegNo.ToUpper().Trim()} already exists!!!");
+            }
+            // Initialize and Post data
+            AssetHeader.AssetStatus = 1;
+            AssetHeader.CreatedBy = User.Identity.Name;
+            AssetHeader.CreatedOn = DateTime.Now;
+            AssetHeader.CurrentMileage = AssetHeader.InitialMileage;
+            AssetHeader.EngineNo = AssetHeader.EngineNo.ToUpper().Trim();
+            AssetHeader.ChassisNo = AssetHeader.ChassisNo.ToUpper().Trim();
+            AssetHeader.RegNo = AssetHeader.RegNo.ToUpper().Trim();
+            AssetHeader.FitnessExpiryDate = FitnessVM.ExpiryDate;
+            AssetHeader.RoadTaxExpiryDate = RoadTaxVM.ExpiryDate;
+            AssetHeader.InsuranceExpiryDate = InsuranceVM.DateTo;
+            AssetHeader.LastServiceDate = DateTime.Now;
+            AssetHeader.MileageLastService = AssetHeader.InitialMileage;
+            _context.Hdr_Asset.Add(AssetHeader);
+            await _context.SaveChangesAsync();
+
+            //Post Insurance statutory requirements
+            StatutoryRequirement.AssetID = 0;
+            StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
+            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
+            StatutoryRequirement.StatutoryID = 1;
+            StatutoryRequirement.StatutoryAvailable = true;
+            StatutoryRequirement.InsuranceTypeID = InsuranceVM.TypeId;
+            StatutoryRequirement.InsuranceCompany = InsuranceVM.CompanyName;
+            StatutoryRequirement.AmountPaid = InsuranceVM.InsuranceValue;
+            StatutoryRequirement.DateFrom = InsuranceVM.DateFrom;
+            StatutoryRequirement.DateTo = InsuranceVM.DateTo;
+            StatutoryRequirement.DateModified = DateTime.Now;
+            StatutoryRequirement.ModifiedBy = User.Identity.Name;
+
+            assetRepository.AddStatutory(StatutoryRequirement);
+
+            //post RoadTax statutory requirements
+            StatutoryRequirement.ID = 0;
+            StatutoryRequirement.AssetID = 0;
+            StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
+            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
+            StatutoryRequirement.StatutoryID = 2;
+            StatutoryRequirement.StatutoryAvailable = true;
+            StatutoryRequirement.InsuranceTypeID = 0;
+            StatutoryRequirement.InsuranceCompany = "";
+            StatutoryRequirement.AmountPaid = 0;
+            StatutoryRequirement.DateFrom = RoadTaxVM.DateRenewed;
+            StatutoryRequirement.DateTo = RoadTaxVM.ExpiryDate;
+            StatutoryRequirement.DateModified = DateTime.Now;
+            StatutoryRequirement.ModifiedBy = User.Identity.Name;
+
+            assetRepository.AddStatutory(StatutoryRequirement);
+
+            //post Fitness statutory requirements
+            StatutoryRequirement.ID = 0;
+            StatutoryRequirement.AssetID = 0;
+            StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
+            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
+            StatutoryRequirement.StatutoryID = 3;
+            StatutoryRequirement.StatutoryAvailable = true;
+            StatutoryRequirement.InsuranceTypeID = 0;
+            StatutoryRequirement.InsuranceCompany = "";
+            StatutoryRequirement.AmountPaid = 0;
+            StatutoryRequirement.DateFrom = FitnessVM.DateRenewed;
+            StatutoryRequirement.DateTo = FitnessVM.DateRenewed.AddYears(1); //FitnessVM.ExpiryDate;
+            StatutoryRequirement.DateModified = DateTime.Now;
+            StatutoryRequirement.ModifiedBy = User.Identity.Name;
+
+            assetRepository.AddStatutory(StatutoryRequirement);
+            return RedirectToPage("/Garage/Asset/Index");
+
         }
     }
 }
