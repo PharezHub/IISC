@@ -39,6 +39,7 @@
                                 <th>Model</th>
                                 <th>Fuel</th>
                                 <th>Year</th>
+                                <th>Created On</th>
                                 <th>Status</th>
                                 <th> </th>
                             </tr>
@@ -56,6 +57,7 @@
                                 <td>@item.ModelName</td>
                                 <td>@item.FuelName</td>
                                 <td>@item.Year</td>
+                                <td>@item.CreatedOn.Value.ToShortDateString()</td>
                                 <td>
                                     @if (@item.StatusID == 1)
                                     {

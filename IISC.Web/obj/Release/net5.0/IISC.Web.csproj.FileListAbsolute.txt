@@ -178,3 +178,4 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Gara
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Spares\Index.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Maintain\AddParts.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Maintain\Unplanned.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Maintain\Complete.cshtml.g.cs

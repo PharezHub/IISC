@@ -13,10 +13,14 @@ namespace Garage.Core.Models
     {
         [Key]
         public int ID { get; set; }
+
         [Required(ErrorMessage = "Asset type is required")]
-        public int? AssetTypeID { get; set; }
+        [Range(1,50,ErrorMessage = "Asset type is required")]
+        public int AssetTypeID { get; set; }
+
         [Required(ErrorMessage = "Asset category is required")]
-        public int? CategoryID { get; set; }
+        [Range(1, 50, ErrorMessage = "Asset category is required")]
+        public int CategoryID { get; set; }
         [StringLength(30)]
         [Required(ErrorMessage = "Engine number is required")]
         public string EngineNo { get; set; }
@@ -26,16 +30,30 @@ namespace Garage.Core.Models
         [StringLength(10)]
         [Required(ErrorMessage = "Registration/Plate number is required")]
         public string RegNo { get; set; }
+
         [StringLength(30)]
+        [Range(1, 50, ErrorMessage = "Select Make from the list")]
         public string Make { get; set; }
+
         [StringLength(30)]
+        [Range(1, 50, ErrorMessage = "Select Model from the list")]
         public string ModelID { get; set; }
-        public int? Year { get; set; }
+
+        [Required(ErrorMessage = "Enter valid manufacture year")]
+        [Range(1000, 5000, ErrorMessage = "Enter valid manufacture year")]
+        public int Year { get; set; }
+
         [StringLength(10)]
         public string EngineCapacity { get; set; }
-        public int? FuelTypeID { get; set; }
+
+        [Range(1, 50, ErrorMessage = "Select Model from the list")]
+        public int FuelTypeID { get; set; }
+
         [StringLength(20)]
+        [Range(1, 50, ErrorMessage = "Select Color from the list")]
         public string Color { get; set; }
+
+        [Range(1000, 5000, ErrorMessage = "Enter valid purchase year")]
         public int? YearOfPurchase { get; set; }
         public double? InitialMileage { get; set; }
         public double? CurrentMileage { get; set; }

@@ -390,7 +390,7 @@ namespace IISC.Web.Pages.Garage.Asset
             AssetHeader.EngineNo = AssetHeader.EngineNo.ToUpper().Trim();
             AssetHeader.ChassisNo = AssetHeader.ChassisNo.ToUpper().Trim();
             AssetHeader.RegNo = AssetHeader.RegNo.ToUpper().Trim();
-            AssetHeader.FitnessExpiryDate = FitnessVM.ExpiryDate;
+            AssetHeader.FitnessExpiryDate = FitnessVM.DateRenewed.AddYears(1); ;
             AssetHeader.RoadTaxExpiryDate = RoadTaxVM.ExpiryDate;
             AssetHeader.InsuranceExpiryDate = InsuranceVM.DateTo;
             AssetHeader.LastServiceDate = DateTime.Now;

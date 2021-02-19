@@ -13,10 +13,11 @@ namespace Garage.Core.ViewModel
         public double CurrentMileage { get; set; }
         public string MakeName { get; set; }
         public string ModelName { get; set; }
-        public int Year { get; set; }
+        public int? Year { get; set; }
         public string Status { get; set; }
-        public int StatusID { get; set; }
+        public int? StatusID { get; set; }
         public string FuelName { get; set; }
-        public DateTime LoggedOn { get; set; }
+        public DateTime? LoggedOn { get; set; }
+        public DateTime? CreatedOn { get; set; }
     }
 }

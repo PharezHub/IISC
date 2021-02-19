@@ -47,17 +47,13 @@
                                     <label asp-for="AssetHeader.AssetTypeID">Asset Type</label>
                                     <select asp-for="AssetHeader.AssetTypeID" class="form-control"  asp-items="Model.AssetDisplay()">
                                     </select>
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.AssetTypeID" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.AssetTypeID" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.CategoryID">Category</label>
                                     <select asp-for="AssetHeader.CategoryID" class="form-control" asp-items="Model.CategoryDisplay()">
                                     </select>
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.CategoryID" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.CategoryID" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -65,23 +61,17 @@
                                 <div class="col-md-4 mb-3">
                                     <label asp-for="AssetHeader.EngineNo">Engine No</label>
                                     <input asp-for="AssetHeader.EngineNo" class="form-control" placeholder="Enter Engine number" />
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.EngineNo" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.EngineNo" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label asp-for="AssetHeader.ChassisNo">Chassis No</label>
                                     <input asp-for="AssetHeader.ChassisNo" class="form-control" placeholder="Enter Chassis number" />
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.ChassisNo" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.ChassisNo" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label fasp-for="AssetHeader.RegNo">Reg No</label>
                                     <input asp-for="AssetHeader.RegNo" class="form-control" placeholder="Enter vehicle registration number" />
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.RegNo" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.RegNo" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -90,16 +80,12 @@
                                     <label asp-for="AssetHeader.Make">Make</label>
                                     <select asp-for="AssetHeader.Make" class="form-control" asp-items="Model.MakeDisplay()">
                                     </select>
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.Make" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.Make" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.ModelID">Model</label>
                                     <select asp-for="AssetHeader.ModelID" class="form-control" asp-items="Model.ModelDisplay()"></select>
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.ModelID" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.ModelID" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -107,16 +93,12 @@
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.EngineCapacity">Engine Capacity (CC)</label>
                                     <input asp-for="AssetHeader.EngineCapacity" class="form-control" placeholder="Enter engine capacity in CC" />
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.EngineCapacity" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.EngineCapacity" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.FuelTypeID">Fuel Type</label>
                                     <select asp-for="AssetHeader.FuelTypeID" class="form-control" asp-items="Model.FuelDisplay()"></select>
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.FuelTypeID" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.FuelTypeID" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -124,17 +106,13 @@
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.Year">Year</label>
                                     <input asp-for="AssetHeader.Year" class="form-control" placeholder="Enter vehicle manufacture year" />
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.Year" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.Year" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.Color">Color</label>
                                     <select asp-for="AssetHeader.Color" class="form-control" asp-items="Model.ColorDisplay()">
                                     </select>
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.Color" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.Color" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
@@ -236,16 +214,12 @@
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.YearOfPurchase">Purchase Year</label>
                                     <input asp-for="AssetHeader.YearOfPurchase" class="form-control" value="0" placeholder="Enter vehicle purchase year" />
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.YearOfPurchase" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.YearOfPurchase" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.InitialMileage">Initial Mileage</label>
                                     <input asp-for="AssetHeader.InitialMileage" class="form-control" value="0" placeholder="Enter vehicle initial mileage" />
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.InitialMileage" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.InitialMileage" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -253,16 +227,12 @@
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.AssetValue">Asset Value (K)</label>
                                     <input asp-for="AssetHeader.AssetValue" value="0.00" class="form-control" placeholder="Enter Asset Value (K)" />
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.AssetValue" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.AssetValue" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.TagNo">Tag No</label>
                                     <input asp-for="AssetHeader.TagNo" class="form-control" placeholder="Enter Tag number if applicable" />
-                                    <div class="invalid-feedback">
-                                        <span asp-validation-for="AssetHeader.TagNo" class="text-danger"></span>
-                                    </div>
+                                    <span asp-validation-for="AssetHeader.TagNo" class="text-danger"></span>
                                 </div>
                             </div>
 
