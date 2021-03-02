@@ -30,8 +30,10 @@
                     <div class="card-body">
                         <form method="post">
                             <div class="row">
-                                <input asp-for="TriggerType.TriggerName" class="form-control" placeholder="Enter trigger name" />
-                                <span asp-validation-for="TriggerType.TriggerName" class="text-danger"></span>
+                                <div class="col">
+                                    <input asp-for="TriggerType.TriggerName" class="form-control" placeholder="Enter trigger name" />
+                                    <span asp-validation-for="TriggerType.TriggerName" class="text-danger"></span>
+                                </div>
                             </div>
                             <div class="row mt-2 float-right">
                                 <button type="submit" class="btn btn-primary">Add Trigger</button>
@@ -41,7 +43,15 @@
                 </div>
             </div>
             <div class="col-sm-6">
-
+                @if (Model.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @Model.ErrorMessage
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
             </div>
         </div>
 

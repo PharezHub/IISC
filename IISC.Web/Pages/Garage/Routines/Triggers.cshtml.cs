@@ -18,6 +18,7 @@ namespace IISC.Web.Pages.Garage.Routines
 
         [BindProperty]
         public IEnumerable<Adm_TriggerType> TriggerTypeList { get; set; }
+        public string ErrorMessage { get; set; }
 
         public TriggersModel(IRoutineRepository routineRepository)
         {
@@ -31,11 +32,20 @@ namespace IISC.Web.Pages.Garage.Routines
 
         public IActionResult OnPost()
         {
+            TriggerTypeList = routineRepository.GetAllTriggerTypes();
             if (ModelState.IsValid)
             {
-                routineRepository.AddTrigger(TriggerType);
+                if (routineRepository.ValidateTrigger(TriggerType))
+                {
+                    ErrorMessage = $"Trigger name *{TriggerType.TriggerName.Trim()}* already exist!!!";
+                }
+                else
+                {
+                    routineRepository.AddTrigger(TriggerType);
+                    return RedirectToPage("/Garage/Routines/Triggers");
+                }
             }
-            return RedirectToPage("/Garage/Routines/Triggers");
+            return Page();
         }
     }
 }

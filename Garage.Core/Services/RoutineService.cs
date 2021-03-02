@@ -99,5 +99,17 @@ namespace Garage.Core.Services
             trigger.State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+        public bool ValidateTrigger(Adm_TriggerType trigger)
+        {
+            bool result = false;
+            Adm_TriggerType triggerType = _context.Adm_TriggerType.
+                FirstOrDefault(x => x.TriggerName.ToUpper() == trigger.TriggerName.ToUpper());
+            if (triggerType != null)
+            {
+                result = true;
+            }
+            return result;
+        }
     }
 }

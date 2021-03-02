@@ -54,8 +54,8 @@ namespace IISC.Web.Pages.Garage.Routines
                 // Rebind
                 InitialLoad();
 
-                ManageTrigger.TriggerValue = 0;
-                ManageTrigger.Threshold = 0;
+                ////ManageTrigger.TriggerValue = 0;
+                ////ManageTrigger.Threshold = 0;
             }
 
             return RedirectToPage("/Garage/Routines/SetupTrigger");

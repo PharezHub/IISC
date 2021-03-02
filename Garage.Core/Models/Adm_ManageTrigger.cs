@@ -13,10 +13,20 @@ namespace Garage.Core.Models
     {
         [Key]
         public int ID { get; set; }
-        public int? CategoryID { get; set; }
-        public int? TriggerID { get; set; }
-        public int? TriggerValue { get; set; }
-        public int? Threshold { get; set; }
+
+        [Required(ErrorMessage = "Category is required")]
+        public int CategoryID { get; set; }
+
+        [Required(ErrorMessage = "Trigger is required")]
+        public int TriggerID { get; set; }
+
+        [Required(ErrorMessage = "Trigger value is required")]
+        [Range(1,1000000, ErrorMessage = "Enter valid Trigger Value")]
+        public int TriggerValue { get; set; }
+
+        [Required(ErrorMessage = "Threshold is required")]
+        [Range(1, 1000000, ErrorMessage = "Enter valid Threshold Value")]
+        public int Threshold { get; set; }
         public bool? IsActive { get; set; }
         [StringLength(50)]
         public string CreatedBy { get; set; }

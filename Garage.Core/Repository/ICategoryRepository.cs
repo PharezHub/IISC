@@ -13,6 +13,7 @@ namespace Garage.Core.Repository
         void UpdateCategory(Adm_AssetCategory category);
         void DeleteCategory(Adm_AssetCategory category);
         bool ValidateCategory(Adm_AssetCategory category);
+        
         List<Adm_AssetCategory> GetAllCategory();
         Adm_AssetCategory GetCategoryById(int id);
         #endregion

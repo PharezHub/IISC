@@ -47,8 +47,8 @@ namespace IISC.Web.Pages.Garage.Routines
 
             if (ManageTrigger != null)
             {
-                ManageLogSheet.CategoryID = ManageTrigger.CategoryID.Value;
-                ManageLogSheet.LogSheetTypeID = ManageTrigger.TriggerID.Value;
+                ManageLogSheet.CategoryID = ManageTrigger.CategoryID;
+                ManageLogSheet.LogSheetTypeID = ManageTrigger.TriggerID;
             }
             return Page();
         }

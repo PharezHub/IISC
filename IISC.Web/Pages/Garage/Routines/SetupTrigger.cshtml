@@ -35,6 +35,7 @@
                                     <select asp-for="ManageTrigger.CategoryID" class="form-control" asp-items="@Model.CategoryList">
                                         <option value="">Choose One</option>
                                     </select>
+                                    <span asp-validation-for="ManageTrigger.CategoryID" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group row">

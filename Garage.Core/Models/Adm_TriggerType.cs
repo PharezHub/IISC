@@ -14,6 +14,7 @@ namespace Garage.Core.Models
         [Key]
         public int ID { get; set; }
         [StringLength(25)]
+        [Required(ErrorMessage = "Trigger name is required")]
         public string TriggerName { get; set; }
     }
 }

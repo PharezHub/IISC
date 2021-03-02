@@ -14,6 +14,7 @@ namespace Garage.Core.Models
         [Key]
         public int ID { get; set; }
         [StringLength(50)]
+        [Required(ErrorMessage = "Category name is required")]
         public string CategoryName { get; set; }
         public bool? IsActive { get; set; }
     }
