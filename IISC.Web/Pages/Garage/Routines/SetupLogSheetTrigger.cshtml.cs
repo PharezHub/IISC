@@ -45,14 +45,16 @@ namespace IISC.Web.Pages.Garage.Routines
 
             FrequencyList = new SelectList(routineRepository.GetFrequency(),
                 nameof(Adm_Frequency.ID), nameof(Adm_Frequency.FrequencyName));
-
+            
             ManageTrigger = routineRepository.GetManageTriggerById(id);
-            LogSheetSetupList = routineRepository.GetLogSheetSetup();
+            
 
             if (ManageTrigger != null)
             {
                 ManageLogSheet.CategoryID = ManageTrigger.CategoryID;
                 ManageLogSheet.LogSheetTypeID = ManageTrigger.TriggerID;
+
+                LogSheetSetupList = routineRepository.GetLogSheetSetup().Result.Where(x => x.CategoryID == ManageLogSheet.CategoryID);
             }
             return Page();
         }
@@ -71,8 +73,7 @@ namespace IISC.Web.Pages.Garage.Routines
 
                 routineRepository.AddLogSheetTrigger(ManageLogSheet);
             }
-            return Page(); 
-                //RedirectToPage("/Garage/Routines/SetupLogSheetTrigger/", new { id = Id });
+            return RedirectToPage("/Garage/Routines/SetupLogSheetTrigger", new { id = Id });
         }
     }
 }

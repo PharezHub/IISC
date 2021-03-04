@@ -51,9 +51,8 @@ namespace IISC.Web.Pages.Garage.Routines
 
                 routineRepository.AddManageTrigger(ManageTrigger);
 
-                // Rebind
-                InitialLoad();
-
+                // I don't need this code.
+                //InitialLoad();
                 ////ManageTrigger.TriggerValue = 0;
                 ////ManageTrigger.Threshold = 0;
             }

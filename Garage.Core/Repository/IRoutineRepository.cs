@@ -31,8 +31,8 @@ namespace Garage.Core.Repository
 
         Adm_ManageLogSheet GetLogSheetTriggerById(int id);
 
-        IEnumerable<LogSheetSetupViewModel> GetLogSheetSetup();
-        Task DeleteLogSheetTrigger(int Id);
+        Task<IEnumerable<LogSheetSetupViewModel>> GetLogSheetSetup();
+        void DeleteLogSheetTrigger(int Id);
         bool ValidateTrigger(Adm_TriggerType trigger);
         bool ValidateManageTrigger(Adm_ManageTrigger manageTrigger);
     }

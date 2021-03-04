@@ -13,9 +13,15 @@ namespace Garage.Core.Models
     {
         [Key]
         public int ID { get; set; }
-        public int? CategoryID { get; set; }
-        public int? LogSheetTypeID { get; set; }
-        public int? TriggerFrequency { get; set; }
+
+        [Required(ErrorMessage = "Category is required")]
+        public int CategoryID { get; set; }
+
+        [Required(ErrorMessage = "Logsheet type is required")]
+        public int LogSheetTypeID { get; set; }
+        
+        [Required(ErrorMessage = "Trigger log frequency is required")]
+        public int TriggerFrequency { get; set; }
         public TimeSpan? TriggerTime { get; set; }
         public bool? IsActive { get; set; }
         [Column(TypeName = "datetime")]

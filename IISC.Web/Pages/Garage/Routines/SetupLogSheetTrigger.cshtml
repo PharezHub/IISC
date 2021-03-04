@@ -1,4 +1,4 @@
-﻿@page "{id:min(1)}"
+﻿@page "{id}"
 @model IISC.Web.Pages.Garage.Routines.SetupLogSheetTriggerModel
 @{
     ViewData["Title"] = "Setup Log Sheet";
@@ -76,7 +76,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header bg-light">Maintenance Trigger List</div>
+                    <div class="card-header bg-light">Log Sheet - Setup</div>
                     <div class="card-body">
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -84,7 +84,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Trigger</th>
-                                    <th scope="col">Frequency</th>
+                                    <th scope="col">Log Frequency</th>
                                     <th scope="col">Time</th>
                                     <th scope="col">Created On</th>
                                     <th scope="col">Action</th>
@@ -103,11 +103,11 @@
                                             <td>@item.TriggerTime</td>
                                             <td>@item.CreatedOn</td>
                                             <td>
-                                                <a title="Edit Logsheet" asp-page="/Garage/Routines/EditMaintenanceTrigger" asp-route-ID="@item.ID"
+                                                @*<a title="Edit Logsheet" asp-page="/Garage/Routines/EditMaintenanceTrigger" asp-route-ID="@item.ID"
                                                    class="btn btn-sm btn-outline-primary m-1">
                                                     <i class="far fa-edit"></i>
                                                 </a>
-                                                |
+                                                |*@
                                                 <a title="Delete Logsheet" asp-page="/Garage/Routines/DeleteLogSheetTrigger" asp-route-ID="@item.ID"
                                                    class="btn btn-sm btn-outline-danger m-1">
                                                     <i class="fa fa-trash-alt"></i>

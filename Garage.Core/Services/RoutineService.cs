@@ -22,8 +22,21 @@ namespace Garage.Core.Services
 
         public void AddLogSheetTrigger(Adm_ManageLogSheet logSheet)
         {
-            _context.Adm_ManageLogSheet.Add(logSheet);
-            _context.SaveChanges();
+            // Validate existing log trigger
+            var query = _context.Adm_ManageLogSheet.FirstOrDefault(x => x.CategoryID == logSheet.CategoryID
+                        && x.LogSheetTypeID == logSheet.LogSheetTypeID
+                        && x.TriggerFrequency == logSheet.TriggerFrequency);
+
+            if (query != null)
+            {
+                // Do nothing log type already configure.
+                // Show message to user
+            }
+            else
+            {
+                _context.Adm_ManageLogSheet.Add(logSheet);
+                _context.SaveChanges();
+            }
         }
 
         public void AddManageTrigger(Adm_ManageTrigger trigger)
@@ -46,7 +59,7 @@ namespace Garage.Core.Services
             _context.SaveChanges();
         }
 
-        public async Task DeleteLogSheetTrigger(int Id)
+        public void DeleteLogSheetTrigger(int Id)
         {
             try
             {
@@ -54,7 +67,7 @@ namespace Garage.Core.Services
                 if (query != null)
                 {
                     _context.Adm_ManageLogSheet.Remove(query);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
             }
             catch (Exception ex)
@@ -78,9 +91,9 @@ namespace Garage.Core.Services
             return _context.Adm_Frequency.ToList();
         }
 
-        public IEnumerable<LogSheetSetupViewModel> GetLogSheetSetup()
+        public async Task<IEnumerable<LogSheetSetupViewModel>> GetLogSheetSetup()
         {
-            return _context.LogSheetSetupViewModel.FromSqlRaw("spGetLogSheetSetup").ToList();
+            return await _context.LogSheetSetupViewModel.FromSqlRaw("spGetLogSheetSetup").ToListAsync();
         }
 
         public Adm_ManageLogSheet GetLogSheetTriggerById(int id)
@@ -93,9 +106,9 @@ namespace Garage.Core.Services
             return _context.MaintenanceTriggerListViewModel.FromSqlRaw("spGetMaintenanceTriggerList").ToList();
         }
 
-        public Adm_ManageTrigger GetManageTriggerById(int id)
+        public Adm_ManageTrigger GetManageTriggerById(int Id)
         {
-            return _context.Adm_ManageTrigger.FirstOrDefault(x => x.ID == id);
+            return _context.Adm_ManageTrigger.FirstOrDefault(x => x.ID == Id);
         }
 
         public Adm_TriggerType GetTriggerById(int id)
