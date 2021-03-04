@@ -9,7 +9,8 @@ namespace Garage.Core.Models
     {
         [Key]
         public int ID { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Part description is required")]
         public string ItemDescription { get; set; }
         public string PartNumber { get; set; }
         public int CategoryID { get; set; }
@@ -17,5 +18,6 @@ namespace Garage.Core.Models
         public int ModelID { get; set; }
         public string Comment { get; set; }
         public bool IsDeleted { get; set; }
+        public bool MaintenancePart { get; set; }
     }
 }

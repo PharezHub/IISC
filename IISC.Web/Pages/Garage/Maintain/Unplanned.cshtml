@@ -184,8 +184,8 @@
                                                         <th>Type</th>
                                                         <th>Summary</th>
                                                         <th>Breakdown Date</th>
-                                                        <th>Current Mileage</th>
-                                                        <th>Date In</th>
+                                                        <th>Mileage</th>
+                                                        <th>Date Out</th>
                                                         <th>Status</th>
 
                                                     </tr>
@@ -212,7 +212,7 @@
                                                             <td>@item.MaintenanceSummary</td>
                                                             <td>@item.BreakdownDate.ToLongDateString()</td>
                                                             <td>@item.CurrentMileage</td>
-                                                            <td>@item.DateTimeIn.ToShortDateString()</td>
+                                                            <td>@if (@item.DateClosed.HasValue) { @item.DateClosed.Value.ToLongDateString(); } else {  } </td>
                                                             <td>
                                                                 @if (@item.StatusID == 1)
                                                                 {

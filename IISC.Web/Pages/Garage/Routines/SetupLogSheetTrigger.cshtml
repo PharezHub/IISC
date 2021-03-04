@@ -1,7 +1,7 @@
 ﻿@page "{id:min(1)}"
 @model IISC.Web.Pages.Garage.Routines.SetupLogSheetTriggerModel
 @{
-    ViewData["Title"] = "Setup LogSheet";
+    ViewData["Title"] = "Setup Log Sheet";
 }
 
 <div class="row">
@@ -31,6 +31,7 @@
                     <div class="card-body">
                         <form method="post">
                             <div class="form-group row">
+                                <input hidden asp-for="Id" />
                                 <label asp-for="ManageLogSheet.CategoryID" class="col-sm-3 col-form-label">Category</label>
                                 <div class="col-sm-9">
                                     <select asp-for="ManageLogSheet.CategoryID" class="form-control" asp-items="@Model.CategoryList">
@@ -107,7 +108,7 @@
                                                     <i class="far fa-edit"></i>
                                                 </a>
                                                 |
-                                                <a title="Delete Logsheet" asp-page="/Garage/Routines/SetupLogSheetTrigger" asp-route-ID="@item.ID"
+                                                <a title="Delete Logsheet" asp-page="/Garage/Routines/DeleteLogSheetTrigger" asp-route-ID="@item.ID"
                                                    class="btn btn-sm btn-outline-danger m-1">
                                                     <i class="fa fa-trash-alt"></i>
                                                 </a>

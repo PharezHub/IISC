@@ -35,6 +35,19 @@ namespace Garage.Core.Services
             }
         }
 
+        public async Task AddMaintenanceType(Adm_MaintenanceType type)
+        {
+            if (type != null)
+            {
+                var query = _context.Adm_MaintenanceType.FirstOrDefault(x => x.MaintenanceName.ToUpper() == type.MaintenanceName.ToUpper());
+                if (query != null)
+                {
+                    _context.Adm_MaintenanceType.Add(type);
+                    await _context.SaveChangesAsync();
+                }
+            }
+        }
+
         public void AddPartsUsed(TrnPartUsed partUsed)
         {
             try

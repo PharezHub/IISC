@@ -41,6 +41,7 @@
                                 <th>Model</th>
                                 <th>Part No</th>
                                 <th>Category</th>
+                                <th>Maint.</th>
                                 <th> </th>
                             </tr>
                         </thead>
@@ -56,6 +57,7 @@
                                         <td>@item.ModelName</td>
                                         <td>@item.PartNumber</td>
                                         <td>@item.CategoryName</td>
+                                        <td>@item.MaintenancePart</td>
                                         <td>
                                             <a title="Edit Spare Part" asp-page="/Garage/Spares/Edit" asp-route-ID="@item.ID">
                                                 Edit

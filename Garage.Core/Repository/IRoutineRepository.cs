@@ -3,6 +3,7 @@ using Garage.Core.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Garage.Core.Repository
 {
@@ -31,6 +32,8 @@ namespace Garage.Core.Repository
         Adm_ManageLogSheet GetLogSheetTriggerById(int id);
 
         IEnumerable<LogSheetSetupViewModel> GetLogSheetSetup();
+        Task DeleteLogSheetTrigger(int Id);
         bool ValidateTrigger(Adm_TriggerType trigger);
+        bool ValidateManageTrigger(Adm_ManageTrigger manageTrigger);
     }
 }

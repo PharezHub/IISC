@@ -16,5 +16,6 @@ namespace Garage.Core.ViewModel
         public int ModelID { get; set; }
         public string ModelName { get; set; }
         public string Comment { get; set; }
+        public bool MaintenancePart { get; set; }
     }
 }

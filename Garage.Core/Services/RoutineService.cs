@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Garage.Core.Services
 {
@@ -27,14 +28,39 @@ namespace Garage.Core.Services
 
         public void AddManageTrigger(Adm_ManageTrigger trigger)
         {
-            _context.Adm_ManageTrigger.Add(trigger);
-            _context.SaveChanges();
+            var query = _context.Adm_ManageTrigger.FirstOrDefault(x => x.CategoryID == trigger.CategoryID && x.TriggerID == trigger.TriggerID);
+            if (query != null)
+            {
+                // Do not add duplicate triggers
+            }
+            else
+            {
+                _context.Adm_ManageTrigger.Add(trigger);
+                _context.SaveChanges();
+            }
         }
 
         public void AddTrigger(Adm_TriggerType triggerType)
         {
             _context.Adm_TriggerType.Add(triggerType);
             _context.SaveChanges();
+        }
+
+        public async Task DeleteLogSheetTrigger(int Id)
+        {
+            try
+            {
+                var query = _context.Adm_ManageLogSheet.FirstOrDefault(x => x.ID == Id);
+                if (query != null)
+                {
+                    _context.Adm_ManageLogSheet.Remove(query);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public IEnumerable<Adm_ManageLogSheet> GetAllLogSheetTrigger()
@@ -98,6 +124,18 @@ namespace Garage.Core.Services
             var trigger = _context.Adm_TriggerType.Attach(triggerType);
             trigger.State = EntityState.Modified;
             _context.SaveChanges();
+        }
+
+        public bool ValidateManageTrigger(Adm_ManageTrigger manageTrigger)
+        {
+            bool result = false;
+            Adm_ManageTrigger trigger = _context.Adm_ManageTrigger.
+                FirstOrDefault(x => x.CategoryID == manageTrigger.CategoryID && x.TriggerID == manageTrigger.TriggerID);
+            if (trigger != null)
+            {
+                result = true;
+            }
+            return result;
         }
 
         public bool ValidateTrigger(Adm_TriggerType trigger)

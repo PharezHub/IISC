@@ -262,3 +262,4 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\Unplanned.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\AddParts.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\Complete.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\DeleteLogSheetTrigger.cshtml.g.cs

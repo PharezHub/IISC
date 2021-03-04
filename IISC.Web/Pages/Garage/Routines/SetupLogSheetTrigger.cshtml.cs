@@ -18,6 +18,9 @@ namespace IISC.Web.Pages.Garage.Routines
 
         [BindProperty]
         public Adm_ManageLogSheet ManageLogSheet { get; set; }
+        
+        [BindProperty]
+        public int Id { get; set; }
         public Adm_ManageTrigger ManageTrigger { get; set; }
         public SelectList CategoryList { get; set; }
         public SelectList TriggerList { get; set; }
@@ -33,6 +36,7 @@ namespace IISC.Web.Pages.Garage.Routines
 
         public IActionResult OnGet(int id)
         {
+            Id = id;
             CategoryList = new SelectList(categoryRepository.GetAllCategory(),
                 nameof(Adm_AssetCategory.ID), nameof(Adm_AssetCategory.CategoryName));
 
@@ -67,7 +71,8 @@ namespace IISC.Web.Pages.Garage.Routines
 
                 routineRepository.AddLogSheetTrigger(ManageLogSheet);
             }
-            return Page();
+            return Page(); 
+                //RedirectToPage("/Garage/Routines/SetupLogSheetTrigger/", new { id = Id });
         }
     }
 }
