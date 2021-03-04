@@ -17,5 +17,6 @@ namespace Garage.Core.Repository
         void AddPartsUsed(TrnPartUsed partUsed);
         Task<IEnumerable<PartUsedViewModel>> GetPartsUsed(int maintenanceId);
         Task UpdateMaintenance(int maintenanceId, string closureComment, DateTime dateClose, string userName);
+        Task<IEnumerable<AdmPartsCatalog>> GetScheduleMaintenanceParts(int categoryId, int makeId, int modelId);
     }
 }

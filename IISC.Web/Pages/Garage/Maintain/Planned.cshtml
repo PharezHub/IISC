@@ -1,7 +1,7 @@
-﻿@page "{id:min(1)}"
-@model IISC.Web.Pages.Garage.Maintain.UnplannedModel
+﻿@page
+@model IISC.Web.Pages.Garage.Maintain.PlannedModel
 @{
-    ViewData["Title"] = "Unplanned Maintenance";
+    ViewData["Title"] = "Planned Maintenance";
 }
 
 <div class="row">
@@ -113,7 +113,7 @@
 
                                 <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Add Breakdown Maintenance</a>
+                                        <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Add Scheduled Maintenance</a>
                                     </li>
                                 </ul>
                                 <div class="card">
@@ -121,8 +121,7 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label asp-for="HdrMaintenance.MaintenanceType">Maintenance Type</label>
-                                                <select asp-for="HdrMaintenance.MaintenanceType" class="form-control" asp-items="@Model.TypeList.Where(x => x.Value == "1")">
-                                                    @*<option value="0">Choose One</option>*@
+                                                <select asp-for="HdrMaintenance.MaintenanceType" class="form-control" asp-items="@Model.TypeList.Where(x => x.Value == "2")">
                                                 </select>
                                             </div>
                                             <div class="col-md-6 mb-3">
@@ -142,8 +141,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
-                                                <label asp-for="HdrMaintenance.MaintenanceSummary">Breakdown Summary</label>
-                                                <textarea asp-for="HdrMaintenance.MaintenanceSummary" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter breakdown summary">
+                                                <label asp-for="HdrMaintenance.MaintenanceSummary">Maintenance Summary</label>
+                                                <textarea asp-for="HdrMaintenance.MaintenanceSummary" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter scheduled maintenance summary">
                                     </textarea>
                                                 <div class="invalid-feedback">
                                                     <span asp-validation-for="HdrMaintenance.MaintenanceSummary" class="text-danger"></span>
@@ -212,7 +211,10 @@
                                                             <td>@item.MaintenanceSummary</td>
                                                             <td>@item.BreakdownDate.ToLongDateString()</td>
                                                             <td>@item.CurrentMileage</td>
-                                                            <td>@if (@item.DateClosed.HasValue) { @item.DateClosed.Value.ToLongDateString(); } else {  } </td>
+                                                            <td>@if (@item.DateClosed.HasValue)
+                                                            {@item.DateClosed.Value.ToLongDateString();
+                                                        }
+                                                        else { } </td>
                                                             <td>
                                                                 @if (@item.StatusID == 1)
                                                                 {

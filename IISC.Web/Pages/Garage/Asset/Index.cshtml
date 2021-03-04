@@ -77,9 +77,13 @@
                                         View
                                     </a>
                                     |
-                                    <a title="View asset details" asp-page="/Garage/Maintain/Unplanned" asp-route-ID="@item.ID">Breakdown
+                                    <a title="Load Breakdown Maintenance" asp-page="/Garage/Maintain/Unplanned" asp-route-ID="@item.ID">
+                                        Breakdown
                                     </a>
-
+                                    |
+                                    <a title="Load Scheduled Maintenance" asp-page="/Garage/Maintain/planned" asp-route-ID="@item.ID">
+                                        Scheduled
+                                    </a>
                                     @*<a asp-page="/Garage/Asset/View/" asp-route-ID="@item.ID" alt="View asset details">View</a>*@
                                 </td>
                             </tr>
