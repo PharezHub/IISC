@@ -62,6 +62,8 @@ namespace IISC.Web.Pages.Garage.Maintain
             TrnPartUsed.LoggedBy = User.Identity.Name;
             TrnPartUsed.DateLogged = DateTime.Now;
             TrnPartUsed.Qty = 1;
+            TrnPartUsed.PartCost = 0;
+            TrnPartUsed.PurchaseOrder = "";
 
             if (!ModelState.IsValid)
             {

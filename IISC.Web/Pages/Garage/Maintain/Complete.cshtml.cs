@@ -51,7 +51,7 @@ namespace IISC.Web.Pages.Garage.Maintain
             HdrMaintenance.RegNo = AssetDetail.RegNo;
             HdrMaintenance.ModifiedBy = User.Identity.Name;
 
-            transaction.UpdateMaintenance(HdrMaintenance.ID, HdrMaintenance.ClosureComment, HdrMaintenance.DateClosed.Value, HdrMaintenance.ModifiedBy);
+            transaction.UpdateMaintenance(HdrMaintenance.ID, 1, HdrMaintenance.ClosureComment, HdrMaintenance.DateClosed.Value, HdrMaintenance.ModifiedBy);
             return RedirectToPage("/Garage/Asset/Index");
         }
     }

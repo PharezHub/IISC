@@ -21,6 +21,7 @@ namespace IISC.Web.Pages.Garage.Maintain
             this.transaction = transaction;
             this.assetRepository = assetRepository;
             HdrMaintenance = new HdrMaintenance();
+            TrnPartUsed = new TrnPartUsed();
         }
 
         [BindProperty]
@@ -28,6 +29,8 @@ namespace IISC.Web.Pages.Garage.Maintain
 
         [BindProperty]
         public AssetViewModel AssetDetail { get; set; }
+
+        public TrnPartUsed TrnPartUsed { get; set; }
         public SelectList TypeList { get; set; }
         public IEnumerable<HdrMaintenanceViewModel> HdrMaintenanceList { get; set; }
 
@@ -68,10 +71,27 @@ namespace IISC.Web.Pages.Garage.Maintain
             var query = await transaction.AddMaintenance(HdrMaintenance);
             assetRepository.UpdateMileage(HdrMaintenance.RegNo, HdrMaintenance.CurrentMileage.Value);
 
-            // Add maintenance parts
+            // Get maintenance parts
             var partsQuery = await transaction.GetScheduleMaintenanceParts(AssetDetail.CategoryID, int.Parse(AssetDetail.Make), int.Parse(AssetDetail.ModelID));
 
-            return RedirectToPage("Unplanned", new { id = assetID });
+            // Add maintenance parts
+            int mainId = query.ID;
+            foreach (var item in partsQuery)
+            {
+                TrnPartUsed.MainID = mainId;
+                TrnPartUsed.LoggedBy = User.Identity.Name;
+                TrnPartUsed.DateLogged = DateTime.Now;
+                TrnPartUsed.Qty = 1;
+                TrnPartUsed.ProblemDescription = $"Scheduled - {item.ItemDescription.Trim()}";
+                TrnPartUsed.DocketNo = "AUTO";
+                TrnPartUsed.PartID = item.ID;
+                TrnPartUsed.PartCost = 0;
+                TrnPartUsed.PurchaseOrder = "";
+
+                transaction.AddPartsUsed(TrnPartUsed);
+            }
+            
+            return RedirectToPage("Planned", new { id = assetID });
         }
     }
 }

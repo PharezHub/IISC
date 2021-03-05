@@ -52,8 +52,10 @@ namespace Garage.Core.Services
         {
             try
             {
-                _context.TrnPartUsed.Add(partUsed);
-                _context.SaveChanges();
+                _context.Database.ExecuteSqlRaw("spAddPartsUsed {0},{1},{2},{3},{4},{5},{6},{7}"
+                    , partUsed.MainID, partUsed.ProblemDescription, partUsed.DocketNo, partUsed.PartID, partUsed.Qty, partUsed.PartCost, partUsed.PurchaseOrder, partUsed.LoggedBy);
+                //_context.TrnPartUsed.Add(partUsed);
+                //_context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -96,12 +98,22 @@ namespace Garage.Core.Services
         public async Task<IEnumerable<AdmPartsCatalog>> GetScheduleMaintenanceParts(int categoryId, int makeId, int modelId)
         {
             return await _context.AdmPartsCatalog
-                .Where(x => x.CategoryID == categoryId && x.MakeID == makeId && x.ModelID == modelId && x.IsDeleted == false)
+                .Where(x => x.CategoryID == categoryId && x.MakeID == makeId && x.ModelID == modelId && x.IsDeleted == false && x.MaintenancePart == true)
                 .ToListAsync();
         }
 
-        public async Task UpdateMaintenance(int maintenanceId, string closureComment,DateTime dateClose, string userName)
+        public async Task UpdateMaintenance(int maintenanceId,int statusId, string closureComment,DateTime dateClose, string userName)
         {
+            try
+            {
+                _context.Database.ExecuteSqlRaw("spUpdateMaintenance {0},{1},{2},{3},{4}", maintenanceId, statusId, closureComment, dateClose, userName);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
             var query = _context.HdrMaintenance.FirstOrDefault(x => x.ID == maintenanceId);
             if (query != null)
             {
