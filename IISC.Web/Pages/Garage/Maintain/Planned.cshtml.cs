@@ -15,11 +15,14 @@ namespace IISC.Web.Pages.Garage.Maintain
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
+        private readonly IDashboardRepository dashboardRepository;
 
         public PlannedModel(ITransaction transaction, IAssetRepository assetRepository)
         {
             this.transaction = transaction;
             this.assetRepository = assetRepository;
+            this.dashboardRepository = dashboardRepository;
+
             HdrMaintenance = new HdrMaintenance();
             TrnPartUsed = new TrnPartUsed();
         }
@@ -33,6 +36,10 @@ namespace IISC.Web.Pages.Garage.Maintain
         public TrnPartUsed TrnPartUsed { get; set; }
         public SelectList TypeList { get; set; }
         public IEnumerable<HdrMaintenanceViewModel> HdrMaintenanceList { get; set; }
+        public int TotalBreakdowns { get; set; }
+        public int TotalServices { get; set; }
+        public int ActiveBreakdowns { get; set; }
+        public int ActiveServices { get; set; }
 
         public async Task<IActionResult> OnGet(int id)
         {

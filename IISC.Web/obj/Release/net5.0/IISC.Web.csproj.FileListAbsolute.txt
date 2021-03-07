@@ -180,3 +180,5 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Gara
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Maintain\Unplanned.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Maintain\Complete.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Routines\DeleteLogSheetTrigger.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Maintain\Planned.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Routines\AddType.cshtml.g.cs

@@ -43,7 +43,7 @@ namespace Garage.Core.AppDbContext
         public DbSet<AssetViewModel> AssetViewModel { get; set; }
 
         public DbSet<MaintenanceTriggerListViewModel> MaintenanceTriggerListViewModel { get; set; }
-
+        public DbSet<MaintenanceTags> MaintenanceTags { get; set; }
         public DbSet<LogSheetSetupViewModel> LogSheetSetupViewModel { get; set; }
         public DbSet<LogSheetListViewModel> LogSheetListViewModel { get; set; }
         public DbSet<PartsCatalogViewModel> PartsCatalogViewModel { get; set; }

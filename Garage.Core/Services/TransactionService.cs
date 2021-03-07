@@ -126,5 +126,17 @@ namespace Garage.Core.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+        public bool ValidateMaintenance(Adm_MaintenanceType type)
+        {
+            bool result = false;
+            Adm_MaintenanceType MaintenanceType  = _context.Adm_MaintenanceType.
+                FirstOrDefault(x => x.MaintenanceName.Trim().ToUpper() == type.MaintenanceName.Trim().ToUpper());
+            if (MaintenanceType != null)
+            {
+                result = true;
+            }
+            return result;
+        }
     }
 }
