@@ -20,6 +20,7 @@ namespace IISC.Web.Pages.Garage.Maintain
         {
             this.transaction = transaction;
             this.assetRepository = assetRepository;
+            TrnWorkOrderParts = new TrnWorkOrderParts();
         }
 
         [BindProperty]
@@ -30,10 +31,14 @@ namespace IISC.Web.Pages.Garage.Maintain
 
         [BindProperty]
         public HdrMaintenanceViewModel HdrMaintenanceDetail { get; set; }
+
+        [BindProperty]
+        public IEnumerable<TrnWorkOrderParts> ListWorkOrderParts { get; set; }
         public SelectList PartsList { get; set; }
 
         public async Task<IActionResult> OnGet(int Id)
         {
+            TrnWorkOrderParts.MaintenanceID = Id;
 
             HdrMaintenanceDetail = transaction.GetMaintenanceById(Id).FirstOrDefault();
             AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
@@ -41,7 +46,21 @@ namespace IISC.Web.Pages.Garage.Maintain
             PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID),
                     int.Parse(AssetDetail.Make)), nameof(AdmPartsCatalog.ID), nameof(AdmPartsCatalog.ItemDescription));
 
+            ListWorkOrderParts = await transaction.GetWorkOrderParts(Id);
+
             return Page();
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            //submit and rebind
+            transaction.AddWOPartsUsed(TrnWorkOrderParts);
+            return RedirectToPage("WorkOrderParts", new { id = TrnWorkOrderParts.MaintenanceID });
         }
     }
 }

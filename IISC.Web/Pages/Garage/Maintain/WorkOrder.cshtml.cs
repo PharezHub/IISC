@@ -53,8 +53,6 @@ namespace IISC.Web.Pages.Garage.Maintain
             AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
             WorkOrderHdrView = await transaction.GetWorkOrderHdr(Id);
 
-            
-
             return Page();
         }
 

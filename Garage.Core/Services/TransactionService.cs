@@ -193,9 +193,9 @@ namespace Garage.Core.Services
             }
         }
 
-        public Task<IEnumerable<TrnWorkOrderParts>> GetWorkOrderParts(int id)
+        public async Task<IEnumerable<TrnWorkOrderParts>> GetWorkOrderParts(int id)
         {
-            throw new NotImplementedException();
+            return await _context.TrnWorkOrderParts.FromSqlRaw("spGetWorkOrderParts {0}", id).ToListAsync();
         }
     }
 }
