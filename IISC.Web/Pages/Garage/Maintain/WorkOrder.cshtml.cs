@@ -20,13 +20,14 @@ namespace IISC.Web.Pages.Garage.Maintain
         {
             this.transaction = transaction;
             this.assetRepository = assetRepository;
+            WorkOrderHdr = new WorkOrderHdr();
         }
 
         [BindProperty]
         public WorkOrderHdr WorkOrderHdr { get; set; }
 
         [BindProperty]
-        public TrnWorkOrderParts TrnWorkOrderParts { get; set; }
+        public IEnumerable<WorkOrderHdrViewModel> WorkOrderHdrView { get; set; }
 
         [BindProperty]
         public AssetViewModel AssetDetail { get; set; }
@@ -47,18 +48,35 @@ namespace IISC.Web.Pages.Garage.Maintain
             PurposeList = new SelectList(await transaction.GetPurpose(), nameof(AdmPurpose.ID), nameof(AdmPurpose.PurposeDescription));
             ReasonList = new SelectList(await transaction.GetReason(), nameof(AdmReason.ID), nameof(AdmReason.ReasonOfFailure));
 
+            WorkOrderHdr.MaintenanceID = Id;
             HdrMaintenanceDetail = transaction.GetMaintenanceById(Id).FirstOrDefault();
             AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
+            WorkOrderHdrView = await transaction.GetWorkOrderHdr(Id);
 
-            PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID),
-                    int.Parse(AssetDetail.Make)), nameof(AdmPartsCatalog.ID), nameof(AdmPartsCatalog.ItemDescription));
+            //PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID),
+            //        int.Parse(AssetDetail.Make)), nameof(AdmPartsCatalog.ID), nameof(AdmPartsCatalog.ItemDescription));
 
             return Page();
         }
 
-        public void OnPostSubmitWorkOrderParts(TrnWorkOrderParts WOparts)
+        public async Task<IActionResult> OnPost()
         {
+            WorkOrderHdr.LoggedBy = User.Identity.Name;
+            WorkOrderHdr.LoggedDate = DateTime.Now;
 
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            //submit and rebind
+            await transaction.AddWorkOrder(WorkOrderHdr);
+            return RedirectToPage("WorkOrder", new { id = WorkOrderHdr.MaintenanceID });
         }
+
+        //public void OnPostSubmitWorkOrderParts(TrnWorkOrderParts WOparts)
+        //{
+
+        //}
     }
 }

@@ -35,11 +35,11 @@
 
                             <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Work Order</a>
+                                    <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Maintenance - Work Order</a>
                                 </li>
                             </ul>
-                            <div class="card">
-                                <form method="post">
+                            <form method="post">
+                                <div class="card">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
@@ -48,11 +48,13 @@
                                                 <select asp-for="WorkOrderHdr.SectionID" class="form-control" asp-items="@Model.SectionList">
                                                     <option value="">Choose One</option>
                                                 </select>
+                                                <span asp-validation-for="WorkOrderHdr.SectionID" class="text-danger"></span>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label asp-for="WorkOrderHdr.Priority">Priority</label>
                                                 <select asp-for="WorkOrderHdr.Priority" class="form-control" asp-items="@Model.PriorityList">
                                                 </select>
+                                                <span asp-validation-for="WorkOrderHdr.Priority" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -60,58 +62,65 @@
                                                 <label asp-for="WorkOrderHdr.Purpose">Purpose</label>
                                                 <select asp-for="WorkOrderHdr.Purpose" class="form-control" asp-items="@Model.PurposeList">
                                                 </select>
+                                                <span asp-validation-for="WorkOrderHdr.Purpose" class="text-danger"></span>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label asp-for="WorkOrderHdr.ReasonForFailure">Reason for Failure</label>
                                                 <select asp-for="WorkOrderHdr.ReasonForFailure" class="form-control" asp-items="@Model.ReasonList">
                                                 </select>
+                                                <span asp-validation-for="WorkOrderHdr.ReasonForFailure" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
                                                 <label asp-for="WorkOrderHdr.WorkDescription">Work Description</label>
                                                 <textarea asp-for="WorkOrderHdr.WorkDescription" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter work description"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="card">
-                                <form asp-page-handler="SubmitWorkOrderParts">
-                                    <div class="card-footer">
-                                        <strong>Material Requirement</strong>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label asp-for="TrnWorkOrderParts.PartID">Part</label>
-                                                <select asp-for="TrnWorkOrderParts.PartID" class="form-control" asp-items="@Model.PartsList">
-                                                    <option value="0">Choose One</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label asp-for="TrnWorkOrderParts.Qty">Qty</label>
-                                                <input asp-for="TrnWorkOrderParts.Qty" class="form-control" placeholder="Enter Qty" value="1" />
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label asp-for="TrnWorkOrderParts.UnitCost">Unit Price (K)</label>
-                                                <input asp-for="TrnWorkOrderParts.UnitCost" class="form-control" placeholder="Enter part unit price" value="1" />
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-
+                                                <span asp-validation-for="WorkOrderHdr.WorkDescription" class="text-danger"></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-footer">
                                         <div class="row mt-2 float-right">
-                                            <button type="submit" class="btn btn-outline-primary">Add Part</button>
+                                            <button type="submit" class="btn btn-outline-primary">Add Work Order</button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
+                            @*<div class="card">
+                                    <form asp-page-handler="SubmitWorkOrderParts">
+                                        <div class="card-footer">
+                                            <strong>Material Requirement</strong>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label asp-for="TrnWorkOrderParts.PartID">Part</label>
+                                                    <select asp-for="TrnWorkOrderParts.PartID" class="form-control" asp-items="@Model.PartsList">
+                                                        <option value="0">Choose One</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label asp-for="TrnWorkOrderParts.Qty">Qty</label>
+                                                    <input asp-for="TrnWorkOrderParts.Qty" class="form-control" placeholder="Enter Qty" value="1" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label asp-for="TrnWorkOrderParts.UnitCost">Unit Price (K)</label>
+                                                    <input asp-for="TrnWorkOrderParts.UnitCost" class="form-control" placeholder="Enter part unit price" value="1" />
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="row mt-2 float-right">
+                                                <button type="submit" class="btn btn-outline-primary">Add Part</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>*@
 
                             <div class="card">
                                 <div class="card-body">
@@ -120,30 +129,40 @@
                                             <thead>
                                                 <tr>
                                                     <th> </th>
-                                                    <th>#</th>
-                                                    <th>Docket #</th>
-                                                    <th>Part</th>
-                                                    <th>Problem Description</th>
-                                                    <th>Logged Date</th>
-
+                                                    <th> </th>
+                                                    <th>Work Order</th>
+                                                    <th>Section</th>
+                                                    <th>Priority</th>
+                                                    <th>Purpose</th>
+                                                    <th>Reason</th>
+                                                    <th>Work Description</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @*@foreach (var item in Model.PartUsedView)
+                                                @if (Model.WorkOrderHdrView != null)
+                                                {
+                                                    @foreach (var item in Model.WorkOrderHdrView)
                                                     {
                                                         <tr>
                                                             <td>
                                                                 <a title="View asset details" asp-page="/Garage/Maintain/DeletePart" asp-route-ID="@item.ID">
-                                                                    Delete
+                                                                    Add Parts
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <a title="View asset details" asp-page="/Garage/Maintain/DeletePart" asp-route-ID="@item.ID">
+                                                                    Add Tools
                                                                 </a>
                                                             </td>
                                                             <td>@item.ID</td>
-                                                            <td>@item.DocketNo</td>
-                                                            <td>@item.PartDescription</td>
-                                                            <td>@item.ProblemDescription</td>
-                                                            <td>@item.DateLogged</td>
+                                                            <td>@item.SectionName</td>
+                                                            <td>@item.PriorityName</td>
+                                                            <td>@item.PurposeDescription</td>
+                                                            <td>@item.ReasonOfFailure</td>
+                                                            <td>@item.WorkDescription</td>
                                                         </tr>
-                                                    }*@
+                                                    }
+                                                }
                                             </tbody>
                                         </table>
                                     </div>

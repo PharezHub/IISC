@@ -63,6 +63,22 @@ namespace Garage.Core.Services
             }
         }
 
+        public async Task AddWorkOrder(WorkOrderHdr workOrderHdr)
+        {
+            try
+            {
+                if (workOrderHdr != null)
+                {
+                    _context.WorkOrderHdr.Add(workOrderHdr);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceByAssetId(int assetId)
         {
             return await _context.HdrMaintenanceViewModel.FromSqlRaw("GetMaintenanceByRegNo {0}", assetId).ToListAsync();
@@ -157,6 +173,11 @@ namespace Garage.Core.Services
                 result = true;
             }
             return result;
+        }
+
+        public async Task<IEnumerable<WorkOrderHdrViewModel>> GetWorkOrderHdr(int id)
+        {
+            return await _context.WorkOrderHdrViewModel.FromSqlRaw("spGetWorkOrderHdr {0}", id).ToListAsync();
         }
     }
 }

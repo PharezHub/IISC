@@ -56,6 +56,7 @@ namespace Garage.Core.AppDbContext
         public DbSet<PartsCatalogViewModel> PartsCatalogViewModel { get; set; }
         public DbSet<HdrMaintenanceViewModel> HdrMaintenanceViewModel { get; set; }
         public DbSet<PartUsedViewModel> PartUsedViewModel { get; set; }
+        public DbSet<WorkOrderHdrViewModel> WorkOrderHdrViewModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

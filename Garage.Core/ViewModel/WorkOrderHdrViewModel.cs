@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Garage.Core.Models
+namespace Garage.Core.ViewModel
 {
-    public class WorkOrderHdr
+    public class WorkOrderHdrViewModel
     {
-        [Key]
         public int ID { get; set; }
-        [Required(ErrorMessage = "Maintenance Id is required")]
         public int MaintenanceID { get; set; }
-        [Required(ErrorMessage = "Section is required")]
         public int SectionID { get; set; }
-        [Required(ErrorMessage = "Priority is required")]
+        public string SectionName { get; set; }
         public int Priority { get; set; }
-        [Required(ErrorMessage = "Purpose is required")]
+        public string PriorityName { get; set; }
         public int Purpose { get; set; }
-        [Required(ErrorMessage = "Reason for failure is required")]
+        public string PurposeDescription { get; set; }
         public int ReasonForFailure { get; set; }
-        [Required(ErrorMessage = "Work description is required")]
+        public string ReasonOfFailure { get; set; }
         public string WorkDescription { get; set; }
         public string LoggedBy { get; set; }
         public DateTime LoggedDate { get; set; }
