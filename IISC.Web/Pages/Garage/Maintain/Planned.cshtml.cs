@@ -17,7 +17,7 @@ namespace IISC.Web.Pages.Garage.Maintain
         private readonly IAssetRepository assetRepository;
         private readonly IDashboardRepository dashboardRepository;
 
-        public PlannedModel(ITransaction transaction, IAssetRepository assetRepository)
+        public PlannedModel(ITransaction transaction, IAssetRepository assetRepository, IDashboardRepository dashboardRepository)
         {
             this.transaction = transaction;
             this.assetRepository = assetRepository;

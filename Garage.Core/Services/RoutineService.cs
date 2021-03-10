@@ -127,7 +127,7 @@ namespace Garage.Core.Services
                 manageTrigger.Threshold = trigger.Threshold;
                 manageTrigger.ModifiedBy = trigger.ModifiedBy;
                 manageTrigger.ModifiedOn = DateTime.Now;
-
+                manageTrigger.MaintenanceTrigger = trigger.MaintenanceTrigger;
                 _context.SaveChanges();
             }
         }

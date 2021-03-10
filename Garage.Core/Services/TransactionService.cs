@@ -95,11 +95,31 @@ namespace Garage.Core.Services
             return await _context.PartUsedViewModel.FromSqlRaw("spGetPartsUsed {0}", maintenanceId).ToListAsync();
         }
 
+        public async  Task<List<AdmPriority>> GetPriority()
+        {
+            return await _context.AdmPriority.ToListAsync();
+        }
+
+        public async Task<List<AdmPurpose>> GetPurpose()
+        {
+            return await _context.AdmPurpose.ToListAsync();
+        }
+
+        public async Task<List<AdmReason>> GetReason()
+        {
+            return await _context.AdmReason.ToListAsync();
+        }
+
         public async Task<IEnumerable<AdmPartsCatalog>> GetScheduleMaintenanceParts(int categoryId, int makeId, int modelId)
         {
             return await _context.AdmPartsCatalog
                 .Where(x => x.CategoryID == categoryId && x.MakeID == makeId && x.ModelID == modelId && x.IsDeleted == false && x.MaintenancePart == true)
                 .ToListAsync();
+        }
+
+        public async Task<List<AdmSection>> GetSection()
+        {
+            return await _context.AdmSection.ToListAsync();
         }
 
         public async Task UpdateMaintenance(int maintenanceId,int statusId, string closureComment,DateTime dateClose, string userName)

@@ -13,6 +13,10 @@ namespace Garage.Core.Repository
         Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceByAssetId(int assetId);
         IEnumerable<HdrMaintenanceViewModel> GetMaintenanceById(int Id);
         Task<List<Adm_MaintenanceType>> GetMaintenanceType();
+        Task<List<AdmSection>> GetSection();
+        Task<List<AdmPriority>> GetPriority();
+        Task<List<AdmPurpose>> GetPurpose();
+        Task<List<AdmReason>> GetReason();
         Task AddMaintenanceType(Adm_MaintenanceType type);
         void AddPartsUsed(TrnPartUsed partUsed);
         Task<IEnumerable<PartUsedViewModel>> GetPartsUsed(int maintenanceId);

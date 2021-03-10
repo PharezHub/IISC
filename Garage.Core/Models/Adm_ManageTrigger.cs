@@ -28,6 +28,7 @@ namespace Garage.Core.Models
         [Range(1, 1000000, ErrorMessage = "Enter valid Threshold Value")]
         public int Threshold { get; set; }
         public bool? IsActive { get; set; }
+        public bool MaintenanceTrigger { get; set; }
         [StringLength(50)]
         public string CreatedBy { get; set; }
         [Column(TypeName = "datetime")]
