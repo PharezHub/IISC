@@ -179,5 +179,23 @@ namespace Garage.Core.Services
         {
             return await _context.WorkOrderHdrViewModel.FromSqlRaw("spGetWorkOrderHdr {0}", id).ToListAsync();
         }
+
+        public void AddWOPartsUsed(TrnWorkOrderParts workOrderParts)
+        {
+            try
+            {
+                 _context.Database.ExecuteSqlRaw("spAddWOPartsUsed {0},{1},{2},{3},{4}", workOrderParts.MaintenanceID, workOrderParts.PartID, workOrderParts.PartDescription,
+                    workOrderParts.Qty, workOrderParts.UnitCost);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Task<IEnumerable<TrnWorkOrderParts>> GetWorkOrderParts(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

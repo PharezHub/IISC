@@ -26,5 +26,7 @@ namespace Garage.Core.Repository
         bool ValidateMaintenance(Adm_MaintenanceType type);
         Task AddWorkOrder(WorkOrderHdr workOrderHdr);
         Task<IEnumerable<WorkOrderHdrViewModel>> GetWorkOrderHdr(int id);
+        void AddWOPartsUsed(TrnWorkOrderParts workOrderParts);
+        Task<IEnumerable<TrnWorkOrderParts>> GetWorkOrderParts(int id);
     }
 }

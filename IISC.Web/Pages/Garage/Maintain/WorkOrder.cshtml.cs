@@ -39,7 +39,7 @@ namespace IISC.Web.Pages.Garage.Maintain
         public SelectList PriorityList { get; set; }
         public SelectList PurposeList { get; set; }
         public SelectList ReasonList { get; set; }
-        public SelectList PartsList { get; set; }
+        
 
         public async Task<IActionResult> OnGet(int Id)
         {
@@ -53,8 +53,7 @@ namespace IISC.Web.Pages.Garage.Maintain
             AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
             WorkOrderHdrView = await transaction.GetWorkOrderHdr(Id);
 
-            //PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID),
-            //        int.Parse(AssetDetail.Make)), nameof(AdmPartsCatalog.ID), nameof(AdmPartsCatalog.ItemDescription));
+            
 
             return Page();
         }
