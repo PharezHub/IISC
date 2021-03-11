@@ -65,9 +65,12 @@ namespace IISC.Web.Pages.Garage.Maintain
             {
                 return Page();
             }
-
-            //submit and rebind
-            await transaction.AddWorkOrder(WorkOrderHdr);
+            WorkOrderHdrView = await transaction.GetWorkOrderHdr(WorkOrderHdr.MaintenanceID);
+            if (WorkOrderHdrView == null)
+            {
+                //submit and rebind
+                await transaction.AddWorkOrder(WorkOrderHdr);
+            }
             return RedirectToPage("WorkOrder", new { id = WorkOrderHdr.MaintenanceID });
         }
 

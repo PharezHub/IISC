@@ -46,7 +46,6 @@
                                                 <input hidden asp-for="WorkOrderHdr.MaintenanceID" />
                                                 <label asp-for="WorkOrderHdr.SectionID">Section</label>
                                                 <select asp-for="WorkOrderHdr.SectionID" class="form-control" asp-items="@Model.SectionList">
-                                                    <option value="">Choose One</option>
                                                 </select>
                                                 <span asp-validation-for="WorkOrderHdr.SectionID" class="text-danger"></span>
                                             </div>

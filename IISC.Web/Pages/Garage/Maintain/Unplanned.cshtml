@@ -204,6 +204,12 @@
                                                                     <a title="Close/Complete maintenace" asp-page="/Garage/Maintain/Complete" asp-route-ID="@item.ID">
                                                                         Complete
                                                                     </a>
+                                                                    if (item.MaintenanceType == 2)
+                                                                    {
+                                                                        <a title="Maintenance Work Order" asp-page="/Garage/Maintain/WorkOrder" asp-route-ID="@item.ID">
+                                                                            | WO
+                                                                        </a>
+                                                                    }
                                                                 }
 
                                                             </td>

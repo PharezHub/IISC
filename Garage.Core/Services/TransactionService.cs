@@ -197,5 +197,26 @@ namespace Garage.Core.Services
         {
             return await _context.TrnWorkOrderParts.FromSqlRaw("spGetWorkOrderParts {0}", id).ToListAsync();
         }
+
+        public async Task AddSpecialTools(TrnSpecialTools specialTools)
+        {
+            try
+            {
+                if (specialTools != null)
+                {
+                    _context.TrnSpecialTools.Add(specialTools);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<TrnSpecialTools>> GetSpecialTools(int Id)
+        {
+            return (IEnumerable<TrnSpecialTools>) await _context.TrnSpecialTools.FirstOrDefaultAsync(x => x.MaintenanceID == Id);
+        }
     }
 }
