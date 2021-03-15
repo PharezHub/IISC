@@ -92,9 +92,10 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Category</th>
-                                    <th scope="col">Trigger</th>
-                                    <th scope="col">Trigger Val</th>
+                                    <th scope="col">Trigger Name</th>
+                                    <th scope="col">Trigger Value</th>
                                     <th scope="col">Threshold</th>
+                                    <th scope="col">Trigger</th>
                                     <th scope="col">Created On</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -110,6 +111,7 @@
                                             <td>@item.TriggerName</td>
                                             <td>@item.TriggerValue.Value.ToString()</td>
                                             <td>@item.Threshold</td>
+                                            <td>@item.MaintenanceTrigger</td>
                                             <td>@item.CreatedOn</td>
                                             <td>
                                                 <a title="Edit maintenance trigger" asp-page="/Garage/Routines/EditMaintenanceTrigger" asp-route-ID="@item.ID"

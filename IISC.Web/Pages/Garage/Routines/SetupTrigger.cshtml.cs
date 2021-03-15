@@ -50,11 +50,6 @@ namespace IISC.Web.Pages.Garage.Routines
                 ManageTrigger.ModifiedOn = DateTime.Now;
 
                 routineRepository.AddManageTrigger(ManageTrigger);
-
-                // I don't need this code.
-                //InitialLoad();
-                ////ManageTrigger.TriggerValue = 0;
-                ////ManageTrigger.Threshold = 0;
             }
 
             return RedirectToPage("/Garage/Routines/SetupTrigger");

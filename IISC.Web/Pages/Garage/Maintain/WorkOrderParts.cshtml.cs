@@ -51,7 +51,7 @@ namespace IISC.Web.Pages.Garage.Maintain
             return Page();
         }
 
-        public async Task<IActionResult> OnPost()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {

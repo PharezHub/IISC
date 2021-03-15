@@ -73,6 +73,10 @@
                                     }
                                 </td>
                                 <td>
+                                    <a title="Edit asset details" asp-page="/Garage/Asset/EditAsset" asp-route-ID="@item.ID">
+                                        Edit
+                                    </a>
+                                    |
                                     <a title="View asset details" asp-page="/Garage/Asset/View" asp-route-ID="@item.ID">
                                         View
                                     </a>
@@ -84,7 +88,6 @@
                                     <a title="Load Scheduled Maintenance" asp-page="/Garage/Maintain/planned" asp-route-ID="@item.ID">
                                         Scheduled
                                     </a>
-                                    @*<a asp-page="/Garage/Asset/View/" asp-route-ID="@item.ID" alt="View asset details">View</a>*@
                                 </td>
                             </tr>
                             }

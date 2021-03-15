@@ -51,12 +51,13 @@ namespace IISC.Web.Pages.Garage.Maintain
 
         public async Task<IActionResult> OnPost()
         {
-            if (!ModelState.IsValid)
+            if (string.IsNullOrEmpty(TrnPartUsed.PurchaseOrder.Trim()))
             {
-                return Page();
+                TrnPartUsed.PurchaseOrder = "NA";
             }
+            await transaction.UpdatePartUsed(TrnPartUsed);
 
-            return Page();
+            return RedirectToPage("AddParts", new { id = TrnPartUsed.MainID });
         }
     }
 }

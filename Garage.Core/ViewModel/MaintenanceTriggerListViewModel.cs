@@ -12,6 +12,7 @@ namespace Garage.Core.ViewModel
         public string CategoryName { get; set; }
         public int? TriggerID { get; set; }
         public string TriggerName { get; set; }
+        public bool MaintenanceTrigger { get; set; }
         public int? TriggerValue { get; set; }
         public int? Threshold { get; set; }
         public string CreatedBy { get; set; }

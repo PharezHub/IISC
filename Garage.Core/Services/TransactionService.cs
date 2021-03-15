@@ -143,23 +143,12 @@ namespace Garage.Core.Services
             try
             {
                 _context.Database.ExecuteSqlRaw("spUpdateMaintenance {0},{1},{2},{3},{4}", maintenanceId, statusId, closureComment, dateClose, userName);
+                await _context.SaveChangesAsync();
             }
             catch (Exception)
             {
 
                 throw;
-            }
-
-            var query = _context.HdrMaintenance.FirstOrDefault(x => x.ID == maintenanceId);
-            if (query != null)
-            {
-                query.StatusID = 1;
-                query.ModifiedOn = DateTime.Now;
-                query.ClosureComment = closureComment.Trim();
-                query.ModifiedBy = userName;
-                query.DateClosed = dateClose;
-
-                await _context.SaveChangesAsync();
             }
         }
 
@@ -222,6 +211,27 @@ namespace Garage.Core.Services
         public async Task<TrnPartUsed> GetPartsUsedById(int partId)
         {
             return await _context.TrnPartUsed.FirstOrDefaultAsync(x => x.ID == partId);
+        }
+
+        public async Task UpdatePartUsed(TrnPartUsed partUsed)
+        {
+            try
+            {
+                //TODO: Update purchase order and price for parts used
+                if (partUsed != null)
+                {
+                    var query = await GetPartsUsedById(partUsed.ID);
+                    query.PurchaseOrder = partUsed.PurchaseOrder.Trim();
+                    query.PartCost = partUsed.PartCost;
+
+                     await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
