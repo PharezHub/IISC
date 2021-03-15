@@ -19,6 +19,7 @@ namespace Garage.Core.Repository
         Task<List<AdmReason>> GetReason();
         Task AddMaintenanceType(Adm_MaintenanceType type);
         void AddPartsUsed(TrnPartUsed partUsed);
+        Task<TrnPartUsed> GetPartsUsedById(int partId);
         Task<IEnumerable<PartUsedViewModel>> GetPartsUsed(int maintenanceId);
         Task UpdateMaintenance(int maintenanceId,int statusId, string closureComment, DateTime dateClose, string userName);
         Task<IEnumerable<AdmPartsCatalog>> GetScheduleMaintenanceParts(int categoryId, int makeId, int modelId);

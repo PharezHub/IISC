@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:min(1)}"
 @model IISC.Web.Pages.Garage.Maintain.PlannedModel
 @{
     ViewData["Title"] = "Planned Maintenance";
@@ -201,7 +201,7 @@
                                                             @if (@item.StatusID == 0)
                                                             {
                                                                 <a title="Add parts to a breakdown" asp-page="/Garage/Maintain/AddParts" asp-route-ID="@item.ID">
-                                                                    Add Parts |
+                                                                    Parts |
                                                                 </a>
                                                                 
                                                                 <a title="Close/Complete maintenace" asp-page="/Garage/Maintain/Complete" asp-route-ID="@item.ID">

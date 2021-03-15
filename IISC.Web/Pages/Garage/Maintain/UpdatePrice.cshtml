@@ -1,5 +1,174 @@
 ﻿@page "{id:min(1)}"
 @model IISC.Web.Pages.Garage.Maintain.UpdatePriceModel
 @{
-
+    ViewData["Title"] = "Maintenance - Update Part Price";
 }
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h2 class="pageheader-title">@ViewData["Title"] </h2>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item"><a asp-page="/Garage/Index" class="breadcrumb-link">Garage Management System</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+            <div class="row">
+                <!-- ============================================================== -->
+                <!-- profile -->
+                <!-- ============================================================== -->
+                <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
+                    <!-- card profile -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="user-avatar text-center d-block">
+                                <img src="/assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                            </div>
+                            <div class="text-center">
+                                <h2 class="font-24 mb-0">Reg No: @Model.AssetDetail.RegNo</h2>
+                                <p>Status: @Model.AssetDetail.Status</p>
+                                <input hidden asp-for="@Model.AssetDetail.ID" />
+                                <input hidden asp-for="@Model.AssetDetail.RegNo" />
+                            </div>
+                        </div>
+                        <div class="card-body border-top">
+                            <h3 class="font-16">Asset Information</h3>
+                            <div class="">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Engine #: @Model.AssetDetail.EngineNo</li>
+                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Make: @Model.AssetDetail.MakeName</li>
+                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Model: @Model.AssetDetail.ModelName</li>
+                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Engine Capacity: @Model.AssetDetail.EngineCapacity</li>
+                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Fuel Type: @Model.AssetDetail.FuelName</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body border-top">
+                            <h3 class="font-16">Service History</h3>
+                            <div class="">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Current Mileage: @Model.AssetDetail.CurrentMileage</li>
+                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Last Service: @Model.AssetDetail.LastServiceDate.ToShortDateString()</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card profile -->
+                </div>
+                <!-- end profile -->
+                <!-- campaign data -->
+                <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
+                    <!-- campaign tab one -->
+                    <div class="influence-profile-content pills-regular">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
+
+                                <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Maintenance - Update Spare Part Price</a>
+                                    </li>
+                                </ul>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <input hidden asp-for="HdrMaintenanceDetail.ID" />
+                                                <input hidden asp-for="HdrMaintenanceDetail.AssetID" />
+                                                <input hidden asp-for="TrnPartUsed.MainID" />
+                                                <input hidden asp-for="TrnPartUsed.ID" />
+                                                <label asp-for="HdrMaintenanceDetail.MaintenanceType">Maintenance Type</label>
+                                                <input asp-for="HdrMaintenanceDetail.MaintenanceName" class="form-control" placeholder="Maintenance name" disabled="disabled" />
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label asp-for="HdrMaintenanceDetail.BreakdownDate">Breakdown Date</label>
+                                                <input asp-for="HdrMaintenanceDetail.BreakdownDate" class="form-control" placeholder="Breakdown Date" disabled="disabled" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label asp-for="HdrMaintenanceDetail.CurrentMileage">Current Mileage</label>
+                                                <input asp-for="HdrMaintenanceDetail.CurrentMileage" class="form-control" placeholder="Current mileage" disabled="disabled" />
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label asp-for="HdrMaintenanceDetail.DateTimeIn">Date/Time In</label>
+                                                <input asp-for="HdrMaintenanceDetail.DateTimeIn" class="form-control" placeholder="Date/Time In" disabled="disabled" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-3">
+                                                <label asp-for="HdrMaintenanceDetail.MaintenanceSummary">Breakdown Summary</label>
+                                                <textarea asp-for="HdrMaintenanceDetail.MaintenanceSummary" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter breakdown summary" disabled="disabled"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label asp-for="TrnPartUsed.PartID">Part</label>
+                                                <select asp-for="TrnPartUsed.PartID" class="form-control" asp-items="@Model.PartsList" disabled="disabled">
+                                                    <option value="0">Choose One</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label asp-for="TrnPartUsed.DocketNo">Docket No</label>
+                                                <input asp-for="TrnPartUsed.DocketNo" class="form-control" placeholder="Enter docket number" disabled="disabled" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-3">
+                                                <label asp-for="TrnPartUsed.ProblemDescription">Problem Description</label>
+                                                <textarea asp-for="TrnPartUsed.ProblemDescription" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter problem description" disabled="disabled"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label asp-for="TrnPartUsed.PurchaseOrder">Purchase Order</label>
+                                                <input asp-for="TrnPartUsed.PurchaseOrder" class="form-control" placeholder="Enter purchase order" />
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label asp-for="TrnPartUsed.PartCost">Cost (K)</label>
+                                                <input asp-for="TrnPartUsed.PartCost" class="form-control" placeholder="Enter part cost in Kwacha" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row mt-2 float-left">
+                                            <a asp-page="/Garage/Maintain/Unplanned" asp-route-ID="@Model.HdrMaintenanceDetail.AssetID" class="btn btn-outline-dark">Back</a>
+                                        </div>
+                                        <div class="row mt-2 float-right">
+                                            <button type="submit" class="btn btn-outline-primary">Update Price</button>
+                                        </div>
+                                    </div>
+                                    @*@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
+                                        {
+                                            <div class="card-footer">
+                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
+                                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        }*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end campaign tab one -->
+                </div>
+                <!-- end campaign data -->
+            </div>
+        </form>
+
+    </div>
+</div>
+

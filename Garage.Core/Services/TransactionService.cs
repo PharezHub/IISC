@@ -218,5 +218,10 @@ namespace Garage.Core.Services
         {
             return await _context.TrnSpecialTools.Where(x => x.MaintenanceID == Id).ToListAsync();
         }
+
+        public async Task<TrnPartUsed> GetPartsUsedById(int partId)
+        {
+            return await _context.TrnPartUsed.FirstOrDefaultAsync(x => x.ID == partId);
+        }
     }
 }
