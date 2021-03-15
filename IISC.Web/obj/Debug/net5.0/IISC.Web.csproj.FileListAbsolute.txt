@@ -268,3 +268,4 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\WorkOrder.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\WorkOrderParts.cshtml.g.cs
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\SpecialTools.cshtml.g.cs
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\UpdatePrice.cshtml.g.cs

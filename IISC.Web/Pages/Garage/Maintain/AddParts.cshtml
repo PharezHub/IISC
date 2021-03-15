@@ -157,9 +157,11 @@
                                                 <thead>
                                                     <tr>
                                                         <th> </th>
+                                                        <th> </th>
                                                         <th>#</th>
                                                         <th>Docket #</th>
                                                         <th>Part</th>
+                                                        <th>Price(K)</th>
                                                         <th>Problem Description</th>
                                                         <th>Logged Date</th>
 
@@ -168,18 +170,24 @@
                                                 <tbody>
                                                     @foreach (var item in Model.PartUsedView)
                                                     {
-                                                        <tr>
-                                                            <td>
-                                                                <a title="View asset details" asp-page="/Garage/Maintain/DeletePart" asp-route-ID="@item.ID">
-                                                                    Delete
-                                                                </a>
-                                                            </td>
-                                                            <td>@item.ID</td>
-                                                            <td>@item.DocketNo</td>
-                                                            <td>@item.PartDescription</td>
-                                                            <td>@item.ProblemDescription</td>
-                                                            <td>@item.DateLogged</td>
-                                                        </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a title="Delete Part" asp-page="/Garage/Maintain/DeletePart" asp-route-ID="@item.ID">
+                                                                Delete
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a title="Update Part Price" asp-page="/Garage/Maintain/UpdatePrice" asp-route-ID="@item.ID">
+                                                                Update Price
+                                                            </a>
+                                                        </td>
+                                                        <td>@item.ID</td>
+                                                        <td>@item.DocketNo</td>
+                                                        <td>@item.PartDescription</td>
+                                                        <td>@string.Format("{0:N2}", item.PartCost)</td>
+                                                        <td>@item.ProblemDescription</td>
+                                                        <td>@item.DateLogged</td>
+                                                    </tr>
                                                     }
                                                 </tbody>
                                             </table>

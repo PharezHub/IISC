@@ -216,7 +216,7 @@ namespace Garage.Core.Services
 
         public async Task<IEnumerable<TrnSpecialTools>> GetSpecialTools(int Id)
         {
-            return (IEnumerable<TrnSpecialTools>) await _context.TrnSpecialTools.FirstOrDefaultAsync(x => x.MaintenanceID == Id);
+            return await _context.TrnSpecialTools.Where(x => x.MaintenanceID == Id).ToListAsync();
         }
     }
 }

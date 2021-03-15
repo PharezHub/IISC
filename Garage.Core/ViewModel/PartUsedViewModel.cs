@@ -12,6 +12,7 @@ namespace Garage.Core.ViewModel
         public string DocketNo { get; set; }
         public int PartID { get; set; }
         public string PartDescription { get; set; }
+        public double PartCost { get; set; }
         public int Qty { get; set; }
         public DateTime DateLogged { get; set; }
         public string LoggedBy { get; set; }

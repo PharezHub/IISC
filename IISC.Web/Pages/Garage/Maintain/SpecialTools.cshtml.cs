@@ -34,8 +34,15 @@ namespace IISC.Web.Pages.Garage.Maintain
 
         public async Task<IActionResult> OnPost()
         {
+            TrnSpecialTools.TransactionDate = DateTime.Now;
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            
+            await transaction.AddSpecialTools(TrnSpecialTools);
 
-            return Page();
+            return RedirectToPage("SpecialTools", new { id = TrnSpecialTools.MaintenanceID });
         }
     }
 }
