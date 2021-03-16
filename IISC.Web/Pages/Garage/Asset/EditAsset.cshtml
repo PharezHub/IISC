@@ -44,6 +44,16 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
+                                    <label fasp-for="AssetHeader.RegNo">Reg No</label>
+                                    <input asp-for="AssetHeader.RegNo" class="form-control" placeholder="Enter vehicle registration number" />
+                                    <span asp-validation-for="AssetHeader.RegNo" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                   
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.AssetTypeID">Asset Type</label>
                                     <select asp-for="AssetHeader.AssetTypeID" class="form-control">
                                     </select>
@@ -58,20 +68,15 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.EngineNo">Engine No</label>
                                     <input asp-for="AssetHeader.EngineNo" class="form-control" placeholder="Enter Engine number" />
                                     <span asp-validation-for="AssetHeader.EngineNo" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-6 mb-3">
                                     <label asp-for="AssetHeader.ChassisNo">Chassis No</label>
                                     <input asp-for="AssetHeader.ChassisNo" class="form-control" placeholder="Enter Chassis number" />
                                     <span asp-validation-for="AssetHeader.ChassisNo" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label fasp-for="AssetHeader.RegNo">Reg No</label>
-                                    <input asp-for="AssetHeader.RegNo" class="form-control" placeholder="Enter vehicle registration number" />
-                                    <span asp-validation-for="AssetHeader.RegNo" class="text-danger"></span>
                                 </div>
                             </div>
 

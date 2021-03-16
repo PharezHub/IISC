@@ -64,6 +64,13 @@ namespace IISC.Web.Pages.Garage.Maintain
                 return Page();
             }
 
+            //TODO: validate mileage captured
+            if (HdrMaintenance.CurrentMileage.Value < AssetDetail.CurrentMileage)
+            {
+                return RedirectToPage("Unplanned", new { id = assetID });
+                //ModelState.AddModelError("Error", $"Current value is less than previous value recorded.");
+            }
+
             var query = await transaction.AddMaintenance(HdrMaintenance);
             assetRepository.UpdateMileage(HdrMaintenance.RegNo, HdrMaintenance.CurrentMileage.Value);
             return RedirectToPage("Unplanned", new { id = assetID });
