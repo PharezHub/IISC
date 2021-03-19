@@ -36,8 +36,9 @@ namespace IISC.Web.Pages.Garage.Maintain
         public TrnPartUsed TrnPartUsed { get; set; }
         public SelectList TypeList { get; set; }
         public IEnumerable<HdrMaintenanceViewModel> HdrMaintenanceList { get; set; }
+        public int TotalMaintenance { get; set; }
+        public int TotalScheduled { get; set; }
         public int TotalBreakdowns { get; set; }
-        public int TotalServices { get; set; }
         public int ActiveBreakdowns { get; set; }
         public int ActiveServices { get; set; }
 
@@ -52,6 +53,13 @@ namespace IISC.Web.Pages.Garage.Maintain
             {
                 AssetDetail = assetRepository.GetAssetById(id);
                 HdrMaintenanceList = await transaction.GetMaintenanceByAssetId(AssetDetail.ID);
+
+                TotalMaintenance = await dashboardRepository.GetMaintenanceCounts(AssetDetail.ID,0);
+                TotalScheduled = await dashboardRepository.GetMaintenanceCounts(AssetDetail.ID, 2);
+                TotalBreakdowns = await dashboardRepository.GetMaintenanceCounts(AssetDetail.ID, 1);
+                ActiveBreakdowns = await dashboardRepository.GetMaintenanceCounts(AssetDetail.ID, 3);
+
+                //ActiveServices = await dashboardRepository.GetMaintenanceCounts(AssetDetail.ID, 2);
 
                 HdrMaintenance.CurrentMileage = AssetDetail.CurrentMileage;
             }

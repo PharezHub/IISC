@@ -12,15 +12,21 @@ namespace Garage.Core.Models
         public int MaintenanceType { get; set; }
         [Required]
         public string MaintenanceSummary { get; set; }
-        [DataType(DataType.Date)]
+
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required]
+        [DataType(DataType.Date)]
         public DateTime BreakdownDate { get; set; }
         [Required]
         public double? CurrentMileage { get; set; }
         public string LoggedBy { get; set; }
         public int StatusID { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
         public DateTime DateTimeIn { get; set; }
         public string TimeIn { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
         public DateTime? DateClosed { get; set; }
         public string RegNo { get; set; }
         public int AssetID { get; set; }

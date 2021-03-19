@@ -90,6 +90,11 @@ namespace Garage.Core.Services
                 .ToList();
         }
 
+        public async Task<Hdr_Asset> GetAssetDetailById(int Id)
+        {
+            return await _context.Hdr_Asset.FirstOrDefaultAsync(x => x.ID == Id);
+        }
+
         public List<Adm_InsuranceType> GetInsuranceType()
         {
             return _context.Adm_InsuranceType.ToList();

@@ -15,11 +15,13 @@ namespace IISC.Web.Pages.Garage.Maintain
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
+        private readonly IDashboardRepository dashboardRepository;
 
-        public UnplannedModel(ITransaction transaction, IAssetRepository assetRepository)
+        public UnplannedModel(ITransaction transaction, IAssetRepository assetRepository, IDashboardRepository dashboardRepository)
         {
             this.transaction = transaction;
             this.assetRepository = assetRepository;
+            this.dashboardRepository = dashboardRepository;
             HdrMaintenance = new HdrMaintenance();
         }
 
@@ -30,6 +32,10 @@ namespace IISC.Web.Pages.Garage.Maintain
         public AssetViewModel AssetDetail { get; set; }
         public SelectList TypeList { get; set; }
         public IEnumerable<HdrMaintenanceViewModel> HdrMaintenanceList { get; set; }
+        public int TotalMaintenance { get; set; }
+        public int TotalScheduled { get; set; }
+        public int TotalBreakdowns { get; set; }
+        public int ActiveBreakdowns { get; set; }
 
         public async Task<IActionResult> OnGet(int id)
         {
@@ -42,6 +48,11 @@ namespace IISC.Web.Pages.Garage.Maintain
             {
                 AssetDetail = assetRepository.GetAssetById(id);
                 HdrMaintenanceList = await transaction.GetMaintenanceByAssetId(AssetDetail.ID);
+
+                TotalMaintenance = await dashboardRepository.GetMaintenanceCounts(AssetDetail.ID, 0);
+                TotalScheduled = await dashboardRepository.GetMaintenanceCounts(AssetDetail.ID, 2);
+                TotalBreakdowns = await dashboardRepository.GetMaintenanceCounts(AssetDetail.ID, 1);
+                ActiveBreakdowns = await dashboardRepository.GetMaintenanceCounts(AssetDetail.ID, 3);
 
                 HdrMaintenance.CurrentMileage = AssetDetail.CurrentMileage;
             }

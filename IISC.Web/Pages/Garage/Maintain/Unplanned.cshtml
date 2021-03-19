@@ -80,33 +80,33 @@
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                         <div class="card">
-                                            <div class="card-body">
-                                                <h1 class="mb-1">0</h1>
-                                                <p>Total Breakdowns</p>
+                                            <div class="card-body bg-success-light">
+                                                <h1 class="mb-1">@Model.TotalMaintenance</h1>
+                                                <p>Total Maintenance</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                         <div class="card">
-                                            <div class="card-body">
-                                                <h1 class="mb-1">0</h1>
-                                                <p>Total Planned Service</p>
+                                            <div class="card-body bg-brand-light">
+                                                <h1 class="mb-1">@Model.TotalScheduled</h1>
+                                                <p>Total Scheduled</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                         <div class="card">
-                                            <div class="card-body">
-                                                <h1 class="mb-1">0</h1>
+                                            <div class="card-body bg-info-light">
+                                                <h1 class="mb-1">@Model.TotalBreakdowns</h1>
+                                                <p class="text-black-50">Total Breakdowns</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                        <div class="card">
+                                            <div class="card-body bg-secondary-light">
+                                                <h1 class="mb-1">@Model.ActiveBreakdowns</h1>
                                                 <p>Active Breakdowns</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h1 class="mb-1">0</h1>
-                                                <p>Active Service</p>
                                             </div>
                                         </div>
                                     </div>
@@ -218,7 +218,7 @@
                                                             <td>@item.MaintenanceName</td>
                                                             <td>@item.MaintenanceSummary</td>
                                                             <td>@item.BreakdownDate.ToLongDateString()</td>
-                                                            <td>@item.CurrentMileage</td>
+                                                            <td>@string.Format("{0:N0}", item.CurrentMileage)</td>
                                                             <td>@if (@item.DateClosed.HasValue) { @item.DateClosed.Value.ToLongDateString(); } else {  } </td>
                                                             <td>
                                                                 @if (@item.StatusID == 1)

@@ -30,12 +30,10 @@
                 <!-- ============================================================== -->
                 <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
                     <!-- card profile -->
-                    <div class="card">
+                    <div class="card bg-white">
+
                         <div class="card-body">
-                            <div class="user-avatar text-center d-block">
-                                <img src="/assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
-                            </div>
-                            <div class="text-center">
+                            <div class="text-left">
                                 <h2 class="font-24 mb-0">Reg No: @Model.AssetDetail.RegNo</h2>
                                 <p>Status: @Model.AssetDetail.Status</p>
                                 <input hidden asp-for="@Model.AssetDetail.ID" />
@@ -45,6 +43,7 @@
                                 <input hidden asp-for="@Model.AssetDetail.ModelID" />
                             </div>
                         </div>
+
                         <div class="card-body border-top">
                             <h3 class="font-16">Asset Information</h3>
                             <div class="">
@@ -57,6 +56,7 @@
                                 </ul>
                             </div>
                         </div>
+
                         <div class="card-body border-top">
                             <h3 class="font-16">Service History</h3>
                             <div class="">
@@ -66,6 +66,7 @@
                                 </ul>
                             </div>
                         </div>
+
                     </div>
                     <!-- end card profile -->
                 </div>
@@ -82,33 +83,33 @@
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                         <div class="card">
-                                            <div class="card-body">
-                                                <h1 class="mb-1">0</h1>
-                                                <p>Total Breakdowns</p>
+                                            <div class="card-body bg-success-light">
+                                                <h1 class="mb-1">@Model.TotalMaintenance</h1>
+                                                <p>Total Maintenance</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                         <div class="card">
-                                            <div class="card-body">
-                                                <h1 class="mb-1">0</h1>
-                                                <p>Total Planned Service</p>
+                                            <div class="card-body bg-brand-light">
+                                                <h1 class="mb-1">@Model.TotalScheduled</h1>
+                                                <p>Total Scheduled</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                         <div class="card">
-                                            <div class="card-body">
-                                                <h1 class="mb-1">0</h1>
+                                            <div class="card-body bg-info-light">
+                                                <h1 class="mb-1">@Model.TotalBreakdowns</h1>
+                                                <p class="text-black-50">Total Breakdowns</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                        <div class="card">
+                                            <div class="card-body bg-secondary-light">
+                                                <h1 class="mb-1">@Model.ActiveBreakdowns</h1>
                                                 <p>Active Breakdowns</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h1 class="mb-1">0</h1>
-                                                <p>Active Service</p>
                                             </div>
                                         </div>
                                     </div>
@@ -195,54 +196,54 @@
                                                 <tbody>
                                                     @foreach (var item in Model.HdrMaintenanceList)
                                                     {
-                                                    <tr>
+                                                        <tr>
 
-                                                        <td>
-                                                            @if (@item.StatusID == 0)
-                                                            {
-                                                                <a title="Add parts to a breakdown" asp-page="/Garage/Maintain/AddParts" asp-route-ID="@item.ID">
-                                                                    Parts |
-                                                                </a>
-                                                                
-                                                                <a title="Close/Complete maintenace" asp-page="/Garage/Maintain/Complete" asp-route-ID="@item.ID">
-                                                                    Complete
-                                                                </a>
-                                                                if (item.MaintenanceType == 2)
+                                                            <td>
+                                                                @if (@item.StatusID == 0)
                                                                 {
-                                                                    <a title="Maintenance Work Order" asp-page="/Garage/Maintain/WorkOrder" asp-route-ID="@item.ID">
-                                                                         | WO
+                                                                    <a title="Add parts to a breakdown" asp-page="/Garage/Maintain/AddParts" asp-route-ID="@item.ID">
+                                                                        Parts |
                                                                     </a>
+
+                                                                    <a title="Close/Complete maintenace" asp-page="/Garage/Maintain/Complete" asp-route-ID="@item.ID">
+                                                                        Complete
+                                                                    </a>
+                                                                    if (item.MaintenanceType == 2)
+                                                                    {
+                                                                        <a title="Maintenance Work Order" asp-page="/Garage/Maintain/WorkOrder" asp-route-ID="@item.ID">
+                                                                            | WO
+                                                                        </a>
+                                                                    }
                                                                 }
-                                                            }
 
-                                                        </td>
-                                                        <td>@item.ID</td>
-                                                        <td>@item.MaintenanceName</td>
-                                                        <td>@item.MaintenanceSummary</td>
-                                                        <td>@item.BreakdownDate.ToLongDateString()</td>
-                                                        <td>@item.CurrentMileage</td>
-                                                        <td>
-                                                            @if (@item.DateClosed.HasValue)
-                                                            {@item.DateClosed.Value.ToLongDateString();
-                                                        }
-                                                        else { }
-                                                        </td>
-                                                        <td>
-                                                            @if (@item.StatusID == 1)
-                                                            {
-                                                                <span class="badge-dot badge-success mr-1"></span>@item.TransStatus
+                                                            </td>
+                                                            <td>@item.ID</td>
+                                                            <td>@item.MaintenanceName</td>
+                                                            <td>@item.MaintenanceSummary</td>
+                                                            <td>@item.BreakdownDate.ToLongDateString()</td>
+                                                            <td>@string.Format("{0:N0}", item.CurrentMileage)</td>
+                                                            <td>
+                                                                @if (@item.DateClosed.HasValue)
+                                                                {@item.DateClosed.Value.ToLongDateString();
                                                             }
-                                                            else if (@item.StatusID == 0)
-                                                            {
-                                                                <span class="badge-dot badge-brand mr-1"></span>@item.TransStatus
-                                                            }
-                                                            else
-                                                            {
-                                                                <span class="badge-dot badge-danger mr-1"></span>@item.TransStatus
-                                                            }
-                                                        </td>
+                                                            else { }
+                                                            </td>
+                                                            <td>
+                                                                @if (@item.StatusID == 1)
+                                                                {
+                                                                    <span class="badge-dot badge-success mr-1"></span>@item.TransStatus
+                                                                }
+                                                                else if (@item.StatusID == 0)
+                                                                {
+                                                                    <span class="badge-dot badge-brand mr-1"></span>@item.TransStatus
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="badge-dot badge-danger mr-1"></span>@item.TransStatus
+                                                                }
+                                                            </td>
 
-                                                    </tr>
+                                                        </tr>
                                                     }
                                                 </tbody>
                                             </table>

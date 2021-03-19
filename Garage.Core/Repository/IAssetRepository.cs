@@ -19,6 +19,13 @@ namespace Garage.Core.Repository
         IEnumerable<AssetCatalogueViewModel> OnSiteUtilization();
         IEnumerable<AssetCatalogueViewModel> OffSiteUtilization();
         AssetViewModel GetAssetById(int Id);
+        
+        /// <summary>
+        /// Get asset details using the original data posting without join to other tables.
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        Task<Hdr_Asset> GetAssetDetailById(int Id);
 
         // Parts Catalog
         void AddPartsCatalog(AdmPartsCatalog catalog);

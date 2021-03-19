@@ -8,6 +8,6 @@ namespace Garage.Core.Repository
 {
     public interface IDashboardRepository
     {
-        Task<MaintenanceTags> GetMaintenanceCounts(int assetId, int typeId);
+        Task<int> GetMaintenanceCounts(int assetId, int typeId);
     }
 }

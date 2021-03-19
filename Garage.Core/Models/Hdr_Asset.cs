@@ -58,7 +58,8 @@ namespace Garage.Core.Models
         public double? InitialMileage { get; set; }
         public double? CurrentMileage { get; set; }
         public double? MileageLastService { get; set; }
-        [Column(TypeName = "date")]
+
+        [DataType(DataType.Date)]
         public DateTime LastServiceDate { get; set; }
         public double? AssetValue { get; set; }
         [StringLength(30)]
@@ -66,6 +67,7 @@ namespace Garage.Core.Models
         [StringLength(255)]
         public string Comment { get; set; }
         public int? AssetStatus { get; set; }
+
         [Column(TypeName = "datetime")]
         public DateTime? CreatedOn { get; set; }
         [StringLength(50)]
