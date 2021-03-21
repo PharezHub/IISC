@@ -36,5 +36,6 @@ namespace Garage.Core.Repository
         void DeletePartCatalog(int id);
         IEnumerable<AdmPartsCatalog> GetPartByCategory(int categoryId, int modelId, int makeId);
         void UpdateMileage(string regNo, double newMileage);
+        Task<List<int>> GetStatutorybyCategoryId(int categoryId);
     }
 }

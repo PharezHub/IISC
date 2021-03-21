@@ -117,6 +117,18 @@ namespace Garage.Core.Services
             return _context.AdmPartsCatalog.Find(Id);
         }
 
+        public async Task<List<int>> GetStatutorybyCategoryId(int categoryId)
+        {
+            List<int> statutoryList = new List<int>();
+            var result = await _context.Adm_CategoryStatutoryLink.Where(x => x.CategoryID == categoryId).Select(x => x.StatutoryID).Distinct().ToListAsync();
+            foreach (var item in result)
+            {
+                statutoryList.Add(item.Value);
+            }
+
+            return statutoryList;
+        }
+
         public IEnumerable<AssetCatalogueViewModel> OffSiteUtilization()
         {
             return _context.AssetCatalogueViewModel

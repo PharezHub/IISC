@@ -13,6 +13,8 @@ namespace IISC.Web.Pages.Garage.ViewModels
 
         [Required(ErrorMessage ="Insurance company is required")]
         public string CompanyName { get; set; }
+        
+        [Required(ErrorMessage = "Insurance amount is required")]
         public double InsuranceValue { get; set; }
 
         [DataType(DataType.Date)]

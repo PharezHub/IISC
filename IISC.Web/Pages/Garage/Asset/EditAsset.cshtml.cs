@@ -364,7 +364,7 @@ namespace IISC.Web.Pages.Garage.Asset
         public async Task<IActionResult> OnGet(int Id)
         {
             InsuranceVM.DateFrom = DateTime.Now;
-            InsuranceVM.DateTo = DateTime.Now;
+            InsuranceVM.DateTo = DateTime.Now.AddDays(90);
             FitnessVM.DateRenewed = DateTime.Now;
             RoadTaxVM.DateRenewed = DateTime.Now;
             RoadTaxVM.ExpiryDate = DateTime.Now;
@@ -372,11 +372,84 @@ namespace IISC.Web.Pages.Garage.Asset
             if (Id > 0)
             {
                 AssetHeader = await assetRepository.GetAssetDetailById(Id);
+                var resultList = await assetRepository.GetStatutorybyCategoryId(AssetHeader.CategoryID);
 
-                StatutoryList.Add(1);
-                //StatutoryList.Add(2);
-                StatutoryList.Add(3);
+                foreach (var statutoryId in resultList)
+                {
+                    StatutoryList.Add(statutoryId);
+                }
+
             }
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            foreach (var itemId in StatutoryList)
+            {
+                //validate active statutory requirements
+                
+                if (itemId == 1) //TODO: insurance
+                {
+                    StatutoryRequirement.AssetID = 0;
+                    StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
+                    StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
+                    StatutoryRequirement.StatutoryID = 1;
+                    StatutoryRequirement.StatutoryAvailable = true;
+                    StatutoryRequirement.InsuranceTypeID = InsuranceVM.TypeId;
+                    StatutoryRequirement.InsuranceCompany = InsuranceVM.CompanyName;
+                    StatutoryRequirement.AmountPaid = InsuranceVM.InsuranceValue;
+                    StatutoryRequirement.DateFrom = InsuranceVM.DateFrom;
+                    StatutoryRequirement.DateTo = InsuranceVM.DateTo;
+                    StatutoryRequirement.DateModified = DateTime.Now;
+                    StatutoryRequirement.ModifiedBy = User.Identity.Name;
+
+                    //assetRepository.AddStatutory(StatutoryRequirement);
+                }
+                else if (itemId == 2) //TODO: Road Tax
+                {
+                    StatutoryRequirement.ID = 0;
+                    StatutoryRequirement.AssetID = 0;
+                    StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
+                    StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
+                    StatutoryRequirement.StatutoryID = 2;
+                    StatutoryRequirement.StatutoryAvailable = true;
+                    StatutoryRequirement.InsuranceTypeID = 0;
+                    StatutoryRequirement.InsuranceCompany = "";
+                    StatutoryRequirement.AmountPaid = 0;
+                    StatutoryRequirement.DateFrom = RoadTaxVM.DateRenewed;
+                    StatutoryRequirement.DateTo = RoadTaxVM.ExpiryDate;
+                    StatutoryRequirement.DateModified = DateTime.Now;
+                    StatutoryRequirement.ModifiedBy = User.Identity.Name;
+
+                    //assetRepository.AddStatutory(StatutoryRequirement);
+                }
+                else if (itemId == 3) //TODO: Fitness
+                {
+                    StatutoryRequirement.ID = 0;
+                    StatutoryRequirement.AssetID = 0;
+                    StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
+                    StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
+                    StatutoryRequirement.StatutoryID = 3;
+                    StatutoryRequirement.StatutoryAvailable = true;
+                    StatutoryRequirement.InsuranceTypeID = 0;
+                    StatutoryRequirement.InsuranceCompany = "";
+                    StatutoryRequirement.AmountPaid = 0;
+                    StatutoryRequirement.DateFrom = FitnessVM.DateRenewed;
+                    StatutoryRequirement.DateTo = FitnessVM.DateRenewed.AddYears(1); //FitnessVM.ExpiryDate;
+                    StatutoryRequirement.DateModified = DateTime.Now;
+                    StatutoryRequirement.ModifiedBy = User.Identity.Name;
+
+                    //assetRepository.AddStatutory(StatutoryRequirement);
+                }
+            }
+
+
+            //submit active statutory requirement
+
+            //update asset details
+
+            //update asset maintenance trigger.
             return Page();
         }
     }

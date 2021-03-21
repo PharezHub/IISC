@@ -44,6 +44,11 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
+                                    <input hidden asp-for="@Model.AssetHeader.ID" />
+                                    <input hidden asp-for="@Model.AssetHeader.RegNo" />
+                                    <input hidden asp-for="@Model.AssetHeader.CategoryID" />
+                                    <input hidden asp-for="@Model.StatutoryList" />
+
                                     <label fasp-for="AssetHeader.RegNo">Reg No</label>
                                     <input asp-for="AssetHeader.RegNo" class="form-control" placeholder="Enter vehicle registration number" disabled="disabled" />
                                     <span asp-validation-for="AssetHeader.RegNo" class="text-danger"></span>
@@ -183,7 +188,7 @@
                                                             </div>
                                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                                 <label asp-for="InsuranceVM.TypeId">Insurance Type</label>
-                                                                <select asp-for="InsuranceVM.TypeId" class="form-control"></select>
+                                                                <select asp-for="InsuranceVM.TypeId" class="form-control" asp-items="@Model.ModelInsuranceType()"></select>
                                                                 <span asp-validation-for="InsuranceVM.TypeId" class="text-danger"></span>
                                                             </div>
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -192,8 +197,8 @@
                                                                 <span asp-validation-for="InsuranceVM.CompanyName" class="text-danger"></span>
                                                             </div>
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                <label asp-for="InsuranceVM.InsuranceValue">Insurance Value(K)</label>
-                                                                <input asp-for="InsuranceVM.InsuranceValue" class="form-control" value="0" placeholder="Enter insurance value" />
+                                                                <label asp-for="InsuranceVM.InsuranceValue">Insurance Amount(K)</label>
+                                                                <input asp-for="InsuranceVM.InsuranceValue" class="form-control" placeholder="Enter insurance value" />
                                                                 <span asp-validation-for="InsuranceVM.InsuranceValue" class="text-danger"></span>
                                                             </div>
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">

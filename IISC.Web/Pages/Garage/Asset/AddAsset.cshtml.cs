@@ -406,62 +406,6 @@ namespace IISC.Web.Pages.Garage.Asset
             _context.Hdr_Asset.Add(AssetHeader);
             await _context.SaveChangesAsync();
 
-            //Post Insurance statutory requirements
-            /*
-            StatutoryRequirement.AssetID = 0;
-            StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
-            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
-            StatutoryRequirement.StatutoryID = 1;
-            StatutoryRequirement.StatutoryAvailable = true;
-            StatutoryRequirement.InsuranceTypeID = InsuranceVM.TypeId;
-            StatutoryRequirement.InsuranceCompany = InsuranceVM.CompanyName;
-            StatutoryRequirement.AmountPaid = InsuranceVM.InsuranceValue;
-            StatutoryRequirement.DateFrom = InsuranceVM.DateFrom;
-            StatutoryRequirement.DateTo = InsuranceVM.DateTo;
-            StatutoryRequirement.DateModified = DateTime.Now;
-            StatutoryRequirement.ModifiedBy = User.Identity.Name;
-
-            assetRepository.AddStatutory(StatutoryRequirement);
-            */
-
-
-            //post RoadTax statutory requirements
-            /*
-            StatutoryRequirement.ID = 0;
-            StatutoryRequirement.AssetID = 0;
-            StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
-            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
-            StatutoryRequirement.StatutoryID = 2;
-            StatutoryRequirement.StatutoryAvailable = true;
-            StatutoryRequirement.InsuranceTypeID = 0;
-            StatutoryRequirement.InsuranceCompany = "";
-            StatutoryRequirement.AmountPaid = 0;
-            StatutoryRequirement.DateFrom = RoadTaxVM.DateRenewed;
-            StatutoryRequirement.DateTo = RoadTaxVM.ExpiryDate;
-            StatutoryRequirement.DateModified = DateTime.Now;
-            StatutoryRequirement.ModifiedBy = User.Identity.Name;
-
-            assetRepository.AddStatutory(StatutoryRequirement);
-            */
-
-            //post Fitness statutory requirements
-            /*
-            StatutoryRequirement.ID = 0;
-            StatutoryRequirement.AssetID = 0;
-            StatutoryRequirement.RegNo = AssetHeader.RegNo.ToUpper();
-            StatutoryRequirement.ChassisNo = AssetHeader.ChassisNo.ToUpper();
-            StatutoryRequirement.StatutoryID = 3;
-            StatutoryRequirement.StatutoryAvailable = true;
-            StatutoryRequirement.InsuranceTypeID = 0;
-            StatutoryRequirement.InsuranceCompany = "";
-            StatutoryRequirement.AmountPaid = 0;
-            StatutoryRequirement.DateFrom = FitnessVM.DateRenewed;
-            StatutoryRequirement.DateTo = FitnessVM.DateRenewed.AddYears(1); //FitnessVM.ExpiryDate;
-            StatutoryRequirement.DateModified = DateTime.Now;
-            StatutoryRequirement.ModifiedBy = User.Identity.Name;
-
-            assetRepository.AddStatutory(StatutoryRequirement);
-            */
             return RedirectToPage("/Garage/Asset/Index");
 
         }
