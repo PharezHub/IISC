@@ -31,16 +31,16 @@
                             <h4 class="mb-0 text-primary">@ViewData["Title"] - #: @Model.AssetHeader.ID.ToString()</h4>
                         </div>
                         @*@if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
-                            {
-                                <div class="card-body">
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            }*@
+            {
+                <div class="card-body">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
+                        <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                    </div>
+                </div>
+            }*@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -139,132 +139,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-4">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-12 col-lg-12">
-                            <div class="card">
-                                <div class="card-header pills-regular">
-                                    <h4 class="mb-0 text-primary">Statutory Requirements</h4>
-                                    </div>
-                                    <div class="card-header pills-regular">
-                                        <ul class="nav nav-pills card-header-pills" id="myTab2" role="tablist">
-                                            @foreach (var itemId in Model.StatutoryList)
-                                            {
-                                                if (itemId == 1)
-                                                {
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" id="card-pills-1" data-toggle="tab" href="#card-pill-1" role="tab" aria-controls="card-1" aria-selected="true">
-                                                            Insurance
-                                                        </a>
-                                                    </li>
-                                                }
-                                                else if (itemId == 2)
-                                                {
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" id="card-pills-2" data-toggle="tab" href="#card-pill-2" role="tab" aria-controls="card-2" aria-selected="false">Road Tax</a>
-                                                    </li>
-                                                }
-                                                else if (itemId == 3)
-                                                {
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" id="card-pills-3" data-toggle="tab" href="#card-pill-3" role="tab" aria-controls="card-3" aria-selected="false">Fitness</a>
-                                                    </li>
-                                                }
-                                            }
-                                        </ul>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="tab-content" id="myTabContent2">
-                                            @foreach (var itemId in Model.StatutoryList)
-                                            {
-                                                if (itemId == 1)
-                                                {
-                                                    <div class="tab-pane fade show active" id="card-pill-1" role="tabpanel" aria-labelledby="card-tab-1">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                                <div class="alert alert-primary">Motor Vehicle Insurance</div>
-                                                            </div>
-                                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                                <label asp-for="InsuranceVM.TypeId">Insurance Type</label>
-                                                                <select asp-for="InsuranceVM.TypeId" class="form-control" asp-items="@Model.ModelInsuranceType()"></select>
-                                                                <span asp-validation-for="InsuranceVM.TypeId" class="text-danger"></span>
-                                                            </div>
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                <label asp-for="InsuranceVM.CompanyName">Insurance Company</label>
-                                                                <input asp-for="InsuranceVM.CompanyName" class="form-control" placeholder="Enter insurance company" />
-                                                                <span asp-validation-for="InsuranceVM.CompanyName" class="text-danger"></span>
-                                                            </div>
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                <label asp-for="InsuranceVM.InsuranceValue">Insurance Amount(K)</label>
-                                                                <input asp-for="InsuranceVM.InsuranceValue" class="form-control" placeholder="Enter insurance value" />
-                                                                <span asp-validation-for="InsuranceVM.InsuranceValue" class="text-danger"></span>
-                                                            </div>
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                <label asp-for="InsuranceVM.DateFrom">Date From</label>
-                                                                <input asp-for="InsuranceVM.DateFrom" class="form-control" placeholder="Enter insurance date from" />
-                                                                <span asp-validation-for="InsuranceVM.DateFrom" class="text-danger"></span>
-                                                            </div>
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                <label asp-for="InsuranceVM.DateTo">Date To</label>
-                                                                <input asp-for="InsuranceVM.DateTo" class="form-control" placeholder="Enter insurance date to" />
-                                                                <span asp-validation-for="InsuranceVM.DateTo" class="text-danger"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                }
-                                                else if (itemId == 2)
-                                                {
-                                                    <div class="tab-pane fade" id="card-pill-2" role="tabpanel" aria-labelledby="card-tab-2">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                                <div class="alert alert-primary">Road Tax</div>
-                                                            </div>
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                <label asp-for="RoadTaxVM.DateRenewed">Renewed Date</label>
-                                                                <input asp-for="RoadTaxVM.DateRenewed" class="form-control" placeholder="Select date renewed" />
-                                                                <span asp-validation-for="RoadTaxVM.DateRenewed" class="text-danger"></span>
-                                                            </div>
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                <label asp-for="RoadTaxVM.ExpiryDate">Expiry Date</label>
-                                                                <input asp-for="RoadTaxVM.ExpiryDate" class="form-control" placeholder="Select expiry date" />
-                                                                <span asp-validation-for="RoadTaxVM.ExpiryDate" class="text-danger"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                }
-                                                else if (itemId == 3)
-                                                {
-                                                    <div class="tab-pane fade" id="card-pill-3" role="tabpanel" aria-labelledby="card-tab-3">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                                <div class="alert alert-primary">Vehicle Fitness</div>
-                                                            </div>
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                <label asp-for="FitnessVM.DateRenewed">Renewed Date</label>
-                                                                <input asp-for="FitnessVM.DateRenewed" class="form-control" placeholder="Select date renewed" />
-                                                                <span asp-validation-for="FitnessVM.DateRenewed" class="text-danger"></span>
-                                                            </div>
-                                                            @*<div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <label asp-for="FitnessVM.ExpiryDate">ExpiryDate</label>
-                                        <input asp-for="FitnessVM.ExpiryDate" class="form-control" placeholder="Select expiry date" disabled />
-                                        <span asp-validation-for="FitnessVM.ExpiryDate" class="text-danger"></span>
-                                    </div>*@
-                                                        </div>
-                                                    </div>
-                                                }
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="mb-0">Optional Details</h4>
@@ -317,7 +192,154 @@
 
                     </div>
                 </div>
+
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-header pills-regular">
+                                    <ul class="nav nav-pills card-header-pills" id="myTab2" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active">
+                                                Document Centre
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            File <input type="file" multiple="multiple" name="" />
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+
+                                <div class="card-header pills-regular">
+                                    <h4 class="mb-0 text-primary">Statutory Requirements</h4>
+                                </div>
+                                <div class="card-header pills-regular">
+                                    <ul class="nav nav-pills card-header-pills" id="myTab2" role="tablist">
+                                        @foreach (var itemId in Model.StatutoryList)
+                                        {
+                                            if (itemId == 1)
+                                            {
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="card-pills-1" data-toggle="tab" href="#card-pill-1" role="tab" aria-controls="card-1" aria-selected="true">
+                                                        Insurance
+                                                    </a>
+                                                </li>
+                                            }
+                                            else if (itemId == 2)
+                                            {
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="card-pills-2" data-toggle="tab" href="#card-pill-2" role="tab" aria-controls="card-2" aria-selected="false">Road Tax</a>
+                                                </li>
+                                            }
+                                            else if (itemId == 3)
+                                            {
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="card-pills-3" data-toggle="tab" href="#card-pill-3" role="tab" aria-controls="card-3" aria-selected="false">Fitness</a>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                                <div class="card-body">
+                                    <div class="tab-content" id="myTabContent2">
+                                        @foreach (var itemId in Model.StatutoryList)
+                                        {
+                                            if (itemId == 1)
+                                            {
+                                                <div class="tab-pane fade show active" id="card-pill-1" role="tabpanel" aria-labelledby="card-tab-1">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <div class="alert alert-primary">Motor Vehicle Insurance</div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <label asp-for="InsuranceVM.TypeId">Insurance Type</label>
+                                                            <select asp-for="InsuranceVM.TypeId" class="form-control" asp-items="@Model.ModelInsuranceType()"></select>
+                                                            <span asp-validation-for="InsuranceVM.TypeId" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <label asp-for="InsuranceVM.CompanyName">Insurance Company</label>
+                                                            <input asp-for="InsuranceVM.CompanyName" class="form-control" placeholder="Enter insurance company" />
+                                                            <span asp-validation-for="InsuranceVM.CompanyName" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <label asp-for="InsuranceVM.InsuranceValue">Insurance Amount(K)</label>
+                                                            <input asp-for="InsuranceVM.InsuranceValue" class="form-control" placeholder="Enter insurance value" />
+                                                            <span asp-validation-for="InsuranceVM.InsuranceValue" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <label asp-for="InsuranceVM.DateFrom">Date From</label>
+                                                            <input asp-for="InsuranceVM.DateFrom" class="form-control" placeholder="Enter insurance date from" />
+                                                            <span asp-validation-for="InsuranceVM.DateFrom" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <label asp-for="InsuranceVM.DateTo">Date To</label>
+                                                            <input asp-for="InsuranceVM.DateTo" class="form-control" placeholder="Enter insurance date to" />
+                                                            <span asp-validation-for="InsuranceVM.DateTo" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else if (itemId == 2)
+                                            {
+                                                <div class="tab-pane fade" id="card-pill-2" role="tabpanel" aria-labelledby="card-tab-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <div class="alert alert-primary">Road Tax</div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <label asp-for="RoadTaxVM.DateRenewed">Renewed Date</label>
+                                                            <input asp-for="RoadTaxVM.DateRenewed" class="form-control" placeholder="Select date renewed" />
+                                                            <span asp-validation-for="RoadTaxVM.DateRenewed" class="text-danger"></span>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <label asp-for="RoadTaxVM.ExpiryDate">Expiry Date</label>
+                                                            <input asp-for="RoadTaxVM.ExpiryDate" class="form-control" placeholder="Select expiry date" />
+                                                            <span asp-validation-for="RoadTaxVM.ExpiryDate" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else if (itemId == 3)
+                                            {
+                                                <div class="tab-pane fade" id="card-pill-3" role="tabpanel" aria-labelledby="card-tab-3">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <div class="alert alert-primary">Vehicle Fitness</div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <label asp-for="FitnessVM.DateRenewed">Renewed Date</label>
+                                                            <input asp-for="FitnessVM.DateRenewed" class="form-control" placeholder="Select date renewed" />
+                                                            <span asp-validation-for="FitnessVM.DateRenewed" class="text-danger"></span>
+                                                        </div>
+                                                        @*<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <label asp-for="FitnessVM.ExpiryDate">ExpiryDate</label>
+                                    <input asp-for="FitnessVM.ExpiryDate" class="form-control" placeholder="Select expiry date" disabled />
+                                    <span asp-validation-for="FitnessVM.ExpiryDate" class="text-danger"></span>
+                                </div>*@
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
             </div>
+
+            @*<div class="row">
+                <div class="col-md-8">
+                    
+                </div>
+            </div>*@
         </form>
     </div>
 

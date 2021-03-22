@@ -44,6 +44,8 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<AdmPurpose> AdmPurpose { get; set; }
         public virtual DbSet<AdmReason> AdmReason { get; set; }
         public virtual DbSet<AdmSection> AdmSection { get; set; }
+        public virtual DbSet<Trn_Attachments> Trn_Attachments { get; set; }
+        public virtual DbSet<Adm_AttachmentTypes> Adm_AttachmentTypes { get; set; }
 
         public DbSet<StatutoryCategoryViewModel> StatutoryCategoryViewModel { get; set; }
         public DbSet<AssetCatalogueViewModel> AssetCatalogueViewModel { get; set; }

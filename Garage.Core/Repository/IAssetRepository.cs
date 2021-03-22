@@ -26,6 +26,7 @@ namespace Garage.Core.Repository
         /// <param name="Id"></param>
         /// <returns></returns>
         Task<Hdr_Asset> GetAssetDetailById(int Id);
+        Task<Hdr_Asset> UpdateAsset(Hdr_Asset asset);
 
         // Parts Catalog
         void AddPartsCatalog(AdmPartsCatalog catalog);
@@ -37,5 +38,8 @@ namespace Garage.Core.Repository
         IEnumerable<AdmPartsCatalog> GetPartByCategory(int categoryId, int modelId, int makeId);
         void UpdateMileage(string regNo, double newMileage);
         Task<List<int>> GetStatutorybyCategoryId(int categoryId);
+        Task<List<Hdr_StatutoryRequirement>> GetStatutoryRequirement(int assetId);
+        string GenerateGuid();
+        Task<string> GetGuid(int assetId);
     }
 }

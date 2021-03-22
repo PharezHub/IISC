@@ -36,11 +36,14 @@ namespace Garage.Core.Services
             }
         }
 
-        public void AddStatutory(Hdr_StatutoryRequirement statutoryRequirement)
+        public void AddStatutory(Hdr_StatutoryRequirement statutory)
         {
             try
             {
-                _context.Hdr_StatutoryRequirement.Add(statutoryRequirement);
+                _context.Database.ExecuteSqlRaw("spAddStatutory {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}", statutory.AssetID,
+                    statutory.RegNo, statutory.ChassisNo, statutory.StatutoryID, statutory.StatutoryAvailable, statutory.InsuranceTypeID, statutory.InsuranceCompany,
+                    statutory.AmountPaid, statutory.DateFrom, statutory.DateTo, statutory.FileName, statutory.ModifiedBy);
+                //_context.Hdr_StatutoryRequirement.Add(statutoryRequirement);
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -64,6 +67,12 @@ namespace Garage.Core.Services
             {
                 throw ex;
             }
+        }
+
+        public string GenerateGuid()
+        {
+            Guid newGuid = Guid.NewGuid();
+            return newGuid.ToString();
         }
 
         public AssetViewModel GetAssetById(int Id)
@@ -93,6 +102,18 @@ namespace Garage.Core.Services
         public async Task<Hdr_Asset> GetAssetDetailById(int Id)
         {
             return await _context.Hdr_Asset.FirstOrDefaultAsync(x => x.ID == Id);
+        }
+
+        public async Task<string> GetGuid(int assetId)
+        {
+            try
+            {
+                return await _context.Hdr_Asset.Where(x => x.ID == assetId).Select(x => x.FolderID).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<Adm_InsuranceType> GetInsuranceType()
@@ -129,6 +150,11 @@ namespace Garage.Core.Services
             return statutoryList;
         }
 
+        public async Task<List<Hdr_StatutoryRequirement>> GetStatutoryRequirement(int assetId)
+        {
+            return await _context.Hdr_StatutoryRequirement.Where(x => x.AssetID == assetId).ToListAsync();
+        }
+
         public IEnumerable<AssetCatalogueViewModel> OffSiteUtilization()
         {
             return _context.AssetCatalogueViewModel
@@ -141,6 +167,48 @@ namespace Garage.Core.Services
             return _context.AssetCatalogueViewModel
                 .FromSqlRaw("spOnSiteUtilization")
                 .ToList();
+        }
+
+        /// <summary>
+        /// update assit details when editing
+        /// </summary>
+        /// <param name="asset"></param>
+        /// <returns></returns>
+        public async Task<Hdr_Asset> UpdateAsset(Hdr_Asset asset)
+        {
+            var query = await GetAssetDetailById(asset.ID);
+            if (query != null)
+            {
+                query.AssetTypeID = asset.AssetTypeID;
+                query.CategoryID = asset.CategoryID;
+                query.EngineNo = asset.EngineNo.ToUpper().Trim();
+                query.ChassisNo = asset.ChassisNo.ToUpper().Trim();
+                query.Make = asset.Make;
+                query.ModelID = asset.ModelID;
+                query.EngineCapacity = asset.EngineCapacity;
+                query.FuelTypeID = asset.FuelTypeID;
+                query.Year = asset.Year;
+                query.Color = asset.Color;
+                query.AssetValue = asset.AssetValue;
+                query.TagNo = asset.TagNo.Trim();
+                query.Comment = asset.Comment.Trim();
+                if (asset.InsuranceExpiryDate != null)
+                {
+                    query.InsuranceExpiryDate = asset.InsuranceExpiryDate;
+                }
+                if (asset.RoadTaxExpiryDate != null)
+                {
+                    query.RoadTaxExpiryDate = asset.RoadTaxExpiryDate;
+                }
+                if (asset.FitnessExpiryDate != null)
+                {
+                    query.FitnessExpiryDate = asset.FitnessExpiryDate;
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            return query;
         }
 
         public void UpdateMileage(string regNo, double newMileage)

@@ -78,5 +78,6 @@ namespace Garage.Core.Models
         public DateTime? RoadTaxExpiryDate { get; set; }
         [DataType(DataType.Date)]
         public DateTime? FitnessExpiryDate { get; set; }
+        public string FolderID { get; set; }
     }
 }

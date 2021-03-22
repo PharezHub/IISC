@@ -9,6 +9,7 @@
     <Folder Include="Pages\HR\" />
     <Folder Include="Pages\Cylinder\" />
     <Folder Include="Pages\Visitor\" />
+    <Folder Include="wwwroot\Uploads\" />
   </ItemGroup>
 
   <ItemGroup>
