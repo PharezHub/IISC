@@ -41,5 +41,6 @@ namespace Garage.Core.Repository
         Task<List<Hdr_StatutoryRequirement>> GetStatutoryRequirement(int assetId);
         string GenerateGuid();
         Task<string> GetGuid(int assetId);
+        Task<IEnumerable<Adm_AttachmentTypes>> GetAttachmentTypes();
     }
 }

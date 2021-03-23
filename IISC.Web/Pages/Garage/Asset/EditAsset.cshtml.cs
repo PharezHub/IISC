@@ -49,6 +49,9 @@ namespace IISC.Web.Pages.Garage.Asset
         [BindProperty]
         public RoadTaxViewModel RoadTaxVM { get; set; }
 
+        [BindProperty]
+        public Trn_Attachments Attachments { get; set; }
+
         public List<AssetTypeViewModel> AssetDisplayList { get; set; }
         public List<FuelTypeViewModel> FueltypeList { get; set; }
         public List<CategoryViewModel> CategoryDisplayList { get; set; }
@@ -56,6 +59,7 @@ namespace IISC.Web.Pages.Garage.Asset
         public List<CarModelViewModel> ModelTypeList { get; set; }
         public List<Adm_InsuranceType> InsuranceTypeList { get; set; }
         public List<ColorViewModel> ColorTypeList { get; set; }
+        public SelectList AttachmentTypesList { get; set; }
 
         public SelectList ModelInsuranceType()
         {
@@ -366,6 +370,7 @@ namespace IISC.Web.Pages.Garage.Asset
         {
             if (Id > 0)
             {
+                AttachmentTypesList = new SelectList(await assetRepository.GetAttachmentTypes(), nameof(Adm_AttachmentTypes.ID), nameof(Adm_AttachmentTypes.FileType));
                 AssetHeader = await assetRepository.GetAssetDetailById(Id);
                 var resultList = await assetRepository.GetStatutorybyCategoryId(AssetHeader.CategoryID);
                 var statutoryData = await assetRepository.GetStatutoryRequirement(Id);
@@ -428,6 +433,13 @@ namespace IISC.Web.Pages.Garage.Asset
 
         public async Task<IActionResult> OnPost()
         {
+            //TODO: Get Guid for attachment
+            string guidNumber = await assetRepository.GetGuid(AssetHeader.ID);
+            if (string.IsNullOrEmpty(guidNumber))
+            {
+                guidNumber = assetRepository.GenerateGuid();
+            }
+
             var resultList = await assetRepository.GetStatutorybyCategoryId(AssetHeader.CategoryID);
             foreach (var statutoryId in resultList)
             {

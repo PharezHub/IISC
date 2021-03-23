@@ -104,6 +104,11 @@ namespace Garage.Core.Services
             return await _context.Hdr_Asset.FirstOrDefaultAsync(x => x.ID == Id);
         }
 
+        public async Task<IEnumerable<Adm_AttachmentTypes>> GetAttachmentTypes()
+        {
+            return await _context.Adm_AttachmentTypes.ToListAsync();
+        }
+
         public async Task<string> GetGuid(int assetId)
         {
             try

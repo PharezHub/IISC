@@ -209,13 +209,19 @@
 
                                 <div class="card-body">
                                     <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
+                                            <div class="custom-file">
+                                                <input type="file" multiple="multiple" asp-for="Attachments.FileName" />
+                                                @*<label class="custom-file-label">Click here to upload files</label>*@
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                            File <input type="file" multiple="multiple" name="" />
+                                            <select asp-for="Attachments.FileType" class="form-control" asp-items="@Model.AttachmentTypesList">
+                                                <option value="">Choose One</option>
+                                            </select>
+                                        </div>
                                         </div>
                                     </div>
-
-                                    
-                                </div>
 
                                 <div class="card-header pills-regular">
                                     <h4 class="mb-0 text-primary">Statutory Requirements</h4>
