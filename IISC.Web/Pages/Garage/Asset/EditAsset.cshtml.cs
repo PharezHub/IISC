@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Garage.Core.AppDbContext;
@@ -7,10 +8,13 @@ using Garage.Core.Models;
 using Garage.Core.Repository;
 using Garage.Core.ViewModel;
 using IISC.Web.Pages.Garage.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Hosting;
 
 namespace IISC.Web.Pages.Garage.Asset
 {
@@ -19,11 +23,13 @@ namespace IISC.Web.Pages.Garage.Asset
         public static string constr = Environment.GetEnvironmentVariable("GarageDbConn");
         private readonly GarageDbContext context;
         private readonly IAssetRepository assetRepository;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public EditAssetModel(GarageDbContext context, IAssetRepository assetRepository)
+        public EditAssetModel(GarageDbContext context, IAssetRepository assetRepository, IWebHostEnvironment webHostEnvironment)
         {
             this.context = context;
             this.assetRepository = assetRepository;
+            this.webHostEnvironment = webHostEnvironment;
             StatutoryList = new List<int>();
 
             FitnessVM = new FitnessViewModel();
@@ -52,6 +58,9 @@ namespace IISC.Web.Pages.Garage.Asset
         [BindProperty]
         public Trn_Attachments Attachments { get; set; }
 
+        [BindProperty]
+        public IFormFile FileUpload { get; set; }
+
         public List<AssetTypeViewModel> AssetDisplayList { get; set; }
         public List<FuelTypeViewModel> FueltypeList { get; set; }
         public List<CategoryViewModel> CategoryDisplayList { get; set; }
@@ -60,21 +69,18 @@ namespace IISC.Web.Pages.Garage.Asset
         public List<Adm_InsuranceType> InsuranceTypeList { get; set; }
         public List<ColorViewModel> ColorTypeList { get; set; }
         public SelectList AttachmentTypesList { get; set; }
-
         public SelectList ModelInsuranceType()
         {
             InsuranceTypeList = assetRepository.GetInsuranceType();
             SelectList InsuranceList = new SelectList(InsuranceTypeList, nameof(Adm_InsuranceType.ID), nameof(Adm_InsuranceType.InsuranceName));
             return InsuranceList;
         }
-
         public SelectList ColorDisplay()
         {
             ColorTypeList = PopulateColor();
             SelectList colorList = new SelectList(ColorTypeList, "ID", "Color");
             return colorList;
         }
-
         private static List<StatusViewModel> populateStatus()
         {
             List<StatusViewModel> status = new List<StatusViewModel>();
@@ -109,21 +115,18 @@ namespace IISC.Web.Pages.Garage.Asset
             }
             return status;
         }
-
         public SelectList StatusDisplay()
         {
             StatusTypeList = populateStatus();
             SelectList statusList = new SelectList(StatusTypeList, "ID", "status");
             return statusList;
         }
-
         public SelectList AssetDisplay()
         {
             AssetDisplayList = PopulateAssetType();
             SelectList assetResult = new SelectList(AssetDisplayList, "ID", "AssetType");
             return assetResult;
         }
-
         private static List<AssetTypeViewModel> PopulateAssetType()
         {
             List<AssetTypeViewModel> assetType = new List<AssetTypeViewModel>();
@@ -158,7 +161,6 @@ namespace IISC.Web.Pages.Garage.Asset
             }
             return assetType;
         }
-
         private static List<FuelTypeViewModel> populateFuelType()
         {
             List<FuelTypeViewModel> fuelList = new List<FuelTypeViewModel>();
@@ -193,7 +195,6 @@ namespace IISC.Web.Pages.Garage.Asset
             }
             return fuelList;
         }
-
         public SelectList FuelDisplay()
         {
             FueltypeList = populateFuelType();
@@ -201,7 +202,6 @@ namespace IISC.Web.Pages.Garage.Asset
 
             return a;
         }
-
         public SelectList CategoryDisplay()
         {
 
@@ -209,7 +209,6 @@ namespace IISC.Web.Pages.Garage.Asset
             SelectList a = new SelectList(CategoryDisplayList, "ID", "CategoryName");
             return a;
         }
-
         private static List<CategoryViewModel> PopulateCategoryType()
         {
             List<CategoryViewModel> category = new List<CategoryViewModel>();
@@ -244,7 +243,6 @@ namespace IISC.Web.Pages.Garage.Asset
             }
             return category;
         }
-
         private static List<MakeViewModel> PopulateMake()
         {
             List<MakeViewModel> status = new List<MakeViewModel>();
@@ -280,7 +278,6 @@ namespace IISC.Web.Pages.Garage.Asset
             }
             return status;
         }
-
         private static List<CarModelViewModel> PopulateModel()
         {
             List<CarModelViewModel> status = new List<CarModelViewModel>();
@@ -315,7 +312,6 @@ namespace IISC.Web.Pages.Garage.Asset
             }
             return status;
         }
-
         private static List<ColorViewModel> PopulateColor()
         {
             List<ColorViewModel> status = new List<ColorViewModel>();
@@ -351,14 +347,12 @@ namespace IISC.Web.Pages.Garage.Asset
             return status;
         }
         public List<StatusViewModel> StatusTypeList { get; set; }
-
         public SelectList MakeDisplay()
         {
             MakeTypeList = PopulateMake();
             SelectList makeList = new SelectList(MakeTypeList, "ID", "Make");
             return makeList;
         }
-
         public SelectList ModelDisplay()
         {
             ModelTypeList = PopulateModel();
@@ -431,15 +425,47 @@ namespace IISC.Web.Pages.Garage.Asset
             return Page();
         }
 
-        public async Task<IActionResult> OnPost()
+        private async Task<string> ProcessUploadedFiles(string GuiNumber)
         {
-            //TODO: Get Guid for attachment
-            string guidNumber = await assetRepository.GetGuid(AssetHeader.ID);
-            if (string.IsNullOrEmpty(guidNumber))
+            string uniqueFileName = null;
+            if (FileUpload != null)
             {
-                guidNumber = assetRepository.GenerateGuid();
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, $"Uploads/{GuiNumber}");
+                uniqueFileName = GuiNumber + "_" + FileUpload.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await FileUpload.CopyToAsync(fileStream);
+                }
             }
 
+            return uniqueFileName;
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            //TODO: Check if the files exists
+            //if (FileUpload.Length > 0)
+            //{
+            //    //TODO: Get Guid for attachment
+            //    string guidNumber = await assetRepository.GetGuid(AssetHeader.ID);
+            //    if (string.IsNullOrEmpty(guidNumber))
+            //    {
+            //        guidNumber = assetRepository.GenerateGuid();
+            //    }
+            
+            //    //TODO: Post files to database.
+            //    //for (int i = 0; i < FileUpload.Length; i++)
+            //    //{
+            //    //    await ProcessUploadedFiles(guidNumber);
+            //    //}
+            //    //foreach (var files in FileUpload)
+            //    //{
+            //    //    //var path = Path.Combine(this.hostEnvironment)
+            //    //}
+            //}
+
+            
             var resultList = await assetRepository.GetStatutorybyCategoryId(AssetHeader.CategoryID);
             foreach (var statutoryId in resultList)
             {
@@ -506,10 +532,9 @@ namespace IISC.Web.Pages.Garage.Asset
                     assetRepository.AddStatutory(StatutoryRequirement);
                 }
             }
-
-
+            
             //update asset details
-            await assetRepository.UpdateAsset(AssetHeader);
+             await assetRepository.UpdateAsset(AssetHeader);
             //update asset maintenance trigger.
             return RedirectToPage("EditAsset", new { id = AssetHeader.ID });
         }

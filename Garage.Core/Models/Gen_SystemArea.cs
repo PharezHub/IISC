@@ -14,5 +14,6 @@ namespace Garage.Core.Models
         public string ImagePath { get; set; }
         public bool Status { get; set; }
         public string RoleAccessID { get; set; }
+        public string UrlType { get; set; }
     }
 }

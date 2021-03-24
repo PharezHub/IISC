@@ -35,7 +35,14 @@
                                 <p class="card-text text-center">@item.Description.</p>
                             </div>
                             <div class="card-footer text-center">
-                                <a asp-page="@($"/{item.ModuleName}/{item.PageUrl}")" class="btn btn-outline-dark">@item.Title</a>
+                                @if (item.UrlType == "IN")
+                                {
+                                    <a asp-page="@($"/{item.ModuleName}/{item.PageUrl}")" class="btn btn-outline-dark">@item.Title</a>
+                                }
+                                else
+                                {
+                                    <a href="@($"{item.PageUrl}")" target="_blank" alt="@item.Description" class="btn btn-outline-dark">@item.Title</a>
+                                }
                             </div>
                         </div>
 
