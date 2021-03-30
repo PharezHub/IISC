@@ -32,7 +32,7 @@
                 <div class="product-thumbnail">
                     <div class="product-img-head">
                         <div class="product-img">
-                            <img src="/assets/images/avatar-1.jpg" alt="" class="img-fluid">
+                            <img src="~/images/stopwatch.png" asp-append-version="true" alt="" class="img-fluid">
                         </div>
                         <div class="ribbons bg-danger"></div>
                         <div class="ribbons-text">@Model.AssetDetail.AssetType</div>
@@ -75,16 +75,17 @@
                             <div class="product-price">@string.Format("{0:N0}", Model.AssetDetail.CurrentMileage) </div>
                         </div>
                         <div class="product-content-head">
-                            <h3 class="product-title">Last Service Date:</h3>
+                            <h3 class="product-title">Last Service:</h3>
                             <div class="product-price text-primary">@Model.AssetDetail.LastServiceDate.ToLongDateString()</div>
                         </div>
-                        <div class="product-btn">
+                        <div class="product-btn mb-2">
                             <a asp-page="/Garage/Spares/Index" class="btn btn-primary" title="Add new spare parts">Add Spares</a>
                             <a asp-page="/Garage/Asset/EditAsset" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-light" title="Edit asset">Edit</a>
+                        </div>
+                        <div class="product-btn">
                             <form method="post">
-                                <a asp-page-handler="OnPostOverideStatus" class="btn btn-outline-secondary" title="Override status"><i class="fas fa-exchange-alt"></i></a>
+                                <a asp-page="/Garage/Asset/EditAsset" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-secondary" title="Override status - Maintenance"><i class="fas fa-exchange-alt"></i></a>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -168,7 +169,7 @@
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
                                                 <label asp-for="HdrMaintenance.MaintenanceSummary">Maintenance Summary</label>
-                                                <textarea asp-for="HdrMaintenance.MaintenanceSummary" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter scheduled maintenance summary">
+                                                <textarea asp-for="HdrMaintenance.MaintenanceSummary" rows="2" class="form-control" text-wrap:normal" type="text" placeholder="Enter scheduled maintenance summary">
                                                 </textarea>
                                                 <div class="invalid-feedback">
                                                     <span asp-validation-for="HdrMaintenance.MaintenanceSummary" class="text-danger"></span>

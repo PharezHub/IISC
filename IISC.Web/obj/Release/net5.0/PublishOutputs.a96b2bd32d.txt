@@ -61,6 +61,7 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwro
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\favicon.ico
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\add-file.png
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\calculator.png
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\car-breakdown.png
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\document.png
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\growth.png
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\growth_1.png
@@ -69,6 +70,8 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwro
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\project-management.png
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\repair-tools.png
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\report.png
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\stopwatch.png
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\travelling-vehicles-of-a-road.png
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\js\site.js
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map

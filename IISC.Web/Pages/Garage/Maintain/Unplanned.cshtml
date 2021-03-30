@@ -29,7 +29,7 @@
                     <div class="product-thumbnail">
                         <div class="product-img-head">
                             <div class="product-img">
-                                <img src="/assets/images/avatar-1.jpg" alt="" class="img-fluid">
+                                <img src="~/images/car-breakdown.png" asp-append-version="true" alt="" class="img-fluid">
                             </div>
                             <div class="ribbons bg-danger"></div>
                             <div class="ribbons-text">@Model.AssetDetail.AssetType</div>
@@ -74,7 +74,7 @@
                                 <div class="product-price">@string.Format("{0:N0}", Model.AssetDetail.CurrentMileage) </div>
                             </div>
                             <div class="product-content-head">
-                                <h3 class="product-title">Last Service Date:</h3>
+                                <h3 class="product-title">Last Service:</h3>
                                 <div class="product-price text-primary">@Model.AssetDetail.LastServiceDate.ToLongDateString()</div>
                             </div>
                             <div class="product-btn">
