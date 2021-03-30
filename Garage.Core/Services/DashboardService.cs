@@ -42,8 +42,8 @@ namespace Garage.Core.Services
             }
             else if (typeId == 3)
             {
-                //TODO: Scheduled
-                var totalMaintenance = await _context.HdrMaintenance.CountAsync(x => x.AssetID == assetId && x.MaintenanceType == typeId && x.StatusID == 0);
+                //TODO: Active Breakdown
+                var totalMaintenance = await _context.HdrMaintenance.CountAsync(x => x.AssetID == assetId && x.MaintenanceType == 1 && x.StatusID == 0);
                 resultValue = totalMaintenance;
             }
             return resultValue;

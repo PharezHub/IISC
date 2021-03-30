@@ -29,47 +29,67 @@
                 <!-- profile -->
                 <!-- ============================================================== -->
                 <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
-                    <!-- card profile -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="user-avatar text-center d-block">
-                                <img src="/assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                    <div class="product-thumbnail">
+                        <div class="product-img-head">
+                            <div class="product-img">
+                                <img src="/assets/images/avatar-1.jpg" alt="" class="img-fluid">
                             </div>
-                            <div class="text-center">
-                                <h2 class="font-24 mb-0">Reg No: @Model.AssetDetail.RegNo</h2>
-                                <p>Status: @Model.AssetDetail.Status</p>
-                                <input hidden asp-for="@Model.AssetDetail.ID" />
-                                <input hidden asp-for="@Model.AssetDetail.RegNo" />
+                            <div class="ribbons bg-danger"></div>
+                            <div class="ribbons-text">@Model.AssetDetail.AssetType</div>
+                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-bell"></i></a></div>
+                            <input hidden asp-for="@Model.AssetDetail.ID" />
+                            <input hidden asp-for="@Model.AssetDetail.RegNo" />
+                            <input hidden asp-for="@Model.AssetDetail.CurrentMileage" />
+                        </div>
+                        <div class="product-content">
+                            <div class="product-content-head">
+                                <h3 class="product-title">Registration No:</h3>
+                                <div class="product-price">@Model.AssetDetail.RegNo</div>
+                            </div>
+                            <div class="product-content-head">
+                                <h3 class="product-title">Status:</h3>
+                                <div class="product-price text-primary">@Model.AssetDetail.Status</div>
                             </div>
                         </div>
-                        <div class="card-body border-top">
-                            <h3 class="font-16">Asset Information</h3>
-                            <div class="">
-                                <ul class="list-unstyled mb-0">
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Engine #: @Model.AssetDetail.EngineNo</li>
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Make: @Model.AssetDetail.MakeName</li>
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Model: @Model.AssetDetail.ModelName</li>
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Engine Capacity: @Model.AssetDetail.EngineCapacity</li>
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Fuel Type: @Model.AssetDetail.FuelName</li>
-                                </ul>
+                        <div class="product-content">
+                            <div class="product-content-head">
+                                <h3 class="product-title">Fuel:</h3>
+                                <div class="product-price">@Model.AssetDetail.FuelName</div>
+                            </div>
+                            <div class="product-content-head">
+                                <h3 class="product-title">Engine Capacity:</h3>
+                                <div class="product-price">@Model.AssetDetail.EngineCapacity</div>
                             </div>
                         </div>
-                        <div class="card-body border-top">
-                            <h3 class="font-16">Service History</h3>
-                            <div class="">
-                                <ul class="list-unstyled mb-0">
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Current Mileage: @Model.AssetDetail.CurrentMileage</li>
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Last Service: @Model.AssetDetail.LastServiceDate.ToShortDateString()</li>
-                                </ul>
+                        <div class="product-content">
+                            <div class="product-content-head">
+                                <h3 class="product-title">Make:</h3>
+                                <div class="product-price">@Model.AssetDetail.MakeName</div>
+                            </div>
+                            <div class="product-content-head">
+                                <h3 class="product-title">Model:</h3>
+                                <div class="product-price">@Model.AssetDetail.ModelName</div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-content-head">
+                                <h3 class="product-title">Current Mileage:</h3>
+                                <div class="product-price">@string.Format("{0:N0}", Model.AssetDetail.CurrentMileage) </div>
+                            </div>
+                            <div class="product-content-head">
+                                <h3 class="product-title">Last Service Date:</h3>
+                                <div class="product-price text-primary">@Model.AssetDetail.LastServiceDate.ToLongDateString()</div>
+                            </div>
+                            <div class="product-btn">
+                                <a asp-page="/Garage/Spares/Index" class="btn btn-primary" title="Add new spare parts">Add Spares</a>
+                                <a asp-page="/Garage/Asset/EditAsset" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-light" title="Edit asset">Edit</a>
+                                <a href="#" class="btn btn-outline-secondary" title="Override status"><i class="fas fa-exchange-alt"></i></a>
                             </div>
                         </div>
                     </div>
-                    <!-- end card profile -->
                 </div>
-                <!-- end profile -->
-                <!-- campaign data -->
+
                 <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
-                    <!-- campaign tab one -->
                     <div class="influence-profile-content pills-regular">
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
@@ -139,9 +159,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end campaign tab one -->
                 </div>
-                <!-- end campaign data -->
             </div>
         </form>
 

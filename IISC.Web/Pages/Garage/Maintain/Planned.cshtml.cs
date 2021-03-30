@@ -108,5 +108,11 @@ namespace IISC.Web.Pages.Garage.Maintain
             
             return RedirectToPage("Planned", new { id = assetID });
         }
+
+        public async Task<IActionResult> OnPostOverideStatus()
+        {
+
+            return Page();
+        }
     }
 }

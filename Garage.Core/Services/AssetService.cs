@@ -224,7 +224,7 @@ namespace Garage.Core.Services
                 query.MileageLastService = query.CurrentMileage;
                 query.CurrentMileage = newMileage;
                 query.LastServiceDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-
+                query.AssetStatus = 4;
                 _context.SaveChanges();
             }
         }
