@@ -270,3 +270,4 @@ C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.dll
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\ref\IISC.Web.dll
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.pdb
 C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.genruntimeconfig.cache
+C:\Users\ykatambo\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\Override.cshtml.g.cs

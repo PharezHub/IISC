@@ -80,7 +80,7 @@
                             <div class="product-btn">
                                 <a asp-page="/Garage/Spares/Index" class="btn btn-primary" title="Add new spare parts">Add Spares</a>
                                 <a asp-page="/Garage/Asset/EditAsset" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-light" title="Edit asset">Edit</a>
-                                <a href="#" class="btn btn-outline-secondary" title="Override status"><i class="fas fa-exchange-alt"></i></a>
+                                <a asp-page="/Garage/Maintain/Override" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-secondary" title="Override status - Maintenance"><i class="fas fa-exchange-alt"></i></a>
                             </div>
                         </div>
                     </div>
@@ -128,11 +128,12 @@
                                     </div>
                                 </div>
 
-                                <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                                @*<ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Add Breakdown Maintenance</a>
                                     </li>
-                                </ul>
+                                </ul>*@
+
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
