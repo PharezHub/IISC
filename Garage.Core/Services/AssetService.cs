@@ -195,8 +195,8 @@ namespace Garage.Core.Services
                 query.Year = asset.Year;
                 query.Color = asset.Color;
                 query.AssetValue = asset.AssetValue;
-                query.TagNo = asset.TagNo.Trim();
-                query.Comment = asset.Comment.Trim();
+                //query.TagNo = string.IsNullOrEmpty(asset.TagNo.Trim()) ? "" : asset.TagNo.Trim();
+                //query.Comment = string.IsNullOrEmpty(asset.Comment.Trim()) ? "" : asset.Comment.Trim();
                 query.AssetStatus = asset.AssetStatus.Value;
 
                 if (asset.InsuranceExpiryDate != null)
