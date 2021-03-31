@@ -324,7 +324,7 @@ namespace IISC.Web.Pages.Garage.Asset
             status.Add(new StatusViewModel
             {
                 ID = 0,
-                Status = "--Select--"
+                AssetStatus = "--Select--"
             });
 
             using (SqlConnection con = new SqlConnection(constr))
@@ -343,7 +343,7 @@ namespace IISC.Web.Pages.Garage.Asset
                             status.Add(new StatusViewModel
                             {
                                 ID = int.Parse(sdr[0].ToString()),
-                                Status = sdr[1].ToString()
+                                AssetStatus = sdr[1].ToString()
                             });
                         }
                     }

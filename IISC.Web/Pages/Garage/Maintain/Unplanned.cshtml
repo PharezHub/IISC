@@ -80,7 +80,11 @@
                             <div class="product-btn">
                                 <a asp-page="/Garage/Spares/Index" class="btn btn-primary" title="Add new spare parts">Add Spares</a>
                                 <a asp-page="/Garage/Asset/EditAsset" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-light" title="Edit asset">Edit</a>
-                                <a asp-page="/Garage/Maintain/Override" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-secondary" title="Override status - Maintenance"><i class="fas fa-exchange-alt"></i></a>
+                                @if (@Model.AssetDetail.StatusID == 4)
+                                {
+                                    // status 4 - maintenance status
+                                    <a asp-page="/Garage/Maintain/Override" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-secondary" title="Override status - Maintenance"><i class="fas fa-exchange-alt"></i></a>
+                                }
                             </div>
                         </div>
                     </div>

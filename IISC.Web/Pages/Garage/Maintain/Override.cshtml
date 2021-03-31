@@ -26,25 +26,25 @@
 
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="card">
-                    <h5 class="card-header">Status Override</h5>
-                    <div class="card-body border-top">
-                        <div class="alert alert-primary" role="alert">
-                            <h4 class="alert-heading">Are you sure you want to override the current maintenance for asset # <strong>@Model.RegNo</strong>?</h4>
-                            <p></p>
-                            <hr>
-                            <p class="mb-0">
-                                <ul>
-                                    <li>This process will make the asset available for use.</li>
-                                    <li>If a new breakdown or schedule maintenance is log the asset will be flagged unavailable</li>
-                                </ul>
-                            </p>
-                        </div>
-                    </div>
-                    <form method="post">
+                <form method="post">
+                    <div class="card">
+                        <h5 class="card-header">Status Override</h5>
                         <div class="card-body border-top">
                             <input hidden asp-for="@Model.AssetId" />
                             <input hidden asp-for="@Model.RegNo" />
+                            <div class="alert alert-primary" role="alert">
+                                <h4 class="alert-heading">Are you sure you want to override the current maintenance for asset # <strong>@Model.RegNo</strong>?</h4>
+                                <p></p>
+                                <hr>
+                                <p class="mb-0">
+                                    <ul>
+                                        <li>This process will make the asset available for use.</li>
+                                        <li>If a new breakdown or schedule maintenance is log the asset will be flagged unavailable</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
                             <div class="row mt-2 float-left">
                                 <a asp-page="/Garage/Asset/Index" class="btn btn-outline-dark">Cancel</a>
                             </div>
@@ -52,8 +52,8 @@
                                 <button type="submit" class="btn btn-outline-success">Override Now!</button>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

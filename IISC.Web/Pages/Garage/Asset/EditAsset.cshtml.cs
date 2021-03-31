@@ -84,19 +84,13 @@ namespace IISC.Web.Pages.Garage.Asset
         private static List<StatusViewModel> populateStatus()
         {
             List<StatusViewModel> status = new List<StatusViewModel>();
-            status.Add(new StatusViewModel
-            {
-                ID = 0,
-                Status = "--Select--"
-            });
-
             using (SqlConnection con = new SqlConnection(constr))
             {
                 if (con.State == System.Data.ConnectionState.Closed)
                 {
                     con.Open();
                 }
-                String query = "SELECT ID,status FROM Adm_Status";
+                String query = "SELECT ID,status AS AssetStatus FROM Adm_Status";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     using (SqlDataReader sdr = cmd.ExecuteReader())
@@ -106,7 +100,7 @@ namespace IISC.Web.Pages.Garage.Asset
                             status.Add(new StatusViewModel
                             {
                                 ID = int.Parse(sdr[0].ToString()),
-                                Status = sdr[1].ToString()
+                                AssetStatus = sdr[1].ToString()
                             });
                         }
                     }
@@ -118,7 +112,7 @@ namespace IISC.Web.Pages.Garage.Asset
         public SelectList StatusDisplay()
         {
             StatusTypeList = populateStatus();
-            SelectList statusList = new SelectList(StatusTypeList, "ID", "status");
+            SelectList statusList = new SelectList(StatusTypeList, "ID", "AssetStatus");
             return statusList;
         }
         public SelectList AssetDisplay()

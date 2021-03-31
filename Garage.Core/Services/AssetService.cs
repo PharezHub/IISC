@@ -197,6 +197,8 @@ namespace Garage.Core.Services
                 query.AssetValue = asset.AssetValue;
                 query.TagNo = asset.TagNo.Trim();
                 query.Comment = asset.Comment.Trim();
+                query.AssetStatus = asset.AssetStatus.Value;
+
                 if (asset.InsuranceExpiryDate != null)
                 {
                     query.InsuranceExpiryDate = asset.InsuranceExpiryDate;
