@@ -27,6 +27,7 @@ namespace Garage.Core.Repository
         /// <returns></returns>
         Task<Hdr_Asset> GetAssetDetailById(int Id);
         Task<Hdr_Asset> UpdateAsset(Hdr_Asset asset);
+        Task OverrideMaintenanceStatus(int assetId, int statusId);
 
         // Parts Catalog
         void AddPartsCatalog(AdmPartsCatalog catalog);

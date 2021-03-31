@@ -30,7 +30,7 @@
                     <h5 class="card-header">Status Override</h5>
                     <div class="card-body border-top">
                         <div class="alert alert-primary" role="alert">
-                            <h4 class="alert-heading">Are you sure you want to override the current maintenance?</h4>
+                            <h4 class="alert-heading">Are you sure you want to override the current maintenance for asset # <strong>@Model.RegNo</strong>?</h4>
                             <p></p>
                             <hr>
                             <p class="mb-0">
@@ -41,14 +41,18 @@
                             </p>
                         </div>
                     </div>
-                    <div class="card-body border-top">
-                        <div class="row mt-2 float-left">
-                            <a asp-page="/Garage/Asset/Index" class="btn btn-outline-dark">Cancel</a>
+                    <form method="post">
+                        <div class="card-body border-top">
+                            <input hidden asp-for="@Model.AssetId" />
+                            <input hidden asp-for="@Model.RegNo" />
+                            <div class="row mt-2 float-left">
+                                <a asp-page="/Garage/Asset/Index" class="btn btn-outline-dark">Cancel</a>
+                            </div>
+                            <div class="row mt-2 float-right">
+                                <button type="submit" class="btn btn-outline-success">Override Now!</button>
+                            </div>
                         </div>
-                        <div class="row mt-2 float-right">
-                            <button type="submit" class="btn btn-outline-success">Override Now!</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

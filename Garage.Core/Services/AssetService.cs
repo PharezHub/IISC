@@ -216,6 +216,16 @@ namespace Garage.Core.Services
             return query;
         }
 
+        public async Task OverrideMaintenanceStatus(int assetId, int statusId)
+        {
+            var query = await GetAssetDetailById(assetId);
+            if (query != null)
+            {
+                query.AssetStatus = statusId;
+                await _context.SaveChangesAsync();
+            }
+        }
+
         public void UpdateMileage(string regNo, double newMileage)
         {
             var query = _context.Hdr_Asset.FirstOrDefault(x => x.RegNo.Trim().ToUpper() == regNo.Trim().ToUpper());
