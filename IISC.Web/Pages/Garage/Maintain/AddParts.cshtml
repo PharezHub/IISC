@@ -77,13 +77,17 @@
                                 <div class="product-price">@string.Format("{0:N0}", Model.AssetDetail.CurrentMileage) </div>
                             </div>
                             <div class="product-content-head">
-                                <h3 class="product-title">Last Service Date:</h3>
+                                <h3 class="product-title">Last Service:</h3>
                                 <div class="product-price text-primary">@Model.AssetDetail.LastServiceDate.ToLongDateString()</div>
                             </div>
                             <div class="product-btn">
                                 <a asp-page="/Garage/Spares/Index" class="btn btn-primary" title="Add new spare parts">Add Spares</a>
                                 <a asp-page="/Garage/Asset/EditAsset" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-light" title="Edit asset">Edit</a>
-                                <a href="#" class="btn btn-outline-secondary" title="Override status"><i class="fas fa-exchange-alt"></i></a>
+                                @if (@Model.AssetDetail.StatusID == 4)
+                                {
+                                    // status 4 - maintenance status
+                                    <a asp-page="/Garage/Maintain/Override" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-secondary" title="Override status - Maintenance"><i class="fas fa-exchange-alt"></i></a>
+                                }
                             </div>
                         </div>
                     </div>
