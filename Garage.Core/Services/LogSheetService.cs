@@ -33,7 +33,7 @@ namespace Garage.Core.Services
 
         public IEnumerable<Trn_LogSheet> GetLogHistory(string regNo)
         {
-            return _context.Trn_LogSheet.Where(x => x.RegNo == regNo).ToList();
+            return _context.Trn_LogSheet.Where(x => x.RegNo == regNo).Take(15).ToList();
         }
 
         public IEnumerable<LogSheetListViewModel> GetLogSheetById(int id)

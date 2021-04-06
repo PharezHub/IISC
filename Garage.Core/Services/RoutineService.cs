@@ -106,6 +106,11 @@ namespace Garage.Core.Services
             return _context.MaintenanceTriggerListViewModel.FromSqlRaw("spGetMaintenanceTriggerList").ToList();
         }
 
+        public MaintenanceTriggerSummaryViewModel GetMaintenanceTriggerSummary(int categoryId)
+        {
+            return (MaintenanceTriggerSummaryViewModel) _context.MaintenanceTriggerSummaryViewModel.FromSqlRaw("spGetMaintenanceTrigger {0}", categoryId);
+        }
+
         public Adm_ManageTrigger GetManageTriggerById(int Id)
         {
             return _context.Adm_ManageTrigger.FirstOrDefault(x => x.ID == Id);

@@ -23,6 +23,8 @@ namespace Garage.Core.Repository
 
         IEnumerable<MaintenanceTriggerListViewModel> GetMaintenanceTriggerList();
 
+        MaintenanceTriggerSummaryViewModel GetMaintenanceTriggerSummary(int categoryId);
+
         IEnumerable<Adm_Frequency> GetFrequency();
 
         void AddLogSheetTrigger(Adm_ManageLogSheet logSheet);

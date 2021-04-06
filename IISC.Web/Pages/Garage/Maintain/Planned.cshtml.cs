@@ -16,13 +16,15 @@ namespace IISC.Web.Pages.Garage.Maintain
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
         private readonly IDashboardRepository dashboardRepository;
+        private readonly IRoutineRepository routineRepository;
 
-        public PlannedModel(ITransaction transaction, IAssetRepository assetRepository, IDashboardRepository dashboardRepository)
+        public PlannedModel(ITransaction transaction, IAssetRepository assetRepository, IDashboardRepository dashboardRepository, 
+            IRoutineRepository routineRepository)
         {
             this.transaction = transaction;
             this.assetRepository = assetRepository;
             this.dashboardRepository = dashboardRepository;
-
+            this.routineRepository = routineRepository;
             HdrMaintenance = new HdrMaintenance();
             TrnPartUsed = new TrnPartUsed();
         }
@@ -32,6 +34,8 @@ namespace IISC.Web.Pages.Garage.Maintain
 
         [BindProperty]
         public AssetViewModel AssetDetail { get; set; }
+
+        public MaintenanceTriggerSummaryViewModel MaintenanceTriggerSummary { get; set; }
 
         public TrnPartUsed TrnPartUsed { get; set; }
         public SelectList TypeList { get; set; }
@@ -62,6 +66,7 @@ namespace IISC.Web.Pages.Garage.Maintain
                 //ActiveServices = await dashboardRepository.GetMaintenanceCounts(AssetDetail.ID, 2);
 
                 HdrMaintenance.CurrentMileage = AssetDetail.CurrentMileage;
+                MaintenanceTriggerSummary = routineRepository.GetMaintenanceTriggerSummary(AssetDetail.CategoryID);
             }
 
             return Page();

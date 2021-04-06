@@ -58,15 +58,50 @@
                             <div class="product-price">@Model.AssetDetail.ModelName</div>
                         </div>
                     </div>
+
+                    <div class="product-content">
+                        <div class="progress mb-1">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 65%;" aria-valuenow="@Model.MaintenanceTriggerSummary.TriggerValue" aria-valuemin="0" aria-valuemax="100">65%</div>
+                        </div>
+                    </div>
+
                     <div class="product-content">
                         <div class="product-content-head">
                             <h3 class="product-title">Current Mileage:</h3>
-                            <div class="product-price">@string.Format("{0:N0}", Model.AssetDetail.CurrentMileage) </div>
+                            <div class="product-price">@string.Format("{0:N0}", Model.AssetDetail.CurrentMileage)</div>
+                        </div>
+                        <div class="product-content-head">
+                            <h3 class="product-title">Last Service Mileage:</h3>
+                            <div class="product-price">@string.Format("{0:N0}", Model.AssetDetail.MileageLastService)</div>
+                        </div>
+                        <div class="product-content-head">
+                            <h3 class="product-title">Difference:</h3>
+                            <div class="product-price text-primary">@string.Format("{0:N0}", Model.AssetDetail.CurrentMileage - Model.AssetDetail.MileageLastService)</div>
                         </div>
                         <div class="product-content-head">
                             <h3 class="product-title">Last Service:</h3>
                             <div class="product-price text-primary">@Model.AssetDetail.LastServiceDate.ToLongDateString()</div>
                         </div>
+
+                       
+                            <div class="product-content-head">
+                                <h3 class="product-title">Trigger:</h3>
+                                <div class="product-price">@Model.MaintenanceTriggerSummary.TriggerName.Trim()</div>
+                            </div>
+
+                            <div class="product-content-head">
+                                <h3 class="product-title">Trigger On:</h3>
+                                <div class="product-price">@string.Format("{0:N0}", Model.MaintenanceTriggerSummary.TriggerValue)</div>
+                            </div>
+
+                            <div class="product-content-head">
+                                <h3 class="product-title">Threshold:</h3>
+                                <div class="product-price">@string.Format("{0:N0}", Model.MaintenanceTriggerSummary.Threshold)</div>
+                            </div>
+                        
+                    </div>
+                    
+                    <div class="product-content">
                         <div class="product-btn">
                             <a asp-page="/Garage/Spares/Index" class="btn btn-primary" title="Add new spare parts">Add Spares</a>
                             <a asp-page="/Garage/Asset/EditAsset" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-light" title="Edit asset">Edit</a>
