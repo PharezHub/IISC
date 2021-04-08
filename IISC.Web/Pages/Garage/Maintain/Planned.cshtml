@@ -61,7 +61,7 @@
 
                     <div class="product-content">
                         <div class="progress mb-1">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 65%;" aria-valuenow="@Model.MaintenanceTriggerSummary.TriggerValue" aria-valuemin="0" aria-valuemax="100">65%</div>
+                            <div class="progress-bar " role="progressbar" style="width: @Model.DifferencePercent.ToString();" aria-valuenow="@Model.MaintenanceTriggerSummary.TriggerValue" aria-valuemin="0" aria-valuemax="100">@Model.DifferencePercent.ToString()</div>
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                         </div>
                         <div class="product-content-head">
                             <h3 class="product-title">Difference:</h3>
-                            <div class="product-price text-primary">@string.Format("{0:N0}", Model.AssetDetail.CurrentMileage - Model.AssetDetail.MileageLastService)</div>
+                            <div class="product-price text-primary">@string.Format("{0:N0}", Model.AssetDetail.Difference)</div>
                         </div>
                         <div class="product-content-head">
                             <h3 class="product-title">Last Service:</h3>

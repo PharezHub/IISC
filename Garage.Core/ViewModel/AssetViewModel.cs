@@ -27,6 +27,7 @@ namespace Garage.Core.ViewModel
         public string Color { get; set; }
         public int YearOfPurchase { get; set; }
         public double InitialMileage { get; set; }
+        public double Difference { get; set; }
         public double AssetValue { get; set; }
         public string? TagNo { get; set; }
         public string? Comment { get; set; }

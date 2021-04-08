@@ -45,6 +45,8 @@ namespace IISC.Web.Pages.Garage.Maintain
         public int TotalBreakdowns { get; set; }
         public int ActiveBreakdowns { get; set; }
         public int ActiveServices { get; set; }
+        public string DifferencePercent { get; set; }
+        public double DifferencePercentValue { get; set; }
 
         public async Task<IActionResult> OnGet(int id)
         {
@@ -67,6 +69,13 @@ namespace IISC.Web.Pages.Garage.Maintain
 
                 HdrMaintenance.CurrentMileage = AssetDetail.CurrentMileage;
                 MaintenanceTriggerSummary = routineRepository.GetMaintenanceTriggerSummary(AssetDetail.CategoryID);
+
+                DifferencePercentValue = ((AssetDetail.Difference / MaintenanceTriggerSummary.TriggerValue) * 100);
+                DifferencePercent = string.Format("{0:N0}",((AssetDetail.Difference / MaintenanceTriggerSummary.TriggerValue) * 100)) + "%";
+                if(DifferencePercentValue >= 100) 
+                {
+                    DifferencePercent = "100%"; 
+                } //else { @Model.DifferencePercent.ToString() }
             }
 
             return Page();
