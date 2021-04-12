@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\Yann\publish\API</_PublishTargetUrl>
-    <History>True|2021-04-12T13:47:09.6019252Z;True|2021-04-12T14:32:39.0169920+02:00;True|2021-04-12T14:32:22.9668654+02:00;True|2021-04-12T13:26:44.2021954+02:00;True|2021-04-12T13:18:44.9575392+02:00;True|2021-04-12T12:45:40.8497029+02:00;</History>
+    <History>True|2021-04-12T14:22:11.9985201Z;True|2021-04-12T16:16:34.1579951+02:00;True|2021-04-12T15:47:09.6019252+02:00;True|2021-04-12T14:32:39.0169920+02:00;True|2021-04-12T14:32:22.9668654+02:00;True|2021-04-12T13:26:44.2021954+02:00;True|2021-04-12T13:18:44.9575392+02:00;True|2021-04-12T12:45:40.8497029+02:00;</History>
   </PropertyGroup>
 </Project>
