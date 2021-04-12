@@ -17,7 +17,7 @@ namespace IISC.API.Services
         {
             this.context = context;
         }
-
+        
         /// <summary>
         /// Get ERP purchase order details using the purchase order number and item number.
         /// </summary>
@@ -26,7 +26,7 @@ namespace IISC.API.Services
         /// <returns></returns>
         public async Task<IEnumerable<PoDetail>> GetPoDetail(string poNumber, string itemNumber)
         {
-            return await context.PoDetail.FromSqlRaw("GetPurchaseOrder {0},{1}", poNumber, itemNumber).ToListAsync();
+            return await context.PoDetail.FromSqlRaw("GMS_GetItemCost {0},{1}", poNumber, itemNumber).ToListAsync();
         }
     }
 }

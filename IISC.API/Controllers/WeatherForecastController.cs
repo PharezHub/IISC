@@ -9,7 +9,7 @@ namespace IISC.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {

@@ -36,6 +36,7 @@ namespace IISC.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Scaw Integration API", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
         }
 
@@ -45,9 +46,20 @@ namespace IISC.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Scaw API v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => 
+            {
+                if (env.IsDevelopment())
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Scaw API v1");
+                }
+                else
+                {
+                    c.SwaggerEndpoint("/ERPAPI/swagger/v1/swagger.json", "Scaw API v1");
+                }
+            });
 
             app.UseHttpsRedirection();
 
