@@ -1,0 +1,12 @@
+C:\Users\ykatambo\source\repos\IISC\API.Core\bin\Debug\net5.0\API.Core.deps.json
+C:\Users\ykatambo\source\repos\IISC\API.Core\bin\Debug\net5.0\API.Core.dll
+C:\Users\ykatambo\source\repos\IISC\API.Core\bin\Debug\net5.0\ref\API.Core.dll
+C:\Users\ykatambo\source\repos\IISC\API.Core\bin\Debug\net5.0\API.Core.pdb
+C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.csprojAssemblyReference.cache
+C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.AssemblyInfoInputs.cache
+C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.AssemblyInfo.cs
+C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.csproj.CoreCompileInputs.cache
+C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.dll
+C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Debug\net5.0\ref\API.Core.dll
+C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.pdb
