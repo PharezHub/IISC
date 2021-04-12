@@ -16,7 +16,7 @@ namespace API.Core.Models
         public string Stockcode { get; set; }
         public string StockDescription { get; set; }
         public int StockQty { get; set; }
-        public float StockCost { get; set; }
+        public double StockCost { get; set; }
         public string SupplierCode { get; set; }
         public string SupplierName { get; set; }
 
