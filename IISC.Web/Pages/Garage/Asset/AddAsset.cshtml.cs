@@ -1,20 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Garage.Core.AppDbContext;
 using Garage.Core.Models;
 using Garage.Core.Repository;
 using Garage.Core.ViewModel;
-using IISC.Web.Pages.Garage.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 
 namespace IISC.Web.Pages.Garage.Asset
 {
-    public class AddAssetModel : PageModel
+    public class AddAssetModel : BasePageModel
     {
         public static string constr = Environment.GetEnvironmentVariable("GarageDbConn");
         private readonly GarageDbContext _context;
@@ -406,8 +403,11 @@ namespace IISC.Web.Pages.Garage.Asset
             _context.Hdr_Asset.Add(AssetHeader);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Garage/Asset/Index");
+            //Show message
 
+            Notify("Asset added successfully");
+
+            return RedirectToPage("/Garage/Asset/Index");
         }
     }
 }

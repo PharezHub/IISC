@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Category
 {
-    public class IndexModel : PageModel
+    public class IndexModel : BasePageModel
     {
         private readonly ICategoryRepository categoryRepository;
         public IEnumerable<Adm_AssetCategory> CategoryList { get; set; }
@@ -41,12 +41,16 @@ namespace IISC.Web.Pages.Garage.Category
                     Category.IsActive = true;
                     categoryRepository.AddCategory(Category);
 
+                    //Show Message
+                    Notify("Category saved successfully");
+
                     return RedirectToPage("/Garage/Category/Index");
                 }
             }
 
             // Rebind data category list
             CategoryList = categoryRepository.GetAllCategory();
+
             return Page();
         }
     }

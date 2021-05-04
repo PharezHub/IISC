@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Spares
 {
-    public class IndexModel : PageModel
+    public class IndexModel : BasePageModel
     {
         private readonly ICategoryRepository categoryRepository;
         private readonly IAssetRepository assetRepository;
@@ -62,6 +62,9 @@ namespace IISC.Web.Pages.Garage.Spares
             PartsCatalog.ItemDescription = PartsCatalog.ItemDescription.Trim();
 
             assetRepository.AddPartsCatalog(PartsCatalog);
+
+            Notify("Data saved successfully");
+
             return RedirectToPage("/Garage/Spares/SparesList");
         }
     }

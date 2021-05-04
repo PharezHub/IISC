@@ -9,7 +9,7 @@ using Garage.Core.Repository;
 
 namespace IISC.Web.Pages.Garage.Category
 {
-    public class EditModel : PageModel
+    public class EditModel : BasePageModel
     {
         private readonly ICategoryRepository categoryRepository;
 
@@ -39,6 +39,10 @@ namespace IISC.Web.Pages.Garage.Category
                 AssetCategory.IsActive = true;
                 categoryRepository.UpdateCategory(AssetCategory);
             }
+
+            //Show Message
+            Notify("Category updated successfully");
+
             return RedirectToPage("/Garage/Category/Index");
         }
     }

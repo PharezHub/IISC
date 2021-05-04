@@ -18,7 +18,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace IISC.Web.Pages.Garage.Asset
 {
-    public class EditAssetModel : PageModel
+    public class EditAssetModel : BasePageModel
     {
         public static string constr = Environment.GetEnvironmentVariable("GarageDbConn");
         private readonly GarageDbContext context;
@@ -530,6 +530,10 @@ namespace IISC.Web.Pages.Garage.Asset
             //update asset details
              await assetRepository.UpdateAsset(AssetHeader);
             //update asset maintenance trigger.
+
+            //Show message
+            Notify("Asset updated successfully");
+
             return RedirectToPage("EditAsset", new { id = AssetHeader.ID });
         }
     }

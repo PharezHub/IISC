@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Logsheet
 {
-    public class LoadUtilizationModel : PageModel
+    public class LoadUtilizationModel : BasePageModel
     {
         private readonly IAssetRepository assetRepository;
         private readonly ILogSheetRepository logSheetRepository;
@@ -89,6 +89,10 @@ namespace IISC.Web.Pages.Garage.Logsheet
             }
 
             logSheetRepository.AddLogSheet(LogsheetData.CategoryID, LogsheetData.CurrentValue, LogsheetData.RegNo, LogsheetData.Comment.Trim());
+
+            //Show Message
+            Notify("Utilization saved successfully");
+
             return RedirectToPage("/Garage/Logsheet/LogList");
         }
     }

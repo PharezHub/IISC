@@ -9,6 +9,7 @@ namespace IISC.Web.Models
     {
         error,
         success,
-        warning
+        warning,
+        info
     }
 }

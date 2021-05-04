@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
-    public class AddPartsModel : PageModel
+    public class AddPartsModel : BasePageModel
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
@@ -71,6 +71,9 @@ namespace IISC.Web.Pages.Garage.Maintain
             }
 
             transaction.AddPartsUsed(TrnPartUsed);
+
+            //Show Message
+            Notify($"Maintenance Part added successfully");
 
             return RedirectToPage("AddParts", new { id = mainId });
         }

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Logsheet
 {
-    public class LogViewModel : PageModel
+    public class LogViewModel : BasePageModel
     {
         private readonly ILogSheetRepository logSheetRepository;
 
@@ -68,6 +68,9 @@ namespace IISC.Web.Pages.Garage.Logsheet
             LogsheetData.ModifiedBy = User.Identity.Name;
             LogsheetData.CurrentValue = currentValue;
             logSheetRepository.UpdateLogSheet(LogsheetData);
+
+            //Show Message
+            Notify("Logsheet completed successfully");
 
             return RedirectToPage("/Garage/Logsheet/LogList");
         }

@@ -2,17 +2,13 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IISC.Web.Pages
 {
     public class BasePageModel : PageModel
     {
-        public void Notify(string message, string title = "SCAW System Alert Message", NotificationType notificationType = NotificationType.success)
+        public void Notify(string message, string title = "SCAW Message", NotificationType notificationType = NotificationType.success)
         {
             var msg = new
             {
