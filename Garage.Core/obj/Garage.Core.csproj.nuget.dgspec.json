@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ykatambo\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj": {}
+    "C:\\Yann\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ykatambo\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj": {
+    "C:\\Yann\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ykatambo\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj",
+        "projectUniqueName": "C:\\Yann\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj",
         "projectName": "Garage.Core",
-        "projectPath": "C:\\Users\\ykatambo\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj",
-        "packagesPath": "C:\\Users\\ykatambo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ykatambo\\source\\repos\\IISC\\Garage.Core\\obj\\",
+        "projectPath": "C:\\Yann\\source\\repos\\IISC\\Garage.Core\\Garage.Core.csproj",
+        "packagesPath": "C:\\Users\\ykatambo.MOPANI\\.nuget\\packages\\",
+        "outputPath": "C:\\Yann\\source\\repos\\IISC\\Garage.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ykatambo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ykatambo.MOPANI\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

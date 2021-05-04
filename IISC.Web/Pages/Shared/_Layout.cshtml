@@ -262,6 +262,10 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/assets/slimscroll/jquery.slimscroll.js"></script>
     <script src="~/lib/font-awesome/js/fontawesome.min.js"></script>
+
+    <script src="~/js/sweetalert.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/assets/multi-select/js/jquery.multi-select.js"></script>
     <script src="~/assets/libs/js/main-js.js"></script>
@@ -269,6 +273,8 @@
     <script src="~/assets/datatables/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/assets/datatables/js/buttons.bootstrap4.min.js"></script>
     <script src="~/assets/datatables/js/data-table.js"></script>
+
+    @await Html.PartialAsync("_MessagePartial")
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
