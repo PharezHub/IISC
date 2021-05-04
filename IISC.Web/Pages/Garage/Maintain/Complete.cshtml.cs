@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
-    public class CompleteModel : PageModel
+    public class CompleteModel : BasePageModel
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
@@ -52,6 +52,10 @@ namespace IISC.Web.Pages.Garage.Maintain
             HdrMaintenance.ModifiedBy = User.Identity.Name;
 
             transaction.UpdateMaintenance(HdrMaintenance.ID, 1, HdrMaintenance.ClosureComment, HdrMaintenance.DateClosed.Value, HdrMaintenance.ModifiedBy);
+
+            //Show Message
+            Notify($"Maintenance completed successfully!!!");
+
             return RedirectToPage("/Garage/Asset/Index");
         }
     }

@@ -25,51 +25,95 @@
 
         <form method="post">
             <div class="row">
-                <!-- ============================================================== -->
-                <!-- profile -->
-                <!-- ============================================================== -->
+
                 <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
-                    <!-- card profile -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="user-avatar text-center d-block">
-                                <img src="/assets/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                    <div class="product-thumbnail">
+                        <div class="product-img-head">
+                            <div class="product-img">
+                                <img src="~/images/budget.png" asp-append-version="true" alt="" class="rounded-circle user-avatar-xxl">
                             </div>
-                            <div class="text-center">
-                                <h2 class="font-24 mb-0">Reg No: @Model.AssetDetail.RegNo</h2>
-                                <p>Status: @Model.AssetDetail.Status</p>
-                                <input hidden asp-for="@Model.AssetDetail.ID" />
-                                <input hidden asp-for="@Model.AssetDetail.RegNo" />
+                            <div class="ribbons bg-danger"></div>
+                            <div class="ribbons-text">@Model.AssetDetail.AssetType</div>
+                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-bell"></i></a></div>
+
+                        </div>
+                        <div class="product-content">
+                            <div class="product-content-head">
+                                <h3 class="product-title">Registration No:</h3>
+                                <div class="product-price">@Model.AssetDetail.RegNo</div>
+                            </div>
+                            <div class="product-content-head">
+                                <h3 class="product-title">Status:</h3>
+                                <div class="product-price text-primary">@Model.AssetDetail.Status</div>
                             </div>
                         </div>
-                        <div class="card-body border-top">
-                            <h3 class="font-16">Asset Information</h3>
-                            <div class="">
-                                <ul class="list-unstyled mb-0">
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Engine #: @Model.AssetDetail.EngineNo</li>
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Make: @Model.AssetDetail.MakeName</li>
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Model: @Model.AssetDetail.ModelName</li>
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Engine Capacity: @Model.AssetDetail.EngineCapacity</li>
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Fuel Type: @Model.AssetDetail.FuelName</li>
-                                </ul>
+                        <div class="product-content">
+                            <div class="product-content-head">
+                                <h3 class="product-title">Make:</h3>
+                                <div class="product-price">@Model.AssetDetail.MakeName</div>
+                            </div>
+                            <div class="product-content-head">
+                                <h3 class="product-title">Model:</h3>
+                                <div class="product-price">@Model.AssetDetail.ModelName</div>
                             </div>
                         </div>
-                        <div class="card-body border-top">
-                            <h3 class="font-16">Service History</h3>
-                            <div class="">
-                                <ul class="list-unstyled mb-0">
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Current Mileage: @Model.AssetDetail.CurrentMileage</li>
-                                    <li class="mb-2"><i class="fas fa-fw fa-info mr-2"></i>Last Service: @Model.AssetDetail.LastServiceDate.ToShortDateString()</li>
-                                </ul>
+
+                        <div class="product-content">
+                            <div class="progress mb-1">
+                                <div class="progress-bar " role="progressbar" style="width: @Model.DifferencePercent.ToString();" aria-valuenow="@Model.MaintenanceTriggerSummary.TriggerValue" aria-valuemin="0" aria-valuemax="100">@Model.DifferencePercent.ToString()</div>
+                            </div>
+                        </div>
+
+                        <div class="product-content">
+                            <div class="product-content-head">
+                                <h3 class="product-title">Current Mileage:</h3>
+                                <div class="product-price">@string.Format("{0:N0}", Model.AssetDetail.CurrentMileage)</div>
+                            </div>
+                            <div class="product-content-head">
+                                <h3 class="product-title">Last Service Mileage:</h3>
+                                <div class="product-price">@string.Format("{0:N0}", Model.AssetDetail.MileageLastService)</div>
+                            </div>
+                            <div class="product-content-head">
+                                <h3 class="product-title">Difference:</h3>
+                                <div class="product-price text-primary">@string.Format("{0:N0}", Model.AssetDetail.Difference)</div>
+                            </div>
+                            <div class="product-content-head">
+                                <h3 class="product-title">Last Service:</h3>
+                                <div class="product-price text-primary">@Model.AssetDetail.LastServiceDate.ToLongDateString()</div>
+                            </div>
+
+
+                            <div class="product-content-head">
+                                <h3 class="product-title">Trigger:</h3>
+                                <div class="product-price">@Model.MaintenanceTriggerSummary.TriggerName.Trim()</div>
+                            </div>
+
+                            <div class="product-content-head">
+                                <h3 class="product-title">Trigger On:</h3>
+                                <div class="product-price">@string.Format("{0:N0}", Model.MaintenanceTriggerSummary.TriggerValue)</div>
+                            </div>
+
+                            <div class="product-content-head">
+                                <h3 class="product-title">Threshold:</h3>
+                                <div class="product-price">@string.Format("{0:N0}", Model.MaintenanceTriggerSummary.Threshold)</div>
+                            </div>
+                        </div>
+
+                        <div class="product-content">
+                            <div class="product-btn">
+                                <a asp-page="/Garage/Spares/Index" class="btn btn-primary" title="Add new spare parts">Add Spares</a>
+                                <a asp-page="/Garage/Asset/EditAsset" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-light" title="Edit asset">Edit</a>
+                                @if (@Model.AssetDetail.StatusID == 4)
+                                {
+                                    // status 4 - maintenance status
+                                    <a asp-page="/Garage/Maintain/Override" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-secondary" title="Override status - Maintenance"><i class="fas fa-exchange-alt"></i></a>
+                                }
                             </div>
                         </div>
                     </div>
-                    <!-- end card profile -->
                 </div>
-                <!-- end profile -->
-                <!-- campaign data -->
+
                 <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
-                    <!-- campaign tab one -->
                     <div class="influence-profile-content pills-regular">
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
@@ -149,23 +193,23 @@
                                         </div>
                                     </div>
                                     @*@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
-                                        {
-                                            <div class="card-footer">
-                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                    <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
-                                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        }*@
+                            {
+                                <div class="card-footer">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            }*@
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- end campaign tab one -->
                 </div>
-                <!-- end campaign data -->
+
             </div>
         </form>
 

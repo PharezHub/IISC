@@ -11,16 +11,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
-    public class UpdatePriceModel : PageModel
+    public class UpdatePriceModel : BasePageModel
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
+        private readonly IRoutineRepository routineRepository;
 
-        public UpdatePriceModel(ITransaction transaction, IAssetRepository assetRepository)
+        public UpdatePriceModel(ITransaction transaction, IAssetRepository assetRepository, IRoutineRepository routineRepository)
         {
             this.transaction = transaction;
             this.assetRepository = assetRepository;
+            this.routineRepository = routineRepository;
         }
+
+        public MaintenanceTriggerSummaryViewModel MaintenanceTriggerSummary { get; set; }
 
         [BindProperty]
         public TrnPartUsed TrnPartUsed { get; set; }
@@ -31,6 +35,8 @@ namespace IISC.Web.Pages.Garage.Maintain
         [BindProperty]
         public HdrMaintenanceViewModel HdrMaintenanceDetail { get; set; }
         public SelectList PartsList { get; set; }
+        public string DifferencePercent { get; set; }
+        public double DifferencePercentValue { get; set; }
 
         public async Task<IActionResult> OnGet(int id)
         {
@@ -44,6 +50,15 @@ namespace IISC.Web.Pages.Garage.Maintain
 
                     PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID),
                         int.Parse(AssetDetail.Make)), nameof(AdmPartsCatalog.ID), nameof(AdmPartsCatalog.ItemDescription));
+
+                    MaintenanceTriggerSummary = routineRepository.GetMaintenanceTriggerSummary(AssetDetail.CategoryID);
+
+                    DifferencePercentValue = ((AssetDetail.Difference / MaintenanceTriggerSummary.TriggerValue) * 100);
+                    DifferencePercent = string.Format("{0:N0}", ((AssetDetail.Difference / MaintenanceTriggerSummary.TriggerValue) * 100)) + "%";
+                    if (DifferencePercentValue >= 100)
+                    {
+                        DifferencePercent = "100%";
+                    }
                 }
             }
             return Page();
@@ -57,6 +72,11 @@ namespace IISC.Web.Pages.Garage.Maintain
             }
             await transaction.UpdatePartUsed(TrnPartUsed);
 
+            //Show Message
+            Notify($"Part price updated successfully", notificationType:Models.NotificationType.info);
+
+
+            //redirect to maintenance page for adding spare parts
             return RedirectToPage("AddParts", new { id = TrnPartUsed.MainID });
         }
     }
