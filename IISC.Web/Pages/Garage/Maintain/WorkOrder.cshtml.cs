@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
-    public class WorkOrderModel : PageModel
+    public class WorkOrderModel : BasePageModel
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
@@ -66,10 +66,13 @@ namespace IISC.Web.Pages.Garage.Maintain
                 return Page();
             }
             WorkOrderHdrView = await transaction.GetWorkOrderHdr(WorkOrderHdr.MaintenanceID);
-            if (WorkOrderHdrView == null)
+            if (WorkOrderHdrView != null)
             {
                 //submit and rebind
                 await transaction.AddWorkOrder(WorkOrderHdr);
+
+                //Show Message
+                Notify($"Maintenance work order added successfully");
             }
             return RedirectToPage("WorkOrder", new { id = WorkOrderHdr.MaintenanceID });
         }

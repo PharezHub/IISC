@@ -54,7 +54,7 @@ namespace IISC.Web.Pages.Garage.Maintain
             transaction.UpdateMaintenance(HdrMaintenance.ID, 1, HdrMaintenance.ClosureComment, HdrMaintenance.DateClosed.Value, HdrMaintenance.ModifiedBy);
 
             //Show Message
-            Notify($"Maintenance completed successfully!!!");
+            Notify("Maintenance completed successfully!!!");
 
             return RedirectToPage("/Garage/Asset/Index");
         }

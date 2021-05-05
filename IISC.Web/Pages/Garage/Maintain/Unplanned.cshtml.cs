@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
-    public class UnplannedModel : PageModel
+    public class UnplannedModel : BasePageModel
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
@@ -84,6 +84,10 @@ namespace IISC.Web.Pages.Garage.Maintain
 
             var query = await transaction.AddMaintenance(HdrMaintenance);
             assetRepository.UpdateMileage(HdrMaintenance.RegNo, HdrMaintenance.CurrentMileage.Value);
+
+            //Show Message
+            Notify($"Breakdown submitted successfully");
+
             return RedirectToPage("Unplanned", new { id = assetID });
         }
     }

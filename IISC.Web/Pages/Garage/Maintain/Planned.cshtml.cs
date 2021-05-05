@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
-    public class PlannedModel : PageModel
+    public class PlannedModel : BasePageModel
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
@@ -119,7 +119,10 @@ namespace IISC.Web.Pages.Garage.Maintain
 
                 transaction.AddPartsUsed(TrnPartUsed);
             }
-            
+
+            //Show Message
+            Notify($"Planned maintenance submitted successfully");
+
             return RedirectToPage("Planned", new { id = assetID });
         }
 
