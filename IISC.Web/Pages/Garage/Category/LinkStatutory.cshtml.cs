@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Category
 {
-    public class LinkStatutoryModel : PageModel
+    public class LinkStatutoryModel : BasePageModel
     {
         private readonly ICategoryRepository categoryRepository;
 
@@ -62,6 +62,9 @@ namespace IISC.Web.Pages.Garage.Category
                 // Persist to the database
                 categoryRepository.AddLink(CategoryStatutoryLink);
             }
+
+            //Show Message
+            Notify("Category - Statutory link added successfully");
 
             return RedirectToPage("/Garage/Category/Index");
         }

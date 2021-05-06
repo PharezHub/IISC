@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Routines
 {
-    public class AddTypeModel : PageModel
+    public class AddTypeModel : BasePageModel
     {
         private readonly ITransaction transaction;
 
@@ -42,9 +42,14 @@ namespace IISC.Web.Pages.Garage.Routines
                 else
                 {
                     await transaction.AddMaintenanceType(MaintenanceType);
+
+                    //Show Message
+                    Notify("Maintenance type added successfully");
+
                     return RedirectToPage("/Garage/Routines/AddType");
                 }
             }
+
             // Rebind data list
             MaintenanceList = await transaction.GetMaintenanceType();
             return Page();

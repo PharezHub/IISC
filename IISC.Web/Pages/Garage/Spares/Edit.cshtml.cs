@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Spares
 {
-    public class EditModel : PageModel
+    public class EditModel : BasePageModel
     {
         private readonly ICategoryRepository categoryRepository;
         private readonly IAssetRepository assetRepository;
@@ -60,6 +60,10 @@ namespace IISC.Web.Pages.Garage.Spares
             PartsCatalog.ItemDescription = PartsCatalog.ItemDescription.Trim();
 
             assetRepository.UpdatePartsCatalog(PartsCatalog);
+
+            //Show Message
+            Notify("Spare updated successfully");
+
             return RedirectToPage("/Garage/Spares/SparesList");
         }
     }

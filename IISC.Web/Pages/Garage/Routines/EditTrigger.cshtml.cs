@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Routines
 {
-    public class EditTriggerModel : PageModel
+    public class EditTriggerModel : BasePageModel
     {
         private readonly IRoutineRepository routineRepository;
 
@@ -36,7 +36,11 @@ namespace IISC.Web.Pages.Garage.Routines
             if (ModelState.IsValid)
             {
                 routineRepository.UpdateTrigger(TriggerType);
+
+                //Show Message
+                Notify("Trigger updated successfully");
             }
+
             return RedirectToPage("/Garage/Routines/Triggers");
         }
     }

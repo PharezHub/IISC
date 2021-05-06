@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
-    public class WorkOrderPartsModel : PageModel
+    public class WorkOrderPartsModel : BasePageModel
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
@@ -60,6 +60,10 @@ namespace IISC.Web.Pages.Garage.Maintain
 
             //submit and rebind
             transaction.AddWOPartsUsed(TrnWorkOrderParts);
+
+            //Show Message
+            Notify($"Work order part added successfully");
+
             return RedirectToPage("WorkOrderParts", new { id = TrnWorkOrderParts.MaintenanceID });
         }
     }

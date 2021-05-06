@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Routines
 {
-    public class DeleteLogSheetTriggerModel : PageModel
+    public class DeleteLogSheetTriggerModel : BasePageModel
     {
         private readonly IRoutineRepository routineRepository;
 
@@ -33,6 +33,9 @@ namespace IISC.Web.Pages.Garage.Routines
             if (LogId > 0)
             {
                 routineRepository.DeleteLogSheetTrigger(LogId);
+
+                //Show Message
+                Notify("Maintenance log sheet deleted successfully", notificationType:Models.NotificationType.warning);
             }
             return RedirectToPage("/Garage/Routines/SetupTrigger");
         }

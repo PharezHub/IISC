@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Routines
 {
-    public class TriggersModel : PageModel
+    public class TriggersModel : BasePageModel
     {
         private readonly IRoutineRepository routineRepository;
 
@@ -42,6 +42,10 @@ namespace IISC.Web.Pages.Garage.Routines
                 else
                 {
                     routineRepository.AddTrigger(TriggerType);
+
+                    //Show Message
+                    Notify("Trigger added successfully");
+
                     return RedirectToPage("/Garage/Routines/Triggers");
                 }
             }

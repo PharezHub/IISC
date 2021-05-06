@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Routines
 {
-    public class EditMaintenanceTriggerModel : PageModel
+    public class EditMaintenanceTriggerModel : BasePageModel
     {
         private readonly IRoutineRepository routineRepository;
         private readonly ICategoryRepository categoryRepository;
@@ -49,6 +49,9 @@ namespace IISC.Web.Pages.Garage.Routines
             {
                 ManageTrigger.ModifiedBy = User.Identity.Name;
                 routineRepository.UpdateManageTrigger(ManageTrigger);
+
+                //Show Message
+                Notify("Maintenance trigger updated successfully");
             }
             return RedirectToPage("/Garage/Routines/SetupTrigger");
         }

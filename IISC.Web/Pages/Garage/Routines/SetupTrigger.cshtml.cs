@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Routines
 {
-    public class SetupTriggerModel : PageModel
+    public class SetupTriggerModel : BasePageModel
     {
         private readonly IRoutineRepository routineRepository;
         private readonly ICategoryRepository categoryRepository;
@@ -50,6 +50,9 @@ namespace IISC.Web.Pages.Garage.Routines
                 ManageTrigger.ModifiedOn = DateTime.Now;
 
                 routineRepository.AddManageTrigger(ManageTrigger);
+
+                //Show Message
+                Notify("Maintenance trigger added successfully");
             }
 
             return RedirectToPage("/Garage/Routines/SetupTrigger");

@@ -63,7 +63,7 @@ namespace IISC.Web.Pages.Garage.Spares
 
             assetRepository.AddPartsCatalog(PartsCatalog);
 
-            Notify($"Part - {PartsCatalog.ItemDescription.Trim()} - added successfully");
+            Notify($"Part ** {PartsCatalog.ItemDescription.Trim()} ** added successfully");
 
             return RedirectToPage("/Garage/Spares/SparesList");
         }

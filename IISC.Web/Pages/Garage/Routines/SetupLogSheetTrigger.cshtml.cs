@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Routines
 {
-    public class SetupLogSheetTriggerModel : PageModel
+    public class SetupLogSheetTriggerModel : BasePageModel
     {
         private readonly IRoutineRepository routineRepository;
         private readonly ICategoryRepository categoryRepository;
@@ -72,6 +72,9 @@ namespace IISC.Web.Pages.Garage.Routines
                 ManageLogSheet.ModifiedOn = DateTime.Now;
 
                 routineRepository.AddLogSheetTrigger(ManageLogSheet);
+
+                //Show Message
+                Notify("Maintenance log sheet trigger added successfully");
             }
             return RedirectToPage("/Garage/Routines/SetupLogSheetTrigger", new { id = Id });
         }

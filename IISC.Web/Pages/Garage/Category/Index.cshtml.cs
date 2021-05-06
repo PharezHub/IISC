@@ -42,7 +42,7 @@ namespace IISC.Web.Pages.Garage.Category
                     categoryRepository.AddCategory(Category);
 
                     //Show Message
-                    Notify("Category saved successfully");
+                    Notify("Category added successfully");
 
                     return RedirectToPage("/Garage/Category/Index");
                 }

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Spares
 {
-    public class DeleteModel : PageModel
+    public class DeleteModel : BasePageModel
     {
         private readonly IAssetRepository assetRepository;
 
@@ -32,6 +32,9 @@ namespace IISC.Web.Pages.Garage.Spares
             if (PartsCatalog.ID > 1)
             {
                 assetRepository.DeletePartCatalog(PartsCatalog.ID);
+
+                //Show Message
+                Notify("Spare part deleted successfully", notificationType:Models.NotificationType.warning);
             }
             return RedirectToPage("/Garage/Spares/SparesList");
         }
