@@ -27,6 +27,10 @@ namespace Garage.Core.Repository
 
         IEnumerable<Adm_Frequency> GetFrequency();
 
+        Task<IEnumerable<Adm_FuelType>> GetFuelTypes();
+        Task<IEnumerable<FuelPriceHistoryViewModel>> GetFuelPriceHistory();
+        Task<TrnFuelPriceHistory> AddFuelPriceHistory(TrnFuelPriceHistory fuelPriceHistory);
+
         void AddLogSheetTrigger(Adm_ManageLogSheet logSheet);
 
         IEnumerable<Adm_ManageLogSheet> GetAllLogSheetTrigger();

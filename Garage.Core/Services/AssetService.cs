@@ -196,6 +196,7 @@ namespace Garage.Core.Services
                 query.Color = asset.Color;
                 query.AssetValue = asset.AssetValue;
                 query.GroupID = asset.GroupID;
+                query.TankCapacity = asset.TankCapacity;
                 //query.TagNo = string.IsNullOrEmpty(asset.TagNo.Trim()) ? "" : asset.TagNo.Trim();
                 //query.Comment = string.IsNullOrEmpty(asset.Comment.Trim()) ? "" : asset.Comment.Trim();
                 query.AssetStatus = asset.AssetStatus.Value;

@@ -22,6 +22,10 @@ namespace Garage.Core.Models
         [Range(1, 2, ErrorMessage = "Asset Group is required")]
         public int GroupID { get; set; }
 
+        [Required(ErrorMessage = "Planned consumption is required")]
+        [Range(1, 10000, ErrorMessage = "Planned consumption is out of range")]
+        public float PlannedConsumption { get; set; }
+
         [Required(ErrorMessage = "Asset category is required")]
         [Range(1, 50, ErrorMessage = "Asset category is required")]
         public int CategoryID { get; set; }
@@ -60,6 +64,10 @@ namespace Garage.Core.Models
         [Range(1000, 5000, ErrorMessage = "Enter valid purchase year")]
         public int? YearOfPurchase { get; set; }
         public double? InitialMileage { get; set; }
+
+        [Required(ErrorMessage = "Enter Tank Capacity")]
+        [Range(10, 1000, ErrorMessage = "Enter a valid tank capacity from 10 - 1000 litres")]
+        public double TankCapacity { get; set; }
         public double? CurrentMileage { get; set; }
         public double? MileageLastService { get; set; }
 

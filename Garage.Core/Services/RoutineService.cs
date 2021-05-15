@@ -20,6 +20,18 @@ namespace Garage.Core.Services
             _context = context;
         }
 
+        public async Task<TrnFuelPriceHistory> AddFuelPriceHistory(TrnFuelPriceHistory fuelPriceHistory)
+        {
+            if (fuelPriceHistory != null)
+            {
+                _context.TrnFuelPriceHistory.Add(fuelPriceHistory);
+                await _context.SaveChangesAsync();
+            }
+
+            return fuelPriceHistory;
+        }
+
+
         public void AddLogSheetTrigger(Adm_ManageLogSheet logSheet)
         {
             // Validate existing log trigger
@@ -89,6 +101,16 @@ namespace Garage.Core.Services
         public IEnumerable<Adm_Frequency> GetFrequency()
         {
             return _context.Adm_Frequency.ToList();
+        }
+
+        public async Task<IEnumerable<FuelPriceHistoryViewModel>> GetFuelPriceHistory()
+        {
+            return await _context.FuelPriceHistoryViewModel.FromSqlRaw("spGetFuelPriceHistory").ToListAsync();
+        }
+
+        public async Task<IEnumerable<Adm_FuelType>> GetFuelTypes()
+        {
+            return await _context.Adm_FuelType.ToListAsync();
         }
 
         public async Task<IEnumerable<LogSheetSetupViewModel>> GetLogSheetSetup()
