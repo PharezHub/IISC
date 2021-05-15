@@ -51,6 +51,7 @@ namespace IISC.Web.Pages.Garage.Asset
         public List<CarModelViewModel> ModelTypeList { get; set; }
         public List<Adm_InsuranceType> InsuranceTypeList { get; set; }
         public List<ColorViewModel> ColorTypeList { get; set; }
+        public SelectList GroupTypeList { get; set; }
 
         public SelectList AssetDisplay()
         {
@@ -357,13 +358,16 @@ namespace IISC.Web.Pages.Garage.Asset
             return statusList;
         }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
             //InsuranceVM.DateFrom = DateTime.Now;
             //InsuranceVM.DateTo = DateTime.Now;
             //FitnessVM.DateRenewed = DateTime.Now;
             //RoadTaxVM.DateRenewed = DateTime.Now;
             //RoadTaxVM.ExpiryDate = DateTime.Now;
+
+            GroupTypeList = new SelectList (await assetRepository.GetGroupType(), nameof(AdmGroupType.ID), nameof(AdmGroupType.GroupName));
+
             AssetHeader.YearOfPurchase = DateTime.Now.Year;
             AssetHeader.Year = DateTime.Now.Year;
             AssetHeader.InitialMileage = 0;

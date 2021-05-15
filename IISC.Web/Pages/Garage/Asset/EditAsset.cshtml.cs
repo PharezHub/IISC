@@ -69,6 +69,8 @@ namespace IISC.Web.Pages.Garage.Asset
         public List<Adm_InsuranceType> InsuranceTypeList { get; set; }
         public List<ColorViewModel> ColorTypeList { get; set; }
         public SelectList AttachmentTypesList { get; set; }
+        public SelectList GroupTypeList { get; set; }
+
         public SelectList ModelInsuranceType()
         {
             InsuranceTypeList = assetRepository.GetInsuranceType();
@@ -358,6 +360,7 @@ namespace IISC.Web.Pages.Garage.Asset
         {
             if (Id > 0)
             {
+                GroupTypeList = new SelectList(await assetRepository.GetGroupType(), nameof(AdmGroupType.ID), nameof(AdmGroupType.GroupName));
                 AttachmentTypesList = new SelectList(await assetRepository.GetAttachmentTypes(), nameof(Adm_AttachmentTypes.ID), nameof(Adm_AttachmentTypes.FileType));
                 AssetHeader = await assetRepository.GetAssetDetailById(Id);
                 var resultList = await assetRepository.GetStatutorybyCategoryId(AssetHeader.CategoryID);

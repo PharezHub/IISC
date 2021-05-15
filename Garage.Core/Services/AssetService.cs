@@ -195,6 +195,7 @@ namespace Garage.Core.Services
                 query.Year = asset.Year;
                 query.Color = asset.Color;
                 query.AssetValue = asset.AssetValue;
+                query.GroupID = asset.GroupID;
                 //query.TagNo = string.IsNullOrEmpty(asset.TagNo.Trim()) ? "" : asset.TagNo.Trim();
                 //query.Comment = string.IsNullOrEmpty(asset.Comment.Trim()) ? "" : asset.Comment.Trim();
                 query.AssetStatus = asset.AssetStatus.Value;
@@ -298,6 +299,11 @@ namespace Garage.Core.Services
                 exists = true;
 
             return exists;
+        }
+
+        public async Task<List<AdmGroupType>> GetGroupType()
+        {
+            return await _context.AdmGroupType.ToListAsync();
         }
     }
 }

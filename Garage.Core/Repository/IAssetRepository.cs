@@ -11,6 +11,8 @@ namespace Garage.Core.Repository
     {
         IEnumerable<AssetCatalogueViewModel> GetAssetCatelogueList();
         List<Adm_InsuranceType> GetInsuranceType();
+        
+        Task<List<AdmGroupType>> GetGroupType();
 
         void AddStatutory(Hdr_StatutoryRequirement statutoryRequirement);
         bool ValidateRegNumber(string regNo);

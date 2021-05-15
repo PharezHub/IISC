@@ -12,6 +12,7 @@ namespace Garage.Core.ViewModel
         public string AssetType { get; set; }
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
+        public string GroupName { get; set; }
         public string EngineNo { get; set; }
         public string ChassisNo { get; set; }
         public string RegNo { get; set; }

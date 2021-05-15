@@ -39,6 +39,7 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<TrnPartUsed> TrnPartUsed { get; set; }
         public virtual DbSet<TrnSpecialTools> TrnSpecialTools { get; set; }
         public virtual DbSet<WorkOrderHdr> WorkOrderHdr { get; set; }
+        public virtual DbSet<AdmGroupType> AdmGroupType { get; set; }
         public virtual DbSet<TrnWorkOrderParts> TrnWorkOrderParts { get; set; }
         public virtual DbSet<AdmPriority> AdmPriority { get; set; }
         public virtual DbSet<AdmPurpose> AdmPurpose { get; set; }

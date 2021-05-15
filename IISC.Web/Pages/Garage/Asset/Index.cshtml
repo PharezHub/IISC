@@ -37,8 +37,8 @@
                                 <th>Mileage</th>
                                 <th>Make</th>
                                 <th>Model</th>
+                                <th>Group</th>
                                 <th>Fuel</th>
-                                <th>Year</th>
                                 <th>Created On</th>
                                 <th>Status</th>
                                 <th> </th>
@@ -52,11 +52,11 @@
                                 <td>@item.AssetType</td>
                                 <td>@item.CategoryName</td>
                                 <td>@item.RegNo</td>
-                                <td>@item.CurrentMileage</td>
+                                <td>@string.Format("{0:N0}", item.CurrentMileage) </td>
                                 <td>@item.MakeName</td>
                                 <td>@item.ModelName</td>
+                                <td>@item.GroupName</td>
                                 <td>@item.FuelName</td>
-                                <td>@item.Year</td>
                                 <td>@item.CreatedOn.Value.ToShortDateString()</td>
                                 <td>
                                     @if (@item.StatusID == 1)

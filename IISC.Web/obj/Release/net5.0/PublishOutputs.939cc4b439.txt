@@ -60,8 +60,11 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\css\sit
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\css\style.css
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\favicon.ico
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\add-file.png
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\budget.png
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\budget_1.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\calculator.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\car-breakdown.png
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\compliant.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\document.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\growth.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\growth_1.png
@@ -69,6 +72,7 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\mail.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\project-management.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\repair-tools.png
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\repair-tools_1.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\report.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\stopwatch.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\travelling-vehicles-of-a-road.png
@@ -152,6 +156,16 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\jqu
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\jquery\dist\jquery.min.js
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\jquery\dist\jquery.min.map
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\jquery\LICENSE.txt
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\limonte-sweetalert2\sweetalert2.all.js
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\limonte-sweetalert2\sweetalert2.all.min.js
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\limonte-sweetalert2\sweetalert2.css
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\limonte-sweetalert2\sweetalert2.js
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\limonte-sweetalert2\sweetalert2.min.css
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\limonte-sweetalert2\sweetalert2.min.js
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\toastr.js\toastr.css
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\toastr.js\toastr.js.map
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\toastr.js\toastr.min.css
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\toastr.js\toastr.min.js
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\appsettings.json
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\libman.json

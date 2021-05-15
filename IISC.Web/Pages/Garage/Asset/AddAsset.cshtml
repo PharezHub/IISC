@@ -49,7 +49,11 @@
                                 <span asp-validation-for="AssetHeader.RegNo" class="text-danger"></span>
                             </div>
                             <div class="col-md-6 mb-3">
-                                
+                                <label fasp-for="AssetHeader.GroupID">Asset Group</label>
+                                <select asp-for="AssetHeader.GroupID" class="form-control" asp-items="@Model.GroupTypeList">
+                                    <option value="0">Choose One</option>
+                                </select>
+                                <span asp-validation-for="AssetHeader.GroupID" class="text-danger"></span>
                             </div>
                         </div>
 

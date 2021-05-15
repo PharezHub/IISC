@@ -18,6 +18,10 @@ namespace Garage.Core.Models
         [Range(1,50,ErrorMessage = "Asset type is required")]
         public int AssetTypeID { get; set; }
 
+        [Required(ErrorMessage = "Asset Group is required")]
+        [Range(1, 2, ErrorMessage = "Asset Group is required")]
+        public int GroupID { get; set; }
+
         [Required(ErrorMessage = "Asset category is required")]
         [Range(1, 50, ErrorMessage = "Asset category is required")]
         public int CategoryID { get; set; }
