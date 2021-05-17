@@ -19,5 +19,13 @@ namespace Garage.Core.Repository
         
         //Get previous mileage reading using vehicle registration number
         Task<double> GetPreviousReading(string regNumber);
+
+        /// <summary>
+        /// Get fuel consumption transactions based on vehicle registration number and asset number
+        /// </summary>
+        /// <param name="regNumber"></param>
+        /// <param name="assetId"></param>
+        /// <returns></returns>
+        Task<IEnumerable<TrnFuelConsumption>> GetFuelConsumption(string regNumber, int assetId);
     }
 }

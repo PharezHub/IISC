@@ -54,6 +54,11 @@ namespace Garage.Core.Services
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<IEnumerable<TrnFuelConsumption>> GetFuelConsumption(string regNumber, int assetId)
+        {
+            return await _context.TrnFuelConsumption.Where(x => x.RegNo == regNumber && x.AssetID == assetId).ToListAsync();
+        }
+
         public IEnumerable<Trn_LogSheet> GetLogHistory(string regNo)
         {
             return _context.Trn_LogSheet.Where(x => x.RegNo == regNo).Take(15).ToList();

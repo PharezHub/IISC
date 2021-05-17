@@ -29,6 +29,8 @@ namespace IISC.Web.Pages.Garage.Logsheet
         [BindProperty]
         public TrnFuelConsumption TrnFuelConsumption { get; set; }
 
+        public IEnumerable<TrnFuelConsumption> FuelConsumptionList { get; set; }
+
         public async Task<IActionResult> OnGet(int id)
         {
             await InitialBinding(id);
@@ -44,6 +46,8 @@ namespace IISC.Web.Pages.Garage.Logsheet
                 TrnFuelConsumption.RegNo = AssetDetail.RegNo;
                 TrnFuelConsumption.OdometerReading = double.Parse(AssetDetail.CurrentMileage.ToString("N2"));
                 TrnFuelConsumption.PreviousReading = await logSheetRepository.GetPreviousReading(AssetDetail.RegNo);
+                FuelConsumptionList = await logSheetRepository.GetFuelConsumption(AssetDetail.RegNo, AssetDetail.ID);
+
                 if (AssetDetail.FuelTypeID > 0)
                 {
                     double currentPrice = await logSheetRepository.GetCurrentFuelPrice(AssetDetail.FuelTypeID);
@@ -58,34 +62,33 @@ namespace IISC.Web.Pages.Garage.Logsheet
 
         public async Task<IActionResult> OnPost()
         {
-            if (TrnFuelConsumption.AssetID > 0)
-            {
-                await InitialBinding(TrnFuelConsumption.AssetID);
-            }
-            
+            int assetId = 0;
             TrnFuelConsumption.TransactionDate = DateTime.Now;
             TrnFuelConsumption.LoggedBy = User.Identity.Name;
 
-            if (ModelState.IsValid)
+            if (TrnFuelConsumption.AssetID > 0)
             {
-                if (TrnFuelConsumption.LitresReceived < 1)
-                {
-                    Notify("Enter valid litres received.", notificationType: Models.NotificationType.warning);
-                    return Page();
-                }
-                else
-                {
-                    //save fuel consumption to the database
-
-                    Notify("Fuel consumption saved successfully");
-                }
+                assetId = TrnFuelConsumption.AssetID;
+                await InitialBinding(assetId);
             }
-            else
+
+            if (!ModelState.IsValid)
             {
                 Notify("Litres received cannot be empty.", notificationType: Models.NotificationType.error);
                 return Page();
             }
-            return Page();
+
+            if (TrnFuelConsumption.LitresReceived < 1)
+            {
+                Notify("Enter valid litres received.", notificationType: Models.NotificationType.warning);
+                return Page();
+            }
+
+            //save fuel consumption to the database
+            await logSheetRepository.AddFuelConsumption(TrnFuelConsumption);
+            Notify("Fuel consumption saved successfully");
+
+            return RedirectToPage("FuelConsumption", new { id = assetId });
         }
     }
 }
