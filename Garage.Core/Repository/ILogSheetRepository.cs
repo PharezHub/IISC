@@ -16,5 +16,8 @@ namespace Garage.Core.Repository
         void AddLogSheet(int categoryId, double currentValue, string regNo, string comment);
         Task AddFuelConsumption(TrnFuelConsumption consumption);
         Task<double> GetCurrentFuelPrice(int fuelId);
+        
+        //Get previous mileage reading using vehicle registration number
+        Task<double> GetPreviousReading(string regNumber);
     }
 }

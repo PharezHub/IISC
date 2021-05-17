@@ -52,12 +52,12 @@
                         </div>
                         <div class="product-content">
                             <div class="product-content-head">
-                                <h4 class="product-title">Fuel:</h4>
-                                <div class="product-price">@Model.AssetDetail.FuelName</div>
+                                <h4 class="product-title">Make:</h4>
+                                <div class="product-price">@Model.AssetDetail.MakeName / @Model.AssetDetail.ModelName</div>
                             </div>
                             <div class="product-content-head">
-                                <h4 class="product-title">Engine Capacity:</h4>
-                                <div class="product-price">@Model.AssetDetail.EngineCapacity CC</div>
+                                <h4 class="product-title">Fuel:</h4>
+                                <div class="product-price">@Model.AssetDetail.FuelName / @Model.AssetDetail.EngineCapacity CC</div>
                             </div>
                             <div class="product-content-head">
                                 <h4 class="product-title">Tank Capacity:</h4>
@@ -70,18 +70,17 @@
                         </div>
                         <div class="product-content">
                             <div class="product-content-head">
-                                <h4 class="product-title">Make:</h4>
-                                <div class="product-price">@Model.AssetDetail.MakeName</div>
-                            </div>
-                            <div class="product-content-head">
-                                <h4 class="product-title">Model:</h4>
-                                <div class="product-price">@Model.AssetDetail.ModelName</div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="product-content-head">
                                 <h4 class="product-title">Coming soon...</h4>
 
+                            </div>
+                            <div class="product-btn">
+                                <a asp-page="/Garage/Asset/Index" class="btn btn-primary" title="Add new spare parts">Asset Catalog</a>
+                                <a asp-page="/Garage/Asset/EditAsset" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-light" title="Edit asset">Edit</a>
+                                @if (@Model.AssetDetail.StatusID == 4)
+                                {
+                                    // status 4 - maintenance status
+                                    <a asp-page="/Garage/Maintain/Override" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-secondary" title="Override status - Maintenance"><i class="fas fa-exchange-alt"></i></a>
+                                }
                             </div>
                         </div>
                     </div>
@@ -103,14 +102,24 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
+                                                <label asp-for="TrnFuelConsumption.LitresReceived">Litres Received</label>
+                                                <input asp-for="TrnFuelConsumption.LitresReceived" class="form-control" placeholder="Enter fuel litres received" />
+                                            </div>
+                                            <div class="col-md-6 mb-3">
                                                 <input hidden asp-for="TrnFuelConsumption.AssetID" />
                                                 <input hidden asp-for="TrnFuelConsumption.RegNo" />
                                                 <label asp-for="TrnFuelConsumption.CurrentFuelPrice">Current Fuel Price</label>
                                                 <input asp-for="TrnFuelConsumption.CurrentFuelPrice" class="form-control" placeholder="Current fuel price in kwacha" disabled="disabled" />
                                             </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-md-6 mb-3">
-                                                <label asp-for="TrnFuelConsumption.LitresReceived">Litres Received</label>
-                                                <input asp-for="TrnFuelConsumption.LitresReceived" class="form-control" placeholder="Enter fuel litres received" />
+                                                <label asp-for="TrnFuelConsumption.PreviousReading">Previous Reading</label>
+                                                <input value="@string.Format("{0:N0}", Model.TrnFuelConsumption.PreviousReading)" class="form-control" placeholder="Previous odometer reading" disabled="disabled" />
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label asp-for="TrnFuelConsumption.OdometerReading">Odometer Reading</label>
+                                                <input value="@string.Format("{0:N0}", Model.TrnFuelConsumption.OdometerReading)" class="form-control" placeholder="Current odometer reading" disabled="disabled" />
                                             </div>
                                         </div>
                                     </div>
@@ -119,20 +128,9 @@
                                             <a asp-page="/Garage/Asset/Index" class="btn btn-outline-dark">Back</a>
                                         </div>
                                         <div class="row mt-2 float-right">
-                                            <button type="submit" class="btn btn-outline-primary">Save</button>
+                                            <button type="submit" class="btn btn-outline-primary">Submit</button>
                                         </div>
                                     </div>
-                                    @*@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)
-                                        {
-                                            <div class="card-footer">
-                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                    <strong>@ViewData.ModelState["Error"].Errors.First().ErrorMessage</strong>
-                                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        }*@
                                 </div>
 
 
@@ -143,12 +141,12 @@
                                                 <thead>
                                                     <tr>
                                                         <th> </th>
-                                                        <th> </th>
                                                         <th>#</th>
-                                                        <th>Docket #</th>
-                                                        <th>Part</th>
-                                                        <th>Price(K)</th>
-                                                        <th>Problem Description</th>
+                                                        <th>Reg #</th>
+                                                        <th>Litres Received</th>
+                                                        <th>Prev Odometer Reading</th>
+                                                        <th>Odometer Reading</th>
+                                                        <th>Current Price(K)</th>
                                                         <th>Logged Date</th>
 
                                                     </tr>

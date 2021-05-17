@@ -69,6 +69,15 @@ namespace Garage.Core.Services
             return _context.LogSheetListViewModel.FromSqlRaw("spGetLogSheetList {0}", statusId).ToList();
         }
 
+        public async Task<double> GetPreviousReading(string regNumber)
+        {
+            return await _context.TrnFuelConsumption
+                .Where(x => x.RegNo == regNumber)
+                .OrderByDescending(x => x.TransactionDate)
+                .Select(y => y.OdometerReading)
+                .FirstOrDefaultAsync();
+        }
+
         public void UpdateLogSheet(LogSheetListViewModel logSheet)
         {
             var query = _context.Trn_LogSheet.FirstOrDefault(x => x.ID == logSheet.ID);

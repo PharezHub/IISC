@@ -11,6 +11,8 @@ namespace Garage.Core.Models
         public int AssetID { get; set; }
         public double LitresReceived { get; set; }
         public double CurrentFuelPrice { get; set; }
+        public double OdometerReading { get; set; }
+        public double PreviousReading { get; set; }
         public DateTime TransactionDate { get; set; }
         public string LoggedBy { get; set; }
     }
