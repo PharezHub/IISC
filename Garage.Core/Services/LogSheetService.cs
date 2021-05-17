@@ -56,7 +56,7 @@ namespace Garage.Core.Services
 
         public async Task<IEnumerable<TrnFuelConsumption>> GetFuelConsumption(string regNumber, int assetId)
         {
-            return await _context.TrnFuelConsumption.Where(x => x.RegNo == regNumber && x.AssetID == assetId).ToListAsync();
+            return await _context.TrnFuelConsumption.Where(x => x.RegNo == regNumber && x.AssetID == assetId).OrderByDescending(x =>x.TransactionDate).ToListAsync();
         }
 
         public IEnumerable<Trn_LogSheet> GetLogHistory(string regNo)
