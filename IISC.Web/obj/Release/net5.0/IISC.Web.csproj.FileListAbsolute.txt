@@ -296,3 +296,5 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\ref\IISC.Web.dll
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\IISC.Web.pdb
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\IISC.Web.genruntimeconfig.cache
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Shared\_MessagePartial.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Logsheet\FuelConsumption.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Routines\FuelPrice.cshtml.g.cs

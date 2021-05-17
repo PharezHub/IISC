@@ -24,7 +24,7 @@ namespace Garage.Core.Models
 
         [Required(ErrorMessage = "Planned consumption is required")]
         [Range(1, 10000, ErrorMessage = "Planned consumption is out of range")]
-        public float PlannedConsumption { get; set; }
+        public double PlannedConsumption { get; set; }
 
         [Required(ErrorMessage = "Asset category is required")]
         [Range(1, 50, ErrorMessage = "Asset category is required")]

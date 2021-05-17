@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Garage.Core.Services
 {
@@ -19,6 +20,19 @@ namespace Garage.Core.Services
             this._context = context;
         }
 
+        public async Task AddFuelConsumption(TrnFuelConsumption consumption)
+        {
+            try
+            {
+                _context.TrnFuelConsumption.Add(consumption);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void AddLogSheet(int categoryId, double currentValue, string regNo, string comment)
         {
             try
@@ -29,6 +43,15 @@ namespace Garage.Core.Services
             {
                 throw ex;
             }
+        }
+
+        public async Task<double> GetCurrentFuelPrice(int fuelId)
+        {
+            return await _context.TrnFuelPriceHistory
+                .Where(x => x.FuelID == fuelId)
+                .OrderByDescending(x => x.DateLogged)
+                .Select(y => y.CurrentPrice)
+                .FirstOrDefaultAsync();
         }
 
         public IEnumerable<Trn_LogSheet> GetLogHistory(string regNo)

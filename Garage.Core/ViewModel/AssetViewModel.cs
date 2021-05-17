@@ -11,6 +11,9 @@ namespace Garage.Core.ViewModel
         public int AssetTypeID { get; set; }
         public string AssetType { get; set; }
         public int CategoryID { get; set; }
+        public double PlannedConsumption { get; set; }
+        public double TankCapacity { get; set; }
+        public int GroupID { get; set; }
         public string CategoryName { get; set; }
         public string GroupName { get; set; }
         public string EngineNo { get; set; }

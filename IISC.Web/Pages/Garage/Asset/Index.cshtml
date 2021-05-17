@@ -39,7 +39,6 @@
                                 <th>Model</th>
                                 <th>Group</th>
                                 <th>Fuel</th>
-                                <th>Created On</th>
                                 <th>Status</th>
                                 <th> </th>
                             </tr>
@@ -57,7 +56,7 @@
                                 <td>@item.ModelName</td>
                                 <td>@item.GroupName</td>
                                 <td>@item.FuelName</td>
-                                <td>@item.CreatedOn.Value.ToShortDateString()</td>
+                                @*<td>@item.CreatedOn.Value.ToShortDateString()</td>*@
                                 <td>
                                     @if (@item.StatusID == 1)
                                     {
@@ -79,6 +78,10 @@
                                     |
                                     <a title="View asset details" asp-page="/Garage/Asset/View" asp-route-ID="@item.ID">
                                         View
+                                    </a>
+                                    |
+                                    <a title="Edit asset details" asp-page="/Garage/LogSheet/FuelConsumption" asp-route-ID="@item.ID">
+                                        Fuel
                                     </a>
                                     |
                                     <a title="Load Breakdown Maintenance" asp-page="/Garage/Maintain/Unplanned" asp-route-ID="@item.ID">

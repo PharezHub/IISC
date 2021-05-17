@@ -356,6 +356,7 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\EditLogSheetTrigger.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\EditMaintenanceTrigger.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\EditTrigger.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\FuelPrice.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\SetupLogSheetTrigger.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\SetupTrigger.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\Triggers.cshtml.g.cs
@@ -367,6 +368,7 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Index.cshtml.g.c
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Privacy.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Shared\NotFound.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Shared\_MessagePartial.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\_ViewImports.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\_ViewStart.cshtml.g.cs
@@ -378,5 +380,4 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.dll
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\ref\IISC.Web.dll
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.pdb
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.genruntimeconfig.cache
-C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Shared\_MessagePartial.cshtml.g.cs
-C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Routines\FuelPrice.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\FuelConsumption.cshtml.g.cs

@@ -14,7 +14,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
-                                <li class="breadcrumb-item"><a asp-page="/Garage/Index" class="breadcrumb-link">Garage Management System</a></li>
+                                <li class="breadcrumb-item"><a aspi-page="/Garage/Index" class="breadcrumb-link">Garage Management System</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
                             </ol>
                         </nav>
@@ -160,7 +160,9 @@
                                 <span asp-validation-for="AssetHeader.TankCapacity" class="text-danger"></span>
                             </div>
                             <div class="col-md-6 mb-3">
-
+                                <label asp-for="AssetHeader.PlannedConsumption">Planned Consumption (KM\L)</label>
+                                <input asp-for="AssetHeader.PlannedConsumption" class="form-control" placeholder="Enter planned consumption" />
+                                <span asp-validation-for="AssetHeader.PlannedConsumption" class="text-danger"></span>
                             </div>
                         </div>
                     </div>

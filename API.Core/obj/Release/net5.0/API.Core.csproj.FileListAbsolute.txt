@@ -10,3 +10,15 @@ C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Release\net5.0\API.Core.csproj.
 C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Release\net5.0\API.Core.dll
 C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Release\net5.0\ref\API.Core.dll
 C:\Users\ykatambo\source\repos\IISC\API.Core\obj\Release\net5.0\API.Core.pdb
+C:\Yann\source\repos\IISC\API.Core\bin\Release\net5.0\API.Core.deps.json
+C:\Yann\source\repos\IISC\API.Core\bin\Release\net5.0\API.Core.dll
+C:\Yann\source\repos\IISC\API.Core\bin\Release\net5.0\ref\API.Core.dll
+C:\Yann\source\repos\IISC\API.Core\bin\Release\net5.0\API.Core.pdb
+C:\Yann\source\repos\IISC\API.Core\obj\Release\net5.0\API.Core.csprojAssemblyReference.cache
+C:\Yann\source\repos\IISC\API.Core\obj\Release\net5.0\API.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Yann\source\repos\IISC\API.Core\obj\Release\net5.0\API.Core.AssemblyInfoInputs.cache
+C:\Yann\source\repos\IISC\API.Core\obj\Release\net5.0\API.Core.AssemblyInfo.cs
+C:\Yann\source\repos\IISC\API.Core\obj\Release\net5.0\API.Core.csproj.CoreCompileInputs.cache
+C:\Yann\source\repos\IISC\API.Core\obj\Release\net5.0\API.Core.dll
+C:\Yann\source\repos\IISC\API.Core\obj\Release\net5.0\ref\API.Core.dll
+C:\Yann\source\repos\IISC\API.Core\obj\Release\net5.0\API.Core.pdb

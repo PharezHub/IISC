@@ -13,7 +13,7 @@ namespace Garage.Core.Models
 
         [Required(ErrorMessage = "Fuel current price is required")]
         [DataType(DataType.Currency)]
-        public float CurrentPrice { get; set; }
+        public double CurrentPrice { get; set; }
         public DateTime DateLogged { get; set; }
         public string LoggedBy { get; set; }
     }

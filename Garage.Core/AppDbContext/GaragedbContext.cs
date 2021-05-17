@@ -46,6 +46,7 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<AdmReason> AdmReason { get; set; }
         public virtual DbSet<AdmSection> AdmSection { get; set; }
         public virtual DbSet<Trn_Attachments> Trn_Attachments { get; set; }
+        public virtual DbSet<TrnFuelConsumption> TrnFuelConsumption { get; set; }
         public virtual DbSet<Adm_AttachmentTypes> Adm_AttachmentTypes { get; set; }
         public virtual DbSet<TrnFuelPriceHistory> TrnFuelPriceHistory { get; set; }
         public DbSet<FuelPriceHistoryViewModel> FuelPriceHistoryViewModel { get; set; }
