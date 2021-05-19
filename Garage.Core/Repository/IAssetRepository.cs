@@ -9,7 +9,7 @@ namespace Garage.Core.Repository
 {
     public interface IAssetRepository
     {
-        IEnumerable<AssetCatalogueViewModel> GetAssetCatelogueList();
+        Task<IEnumerable<AssetCatalogueViewModel>> GetAssetCatelogueList();
         List<Adm_InsuranceType> GetInsuranceType();
         
         Task<List<AdmGroupType>> GetGroupType();

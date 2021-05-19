@@ -27,5 +27,11 @@ namespace Garage.Core.Repository
         /// <param name="assetId"></param>
         /// <returns></returns>
         Task<IEnumerable<TrnFuelConsumption>> GetFuelConsumption(string regNumber, int assetId);
+
+        /// <summary>
+        /// Return all Fuel transactions captured on the system
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<FuelConsumptionViewModel>> GetFuelConsumption();
     }
 }

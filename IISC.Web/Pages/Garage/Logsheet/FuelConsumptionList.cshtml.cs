@@ -7,22 +7,26 @@ using Garage.Core.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace IISC.Web.Pages.Garage.Asset
+namespace IISC.Web.Pages.Garage.Logsheet
 {
-    public class IndexModel : PageModel
+    public class FuelConsumptionListModel : PageModel
     {
         private readonly IAssetRepository assetRepository;
+        private readonly ILogSheetRepository logSheetRepository;
 
-        public IndexModel(IAssetRepository assetRepository)
+        public FuelConsumptionListModel(IAssetRepository assetRepository, ILogSheetRepository logSheetRepository)
         {
             this.assetRepository = assetRepository;
+            this.logSheetRepository = logSheetRepository;
         }
 
         public IEnumerable<AssetCatalogueViewModel> AssetCatalogueList { get; set; }
+        public IEnumerable<FuelConsumptionViewModel> FuelConsumptionList { get; set; }
 
         public async Task<IActionResult> OnGet()
         {
             AssetCatalogueList = await assetRepository.GetAssetCatelogueList();
+            FuelConsumptionList = await logSheetRepository.GetFuelConsumption();
             return Page();
         }
     }

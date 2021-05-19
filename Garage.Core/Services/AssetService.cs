@@ -92,11 +92,11 @@ namespace Garage.Core.Services
             }
         }
 
-        public IEnumerable<AssetCatalogueViewModel> GetAssetCatelogueList()
+        public async Task<IEnumerable<AssetCatalogueViewModel>> GetAssetCatelogueList()
         {
-            return _context.AssetCatalogueViewModel
+            return await _context.AssetCatalogueViewModel
                 .FromSqlRaw("spGetAssetCatelogue")
-                .ToList();
+                .ToListAsync();
         }
 
         public async Task<Hdr_Asset> GetAssetDetailById(int Id)

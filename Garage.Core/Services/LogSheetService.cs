@@ -59,6 +59,11 @@ namespace Garage.Core.Services
             return await _context.TrnFuelConsumption.Where(x => x.RegNo == regNumber && x.AssetID == assetId).OrderByDescending(x =>x.TransactionDate).ToListAsync();
         }
 
+        public async Task<IEnumerable<FuelConsumptionViewModel>> GetFuelConsumption()
+        {
+            return await _context.FuelConsumptionViewModel.FromSqlRaw("spGetFuelConsumption").ToListAsync();
+        }
+
         public IEnumerable<Trn_LogSheet> GetLogHistory(string regNo)
         {
             return _context.Trn_LogSheet.Where(x => x.RegNo == regNo).Take(15).ToList();
