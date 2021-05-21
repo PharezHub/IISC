@@ -18,6 +18,7 @@ namespace Garage.Core.Services
         public AssetService(GarageDbContext context)
         {
             this._context = context;
+            
         }
 
         public void AddPartsCatalog(AdmPartsCatalog catalog)
