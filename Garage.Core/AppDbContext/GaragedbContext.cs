@@ -64,6 +64,7 @@ namespace Garage.Core.AppDbContext
         public DbSet<WorkOrderHdrViewModel> WorkOrderHdrViewModel { get; set; }
         public DbSet<MaintenanceTriggerSummaryViewModel> MaintenanceTriggerSummaryViewModel { get; set; }
         public DbSet<FuelConsumptionViewModel> FuelConsumptionViewModel { get; set; }
+        public DbSet<AXAutoMobileViewModel> AXAutoMobileViewModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

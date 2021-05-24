@@ -1,0 +1,73 @@
+﻿@page
+@model IISC.Web.Pages.Garage.Spares.AXAutomobileModel
+@{
+    ViewData["Title"] = "AX Automobile";
+}
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="page-header" id="top">
+            <h2 class="pageheader-title">@ViewData["Title"] </h2>
+            <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                        <li class="breadcrumb-item"><a asp-page="/Garage/Index" class="breadcrumb-link">Garage Management System</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <div class="card-header d-flex">
+                <h5 class="card-header-title">@ViewData["Title"]</h5>
+                <div class="toolbar ml-auto">
+                    @*<a asp-page="/Garage/Spares/Index" class="btn btn-outline-primary btn-sm">Add Part</a>*@
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered first">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Item Description</th>
+                                <th>Group</th>
+                                <th>Unit</th>
+                                <th>Price [K]</th>
+                                <th>Price Date</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.AXAutoMobileList != null)
+                            {
+                                @foreach (var item in Model.AXAutoMobileList)
+                                {
+                                    <tr>
+                                        <td>@item.ItemId.Trim()</td>
+                                        <td>@item.ItemName</td>
+                                        <td>@item.ItemGroup</td>
+                                        <td>@item.UnitId</td>
+                                        <td>@item.ItemPrice.ToString("N1")</td>
+                                        <td>@item.PriceDate.ToShortDateString()</td>
+                                        <td>
+                                            <a title="Edit Spare Part" asp-page="/Garage/Spares/Edit" asp-route-ID="@item.ItemId">
+                                                View
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

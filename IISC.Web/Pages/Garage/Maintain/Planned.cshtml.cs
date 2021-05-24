@@ -113,7 +113,7 @@ namespace IISC.Web.Pages.Garage.Maintain
                 TrnPartUsed.Qty = 1;
                 TrnPartUsed.ProblemDescription = $"Scheduled - {item.ItemDescription.Trim()}";
                 TrnPartUsed.DocketNo = "AUTO";
-                TrnPartUsed.PartID = item.ID;
+                TrnPartUsed.PartID = item.ID.ToString();
                 TrnPartUsed.PartCost = 0;
                 TrnPartUsed.PurchaseOrder = "";
 

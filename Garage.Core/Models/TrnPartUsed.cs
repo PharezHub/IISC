@@ -16,7 +16,7 @@ namespace Garage.Core.Models
 
         [Required(ErrorMessage = "Docket number is required")]
         public string DocketNo { get; set; }
-        public int PartID { get; set; }
+        public string PartID { get; set; }
         public int Qty { get; set; }
         public double? PartCost { get; set; }
         public string PurchaseOrder { get; set; }

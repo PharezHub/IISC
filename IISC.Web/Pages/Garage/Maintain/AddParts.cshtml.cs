@@ -8,6 +8,7 @@ using Garage.Core.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
@@ -15,11 +16,13 @@ namespace IISC.Web.Pages.Garage.Maintain
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
+        private readonly IAxAutoMobileRepository autoMobileRepository;
 
-        public AddPartsModel(ITransaction transaction, IAssetRepository assetRepository)
+        public AddPartsModel(ITransaction transaction, IAssetRepository assetRepository, IAxAutoMobileRepository autoMobileRepository)
         {
             this.transaction = transaction;
             this.assetRepository = assetRepository;
+            this.autoMobileRepository = autoMobileRepository;
         }
 
         [BindProperty]
@@ -43,8 +46,10 @@ namespace IISC.Web.Pages.Garage.Maintain
                 HdrMaintenanceDetail = transaction.GetMaintenanceById(id).FirstOrDefault();
                 AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
 
-                PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID), 
-                    int.Parse(AssetDetail.Make)), nameof(AdmPartsCatalog.ID), nameof(AdmPartsCatalog.ItemDescription));
+                //PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID),
+                //    int.Parse(AssetDetail.Make)), nameof(AdmPartsCatalog.ID), nameof(AdmPartsCatalog.ItemDescription));
+
+                PartsList = new SelectList(await autoMobileRepository.GetAxAutoMobile(), nameof(AXAutoMobileViewModel.ItemId), nameof(AXAutoMobileViewModel.FullDescription));
 
                 //Get maintenance parts used
                 PartUsedView = await transaction.GetPartsUsed(HdrMaintenanceDetail.ID);

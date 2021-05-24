@@ -382,3 +382,5 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.pdb
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.genruntimeconfig.cache
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\FuelConsumption.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\FuelConsumptionList.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Spares\AXAutomobile.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\Index.cshtml.g.cs

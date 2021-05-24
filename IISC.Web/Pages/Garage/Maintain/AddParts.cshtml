@@ -135,7 +135,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
-                                                <label asp-for="TrnPartUsed.PartID">Part</label>
+                                                <label asp-for="TrnPartUsed.PartID">Spare Part</label>
+                                                @*<input type="text" id="txtPartID" class="form-control" onkeypress="OnAxSearch()" placeholder="search for spare part" />*@
                                                 <select asp-for="TrnPartUsed.PartID" class="form-control" asp-items="@Model.PartsList">
                                                     <option value="0">Choose One</option>
                                                 </select>
@@ -155,6 +156,7 @@
                                     <div class="card-footer">
                                         <div class="row mt-2 float-left">
                                             <a asp-page="/Garage/Maintain/Unplanned" asp-route-ID="@Model.HdrMaintenanceDetail.AssetID" class="btn btn-outline-dark">Back</a>
+           
                                         </div>
                                         <div class="row mt-2 float-right">
                                             <button type="submit" class="btn btn-outline-primary">Save</button>
@@ -228,3 +230,48 @@
     </div>
 </div>
 
+<script>
+    @*$(document).ready(function () {
+        $('#TrnPartUsed_PartID').autocomplete({
+            source: '@Url.Page("/Garage/Maintain/Index","search")'
+        });
+    });*@
+
+    @*function OnAxSearch() {
+        //alert('Hello from Nick Js La*********');
+        $('#txtPartID').autocomplete({
+            source: '@Url.Page("/Garage/Maintain/Index", "search")'
+        });
+    }*@
+
+    //function OnAxSearch() {
+    //        //alert("Hello from Seach app");
+    //    $("#txtPartID").autocomplete({
+    //        source: function (request, response) {
+    //            var param = { searchItem: $('#txtPartID').val() };
+    //            $.ajax({
+    //                url: "/Garage/Maintain/Index/handler=searchItem?",
+    //                data: JSON.stringify(param),
+    //                dataType: "json",
+    //                type: "POST",
+    //                contentType: "application/json; charset=utf-8",
+    //                dataFilter: function (data) { return data; },
+    //                success: function (data) {
+    //                    response($.map(data.d, function (item) {
+    //                        return {
+    //                            value: item
+    //                        }
+    //                    }))
+    //                },
+    //                error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //                    var err = eval("(" + XMLHttpRequest.responseText + ")");
+    //                    alert(err.Message)
+    //                    // console.log("Ajax Error!");
+    //                }
+    //            });
+    //        },
+    //        minLength: 2 //This is the Char length of inputTextBox
+    //    });
+    //};
+
+</script>
