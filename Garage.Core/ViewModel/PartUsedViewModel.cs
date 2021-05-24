@@ -10,7 +10,7 @@ namespace Garage.Core.ViewModel
         public int MainID { get; set; }
         public string ProblemDescription { get; set; }
         public string DocketNo { get; set; }
-        public int PartID { get; set; }
+        public string PartID { get; set; }
         public string PartDescription { get; set; }
         public double PartCost { get; set; }
         public int Qty { get; set; }

@@ -78,7 +78,7 @@
                                 <div class="product-price text-primary">@Model.AssetDetail.LastServiceDate.ToLongDateString()</div>
                             </div>
                             <div class="product-btn">
-                                <a asp-page="/Garage/Spares/Index" class="btn btn-primary" title="Add new spare parts">Add Spares</a>
+                                <a asp-page="/Garage/Spares/AXAutomobile" class="btn btn-primary" title="Add new spare parts">Add Spares</a>
                                 <a asp-page="/Garage/Asset/EditAsset" asp-route-ID="@Model.AssetDetail.ID" class="btn btn-outline-light" title="Edit asset">Edit</a>
                                 @if (@Model.AssetDetail.StatusID == 4)
                                 {

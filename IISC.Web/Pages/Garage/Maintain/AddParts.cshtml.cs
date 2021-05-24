@@ -58,16 +58,35 @@ namespace IISC.Web.Pages.Garage.Maintain
         }
 
         //public async Task<IActionResult> OnPost()
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
             int mainId = HdrMaintenanceDetail.ID;
             int assetId = HdrMaintenanceDetail.AssetID;
+
+            if (!string.IsNullOrEmpty(TrnPartUsed.PartID))
+            {
+                if (TrnPartUsed.PartID != "0")
+                {
+                    var query = await autoMobileRepository.GetAxAutoMobileItem(TrnPartUsed.PartID);
+                    TrnPartUsed.PartCost = query.ItemPrice;
+                }
+                else
+                {
+                    Notify($"Spare part price not found", notificationType:Models.NotificationType.warning);
+                    return Page();
+                }
+            }
+            else
+            {
+                Notify($"Select spare part from the list", notificationType: Models.NotificationType.warning);
+                return Page();
+            }
 
             TrnPartUsed.MainID = mainId;
             TrnPartUsed.LoggedBy = User.Identity.Name;
             TrnPartUsed.DateLogged = DateTime.Now;
             TrnPartUsed.Qty = 1;
-            TrnPartUsed.PartCost = 0;
+            
             TrnPartUsed.PurchaseOrder = "";
 
             if (!ModelState.IsValid)

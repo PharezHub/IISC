@@ -11,5 +11,6 @@ namespace Garage.Core.Repository
     {
         Task<IEnumerable<AXAutoMobileViewModel>> GetAxAutoMobile();
         Task<IEnumerable<AXAutoMobile>> GetAxAutoMobile(string spareName);
+        Task<AXAutoMobile> GetAxAutoMobileItem(string itemId);
     }
 }

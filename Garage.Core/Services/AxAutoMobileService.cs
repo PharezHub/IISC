@@ -29,5 +29,10 @@ namespace Garage.Core.Services
         {
             return await _context.AXAutoMobile.Where(x => x.ItemName.Trim().Contains(spareName)).ToListAsync();
         }
+
+        public async Task<AXAutoMobile> GetAxAutoMobileItem(string itemId)
+        {
+            return await _context.AXAutoMobile.FirstAsync(x => x.ItemId == itemId);
+        }
     }
 }
