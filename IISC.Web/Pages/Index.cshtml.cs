@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IISC.Web.Pages
 {
-    public class IndexModel : PageModel
+    public class IndexModel : BasePageModel
     {
         private readonly ILogger<IndexModel> _logger;
 

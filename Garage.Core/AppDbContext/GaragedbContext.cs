@@ -50,6 +50,9 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<Adm_AttachmentTypes> Adm_AttachmentTypes { get; set; }
         public virtual DbSet<TrnFuelPriceHistory> TrnFuelPriceHistory { get; set; }
         public virtual DbSet<AXAutoMobile> AXAutoMobile { get; set; }
+        public virtual DbSet<zRole> zRole { get; set; }
+        public virtual DbSet<zRoleUser> zRoleUser { get; set; }
+        public virtual DbSet<zUsers> zUsers { get; set; }
         public DbSet<FuelPriceHistoryViewModel> FuelPriceHistoryViewModel { get; set; }
         public DbSet<StatutoryCategoryViewModel> StatutoryCategoryViewModel { get; set; }
         public DbSet<AssetCatalogueViewModel> AssetCatalogueViewModel { get; set; }
@@ -65,6 +68,7 @@ namespace Garage.Core.AppDbContext
         public DbSet<MaintenanceTriggerSummaryViewModel> MaintenanceTriggerSummaryViewModel { get; set; }
         public DbSet<FuelConsumptionViewModel> FuelConsumptionViewModel { get; set; }
         public DbSet<AXAutoMobileViewModel> AXAutoMobileViewModel { get; set; }
+        public DbSet<AccountViewModel> AccountViewModel { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

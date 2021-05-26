@@ -1,6 +1,7 @@
 using Garage.Core.AppDbContext;
 using Garage.Core.Repository;
 using Garage.Core.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,11 +28,21 @@ namespace IISC.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(options =>
+            {
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            }).AddCookie(options => {
+                options.LoginPath = "/Login";
+                options.LogoutPath = "/Login/signout";
+                options.AccessDeniedPath = "/accessdenied";
+            });
+
             services.AddRazorPages();
             
             //Database connection
-            services.AddDbContextPool<GarageDbContext>(options
-                => options.UseSqlServer(Environment.GetEnvironmentVariable("GarageDbConn")));
+            services.AddDbContextPool<GarageDbContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("GarageDbConn")));
             services.AddScoped<ICategoryRepository, CategoryService>();
             services.AddScoped<IRoutineRepository, RoutineService>();
             services.AddScoped<INavigationRepository, NavigationService>();
@@ -40,6 +51,7 @@ namespace IISC.Web
             services.AddScoped<ITransaction, TransactionService>();
             services.AddScoped<IDashboardRepository, DashboardService>();
             services.AddScoped<IAxAutoMobileRepository, AxAutoMobileService>();
+            services.AddScoped<IAccountRepository, AccountService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +73,7 @@ namespace IISC.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
