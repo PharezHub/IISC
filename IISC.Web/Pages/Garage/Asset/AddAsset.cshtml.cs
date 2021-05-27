@@ -5,12 +5,14 @@ using Garage.Core.AppDbContext;
 using Garage.Core.Models;
 using Garage.Core.Repository;
 using Garage.Core.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 
 namespace IISC.Web.Pages.Garage.Asset
 {
+    [Authorize(Roles = "admin,asset")]
     public class AddAssetModel : BasePageModel
     {
         public static string constr = Environment.GetEnvironmentVariable("GarageDbConn");

@@ -8,6 +8,7 @@ using Garage.Core.Models;
 using Garage.Core.Repository;
 using Garage.Core.ViewModel;
 using IISC.Web.Pages.Garage.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace IISC.Web.Pages.Garage.Asset
 {
+    [Authorize(Roles = "admin,asset")]
     public class EditAssetModel : BasePageModel
     {
         public static string constr = Environment.GetEnvironmentVariable("GarageDbConn");

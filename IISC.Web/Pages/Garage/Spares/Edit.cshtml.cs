@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Garage.Core.Models;
 using Garage.Core.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Spares
 {
+    [Authorize(Roles = "admin,asset,fuel,maintenance,utilization")]
     public class EditModel : BasePageModel
     {
         private readonly ICategoryRepository categoryRepository;

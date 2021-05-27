@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Garage.Core.Models;
 using Garage.Core.Repository;
 using Garage.Core.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Routines
 {
+    [Authorize(Roles = "admin,asset,maintenance,utilization")]
     public class SetupTriggerModel : BasePageModel
     {
         private readonly IRoutineRepository routineRepository;

@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Garage.Core.Models;
 using Garage.Core.Repository;
 using Garage.Core.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
+    [Authorize(Roles = "admin,asset")]
     public class UpdatePriceModel : BasePageModel
     {
         private readonly ITransaction transaction;

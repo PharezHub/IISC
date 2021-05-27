@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Garage.Core.Models;
 using Garage.Core.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IISC.Web.Pages.Garage.Category
 {
+    [Authorize(Roles = "admin,asset,")]
     public class EditModel : BasePageModel
     {
         private readonly ICategoryRepository categoryRepository;

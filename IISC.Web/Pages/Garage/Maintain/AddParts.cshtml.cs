@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
+    [Authorize(Roles = "admin,asset,maintenance")]
     public class AddPartsModel : BasePageModel
     {
         private readonly ITransaction transaction;

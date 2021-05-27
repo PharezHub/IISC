@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Garage.Core.Models;
 using Garage.Core.Repository;
 using Garage.Core.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IISC.Web.Pages.Garage.Logsheet
 {
+    [Authorize(Roles = "admin,fuel")]
     public class FuelConsumptionModel : BasePageModel
     {
         private readonly IAssetRepository assetRepository;
