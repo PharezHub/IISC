@@ -1,4 +1,5 @@
-﻿using Garage.Core.ViewModel;
+﻿using Garage.Core.Models;
+using Garage.Core.ViewModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
@@ -12,28 +13,28 @@ namespace IISC.Web.Models
 {
     public class SecurityManager
     {
-        public async void SignIn(HttpContext httpContext, AccountViewModel account)
+        public async Task SignIn(HttpContext httpContext, string username, List<zRoleUser> roleList)
         {
             var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
-            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, account.Username));
-            identity.AddClaim(new Claim(ClaimTypes.Name, account.Username));
-            identity.AddClaims(getUserClaims(account));
+            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, username));
+            identity.AddClaim(new Claim(ClaimTypes.Name, username));
+            identity.AddClaims(getUserClaims(roleList, username));
             var principal = new ClaimsPrincipal(identity);
             await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = true });
         }
 
-        public async void SignOut(HttpContext httpContext)
+        public async Task SignOut(HttpContext httpContext)
         {
             await httpContext.SignOutAsync();
         }
 
-        private IEnumerable<Claim> getUserClaims(AccountViewModel account)
+        private IEnumerable<Claim> getUserClaims(List<zRoleUser> rolesList, string username)
         {
             List<Claim> claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Name, account.Username));
-            foreach (var role in account.Roles)
+            claims.Add(new Claim(ClaimTypes.Name, username));
+            foreach (var role in rolesList)
             {
-                claims.Add(new Claim(ClaimTypes.Role, role));
+                claims.Add(new Claim(ClaimTypes.Role, role.RoleName));
             }
             return claims;
         }

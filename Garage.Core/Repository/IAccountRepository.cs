@@ -9,7 +9,7 @@ namespace Garage.Core.Repository
 {
     public interface IAccountRepository
     {
-        Task <AccountViewModel> FindAccount(string username);
-        Task<zRoleUser> Login(string username);
+        Task<List<zRoleUser>> FindAccount(string username);
+        Task<IEnumerable<zRoleUser>> Login(string username);
     }
 }

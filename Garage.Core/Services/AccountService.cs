@@ -20,27 +20,26 @@ namespace Garage.Core.Services
             _context = context;
         }
 
-        public async Task<AccountViewModel> FindAccount(string username)
+        public async Task<List<zRoleUser>> FindAccount(string username)
         {
-            AccountViewModel useracc = new AccountViewModel();
-            var query = await _context.zRoleUser.Where(x => x.UserId == username).ToListAsync();
-            if (query != null)
-            {
-                useracc.Username = username;
-                int _pos = 0;
-                foreach (var item in query)
-                {
-                    useracc.Roles[_pos] = item.RoleName;
-                    _pos++;
-                }
-            }
+            //AccountViewModel useracc = new AccountViewModel();
+            //zRoleUser query = ;
+            //if (query != null)
+            //{
+            //    //useracc.Username = username;
+            //    foreach (var item in query)
+            //    {
+            //        useracc.Roles.Add(item.RoleName);
+            //    }
+            //}
 
-            return useracc;
+            return await _context.zRoleUser.Where(x => x.UserId == username).ToListAsync();
         }
 
-        public async Task<zRoleUser> Login(string username)
+        public async Task<IEnumerable<zRoleUser>> Login(string username)
         {
-            return await _context.zRoleUser.FirstAsync(x => x.UserId == username);
+            var query = await _context.zRoleUser.Where(x => x.UserId == username).ToListAsync();
+            return query;
         }
     }
 }
