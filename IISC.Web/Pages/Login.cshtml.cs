@@ -27,9 +27,13 @@ namespace IISC.Web.Pages
 
         public async Task<IActionResult> OnPost(string username, string password)
         {
-            if (string.IsNullOrEmpty(username.Trim()) || !string.IsNullOrEmpty(username.Trim()))
+            if (string.IsNullOrEmpty(username.Trim()))
             {
-                //Msg = "Invalid Login or Access Denied";
+                Msg = "Invalid Login or Access Denied";
+                return Page();
+            }
+            else if(!string.IsNullOrEmpty(username.Trim()))
+            {
                 var query = await accountRepository.Login(username.Trim());
                 if (query.ToList().Count < 1)
                 {
@@ -43,11 +47,7 @@ namespace IISC.Web.Pages
                     return RedirectToPage("Index");
                 }
             }
-            else
-            {
-                Msg = "Login successfully";
-                return RedirectToPage("Index");
-            }
+            return Page();
         }
     }
 }

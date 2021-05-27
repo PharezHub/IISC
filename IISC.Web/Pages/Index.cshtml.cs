@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace IISC.Web.Pages
 {
+    [Authorize(Roles = "admin,user")]
     public class IndexModel : BasePageModel
     {
         private readonly ILogger<IndexModel> _logger;

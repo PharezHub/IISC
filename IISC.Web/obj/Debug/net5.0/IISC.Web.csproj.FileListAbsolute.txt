@@ -384,7 +384,6 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Logsheet\FuelConsumptionList.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Spares\AXAutomobile.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\Index.cshtml.g.cs
-C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Shared\AccessDenied.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Humanizer.dll
 C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -463,3 +462,4 @@ C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.
 C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\bundleconfig.json
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\_Layout.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Login.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\AccessDenied.cshtml.g.cs

@@ -36,11 +36,14 @@ namespace IISC.Web
             }).AddCookie(options => {
                 options.LoginPath = "/Login";
                 options.LogoutPath = "/Login/signout";
-                options.AccessDeniedPath = "/accessdenied";
+                options.AccessDeniedPath = "/AccessDenied";
             });
 
-            services.AddRazorPages();
-            
+            services.AddRazorPages().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizePage("/Login");
+            }); ;
+
             //Database connection
             services.AddDbContextPool<GarageDbContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("GarageDbConn")));
             services.AddScoped<ICategoryRepository, CategoryService>();
