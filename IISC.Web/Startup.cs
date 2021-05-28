@@ -43,7 +43,7 @@ namespace IISC.Web
             services.AddRazorPages().AddRazorPagesOptions(options =>
             {
                 options.Conventions.AuthorizePage("/Login");
-            }); ;
+            });
 
             //Database connection
             services.AddDbContextPool<GarageDbContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("GarageDbConn")));

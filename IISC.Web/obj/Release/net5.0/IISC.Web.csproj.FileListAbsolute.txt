@@ -386,3 +386,8 @@ C:\Yann\source\repos\IISC\IISC.Web\bin\Release\net5.0\Serilog.Formatting.Compact
 C:\Yann\source\repos\IISC\IISC.Web\bin\Release\net5.0\Serilog.Sinks.Async.dll
 C:\Yann\source\repos\IISC\IISC.Web\bin\Release\net5.0\Serilog.Sinks.File.dll
 C:\Yann\source\repos\IISC\IISC.Web\bin\Release\net5.0\Serilog.Sinks.RollingFile.dll
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\AddRoles.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Control.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\ManageRoles.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\ManageUser.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Shared\Signout.cshtml.g.cs

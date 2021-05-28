@@ -60,6 +60,7 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\css\sit
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\css\style.css
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\favicon.ico
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\add-file.png
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\add-group.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\bar-chart.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\budget.png
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\PubTmp\Out\wwwroot\images\budget_1.png
