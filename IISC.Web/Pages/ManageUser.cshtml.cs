@@ -41,13 +41,13 @@ namespace IISC.Web.Pages
             if (!ModelState.IsValid)
             {
                 Notify("Enter missing field.", notificationType: Models.NotificationType.error);
+                UsersList = await accountRepository.GetUsers();
                 return Page();
             }
 
             await accountRepository.AddNewUser(Users);
             Notify("User account added successfully");
 
-            UsersList = await accountRepository.GetUsers();
             return Page();
         }
     }

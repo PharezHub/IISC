@@ -53,6 +53,7 @@ namespace Garage.Core.AppDbContext
         public virtual DbSet<zRole> zRole { get; set; }
         public virtual DbSet<zRoleUser> zRoleUser { get; set; }
         public virtual DbSet<zUsers> zUsers { get; set; }
+        public virtual DbSet<RoleUserViewModel> RoleUserViewModel { get; set; }
         public DbSet<FuelPriceHistoryViewModel> FuelPriceHistoryViewModel { get; set; }
         public DbSet<StatutoryCategoryViewModel> StatutoryCategoryViewModel { get; set; }
         public DbSet<AssetCatalogueViewModel> AssetCatalogueViewModel { get; set; }
