@@ -58,6 +58,7 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label asp-for="Users.UserId">Username</label>
+                                                <input hidden asp-for="Users.ID" />
                                                 <input asp-for="Users.UserId" class="form-control" disabled="disabled" placeholder="Enter domain user name" />
                                             </div>
                                             <div class="col-md-6 mb-3">
@@ -78,7 +79,10 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label asp-for="RoleUser.RoleName">Role</label>
-                                                <input asp-for="Users.FirstName" class="form-control" disabled="disabled" placeholder="Enter First Name" />
+                                                <input hidden asp-for="RoleUser.UserId" />
+                                                <select asp-for="RoleUser.RoleName" class="form-control" asp-items="@Model.RolesList">
+                                                    @*<option value="0">Choose One</option>*@
+                                                </select>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 

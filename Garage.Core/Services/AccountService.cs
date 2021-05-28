@@ -26,6 +26,12 @@ namespace Garage.Core.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task AddRoleUser(zRoleUser roleUser)
+        {
+            var query = _context.zRoleUser.Add(roleUser);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<zRoleUser>> FindAccount(string username)
         {
             return await _context.zRoleUser.Where(x => x.UserId == username).ToListAsync();
