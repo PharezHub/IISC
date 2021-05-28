@@ -470,3 +470,5 @@ C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Serilog.Sinks.Async.dll
 C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Serilog.Sinks.File.dll
 C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Serilog.Sinks.RollingFile.dll
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Shared\Signout.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\ManageUser.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Control.cshtml.g.cs

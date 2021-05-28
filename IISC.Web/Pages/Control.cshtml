@@ -1,8 +1,9 @@
 ﻿@page
-@model IISC.Web.Pages.LoginModel
+@model IISC.Web.Pages.ControlModel
 @{
     Layout = "";
 }
+
 
 <!doctype html>
 <html lang="en">
@@ -47,22 +48,22 @@
                 </a>
             </div>
             <div class="card-body">
-                <form method="post" asp-page="login">
+                <form method="post" asp-page="control">
                     <div class="form-group">
-                        <input class="form-control form-control-lg" name="username" value="@User.Identity.Name" disabled="disabled" type="text" placeholder="Username" autocomplete="off">
+                        <input class="form-control form-control-lg" name="username" type="text" placeholder="enter *admin* username" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <input class="form-control form-control-lg" name="password" type="password" disabled="disabled" value="123456789" placeholder="Password">
+                        <input class="form-control form-control-lg" name="password" type="password" value="123456789" placeholder="Password">
                     </div>
                     <div class="form-group">
                         @if (!string.IsNullOrEmpty(Model.Msg))
                         {
-                        <span class="alert alert-danger mt-2">@Model.Msg</span>
+                            <span class="alert alert-danger mt-2">@Model.Msg</span>
                         }
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
 
-                    
+
                 </form>
             </div>
             <div class="card-footer bg-white p-0 text-center">

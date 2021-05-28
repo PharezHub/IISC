@@ -33,8 +33,8 @@ namespace Garage.Core.ViewModel
         public double InitialMileage { get; set; }
         public double Difference { get; set; }
         public double AssetValue { get; set; }
-        public string? TagNo { get; set; }
-        public string? Comment { get; set; }
+        public string TagNo { get; set; }
+        public string Comment { get; set; }
         public string Status { get; set; }
         public int StatusID { get; set; }
         public DateTime CreatedOn { get; set; }
