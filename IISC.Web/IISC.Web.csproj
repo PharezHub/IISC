@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Logs\" />
     <Folder Include="Pages\HR\" />
     <Folder Include="Pages\Cylinder\" />
     <Folder Include="Pages\Visitor\" />
@@ -25,6 +26,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

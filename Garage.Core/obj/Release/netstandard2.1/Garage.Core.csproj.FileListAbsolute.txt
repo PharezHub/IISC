@@ -28,6 +28,7 @@ C:\Users\ykatambo\source\repos\IISC\Garage.Core\obj\Release\netstandard2.1\Garag
 C:\Yann\source\repos\IISC\Garage.Core\bin\Release\netstandard2.1\Garage.Core.deps.json
 C:\Yann\source\repos\IISC\Garage.Core\bin\Release\netstandard2.1\Garage.Core.dll
 C:\Yann\source\repos\IISC\Garage.Core\bin\Release\netstandard2.1\Garage.Core.pdb
+C:\Yann\source\repos\IISC\Garage.Core\obj\Release\netstandard2.1\Garage.Core.csprojAssemblyReference.cache
 C:\Yann\source\repos\IISC\Garage.Core\obj\Release\netstandard2.1\Garage.Core.AssemblyInfoInputs.cache
 C:\Yann\source\repos\IISC\Garage.Core\obj\Release\netstandard2.1\Garage.Core.AssemblyInfo.cs
 C:\Yann\source\repos\IISC\Garage.Core\obj\Release\netstandard2.1\Garage.Core.csproj.CoreCompileInputs.cache

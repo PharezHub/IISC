@@ -23,9 +23,9 @@ namespace IISC.Web.Models
             await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = true });
         }
 
-        public async Task SignOut(HttpContext httpContext)
+        public void SignOut(HttpContext httpContext)
         {
-            await httpContext.SignOutAsync();
+            httpContext.SignOutAsync();
         }
 
         private IEnumerable<Claim> getUserClaims(List<zRoleUser> rolesList, string username)

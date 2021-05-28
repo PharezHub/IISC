@@ -13,6 +13,10 @@
     {
       "library": "toastr.js@2.1.4",
       "destination": "wwwroot/toastr.js/"
+    },
+    {
+      "library": "jqueryui@1.12.1",
+      "destination": "wwwroot/jqueryui/"
     }
   ]
 }

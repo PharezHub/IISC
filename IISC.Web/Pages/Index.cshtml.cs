@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using IISC.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -13,15 +14,24 @@ namespace IISC.Web.Pages
     public class IndexModel : BasePageModel
     {
         private readonly ILogger<IndexModel> _logger;
-
+        //private SecurityManager securityManager = new SecurityManager();
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            _logger.LogInformation($"SIIS Welcome - {HttpContext.User} - {User.Identity.Name} - {User.Claims}");
 
+            return Page();
         }
+
+        //public IActionResult OnGetLogout()
+        //{
+        //    securityManager.SignOut(HttpContext);
+        //    _logger.LogInformation($"SIIS Log - SIGN-OUT - {HttpContext.User} - {HttpContext}");
+        //    return RedirectToPage("/AccessDenied");
+        //}
     }
 }
