@@ -1,0 +1,95 @@
+﻿@page
+@model IISC.Web.Pages.ManageRolesModel
+@{
+    ViewData["Title"] = "System Role";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header" id="top">
+                    <h2 class="pageheader-title">@ViewData["Title"] </h2>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                <li class="breadcrumb-item"><a asp-page="/Garage/Index" class="breadcrumb-link">Garage Management System</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- ============================================================== -->
+            <!-- profile -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
+                <div class="product-thumbnail">
+                    <div class="product-img-head">
+                        <div class="product-img">
+                            <img src="~/images/add-group.png" alt="" class="img-fluid">
+                        </div>
+                        @*<div class="ribbons bg-danger"></div>*@
+                        @*<div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-bell"></i></a></div>*@
+                    </div>
+
+                    <div class="product-content">
+                        <div class="product-btn">
+                            <a asp-page="/ManageUser" class="btn btn-primary" title="Roles">Manage Users</a>
+                            <a asp-page="/ManageRoles" class="btn btn-primary" title="Roles">Manage Roles</a>
+                            @*<a asp-page="/Garage/Asset/EditAsset" class="btn btn-outline-light" title="Edit asset">Edit</a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
+                <div class="influence-profile-content pills-regular">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
+
+                            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">
+                                        @ViewData["Title"]
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered first">
+                                            <thead>
+                                                <tr>
+                                                    <th>Module</th>
+                                                    <th>Role Name</th>
+                                                    <th>Role Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.RoleList)
+                                                {
+                                                    <tr>
+                                                        <td>@item.Module</td>
+                                                        <td>@item.RoleName</td>
+                                                        <td>@item.RoleDescription</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

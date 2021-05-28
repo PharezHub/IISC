@@ -472,3 +472,5 @@ C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Serilog.Sinks.RollingFile.dl
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Shared\Signout.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\ManageUser.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Control.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\AddRoles.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\ManageRoles.cshtml.g.cs

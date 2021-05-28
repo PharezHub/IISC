@@ -11,5 +11,8 @@ namespace Garage.Core.Repository
     {
         Task<List<zRoleUser>> FindAccount(string username);
         Task<IEnumerable<zRoleUser>> Login(string username);
+        Task AddNewUser(zUsers useraccount);
+        Task<IEnumerable<zUsers>> GetUsers();
+        Task<IEnumerable<zRole>> GetRoles();
     }
 }

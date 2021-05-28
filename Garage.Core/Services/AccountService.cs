@@ -20,6 +20,12 @@ namespace Garage.Core.Services
             _context = context;
         }
 
+        public async Task AddNewUser(zUsers useraccount)
+        {
+            var query = _context.zUsers.Add(useraccount);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<zRoleUser>> FindAccount(string username)
         {
             //AccountViewModel useracc = new AccountViewModel();
@@ -34,6 +40,16 @@ namespace Garage.Core.Services
             //}
 
             return await _context.zRoleUser.Where(x => x.UserId == username).ToListAsync();
+        }
+
+        public async Task<IEnumerable<zRole>> GetRoles()
+        {
+            return await _context.zRole.ToListAsync();
+        }
+
+        public async Task<IEnumerable<zUsers>> GetUsers()
+        {
+            return await _context.zUsers.ToListAsync();
         }
 
         public async Task<IEnumerable<zRoleUser>> Login(string username)
