@@ -32,6 +32,7 @@ namespace IISC.Web.Pages
         {
             this.accountRepository = accountRepository;
             RoleUser = new zRoleUser();
+            Users = new zUsers();
         }
 
         public async Task<IActionResult> OnGet(int id)
@@ -67,6 +68,16 @@ namespace IISC.Web.Pages
             Notify("Role added successfully");
 
             return RedirectToPage("AddRoles", new { id = Id });
+        }
+
+        public async Task<IActionResult> OnGetDeleteRole(int id)
+        {
+            if (id > 0)
+            {
+                await accountRepository.DeleteRole(id);
+            }
+            Notify("Role Deleted successfully", notificationType:Models.NotificationType.info);
+            return RedirectToPage("ManageUser");
         }
     }
 }

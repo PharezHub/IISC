@@ -28,5 +28,6 @@ namespace Garage.Core.Repository
         /// <param name="username"></param>
         /// <returns></returns>
         Task<IEnumerable<RoleUserViewModel>> GetRoles(string username);
+        Task DeleteRole(int roleId);
     }
 }

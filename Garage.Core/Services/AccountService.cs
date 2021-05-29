@@ -32,6 +32,16 @@ namespace Garage.Core.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task DeleteRole(int roleId)
+        {
+            var query = await _context.zRoleUser.FirstOrDefaultAsync(x => x.ID == roleId);
+            if (query != null)
+            {
+                _context.Remove(query);
+                await _context.SaveChangesAsync();
+            }
+        }
+
         public async Task<List<zRoleUser>> FindAccount(string username)
         {
             return await _context.zRoleUser.Where(x => x.UserId == username).ToListAsync();
