@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Garage.Core.Models
@@ -11,6 +12,8 @@ namespace Garage.Core.Models
         public int AssetID { get; set; }
         public double LitresReceived { get; set; }
         public double CurrentFuelPrice { get; set; }
+
+        [Required(ErrorMessage = "Odometer reading is required")]
         public double OdometerReading { get; set; }
         public double PreviousReading { get; set; }
         public DateTime TransactionDate { get; set; }

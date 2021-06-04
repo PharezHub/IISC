@@ -46,8 +46,16 @@ namespace IISC.Web.Pages.Garage.Logsheet
                 AssetDetail = assetRepository.GetAssetById(assetId);
                 TrnFuelConsumption.AssetID = AssetDetail.ID;
                 TrnFuelConsumption.RegNo = AssetDetail.RegNo;
-                TrnFuelConsumption.OdometerReading = double.Parse(AssetDetail.CurrentMileage.ToString("N2"));
-                TrnFuelConsumption.PreviousReading = await logSheetRepository.GetPreviousReading(AssetDetail.RegNo);
+                //TrnFuelConsumption.OdometerReading = 0;  // double.Parse(AssetDetail.CurrentMileage.ToString("N2"));
+                if (await logSheetRepository.GetPreviousReading(AssetDetail.RegNo) == 0)
+                {
+                    TrnFuelConsumption.PreviousReading = double.Parse(AssetDetail.CurrentMileage.ToString("N2"));
+                }
+                else
+                {
+                    TrnFuelConsumption.PreviousReading = await logSheetRepository.GetPreviousReading(AssetDetail.RegNo);
+                }
+                
                 FuelConsumptionList = await logSheetRepository.GetFuelConsumption(AssetDetail.RegNo, AssetDetail.ID);
 
                 if (AssetDetail.FuelTypeID > 0)
@@ -65,13 +73,18 @@ namespace IISC.Web.Pages.Garage.Logsheet
         public async Task<IActionResult> OnPost()
         {
             int assetId = 0;
+            double odometerReading = 0;
+
             TrnFuelConsumption.TransactionDate = DateTime.Now;
             TrnFuelConsumption.LoggedBy = User.Identity.Name;
 
             if (TrnFuelConsumption.AssetID > 0)
             {
                 assetId = TrnFuelConsumption.AssetID;
+                odometerReading = TrnFuelConsumption.OdometerReading;
+
                 await InitialBinding(assetId);
+                TrnFuelConsumption.OdometerReading = odometerReading;
             }
 
             if (!ModelState.IsValid)
@@ -83,6 +96,16 @@ namespace IISC.Web.Pages.Garage.Logsheet
             if (TrnFuelConsumption.LitresReceived < 1)
             {
                 Notify("Enter valid litres received.", notificationType: Models.NotificationType.warning);
+                return Page();
+            }
+            if (TrnFuelConsumption.OdometerReading < 1)
+            {
+                Notify("Enter valid odometer reading.", notificationType: Models.NotificationType.warning);
+                return Page();
+            }
+            if (TrnFuelConsumption.OdometerReading < TrnFuelConsumption.PreviousReading)
+            {
+                Notify("Current 'Odometer Reading' is less than previous reading.","Fuel Consumption Warning", notificationType: Models.NotificationType.warning);
                 return Page();
             }
 

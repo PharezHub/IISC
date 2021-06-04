@@ -20,7 +20,7 @@ namespace IISC.Web.Models
             identity.AddClaim(new Claim(ClaimTypes.Name, username));
             identity.AddClaims(getUserClaims(roleList, username));
             var principal = new ClaimsPrincipal(identity);
-            await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = true });
+            await httpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = false });
         }
 
         public void SignOut(HttpContext httpContext)

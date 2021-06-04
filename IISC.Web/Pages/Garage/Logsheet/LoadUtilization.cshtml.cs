@@ -62,16 +62,22 @@ namespace IISC.Web.Pages.Garage.Logsheet
         {
             if (string.IsNullOrEmpty(LogsheetData.CurrentValue.ToString().Trim()))
             {
-                ModelState.AddModelError("Error", $"Current value cannot empty.");
+                //ModelState.AddModelError("Error", $"Current value cannot empty.");
+                Notify("Current value cannot empty.", notificationType: Models.NotificationType.warning);
+                return Page();
             }
             if (LogsheetData.CurrentValue < 1 )
             {
-                ModelState.AddModelError("Error", $"Invalid input on Current value.");
+                //ModelState.AddModelError("Error", $"Invalid input on Current value.");
+                Notify("Invalid input on Current value.", notificationType: Models.NotificationType.warning);
+                return Page();
             }
             if (LogsheetData.CurrentValue < LogsheetData.PreviousValue)
             {
                 // Validate for TRIGGER TYPE
-                ModelState.AddModelError("Error", $"Current value is less than previous value recorded.");
+                //ModelState.AddModelError("Error", $"Current value is less than previous value recorded.");
+                Notify("Current value is less than previous value recorded.", notificationType: Models.NotificationType.warning);
+                return Page();
             }
             if (LogsheetData.Comment == null)
             {
@@ -81,7 +87,9 @@ namespace IISC.Web.Pages.Garage.Logsheet
             {
                 if (string.IsNullOrEmpty(LogsheetData.Comment.Trim()))
                 {
-                    ModelState.AddModelError("Error", $"Enter driver name in comment area.");
+                    //ModelState.AddModelError("Error", $"Enter driver name in comment area.");
+                    Notify("Enter driver name in comment area.", notificationType: Models.NotificationType.warning);
+                    return Page();
                 }
             }
 
