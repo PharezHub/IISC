@@ -42,7 +42,7 @@ namespace IISC.Web.Pages.Garage.Maintain
         {
             TrnWorkOrderParts.MaintenanceID = Id;
 
-            HdrMaintenanceDetail = transaction.GetMaintenanceById(Id).FirstOrDefault();
+            HdrMaintenanceDetail = (HdrMaintenanceViewModel) await transaction.GetMaintenanceById(Id);
             AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
 
             PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID),

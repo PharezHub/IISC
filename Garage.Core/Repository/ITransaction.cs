@@ -11,7 +11,8 @@ namespace Garage.Core.Repository
     {
         Task<HdrMaintenance> AddMaintenance(HdrMaintenance hdr);
         Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceByAssetId(int assetId);
-        IEnumerable<HdrMaintenanceViewModel> GetMaintenanceById(int Id);
+        Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceByAssetId(int assetId, int statusId);
+        Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceById(int Id);
         Task<List<Adm_MaintenanceType>> GetMaintenanceType();
         Task<List<AdmSection>> GetSection();
         Task<List<AdmPriority>> GetPriority();

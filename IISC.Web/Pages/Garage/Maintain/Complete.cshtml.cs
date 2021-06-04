@@ -33,13 +33,13 @@ namespace IISC.Web.Pages.Garage.Maintain
         [BindProperty]
         public HdrMaintenance HdrMaintenance { get; set; }
 
-        public IActionResult OnGet(int id)
+        public async Task<IActionResult> OnGet(int id)
         {
             HdrMaintenance.DateClosed = DateTime.Now;
 
             if (id > 0)
             {
-                HdrMaintenanceDetail = transaction.GetMaintenanceById(id).FirstOrDefault();
+                HdrMaintenanceDetail = (HdrMaintenanceViewModel) await transaction.GetMaintenanceById(id);
                 AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
             }
             return Page();

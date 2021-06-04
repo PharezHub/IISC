@@ -51,7 +51,7 @@ namespace IISC.Web.Pages.Garage.Maintain
             ReasonList = new SelectList(await transaction.GetReason(), nameof(AdmReason.ID), nameof(AdmReason.ReasonOfFailure));
 
             WorkOrderHdr.MaintenanceID = Id;
-            HdrMaintenanceDetail = transaction.GetMaintenanceById(Id).FirstOrDefault();
+            HdrMaintenanceDetail = (HdrMaintenanceViewModel) await transaction.GetMaintenanceById(Id);
             AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
             WorkOrderHdrView = await transaction.GetWorkOrderHdr(Id);
 

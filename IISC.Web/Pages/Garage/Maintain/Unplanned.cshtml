@@ -232,6 +232,12 @@
                                                                             | WO
                                                                         </a>
                                                                     }
+                                                                    if (item.StatusID != 1)
+                                                                    {
+                                                                        <a title="Edit" asp-page="/Garage/Maintain/EditMaintenance" asp-route-ID="@item.ID">
+                                                                            | Edit
+                                                                        </a>
+                                                                    }
                                                                 }
 
                                                             </td>

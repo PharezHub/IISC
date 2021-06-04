@@ -44,8 +44,8 @@ namespace IISC.Web.Pages.Garage.Maintain
         {
             if (id > 0)
             {
-                
-                HdrMaintenanceDetail = transaction.GetMaintenanceById(id).FirstOrDefault();
+
+                HdrMaintenanceDetail = (HdrMaintenanceViewModel) await transaction.GetMaintenanceById(id);
                 AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
 
                 //PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID),

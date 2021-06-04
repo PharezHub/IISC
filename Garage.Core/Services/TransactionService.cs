@@ -84,9 +84,9 @@ namespace Garage.Core.Services
             return await _context.HdrMaintenanceViewModel.FromSqlRaw("GetMaintenanceByRegNo {0}", assetId).ToListAsync();
         }
 
-        public IEnumerable<HdrMaintenanceViewModel> GetMaintenanceById(int Id)
+        public async Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceById(int Id)
         {
-            return _context.HdrMaintenanceViewModel.FromSqlRaw("GetMaintenanceById {0}", Id).ToList();
+            return await _context.HdrMaintenanceViewModel.FromSqlRaw("GetMaintenanceById {0}", Id).ToListAsync();
         }
 
         //public async Task<HdrMaintenance> GetMaintenanceById(int assetId)
@@ -232,6 +232,11 @@ namespace Garage.Core.Services
 
                 throw;
             }
+        }
+
+        public async Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceByAssetId(int assetId, int statusId)
+        {
+            return await _context.HdrMaintenanceViewModel.FromSqlRaw("GetMaintenanceAssetIdStatus {0},{1}", assetId, statusId).ToListAsync();
         }
     }
 }

@@ -47,7 +47,7 @@ namespace IISC.Web.Pages.Garage.Maintain
                 TrnPartUsed = await transaction.GetPartsUsedById(id);
                 if (TrnPartUsed != null)
                 {
-                    HdrMaintenanceDetail = transaction.GetMaintenanceById(TrnPartUsed.MainID).FirstOrDefault();
+                    HdrMaintenanceDetail = (HdrMaintenanceViewModel) await transaction.GetMaintenanceById(TrnPartUsed.MainID);
                     AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
 
                     PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID),
