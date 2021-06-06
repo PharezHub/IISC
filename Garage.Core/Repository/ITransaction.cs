@@ -10,9 +10,10 @@ namespace Garage.Core.Repository
     public interface ITransaction
     {
         Task<HdrMaintenance> AddMaintenance(HdrMaintenance hdr);
+        Task UpdateMaintenance(HdrMaintenance hdr);
         Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceByAssetId(int assetId);
         Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceByAssetId(int assetId, int statusId);
-        Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceById(int Id);
+        Task<HdrMaintenanceViewModel> GetMaintenanceById(int Id);
         Task<List<Adm_MaintenanceType>> GetMaintenanceType();
         Task<List<AdmSection>> GetSection();
         Task<List<AdmPriority>> GetPriority();
@@ -20,6 +21,7 @@ namespace Garage.Core.Repository
         Task<List<AdmReason>> GetReason();
         Task AddMaintenanceType(Adm_MaintenanceType type);
         void AddPartsUsed(TrnPartUsed partUsed);
+        Task DeletePartUsed(int deleteId);
         Task UpdatePartUsed(TrnPartUsed partUsed);
         Task<TrnPartUsed> GetPartsUsedById(int partId);
         Task<IEnumerable<PartUsedViewModel>> GetPartsUsed(int maintenanceId);

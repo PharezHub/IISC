@@ -22,5 +22,6 @@ namespace Garage.Core.Models
         public string PurchaseOrder { get; set; }
         public DateTime DateLogged { get; set; }
         public string LoggedBy { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

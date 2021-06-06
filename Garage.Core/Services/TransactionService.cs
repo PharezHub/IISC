@@ -52,8 +52,8 @@ namespace Garage.Core.Services
         {
             try
             {
-                _context.Database.ExecuteSqlRaw("spAddPartsUsed {0},{1},{2},{3},{4},{5},{6},{7}"
-                    , partUsed.MainID, partUsed.ProblemDescription, partUsed.DocketNo, partUsed.PartID, partUsed.Qty, partUsed.PartCost, partUsed.PurchaseOrder, partUsed.LoggedBy);
+                _context.Database.ExecuteSqlRaw("spAddPartsUsed {0},{1},{2},{3},{4},{5},{6},{7},{8}"
+                    , partUsed.MainID, partUsed.ProblemDescription, partUsed.DocketNo, partUsed.PartID, partUsed.Qty, partUsed.PartCost, partUsed.PurchaseOrder, partUsed.LoggedBy, partUsed.IsDeleted);
                 //_context.TrnPartUsed.Add(partUsed);
                 //_context.SaveChanges();
             }
@@ -84,9 +84,10 @@ namespace Garage.Core.Services
             return await _context.HdrMaintenanceViewModel.FromSqlRaw("GetMaintenanceByRegNo {0}", assetId).ToListAsync();
         }
 
-        public async Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceById(int Id)
+        public async Task<HdrMaintenanceViewModel> GetMaintenanceById(int Id)
         {
-            return await _context.HdrMaintenanceViewModel.FromSqlRaw("GetMaintenanceById {0}", Id).ToListAsync();
+            var query = await _context.HdrMaintenanceViewModel.FromSqlRaw("GetMaintenanceById {0}", Id).ToListAsync();
+            return query.FirstOrDefault();
         }
 
         //public async Task<HdrMaintenance> GetMaintenanceById(int assetId)
@@ -237,6 +238,55 @@ namespace Garage.Core.Services
         public async Task<IEnumerable<HdrMaintenanceViewModel>> GetMaintenanceByAssetId(int assetId, int statusId)
         {
             return await _context.HdrMaintenanceViewModel.FromSqlRaw("GetMaintenanceAssetIdStatus {0},{1}", assetId, statusId).ToListAsync();
+        }
+
+        public async Task UpdateMaintenance(HdrMaintenance hdr)
+        {
+            try
+            {
+                if (hdr != null)
+                {
+                    var query = await _context.HdrMaintenance.FirstOrDefaultAsync(x => x.ID == hdr.ID);
+                    if (query != null)
+                    {
+                        query.BreakdownDate = hdr.BreakdownDate;
+                        query.DateTimeIn = hdr.DateTimeIn;
+                        query.MaintenanceSummary = hdr.MaintenanceSummary.Trim();
+                        
+                        await _context.SaveChangesAsync();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Flag part used as deleted.
+        /// </summary>
+        /// <param name="deleteId"></param>
+        /// <returns></returns>
+        public async Task DeletePartUsed(int deleteId)
+        {
+            try
+            {
+                if (deleteId > 0)
+                {
+                    var query = await _context.TrnPartUsed.FindAsync(deleteId);
+                    if (query != null)
+                    {
+                        query.IsDeleted = true;
+
+                        await _context.SaveChangesAsync();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

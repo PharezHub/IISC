@@ -44,26 +44,29 @@ namespace IISC.Web.Pages.Garage.Maintain
         {
             if (id > 0)
             {
-
-                HdrMaintenanceDetail = (HdrMaintenanceViewModel) await transaction.GetMaintenanceById(id);
-                AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
-
+                await LoadDetails(id);
                 //PartsList = new SelectList(assetRepository.GetPartByCategory(AssetDetail.CategoryID, int.Parse(AssetDetail.ModelID),
                 //    int.Parse(AssetDetail.Make)), nameof(AdmPartsCatalog.ID), nameof(AdmPartsCatalog.ItemDescription));
-
-                PartsList = new SelectList(await autoMobileRepository.GetAxAutoMobile(), nameof(AXAutoMobileViewModel.ItemId), nameof(AXAutoMobileViewModel.FullDescription));
-
-                //Get maintenance parts used
-                PartUsedView = await transaction.GetPartsUsed(HdrMaintenanceDetail.ID);
             }
             return Page();
         }
 
-        //public async Task<IActionResult> OnPost()
-        public async Task<IActionResult> OnPost()
+        private async Task LoadDetails(int id)
+        {
+            HdrMaintenanceDetail = await transaction.GetMaintenanceById(id);
+            AssetDetail = assetRepository.GetAssetById(HdrMaintenanceDetail.AssetID);
+            PartsList = new SelectList(await autoMobileRepository.GetAxAutoMobile(), 
+                nameof(AXAutoMobileViewModel.ItemId), nameof(AXAutoMobileViewModel.FullDescription));
+            //Get maintenance parts used
+            PartUsedView = await transaction.GetPartsUsed(HdrMaintenanceDetail.ID);
+        }
+
+        public async Task<IActionResult> OnPost(int id)
         {
             int mainId = HdrMaintenanceDetail.ID;
             int assetId = HdrMaintenanceDetail.AssetID;
+
+            await LoadDetails(id);
 
             if (!string.IsNullOrEmpty(TrnPartUsed.PartID))
             {
@@ -71,24 +74,30 @@ namespace IISC.Web.Pages.Garage.Maintain
                 {
                     var query = await autoMobileRepository.GetAxAutoMobileItem(TrnPartUsed.PartID);
                     TrnPartUsed.PartCost = query.ItemPrice;
+                    if (TrnPartUsed.Qty < 1 )
+                    {
+                        Notify($"Quantity {TrnPartUsed.Qty} is invalid. Enter valid Quantity","Missing Field", notificationType: Models.NotificationType.warning);
+                        return Page();
+                    }
                 }
                 else
                 {
-                    Notify($"Spare part price not found", notificationType:Models.NotificationType.warning);
+                    Notify($"Spare part price not found, select 'Spare Part' from the list","Invalid Selection", notificationType:Models.NotificationType.warning);
                     return Page();
                 }
             }
             else
             {
-                Notify($"Select spare part from the list", notificationType: Models.NotificationType.warning);
+                Notify($"Select spare part from the list","Invalid Selection", notificationType: Models.NotificationType.warning);
                 return Page();
             }
 
             TrnPartUsed.MainID = mainId;
             TrnPartUsed.LoggedBy = User.Identity.Name;
             TrnPartUsed.DateLogged = DateTime.Now;
-            TrnPartUsed.Qty = 1;
-            
+            //TrnPartUsed.Qty = 1;
+            TrnPartUsed.IsDeleted = false;
+
             TrnPartUsed.PurchaseOrder = "";
 
             if (!ModelState.IsValid)
@@ -100,6 +109,18 @@ namespace IISC.Web.Pages.Garage.Maintain
 
             //Show Message
             Notify($"Maintenance Part added successfully");
+
+            return RedirectToPage("AddParts", new { id = mainId });
+        }
+
+        public async Task<IActionResult> OnGetDeletePart(int deleteId, int id)
+        {
+            int mainId = id; //drMaintenanceDetail.ID;
+            if (deleteId > 0)
+            {
+                await transaction.DeletePartUsed(deleteId);
+                Notify("Part deleted successfully", "Spare Part Deletion", Models.NotificationType.info);
+            }
 
             return RedirectToPage("AddParts", new { id = mainId });
         }

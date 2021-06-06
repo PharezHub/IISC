@@ -147,6 +147,15 @@
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label asp-for="TrnPartUsed.Qty">Quantity</label>
+                                                <input asp-for="TrnPartUsed.Qty" class="form-control" value="1" inputmode="numeric" placeholder="Enter Quantity" />
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-md-12 mb-3">
                                                 <label asp-for="TrnPartUsed.ProblemDescription">Problem Description</label>
                                                 <textarea asp-for="TrnPartUsed.ProblemDescription" rows="2" class="form-control" text-wrap:normal" type="text" placeholder="Enter problem description"></textarea>
@@ -183,9 +192,10 @@
                                                 <thead>
                                                     <tr>
                                                         <th> </th>
-                                                        <th>#</th>
+                                                        @*<th>#</th>*@
                                                         <th>Docket #</th>
                                                         <th>Spare Part</th>
+                                                        <th>Qty</th>
                                                         <th>Price(K)</th>
                                                         <th>Problem Description</th>
                                                         <th>Logged Date</th>
@@ -197,18 +207,19 @@
                                                     {
                                                     <tr>
                                                         <td>
-                                                            <a title="Delete Part" asp-page="/Garage/Maintain/DeletePart" asp-route-ID="@item.ID">
-                                                                Delete
+                                                            <a title="Delete Part" asp-page="/Garage/Maintain/AddParts" asp-page-handler="DeletePart" asp-route-deleteId="@item.ID">
+                                                                <span class="badge-dot badge-danger mr-1"></span> Delete
                                                             </a>
                                                         </td>
                                                         @*<td>
-                                                            <a title="Update Part Price" asp-page="/Garage/Maintain/UpdatePrice" asp-route-ID="@item.ID">
-                                                                Update Price
-                                                            </a>
-                                                        </td>*@
-                                                        <td>@item.ID</td>
+            <a title="Update Part Price" asp-page="/Garage/Maintain/UpdatePrice" asp-route-ID="@item.ID">
+                Update Price
+            </a>
+        </td>*@
+                                                        @*<td>@item.ID</td>*@
                                                         <td>@item.DocketNo</td>
                                                         <td>@item.PartDescription</td>
+                                                        <td>@item.Qty</td>
                                                         <td>@string.Format("{0:N2}", item.PartCost)</td>
                                                         <td>@item.ProblemDescription</td>
                                                         <td>@item.DateLogged</td>

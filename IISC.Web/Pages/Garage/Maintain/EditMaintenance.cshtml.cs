@@ -11,14 +11,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IISC.Web.Pages.Garage.Maintain
 {
-    public class EditMaintenanceModel : PageModel
+    public class EditMaintenanceModel : BasePageModel
     {
         private readonly ITransaction transaction;
         private readonly IAssetRepository assetRepository;
         private readonly IDashboardRepository dashboardRepository;
-
-        [BindProperty]
-        public AssetViewModel AssetDetail { get; set; }
 
         [BindProperty]
         public HdrMaintenance HdrMaintenance { get; set; }
@@ -34,32 +31,53 @@ namespace IISC.Web.Pages.Garage.Maintain
             this.transaction = transaction;
             this.assetRepository = assetRepository;
             this.dashboardRepository = dashboardRepository;
-            HdrMaintenance = new HdrMaintenance();
+            //HdrMaintenance = new HdrMaintenance();
         }
 
         public async Task<IActionResult> OnGet(int id)
         {
             TypeList = new SelectList(await transaction.GetMaintenanceType(), nameof(Adm_MaintenanceType.ID), nameof(Adm_MaintenanceType.MaintenanceName));
 
-            HdrMaintenanceDetail = (HdrMaintenanceViewModel) await transaction.GetMaintenanceById(id);
+            HdrMaintenanceDetail = await transaction.GetMaintenanceById(id);
+            HdrMaintenance = new HdrMaintenance();
             HdrMaintenance.BreakdownDate = HdrMaintenanceDetail.BreakdownDate;
             HdrMaintenance.DateTimeIn = HdrMaintenanceDetail.DateTimeIn;
             HdrMaintenance.CurrentMileage = HdrMaintenanceDetail.CurrentMileage;
             HdrMaintenance.MaintenanceType = HdrMaintenanceDetail.MaintenanceType;
             HdrMaintenance.MaintenanceSummary = HdrMaintenanceDetail.MaintenanceSummary;
 
-            
-
-            if (id > 0)
+            if (id > 0 && HdrMaintenanceDetail.AssetID > 0)
             {
-                AssetDetail = assetRepository.GetAssetById(2);
-                //HdrMaintenanceList = await transaction.GetMaintenanceByAssetId(AssetDetail.ID);
-
-                HdrMaintenance.CurrentMileage = AssetDetail.CurrentMileage;
+                HdrMaintenanceList = await transaction.GetMaintenanceByAssetId(HdrMaintenanceDetail.AssetID, 0);
             }
 
             return Page();
         }
 
+        public async Task<IActionResult> OnPost(int id)
+        {
+            int assetId = HdrMaintenanceDetail.AssetID;
+            HdrMaintenance.AssetID = assetId;
+            HdrMaintenance.ID = HdrMaintenanceDetail.ID;
+            HdrMaintenance.ModifiedOn = DateTime.Now;
+            HdrMaintenance.ModifiedBy = User.Identity.Name;
+
+            try
+            {
+                if (string.IsNullOrEmpty(HdrMaintenance.MaintenanceSummary.Trim()))
+                {
+                    Notify("Breakdown summary is required");
+                    return Page();
+                }
+                await transaction.UpdateMaintenance(HdrMaintenance);
+                Notify("Maintenance updated successfully");
+                return RedirectToPage("Unplanned", new { id  = assetId });
+            }
+            catch (Exception ex)
+            {
+                Notify($"An error occurred while updating maintenance, ERROR: {ex} ");
+                return Page();
+            }
+        }
     }
 }

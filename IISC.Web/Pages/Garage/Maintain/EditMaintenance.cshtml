@@ -25,12 +25,10 @@
 
         <form method="post">
             <div class="row">
-
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
                     <div class="influence-profile-content pills-regular">
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
-
                                 <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">
@@ -38,11 +36,12 @@
                                         </a>
                                     </li>
                                 </ul>
-
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
+                                                <input hidden asp-for="@Model.HdrMaintenanceDetail.AssetID" />
+                                                <input hidden asp-for="@Model.HdrMaintenanceDetail.ID" />
                                                 <label asp-for="HdrMaintenance.MaintenanceType">Maintenance Type</label>
                                                 <select asp-for="HdrMaintenance.MaintenanceType" class="form-control" asp-items="@Model.TypeList.Where(x => x.Value == "1")">
                                                     @*<option value="0">Choose One</option>*@
@@ -76,7 +75,7 @@
                                     </div>
                                     <div class="card-footer">
                                         <div class="row mt-2 float-left">
-                                            <a asp-page="/Garage/Asset/Index" class="btn btn-outline-dark">Back</a>
+                                            <a asp-page="/Garage/Maintain/Unplanned" asp-route-ID="@Model.HdrMaintenanceDetail.AssetID" class="btn btn-outline-dark">Back</a>
                                         </div>
                                         <div class="row mt-2 float-right">
                                             <button type="submit" class="btn btn-outline-primary">Update</button>
@@ -88,11 +87,10 @@
                     </div>
                 </div>
 
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                    <div class="influence-profile-content pills-regular">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                    @*<div class="influence-profile-content pills-regular">
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
-
                                 <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">
@@ -100,7 +98,6 @@
                                         </a>
                                     </li>
                                 </ul>
-
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -115,60 +112,47 @@
                                                         <th>Mileage</th>
                                                         <th>Date Out</th>
                                                         <th>Status</th>
-
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @*@foreach (var item in Model.HdrMaintenanceList)
-                        {
-                            <tr>
-                                <td>
-                                    @if (@item.StatusID == 0)
-                                    {
-                                        <a title="Add parts to a breakdown" asp-page="/Garage/Maintain/AddParts" asp-route-ID="@item.ID">
-                                            Parts |
-                                        </a>
-
-                                        <a title="Close/Complete maintenace" asp-page="/Garage/Maintain/Complete" asp-route-ID="@item.ID">
-                                            Complete
-                                        </a>
-                                        if (item.MaintenanceType == 2)
-                                        {
-                                            <a title="Maintenance Work Order" asp-page="/Garage/Maintain/WorkOrder" asp-route-ID="@item.ID">
-                                                | WO
-                                            </a>
-                                        }
-                                    }
-
-                                </td>
-                                <td>@item.ID</td>
-                                <td>@item.MaintenanceName</td>
-                                <td>@item.MaintenanceSummary</td>
-                                <td>@item.BreakdownDate.ToLongDateString()</td>
-                                <td>@string.Format("{0:N0}", item.CurrentMileage)</td>
-                                <td>
-                                    @if (@item.DateClosed.HasValue)
-                                    {@item.DateClosed.Value.ToLongDateString();
-                                }
-                                else { }
-                                </td>
-                                <td>
-                                    @if (@item.StatusID == 1)
-                                    {
-                                        <span class="badge-dot badge-success mr-1"></span>@item.TransStatus
-                                    }
-                                    else if (@item.StatusID == 0)
-                                    {
-                                        <span class="badge-dot badge-brand mr-1"></span>@item.TransStatus
-                                    }
-                                    else
-                                    {
-                                        <span class="badge-dot badge-danger mr-1"></span>@item.TransStatus
-                                    }
-                                </td>
-
-                            </tr>
-                        }*@
+                                                    @foreach (var item in Model.HdrMaintenanceList)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @if (@item.StatusID == 0)
+                                                                {
+                                                                    <a title="Edit" asp-page="/Garage/Maintain/EditMaintenance" asp-route-ID="@item.ID">
+                                                                        Edit
+                                                                    </a>
+                                                                }
+                                                            </td>
+                                                            <td>@item.ID</td>
+                                                            <td>@item.MaintenanceName</td>
+                                                            <td>@item.MaintenanceSummary</td>
+                                                            <td>@item.BreakdownDate.ToLongDateString()</td>
+                                                            <td>@string.Format("{0:N0}", item.CurrentMileage)</td>
+                                                            <td>
+                                                                @if (@item.DateClosed.HasValue)
+                                                                {@item.DateClosed.Value.ToLongDateString();
+                                                            }
+                                                            else { }
+                                                            </td>
+                                                            <td>
+                                                                @if (@item.StatusID == 1)
+                                                                {
+                                                                    <span class="badge-dot badge-success mr-1"></span>@item.TransStatus
+                                                                }
+                                                                else if (@item.StatusID == 0)
+                                                                {
+                                                                    <span class="badge-dot badge-brand mr-1"></span>@item.TransStatus
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="badge-dot badge-danger mr-1"></span>@item.TransStatus
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    }
                                                 </tbody>
                                             </table>
                                         </div>
@@ -176,14 +160,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    
+                    </div>*@
                 </div>
-
-
             </div>
         </form>
-
     </div>
 </div>
