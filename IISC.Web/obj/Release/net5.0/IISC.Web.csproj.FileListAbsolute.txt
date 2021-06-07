@@ -391,3 +391,4 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Control.cshtml
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\ManageRoles.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\ManageUser.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Shared\Signout.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Release\net5.0\Razor\Pages\Garage\Maintain\EditMaintenance.cshtml.g.cs
