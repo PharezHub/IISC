@@ -22,6 +22,8 @@ namespace Garage.Core.Repository
         Task AddMaintenanceType(Adm_MaintenanceType type);
         void AddPartsUsed(TrnPartUsed partUsed);
         Task DeletePartUsed(int deleteId);
+        Task IncreasePartUsed(int itemId);
+        Task DecreasePartUsed(int itemId);
         Task UpdatePartUsed(TrnPartUsed partUsed);
         Task<TrnPartUsed> GetPartsUsedById(int partId);
         Task<IEnumerable<PartUsedViewModel>> GetPartsUsed(int maintenanceId);

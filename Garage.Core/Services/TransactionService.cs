@@ -288,5 +288,48 @@ namespace Garage.Core.Services
                 throw ex;
             }
         }
+
+        public async Task IncreasePartUsed(int itemId)
+        {
+            try
+            {
+                if (itemId > 0)
+                {
+                    var query = await _context.TrnPartUsed.FindAsync(itemId);
+                    if (query != null)
+                    {
+                        query.Qty +=1;
+                        await _context.SaveChangesAsync();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task DecreasePartUsed(int itemId)
+        {
+            try
+            {
+                if (itemId > 0)
+                {
+                    var query = await _context.TrnPartUsed.FindAsync(itemId);
+                    if (query != null)
+                    {
+                        if (query.Qty > 1)
+                        {
+                            query.Qty -= 1;
+                            await _context.SaveChangesAsync();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

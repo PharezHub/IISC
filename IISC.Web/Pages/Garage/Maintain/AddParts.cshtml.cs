@@ -124,5 +124,28 @@ namespace IISC.Web.Pages.Garage.Maintain
 
             return RedirectToPage("AddParts", new { id = mainId });
         }
+        public async Task<IActionResult> OnGetIncreasePart(int itemId, int id)
+        {
+            int mainId = id; //drMaintenanceDetail.ID;
+            if (itemId > 0)
+            {
+                await transaction.IncreasePartUsed(itemId);
+                //Notify("Part deleted successfully", "Spare Part Deletion", Models.NotificationType.info);
+            }
+
+            return RedirectToPage("AddParts", new { id = mainId });
+        }
+
+        public async Task<IActionResult> OnGetDecreasePart(int itemId, int id)
+        {
+            int mainId = id; //drMaintenanceDetail.ID;
+            if (itemId > 0)
+            {
+                await transaction.DecreasePartUsed(itemId);
+                //Notify("Part deleted successfully", "Spare Part Deletion", Models.NotificationType.info);
+            }
+
+            return RedirectToPage("AddParts", new { id = mainId });
+        }
     }
 }

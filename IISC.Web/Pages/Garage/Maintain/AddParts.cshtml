@@ -210,13 +210,13 @@
                                                                     <span class="badge-dot badge-danger mr-1"></span> Delete
                                                                 </a>
                                                                 |
-                                                                <a title="Increase +1" asp-page="/Garage/Maintain/AddParts" asp-page-handler="DeletePart" asp-route-deleteId="@item.ID">
+                                                                <a title="Increase +1" asp-page="/Garage/Maintain/AddParts" asp-page-handler="IncreasePart" asp-route-itemId="@item.ID">
                                                                     <span class="icon-circle-small icon-box-xs text-success ml-2 bg-success-light">
                                                                         <i class="fa fa-fw fa-arrow-up"></i>
                                                                     </span>
                                                                 </a>
 
-                                                                <a title="Decrease -1" asp-page="/Garage/Maintain/AddParts" asp-page-handler="DeletePart" asp-route-deleteId="@item.ID">
+                                                                <a title="Decrease -1" asp-page="/Garage/Maintain/AddParts" asp-page-handler="DecreasePart" asp-route-itemId="@item.ID">
                                                                     <span class="icon-circle-small icon-box-xs text-primary ml-2 bg-primary-light">
                                                                         <i class="fa fa-fw fa-arrow-down"></i>
                                                                     </span>
