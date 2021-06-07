@@ -32,4 +32,3 @@ C:\Yann\source\repos\IISC\Garage.Core\obj\Debug\netstandard2.1\Garage.Core.Assem
 C:\Yann\source\repos\IISC\Garage.Core\obj\Debug\netstandard2.1\Garage.Core.csproj.CoreCompileInputs.cache
 C:\Yann\source\repos\IISC\Garage.Core\obj\Debug\netstandard2.1\Garage.Core.dll
 C:\Yann\source\repos\IISC\Garage.Core\obj\Debug\netstandard2.1\Garage.Core.pdb
-C:\Yann\source\repos\IISC\Garage.Core\obj\Debug\netstandard2.1\Garage.Core.csprojAssemblyReference.cache

@@ -92,12 +92,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
                     <div class="influence-profile-content pills-regular">
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
-                                
+
                                 <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#pills-campaign" role="tab" aria-controls="pills-campaign" aria-selected="true">Maintenance - Add Parts</a>
@@ -152,7 +152,7 @@
                                                 <input asp-for="TrnPartUsed.Qty" class="form-control" value="1" inputmode="numeric" placeholder="Enter Quantity" />
                                             </div>
                                             <div class="col-md-6 mb-3">
-                                                
+
                                             </div>
                                         </div>
                                         <div class="row">
@@ -192,7 +192,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th> </th>
-                                                        @*<th>#</th>*@
                                                         <th>Docket #</th>
                                                         <th>Spare Part</th>
                                                         <th>Qty</th>
@@ -205,25 +204,31 @@
                                                 <tbody>
                                                     @foreach (var item in Model.PartUsedView)
                                                     {
-                                                    <tr>
-                                                        <td>
-                                                            <a title="Delete Part" asp-page="/Garage/Maintain/AddParts" asp-page-handler="DeletePart" asp-route-deleteId="@item.ID">
-                                                                <span class="badge-dot badge-danger mr-1"></span> Delete
-                                                            </a>
-                                                        </td>
-                                                        @*<td>
-            <a title="Update Part Price" asp-page="/Garage/Maintain/UpdatePrice" asp-route-ID="@item.ID">
-                Update Price
-            </a>
-        </td>*@
-                                                        @*<td>@item.ID</td>*@
-                                                        <td>@item.DocketNo</td>
-                                                        <td>@item.PartDescription</td>
-                                                        <td>@item.Qty</td>
-                                                        <td>@string.Format("{0:N2}", item.PartCost)</td>
-                                                        <td>@item.ProblemDescription</td>
-                                                        <td>@item.DateLogged</td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <a title="Delete Part" asp-page="/Garage/Maintain/AddParts" asp-page-handler="DeletePart" asp-route-deleteId="@item.ID">
+                                                                    <span class="badge-dot badge-danger mr-1"></span> Delete
+                                                                </a>
+                                                                |
+                                                                <a title="Increase +1" asp-page="/Garage/Maintain/AddParts" asp-page-handler="DeletePart" asp-route-deleteId="@item.ID">
+                                                                    <span class="icon-circle-small icon-box-xs text-success ml-2 bg-success-light">
+                                                                        <i class="fa fa-fw fa-arrow-up"></i>
+                                                                    </span>
+                                                                </a>
+
+                                                                <a title="Decrease -1" asp-page="/Garage/Maintain/AddParts" asp-page-handler="DeletePart" asp-route-deleteId="@item.ID">
+                                                                    <span class="icon-circle-small icon-box-xs text-primary ml-2 bg-primary-light">
+                                                                        <i class="fa fa-fw fa-arrow-down"></i>
+                                                                    </span>
+                                                                </a>
+                                                            </td>
+                                                            <td>@item.DocketNo</td>
+                                                            <td>@item.PartDescription</td>
+                                                            <td>@item.Qty</td>
+                                                            <td>@string.Format("{0:N2}", item.PartCost)</td>
+                                                            <td>@item.ProblemDescription</td>
+                                                            <td>@item.DateLogged</td>
+                                                        </tr>
                                                     }
                                                 </tbody>
                                             </table>
