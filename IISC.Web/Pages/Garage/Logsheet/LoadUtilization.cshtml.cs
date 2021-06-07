@@ -53,6 +53,8 @@ namespace IISC.Web.Pages.Garage.Logsheet
                 LogsheetData.ModifiedBy = "";
                 LogsheetData.ModifiedOn = DateTime.Now;
                 LogsheetData.TransStatus = "";
+                LogsheetData.DriverName = "";
+                LogsheetData.Passengers = "";
             }
 
             return Page();
@@ -60,6 +62,11 @@ namespace IISC.Web.Pages.Garage.Logsheet
 
         public IActionResult OnPost()
         {
+            if (string.IsNullOrEmpty(LogsheetData.DriverName.Trim()))
+            {
+                Notify("Driver name cannot empty.", notificationType: Models.NotificationType.warning);
+                return Page();
+            }
             if (string.IsNullOrEmpty(LogsheetData.CurrentValue.ToString().Trim()))
             {
                 //ModelState.AddModelError("Error", $"Current value cannot empty.");
@@ -79,26 +86,29 @@ namespace IISC.Web.Pages.Garage.Logsheet
                 Notify("Current value is less than previous value recorded.", notificationType: Models.NotificationType.warning);
                 return Page();
             }
+      
+            if (string.IsNullOrEmpty(LogsheetData.Comment.Trim()))
+            {
+                Notify("Enter Destination/Purpose", notificationType: Models.NotificationType.warning);
+                return Page();
+            }
+            if (string.IsNullOrEmpty(LogsheetData.Passengers.Trim()))
+            {
+                Notify("Enter name and number of passenger(s)", notificationType: Models.NotificationType.warning);
+                return Page();
+            }
+
             if (LogsheetData.Comment == null)
             {
                 ModelState.AddModelError("Error", $"Enter driver name on comment.");
             }
-            if (LogsheetData.Comment != null)
-            {
-                if (string.IsNullOrEmpty(LogsheetData.Comment.Trim()))
-                {
-                    //ModelState.AddModelError("Error", $"Enter driver name in comment area.");
-                    Notify("Enter driver name in comment area.", notificationType: Models.NotificationType.warning);
-                    return Page();
-                }
-            }
-
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            logSheetRepository.AddLogSheet(LogsheetData.CategoryID, LogsheetData.CurrentValue, LogsheetData.RegNo, LogsheetData.Comment.Trim());
+            logSheetRepository.AddLogSheet(LogsheetData.CategoryID, LogsheetData.CurrentValue, LogsheetData.RegNo, 
+                LogsheetData.Comment.Trim(),LogsheetData.DriverName.Trim(), LogsheetData.Passengers.Trim());
 
             //Show Message
             Notify("Utilization saved successfully");

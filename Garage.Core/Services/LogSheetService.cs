@@ -33,11 +33,11 @@ namespace Garage.Core.Services
             }
         }
 
-        public void AddLogSheet(int categoryId, double currentValue, string regNo, string comment)
+        public void AddLogSheet(int categoryId, double currentValue, string regNo, string comment, string driverName, string passengerName)
         {
             try
             {
-                _context.Database.ExecuteSqlRaw("spAddLogSheet {0},{1},{2},{3}", categoryId, currentValue, regNo, comment);
+                _context.Database.ExecuteSqlRaw("spAddLogSheet {0},{1},{2},{3}", categoryId, currentValue, regNo, comment, driverName, passengerName);
             }
             catch (Exception ex)
             {

@@ -26,5 +26,7 @@ namespace Garage.Core.ViewModel
         public DateTime ModifiedOn { get; set; }
         public string ModifiedBy { get; set; }
         public string Comment { get; set; }
+        public string DriverName { get; set; }
+        public string Passengers { get; set; }
     }
 }

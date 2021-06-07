@@ -29,5 +29,7 @@ namespace Garage.Core.Models
         public DateTime? ModifiedOn { get; set; }
         [StringLength(50)]
         public string ModifiedBy { get; set; }
+        public string DriverName { get; set; }
+        public string Passengers { get; set; }
     }
 }

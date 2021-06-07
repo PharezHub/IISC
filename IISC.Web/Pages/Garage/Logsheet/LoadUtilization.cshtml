@@ -41,20 +41,31 @@
                                     <input asp-for="LogsheetData.RegNo" class="form-control" placeholder="Reg No" disabled="disabled" />
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label asp-for="LogsheetData.PreviousValue">Previous Mileage</label>
+                                    <label asp-for="LogsheetData.DriverName">Driver's Name</label>
+                                    <input asp-for="LogsheetData.DriverName" class="form-control" placeholder="Enter driver's name here" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.PreviousValue">MILEAGE IN</label>
                                     <input asp-for="LogsheetData.PreviousValue" class="form-control" placeholder="Previous Value" disabled="disabled" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LogsheetData.CurrentValue">MILEAGE OUT</label>
+                                    <input asp-for="LogsheetData.CurrentValue" class="form-control" placeholder="Current value" />
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label asp-for="LogsheetData.Comment">Comment</label>
-                                    <textarea asp-for="LogsheetData.Comment" rows="4" class="form-control" text-wrap:normal" type="text" placeholder="Enter comment or driver details here">
+                                    <label asp-for="LogsheetData.Comment">Destination/Purpose</label>
+                                    <textarea asp-for="LogsheetData.Comment" rows="4" class="form-control" text-wrap:normal" type="text" placeholder="Enter destination/purpose here">
                                     </textarea>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label asp-for="LogsheetData.CurrentValue">Current Mileage</label>
-                                    <input asp-for="LogsheetData.CurrentValue" class="form-control" placeholder="Current value" />
+                                    <label asp-for="LogsheetData.Passengers">No. and Names Of Passengers</label>
+                                    <textarea asp-for="LogsheetData.Passengers" rows="4" class="form-control" text-wrap:normal" type="text" placeholder="Enter No. and Names Of Passengers">
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
