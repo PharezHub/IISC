@@ -32,13 +32,15 @@
                             <tr>
                                 <th>#</th>
                                 <th>Type</th>
-                                <th>Category</th>
+                                @*<th>Category</th>*@
                                 <th>Reg No</th>
-                                <th>Make</th>
+                                @*<th>Make</th>*@
                                 <th>Model</th>
                                 <th>Trigged</th>
                                 <th>Previous Value</th>
                                 <th>Current Value</th>
+                                <th>Driver Name</th>
+                                @*<th>Purpose</th>*@
                                 <th>Created On</th>
                                 <th>Status</th>
                             </tr>
@@ -46,32 +48,34 @@
                         <tbody>
                             @foreach (var item in Model.LogSheetList)
                             {
-                                <tr>
-                                    <td>@item.ID</td>
-                                    <td>@item.LogType</td>
-                                    <td>@item.CategoryName</td>
-                                    <td>@item.RegNo</td>
-                                    <td>@item.Make</td>
-                                    <td>@item.ModelName</td>
-                                    <td>@item.FrequencyName</td>
-                                    <td>@item.PreviousValue</td>
-                                    <td>@item.CurrentValue</td>
-                                    <td>@item.CreatedOn</td>
-                                    <td>
-                                        @if (@item.LogStatus == 1)
-                                        {
-                                            <span class="badge-dot badge-success mr-1"></span>@item.TransStatus
-                                        }
-                                        else if (@item.LogStatus == 0)
-                                        {
-                                            <span class="badge-dot badge-brand mr-1"></span>@item.TransStatus
-                                        }
-                                        else
-                                        {
-                                            <span class="badge-dot badge-danger mr-1"></span>@item.TransStatus
-                                        }
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.LogType</td>
+                                @*<td>@item.CategoryName</td>*@
+                                <td>@item.RegNo</td>
+                                @*<td>@item.Make</td>*@
+                                <td>@item.ModelName</td>
+                                <td>@item.FrequencyName</td>
+                                <td>@string.Format("{0:N0}", @item.PreviousValue)</td>
+                                <td>@string.Format("{0:N0}", @item.CurrentValue)</td>
+                                <td>@item.DriverName</td>
+                                @*<td>@item.Comment</td>*@
+                                <td>@item.CreatedOn</td>
+                                <td>
+                                    @if (@item.LogStatus == 1)
+                                    {
+                                        <span class="badge-dot badge-success mr-1"></span>@item.TransStatus
+                                    }
+                                    else if (@item.LogStatus == 0)
+                                    {
+                                        <span class="badge-dot badge-brand mr-1"></span>@item.TransStatus
+                                    }
+                                    else
+                                    {
+                                        <span class="badge-dot badge-danger mr-1"></span>@item.TransStatus
+                                    }
+                                </td>
+                            </tr>
                             }
                         </tbody>
 
