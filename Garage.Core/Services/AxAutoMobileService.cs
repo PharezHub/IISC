@@ -27,7 +27,8 @@ namespace Garage.Core.Services
 
         public async Task<IEnumerable<AXAutoMobile>> GetAxAutoMobile(string spareName)
         {
-            return await _context.AXAutoMobile.Where(x => x.ItemName.Trim().Contains(spareName)).ToListAsync();
+            // return await _context.AXAutoMobile.Where(x => x.ItemName.Trim().Contains(spareName)).ToListAsync();
+            return await _context.AXAutoMobile.FromSqlRaw("spGetAXAutoMobile").ToListAsync();
         }
 
         public async Task<AXAutoMobile> GetAxAutoMobileItem(string itemId)
