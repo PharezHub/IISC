@@ -390,7 +390,6 @@ C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\runtimes\win\lib\netstandard
 C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Garage.Core.dll
 C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Garage.Core.pdb
-C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.csprojAssemblyReference.cache
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.GeneratedMSBuildEditorConfig.editorconfig
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.AssemblyInfoInputs.cache
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.AssemblyInfo.cs
@@ -475,3 +474,4 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Control.cshtml.g
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\ManageRoles.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\AddRoles.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\EditMaintenance.cshtml.g.cs
+C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.csproj.AssemblyReference.cache

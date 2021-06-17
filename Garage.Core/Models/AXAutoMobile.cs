@@ -14,5 +14,6 @@ namespace Garage.Core.Models
         public string ItemName { get; set; }
         public double ItemPrice { get; set; }
         public DateTime PriceDate { get; set; }
+        public string FullDescription { get; set; }
     }
 }

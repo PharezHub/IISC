@@ -32,7 +32,9 @@ namespace Garage.Core.Services
 
         public async Task<AXAutoMobile> GetAxAutoMobileItem(string itemId)
         {
-            return await _context.AXAutoMobile.FirstAsync(x => x.ItemId == itemId);
+            var query = await _context.AXAutoMobile.FromSqlRaw("spGetAXAutoMobileById {0}", itemId).ToListAsync();
+            return query.FirstOrDefault();
+            //return await _context.AXAutoMobile.FirstAsync(x => x.ItemId == itemId);
         }
     }
 }
