@@ -143,7 +143,7 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label asp-for="HdrMaintenance.MaintenanceType">Maintenance Type</label>
-                                                <select asp-for="HdrMaintenance.MaintenanceType" class="form-control" asp-items="@Model.TypeList.Where(x => x.Value == "1")">
+                                                <select asp-for="HdrMaintenance.MaintenanceType" class="form-control" asp-items="@Model.TypeList.Where(x => x.Value != "2")">
                                                     @*<option value="0">Choose One</option>*@
                                                 </select>
                                             </div>
@@ -164,8 +164,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
-                                                <label asp-for="HdrMaintenance.MaintenanceSummary">Breakdown Summary</label>
-                                                <textarea asp-for="HdrMaintenance.MaintenanceSummary" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter breakdown summary">
+                                                <label asp-for="HdrMaintenance.MaintenanceSummary">Maintenance Summary</label>
+                                                <textarea asp-for="HdrMaintenance.MaintenanceSummary" rows="3" class="form-control" text-wrap:normal" type="text" placeholder="Enter maintenance summary">
                                     </textarea>
                                                 <div class="invalid-feedback">
                                                     <span asp-validation-for="HdrMaintenance.MaintenanceSummary" class="text-danger"></span>
@@ -215,54 +215,57 @@
                                                 <tbody>
                                                     @foreach (var item in Model.HdrMaintenanceList)
                                                     {
-                                                        <tr>
-                                                            <td>
-                                                                @if (@item.StatusID == 0)
+                                                    <tr>
+                                                        <td>
+                                                            @if (@item.StatusID == 0)
+                                                            {
+                                                                <a title="Add parts to a breakdown" asp-page="/Garage/Maintain/AddParts" asp-route-ID="@item.ID">
+                                                                    Parts |
+                                                                </a>
+
+                                                                <a title="Close/Complete maintenace" asp-page="/Garage/Maintain/Complete" asp-route-ID="@item.ID">
+                                                                    Complete
+                                                                </a>
+                                                                if (item.MaintenanceType == 2)
                                                                 {
-                                                                    <a title="Add parts to a breakdown" asp-page="/Garage/Maintain/AddParts" asp-route-ID="@item.ID">
-                                                                        Parts |
+                                                                    <a title="Maintenance Work Order" asp-page="/Garage/Maintain/WorkOrder" asp-route-ID="@item.ID">
+                                                                        | WO
                                                                     </a>
-
-                                                                    <a title="Close/Complete maintenace" asp-page="/Garage/Maintain/Complete" asp-route-ID="@item.ID">
-                                                                        Complete
+                                                                }
+                                                                if (item.StatusID != 1)
+                                                                {
+                                                                    <a title="Edit" asp-page="/Garage/Maintain/EditMaintenance" asp-route-ID="@item.ID">
+                                                                        | Edit
                                                                     </a>
-                                                                    if (item.MaintenanceType == 2)
-                                                                    {
-                                                                        <a title="Maintenance Work Order" asp-page="/Garage/Maintain/WorkOrder" asp-route-ID="@item.ID">
-                                                                            | WO
-                                                                        </a>
-                                                                    }
-                                                                    if (item.StatusID != 1)
-                                                                    {
-                                                                        <a title="Edit" asp-page="/Garage/Maintain/EditMaintenance" asp-route-ID="@item.ID">
-                                                                            | Edit
-                                                                        </a>
-                                                                    }
                                                                 }
+                                                            }
 
-                                                            </td>
-                                                            <td>@item.ID</td>
-                                                            <td>@item.MaintenanceName</td>
-                                                            <td>@item.MaintenanceSummary</td>
-                                                            <td>@item.BreakdownDate.ToLongDateString()</td>
-                                                            <td>@string.Format("{0:N0}", item.CurrentMileage)</td>
-                                                            <td>@if (@item.DateClosed.HasValue) { @item.DateClosed.Value.ToLongDateString(); } else {  } </td>
-                                                            <td>
-                                                                @if (@item.StatusID == 1)
-                                                                {
-                                                                    <span class="badge-dot badge-success mr-1"></span>@item.TransStatus
-                                                                }
-                                                                else if (@item.StatusID == 0)
-                                                                {
-                                                                    <span class="badge-dot badge-brand mr-1"></span>@item.TransStatus
-                                                                }
-                                                                else
-                                                                {
-                                                                    <span class="badge-dot badge-danger mr-1"></span>@item.TransStatus
-                                                                }
-                                                            </td>
+                                                        </td>
+                                                        <td>@item.ID</td>
+                                                        <td>@item.MaintenanceName</td>
+                                                        <td>@item.MaintenanceSummary </td>
+                                                        <td>@item.BreakdownDate.ToLongDateString()</td>
+                                                        <td>@string.Format("{0:N0}", item.CurrentMileage)</td>
+                                                        <td>@if (@item.DateClosed.HasValue)
+                                                        {@item.DateClosed.Value.ToLongDateString();
+                                                    }
+                                                    else { } </td>
+                                                        <td>
+                                                            @if (@item.StatusID == 1)
+                                                            {
+                                                                <span class="badge-dot badge-success mr-1"></span>@item.TransStatus
+                                                            }
+                                                            else if (@item.StatusID == 0)
+                                                            {
+                                                                <span class="badge-dot badge-brand mr-1"></span>@item.TransStatus
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="badge-dot badge-danger mr-1"></span>@item.TransStatus
+                                                            }
+                                                        </td>
 
-                                                        </tr>
+                                                    </tr>
                                                     }
                                                 </tbody>
                                             </table>

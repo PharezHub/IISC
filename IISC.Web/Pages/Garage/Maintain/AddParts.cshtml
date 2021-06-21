@@ -168,7 +168,10 @@
                                             <a asp-page="/Garage/Asset/Index" class="btn btn-outline-dark">Cancel</a>
                                         </div>
                                         <div class="row mt-2 float-right">
-                                            <button type="submit" class="btn btn-outline-primary">Save</button>
+                                            @if (Model.HdrMaintenanceDetail.StatusID == 0)
+                                            {
+                                                <button type="submit" class="btn btn-outline-primary">Save</button>
+                                            }
                                         </div>
                                     </div>
                                     @*@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"].Errors.Count > 0)

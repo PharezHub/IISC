@@ -21,3 +21,4 @@ C:\Yann\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.csproj.CoreCompileI
 C:\Yann\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.dll
 C:\Yann\source\repos\IISC\API.Core\obj\Debug\net5.0\ref\API.Core.dll
 C:\Yann\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.pdb
+C:\Yann\source\repos\IISC\API.Core\obj\Debug\net5.0\API.Core.csproj.AssemblyReference.cache

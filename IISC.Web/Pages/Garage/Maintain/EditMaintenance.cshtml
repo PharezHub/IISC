@@ -43,7 +43,7 @@
                                                 <input hidden asp-for="@Model.HdrMaintenanceDetail.AssetID" />
                                                 <input hidden asp-for="@Model.HdrMaintenanceDetail.ID" />
                                                 <label asp-for="HdrMaintenance.MaintenanceType">Maintenance Type</label>
-                                                <select asp-for="HdrMaintenance.MaintenanceType" class="form-control" asp-items="@Model.TypeList.Where(x => x.Value == "1")">
+                                                <select asp-for="HdrMaintenance.MaintenanceType" class="form-control" asp-items="@Model.TypeList.Where(x => x.Value != "2")">
                                                     @*<option value="0">Choose One</option>*@
                                                 </select>
                                             </div>

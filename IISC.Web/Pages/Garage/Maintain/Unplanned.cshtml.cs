@@ -85,7 +85,9 @@ namespace IISC.Web.Pages.Garage.Maintain
             }
 
             var query = await transaction.AddMaintenance(HdrMaintenance);
-            assetRepository.UpdateMileage(HdrMaintenance.RegNo, HdrMaintenance.CurrentMileage.Value);
+            
+            //Stop resetting the mileage 
+            //assetRepository.UpdateMileage(HdrMaintenance.RegNo, HdrMaintenance.CurrentMileage.Value);
 
             //Show Message
             Notify($"Breakdown submitted successfully");
