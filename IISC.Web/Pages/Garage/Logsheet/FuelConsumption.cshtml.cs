@@ -35,6 +35,7 @@ namespace IISC.Web.Pages.Garage.Logsheet
 
         public async Task<IActionResult> OnGet(int id)
         {
+            TrnFuelConsumption.RefuelDate = DateTime.Now;
             await InitialBinding(id);
             return Page();
         }

@@ -18,5 +18,9 @@ namespace Garage.Core.Models
         public double PreviousReading { get; set; }
         public DateTime TransactionDate { get; set; }
         public string LoggedBy { get; set; }
+
+        [Required(ErrorMessage = "Refuel date is required")]
+        [DataType(DataType.Date)]
+        public DateTime RefuelDate { get; set; }
     }
 }
