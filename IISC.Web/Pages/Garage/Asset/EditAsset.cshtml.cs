@@ -26,12 +26,14 @@ namespace IISC.Web.Pages.Garage.Asset
         private readonly GarageDbContext context;
         private readonly IAssetRepository assetRepository;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IHostEnvironment _environment;
 
-        public EditAssetModel(GarageDbContext context, IAssetRepository assetRepository, IWebHostEnvironment webHostEnvironment)
+        public EditAssetModel(GarageDbContext context, IAssetRepository assetRepository, IWebHostEnvironment webHostEnvironment, IHostEnvironment environment)
         {
             this.context = context;
             this.assetRepository = assetRepository;
             this.webHostEnvironment = webHostEnvironment;
+            this._environment = environment;
             StatutoryList = new List<int>();
 
             FitnessVM = new FitnessViewModel();
@@ -60,8 +62,8 @@ namespace IISC.Web.Pages.Garage.Asset
         [BindProperty]
         public Trn_Attachments Attachments { get; set; }
 
-        [BindProperty]
-        public IFormFile FileUpload { get; set; }
+        //[BindProperty]
+        //public IFormFile attachments { get; set; }
 
         public List<AssetTypeViewModel> AssetDisplayList { get; set; }
         public List<FuelTypeViewModel> FueltypeList { get; set; }
@@ -424,47 +426,48 @@ namespace IISC.Web.Pages.Garage.Asset
             return Page();
         }
 
-        private async Task<string> ProcessUploadedFiles(string GuiNumber)
+        public async Task<IActionResult> OnPostFileUpload(IFormFile[] attachments, int itemId)
         {
-            string uniqueFileName = null;
-            if (FileUpload != null)
+            //string uniqueFileName = null;
+            string GuidNumber = await assetRepository.GetGuid(itemId);
+            int fileType = Attachments.FileType;
+
+            //TODO: Check if the files exists
+            if (attachments is not null && attachments.Length > 0)
             {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, $"Uploads/{GuiNumber}");
-                uniqueFileName = GuiNumber + "_" + FileUpload.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                //TODO: Get Guid for attachment
+                if (GuidNumber is null)
                 {
-                    await FileUpload.CopyToAsync(fileStream);
+                    GuidNumber = assetRepository.GenerateGuid();
+                }
+
+                //TODO: Save Guid in the database
+                var path = Path.Combine(Directory.GetCurrentDirectory(), $"Uploads/{GuidNumber}");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                //TODO: Loop through all the files
+                foreach (IFormFile files in attachments)
+                {
+                    //var path = Path.Combine(webHostEnvironment.WebRootPath, $"Uploads\\{GuidNumber}");
+                    
+                    string filePath = Path.Combine(path, files.FileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                    {
+                        await files.CopyToAsync(fileStream);
+                    }
+
+                    //TODO: Save file name to the database and file type
+                    
                 }
             }
-
-            return uniqueFileName;
+            return RedirectToPage("EditAsset", new { id = itemId });
         }
 
         public async Task<IActionResult> OnPost()
         {
-            //TODO: Check if the files exists
-            //if (FileUpload.Length > 0)
-            //{
-            //    //TODO: Get Guid for attachment
-            //    string guidNumber = await assetRepository.GetGuid(AssetHeader.ID);
-            //    if (string.IsNullOrEmpty(guidNumber))
-            //    {
-            //        guidNumber = assetRepository.GenerateGuid();
-            //    }
-            
-            //    //TODO: Post files to database.
-            //    //for (int i = 0; i < FileUpload.Length; i++)
-            //    //{
-            //    //    await ProcessUploadedFiles(guidNumber);
-            //    //}
-            //    //foreach (var files in FileUpload)
-            //    //{
-            //    //    //var path = Path.Combine(this.hostEnvironment)
-            //    //}
-            //}
-
-            
             var resultList = await assetRepository.GetStatutorybyCategoryId(AssetHeader.CategoryID);
             foreach (var statutoryId in resultList)
             {

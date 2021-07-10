@@ -17,5 +17,6 @@ namespace Garage.Core.Models
         public string FileExtension { get; set; }
         public DateTime LoggedDate { get; set; }
         public string LoggedBy { get; set; }
+        public string FileSize { get; set; }
     }
 }
