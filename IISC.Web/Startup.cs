@@ -56,6 +56,7 @@ namespace IISC.Web
             services.AddScoped<IDashboardRepository, DashboardService>();
             services.AddScoped<IAxAutoMobileRepository, AxAutoMobileService>();
             services.AddScoped<IAccountRepository, AccountService>();
+            services.AddScoped<IFileProcessingRepository, FileProcessingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

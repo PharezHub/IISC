@@ -25,15 +25,13 @@ namespace IISC.Web.Pages.Garage.Asset
         public static string constr = Environment.GetEnvironmentVariable("GarageDbConn");
         private readonly GarageDbContext context;
         private readonly IAssetRepository assetRepository;
-        private readonly IWebHostEnvironment webHostEnvironment;
-        private readonly IHostEnvironment _environment;
+        private readonly IFileProcessingRepository fileProcessingRepository;
 
-        public EditAssetModel(GarageDbContext context, IAssetRepository assetRepository, IWebHostEnvironment webHostEnvironment, IHostEnvironment environment)
+        public EditAssetModel(GarageDbContext context, IAssetRepository assetRepository, IFileProcessingRepository fileProcessingRepository)
         {
             this.context = context;
             this.assetRepository = assetRepository;
-            this.webHostEnvironment = webHostEnvironment;
-            this._environment = environment;
+            this.fileProcessingRepository = fileProcessingRepository;
             StatutoryList = new List<int>();
 
             FitnessVM = new FitnessViewModel();
@@ -78,7 +76,7 @@ namespace IISC.Web.Pages.Garage.Asset
         public SelectList ModelInsuranceType()
         {
             InsuranceTypeList = assetRepository.GetInsuranceType();
-            SelectList InsuranceList = new SelectList(InsuranceTypeList, nameof(Adm_InsuranceType.ID), nameof(Adm_InsuranceType.InsuranceName));
+            SelectList InsuranceList = new(InsuranceTypeList, nameof(Adm_InsuranceType.ID), nameof(Adm_InsuranceType.InsuranceName));
             return InsuranceList;
         }
         public SelectList ColorDisplay()
@@ -89,7 +87,7 @@ namespace IISC.Web.Pages.Garage.Asset
         }
         private static List<StatusViewModel> populateStatus()
         {
-            List<StatusViewModel> status = new List<StatusViewModel>();
+            List<StatusViewModel> status = new();
             using (SqlConnection con = new SqlConnection(constr))
             {
                 if (con.State == System.Data.ConnectionState.Closed)
@@ -365,7 +363,7 @@ namespace IISC.Web.Pages.Garage.Asset
             if (Id > 0)
             {
                 GroupTypeList = new SelectList(await assetRepository.GetGroupType(), nameof(AdmGroupType.ID), nameof(AdmGroupType.GroupName));
-                AttachmentTypesList = new SelectList(await assetRepository.GetAttachmentTypes(), nameof(Adm_AttachmentTypes.ID), nameof(Adm_AttachmentTypes.FileType));
+                AttachmentTypesList = new SelectList(await fileProcessingRepository.GetAttachmentTypes(), nameof(Adm_AttachmentTypes.ID), nameof(Adm_AttachmentTypes.FileType));
                 AssetHeader = await assetRepository.GetAssetDetailById(Id);
                 var resultList = await assetRepository.GetStatutorybyCategoryId(AssetHeader.CategoryID);
                 var statutoryData = await assetRepository.GetStatutoryRequirement(Id);
@@ -429,7 +427,7 @@ namespace IISC.Web.Pages.Garage.Asset
         public async Task<IActionResult> OnPostFileUpload(IFormFile[] attachments, int itemId)
         {
             //string uniqueFileName = null;
-            string GuidNumber = await assetRepository.GetGuid(itemId);
+            string GuidNumber = await fileProcessingRepository.GetGuid(itemId);
             int fileType = Attachments.FileType;
 
             //TODO: Check if the files exists
@@ -438,7 +436,7 @@ namespace IISC.Web.Pages.Garage.Asset
                 //TODO: Get Guid for attachment
                 if (GuidNumber is null)
                 {
-                    GuidNumber = assetRepository.GenerateGuid();
+                    GuidNumber = await fileProcessingRepository.GenerateGuid();
                 }
 
                 //TODO: Save Guid in the database
@@ -450,9 +448,7 @@ namespace IISC.Web.Pages.Garage.Asset
 
                 //TODO: Loop through all the files
                 foreach (IFormFile files in attachments)
-                {
-                    //var path = Path.Combine(webHostEnvironment.WebRootPath, $"Uploads\\{GuidNumber}");
-                    
+                {                   
                     string filePath = Path.Combine(path, files.FileName);
                     using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                     {

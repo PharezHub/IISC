@@ -11,6 +11,7 @@
     <Folder Include="Pages\HR\" />
     <Folder Include="Pages\Cylinder\" />
     <Folder Include="Pages\Visitor\" />
+    <Folder Include="Uploads\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\lib\bootstrap\" />

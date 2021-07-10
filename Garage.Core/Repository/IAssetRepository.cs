@@ -17,11 +17,9 @@ namespace Garage.Core.Repository
         void AddStatutory(Hdr_StatutoryRequirement statutoryRequirement);
         bool ValidateRegNumber(string regNo);
         bool ValidateEngineNumber(string engineNo);
-
         IEnumerable<AssetCatalogueViewModel> OnSiteUtilization();
         IEnumerable<AssetCatalogueViewModel> OffSiteUtilization();
         AssetViewModel GetAssetById(int Id);
-        
         /// <summary>
         /// Get asset details using the original data posting without join to other tables.
         /// </summary>
@@ -30,7 +28,6 @@ namespace Garage.Core.Repository
         Task<Hdr_Asset> GetAssetDetailById(int Id);
         Task<Hdr_Asset> UpdateAsset(Hdr_Asset asset);
         Task OverrideMaintenanceStatus(int assetId, int statusId);
-
         // Parts Catalog
         void AddPartsCatalog(AdmPartsCatalog catalog);
         IEnumerable<PartsCatalogViewModel> GetPartsCatalog();
@@ -42,8 +39,7 @@ namespace Garage.Core.Repository
         void UpdateMileage(string regNo, double newMileage);
         Task<List<int>> GetStatutorybyCategoryId(int categoryId);
         Task<List<Hdr_StatutoryRequirement>> GetStatutoryRequirement(int assetId);
-        string GenerateGuid();
-        Task<string> GetGuid(int assetId);
-        Task<IEnumerable<Adm_AttachmentTypes>> GetAttachmentTypes();
+        
+        
     }
 }

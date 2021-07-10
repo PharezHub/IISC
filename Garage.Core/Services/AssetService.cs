@@ -69,12 +69,6 @@ namespace Garage.Core.Services
             }
         }
 
-        public string GenerateGuid()
-        {
-            Guid newGuid = Guid.NewGuid();
-            return newGuid.ToString();
-        }
-
         public AssetViewModel GetAssetById(int Id)
         {
             try
@@ -102,23 +96,6 @@ namespace Garage.Core.Services
         public async Task<Hdr_Asset> GetAssetDetailById(int Id)
         {
             return await _context.Hdr_Asset.FirstOrDefaultAsync(x => x.ID == Id);
-        }
-
-        public async Task<IEnumerable<Adm_AttachmentTypes>> GetAttachmentTypes()
-        {
-            return await _context.Adm_AttachmentTypes.ToListAsync();
-        }
-
-        public async Task<string> GetGuid(int assetId)
-        {
-            try
-            {
-                return await _context.Hdr_Asset.Where(x => x.ID == assetId).Select(x => x.FolderID).FirstOrDefaultAsync();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
         }
 
         public List<Adm_InsuranceType> GetInsuranceType()
@@ -217,7 +194,6 @@ namespace Garage.Core.Services
             }
 
             await _context.SaveChangesAsync();
-
             return query;
         }
 
@@ -307,5 +283,6 @@ namespace Garage.Core.Services
         {
             return await _context.AdmGroupType.ToListAsync();
         }
+
     }
 }
