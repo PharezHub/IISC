@@ -10,7 +10,6 @@ namespace Garage.Core.Models
         [Key]
         public int ID { get; set; }
         public int AssetID { get; set; }
-        public string RegNo { get; set; }
         public string FileName { get; set; }
         public int FileType { get; set; }
         public string PathName { get; set; }

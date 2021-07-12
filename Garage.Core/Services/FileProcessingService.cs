@@ -1,9 +1,11 @@
 ﻿using Garage.Core.AppDbContext;
 using Garage.Core.Models;
 using Garage.Core.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,9 +48,55 @@ namespace Garage.Core.Services
         {
             if (!(attach is null))
             {
-                await Task.FromResult(_context.Database.ExecuteSqlRaw("spAddAttachment {0},{1},{2},{3},{4},{5},{6},{7},{8},{9}",
-                    attach.AssetID, attach.RegNo, attach.FileName, attach.FileType, attach.PathName, attach.FileExtension,
+                await Task.FromResult(_context.Database.ExecuteSqlRaw("spAddAttachment {0},{1},{2},{3},{4},{5},{6},{7},{8}",
+                    attach.AssetID, attach.FileName, attach.FileType, attach.PathName, attach.FileExtension,
                     attach.LoggedBy, attach.FileSize, attach.ModuleName, attach.FolderId));
+            }
+        }
+
+        public async Task ProcessFileUpload(int itemId, IFormFile[] filesList, Trn_Attachments attach, string userName, string webRootPath)
+        {
+            string guid = await GetGuid(itemId);
+
+            //TODO: Check if the files exists
+            if (filesList != null && filesList.Length > 0)
+            {
+                //TODO: Get Guid for attachment
+                if (guid is null)
+                {
+                    guid = await GenerateGuid();
+                }
+
+                //TODO: Save Guid in the database
+                //var path = Path.Combine(Directory.GetCurrentDirectory(), $"Uploads/{GuidNumber}");
+                var path = Path.Combine(webRootPath, $"Uploads/{guid}");
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                //TODO: Loop through all the files
+                foreach (IFormFile files in filesList)
+                {
+                    string filePath = Path.Combine(path, files.FileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                    {
+                        await files.CopyToAsync(fileStream);
+                    }
+                    attach.AssetID = itemId;
+                    attach.FileName = files.FileName;
+                    attach.PathName = $"Uploads/{guid}/{files.FileName}";
+                    attach.FileExtension = Path.GetExtension(filePath);
+                    attach.LoggedBy = userName;
+                    attach.FileSize = files.Length.ToString();
+                    attach.ModuleName = "Garage";
+                    attach.FolderId = guid;
+                    attach.LoggedDate = DateTime.Now;
+
+                    //TODO: Save file name to the database and file type
+                    await AddAttachments(attach);
+                }
             }
         }
     }

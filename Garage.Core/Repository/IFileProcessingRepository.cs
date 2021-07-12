@@ -1,4 +1,5 @@
 ﻿using Garage.Core.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,5 +13,6 @@ namespace Garage.Core.Repository
         Task<string> GenerateGuid();
         Task<string> GetGuid(int assetId);
         Task AddAttachments(Trn_Attachments attachments);
+        Task ProcessFileUpload(int itemId, IFormFile[] filesList, Trn_Attachments attach, string userName, string webRootPath);
     }
 }

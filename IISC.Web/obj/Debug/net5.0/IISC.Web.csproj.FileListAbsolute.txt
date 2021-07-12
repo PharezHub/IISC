@@ -475,3 +475,6 @@ C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\ManageRoles.csht
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\AddRoles.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\Razor\Pages\Garage\Maintain\EditMaintenance.cshtml.g.cs
 C:\Yann\source\repos\IISC\IISC.Web\obj\Debug\net5.0\IISC.Web.csproj.AssemblyReference.cache
+C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
+C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Yann\source\repos\IISC\IISC.Web\bin\Debug\net5.0\System.IO.Pipelines.dll

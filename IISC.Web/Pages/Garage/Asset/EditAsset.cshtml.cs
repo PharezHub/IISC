@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Garage.Core.AppDbContext;
 using Garage.Core.Models;
@@ -12,7 +11,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Hosting;
@@ -26,17 +24,20 @@ namespace IISC.Web.Pages.Garage.Asset
         private readonly GarageDbContext context;
         private readonly IAssetRepository assetRepository;
         private readonly IFileProcessingRepository fileProcessingRepository;
+        private readonly IWebHostEnvironment _env;
 
-        public EditAssetModel(GarageDbContext context, IAssetRepository assetRepository, IFileProcessingRepository fileProcessingRepository)
+        public EditAssetModel(GarageDbContext context, IAssetRepository assetRepository, IWebHostEnvironment env,
+            IFileProcessingRepository fileProcessingRepository)
         {
             this.context = context;
             this.assetRepository = assetRepository;
             this.fileProcessingRepository = fileProcessingRepository;
-            StatutoryList = new List<int>();
+            StatutoryList = new();
 
             FitnessVM = new FitnessViewModel();
             InsuranceVM = new InsuranceViewModel();
             RoadTaxVM = new RoadTaxViewModel();
+            _env = env;
         }
 
         [BindProperty]
@@ -58,7 +59,7 @@ namespace IISC.Web.Pages.Garage.Asset
         public RoadTaxViewModel RoadTaxVM { get; set; }
 
         [BindProperty]
-        public Trn_Attachments Attachments { get; set; }
+        public Trn_Attachments TrnAttachments { get; set; }
 
         //[BindProperty]
         //public IFormFile attachments { get; set; }
@@ -426,39 +427,10 @@ namespace IISC.Web.Pages.Garage.Asset
 
         public async Task<IActionResult> OnPostFileUpload(IFormFile[] attachments, int itemId)
         {
-            //string uniqueFileName = null;
-            string GuidNumber = await fileProcessingRepository.GetGuid(itemId);
-            int fileType = Attachments.FileType;
-
-            //TODO: Check if the files exists
-            if (attachments is not null && attachments.Length > 0)
-            {
-                //TODO: Get Guid for attachment
-                if (GuidNumber is null)
-                {
-                    GuidNumber = await fileProcessingRepository.GenerateGuid();
-                }
-
-                //TODO: Save Guid in the database
-                var path = Path.Combine(Directory.GetCurrentDirectory(), $"Uploads/{GuidNumber}");
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-
-                //TODO: Loop through all the files
-                foreach (IFormFile files in attachments)
-                {                   
-                    string filePath = Path.Combine(path, files.FileName);
-                    using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-                    {
-                        await files.CopyToAsync(fileStream);
-                    }
-
-                    //TODO: Save file name to the database and file type
-                    
-                }
-            }
+            
+            string webRoot = _env.WebRootPath;
+            
+            await fileProcessingRepository.ProcessFileUpload(itemId, attachments, TrnAttachments, User.Identity.Name, webRoot);
             return RedirectToPage("EditAsset", new { id = itemId });
         }
 
